@@ -1,0 +1,11 @@
+# [P+F](../bot-service-resources-bot-framework-faq.md)
+# [Obtención de soporte técnico](../bot-service-resources-links-help.md)
+# [Guía para identificadores](../bot-service-resources-identifiers-guide.md)
+# [Claves de App Insights](../bot-service-resources-app-insights-keys.md)
+# [Solicitudes usuario-agente](../bot-service-resources-user-agent.md)
+# [Directrices de revisión de bots](../bot-service-review-guidelines.md)
+# [Especificación de actividades de Bot Framework](../bot-service-activity-spec.md)
+# [Cumplimiento de Bot Service](../v4sdk/bot-service-compliance.md)
+# Solución de problemas
+## [Solución de problemas generales](../bot-service-troubleshoot-general-problems.md)
+## [Solución de problemas de autenticación](../bot-service-troubleshoot-authentication-problems.md)
