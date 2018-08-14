@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/13/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 63e5f4b8ac86b6b0e29d09796dbe74295bf3e213
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 96f21f02e74c8f7d78a699c37eb8324b4d36139e
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304914"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574681"
 ---
 # <a name="add-suggested-actions-to-messages"></a>Incorporación de acciones sugeridas a mensajes
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-suggested-actions.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-suggested-actions.md)
@@ -34,7 +37,7 @@ En este ejemplo de código se muestra cómo crear un mensaje que presenta tres a
 
 [!code-csharp[Add suggested actions](../includes/code/dotnet-add-suggested-actions.cs#addSuggestedActions)]
 
-Cuando el usuario pulse una de las acciones sugeridas, el bot recibirá un mensaje del usuario que contendrá el elemento `Value` de la acción correspondiente.
+Cuando el usuario pulsa en una de las acciones sugeridas, el bot recibirá un mensaje del usuario que contiene el elemento `Value` de la acción correspondiente.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6ba5e4d3b7ccc180fd53766c3cf988b17b495be9
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 539e9e1cd772495d849ce106ee7d6a157fc1a9c0
+ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306417"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39515085"
 ---
 # <a name="persist-user-data"></a>Conservación de datos de usuario
+
+[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
 
 Cuando el bot pide una entrada a los usuarios, lo más probable es que quiera conservar parte de la información en el almacenamiento de alguna forma. El Bot Builder SDK le permite almacenar entradas de usuario mediante *almacenamiento en memoria*, *almacenamiento de archivos* o almacenamiento en bases de datos, como *CosmosDB* o *SQL*, donde los tipos de almacenamiento local se utilizan principalmente para pruebas o creación de prototipos, y los últimos tipos de almacenamiento son más adecuados para los bots de producción.
 

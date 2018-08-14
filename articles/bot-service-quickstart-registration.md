@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ec16b89a6c25c4113048a40f6b9b3edb6ce2af5e
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6a32bc5712937c615962e4f6edfc7ea691d3ec39
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305088"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574981"
 ---
 # <a name="register-a-bot-with-bot-service"></a>Registro de un bot en Bot Service
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Si ya tiene un bot hospedado en otra parte y le gustaría usar Bot Service para conectarlo a otros canales, deberá registrar su bot en el Servicio de bots. En este tema, aprenderá a registrar el bot en Bot Service mediante la creación de un servicio de bots **Bot Channels Registration**.
 
 > [!IMPORTANT] 
@@ -42,14 +45,14 @@ Para crear un **Bot Channels Registration**, haga lo siguiente:
 
    |                    Configuración                     |         Valor sugerido         |                                                                                                  DESCRIPCIÓN                                                                                                  |
    |------------------------------------------------|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-   |           <strong>Nombre del bot</strong>            |     Nombre para mostrar del bot.     |                                                  El nombre para mostrar para el bot que aparece en los canales y directorios. Este nombre se puede cambiar en cualquier momento.                                                  |
+   |           <strong>Nombre del bot</strong>            |     Nombre para mostrar del bot     |                                                  Nombre para mostrar del bot que aparece en los canales y directorios. Este nombre se puede cambiar en cualquier momento.                                                  |
    |         <strong>Suscripción</strong>          |        Su suscripción        |                                                                                Seleccione la suscripción de Azure que quiere usar.                                                                                 |
    |        <strong>Grupo de recursos</strong>         |         myResourceGroup         |                                 Puede crear un [grupo de recursos](/azure/azure-resource-manager/resource-group-overview#resource-groups) o elegir uno existente.                                  |
    |                    Ubicación                    |             Oeste de EE. UU.             |                                                        Elija una ubicación cerca de donde se implementa el bot o cerca de otros servicios a los que tendrá acceso su bot.                                                         |
    |         <strong>Nivel de precios</strong>          |               F0                |             Seleccione un plan de tarifa. Puede actualizar el plan de tarifa en cualquier momento. Para más información, consulte [Precios de Azure Bot Service](https://azure.microsoft.com/en-us/pricing/details/bot-service/).              |
    |      <strong>Punto de conexión de mensajería</strong>       |               URL               |                                                                               Escriba la dirección URL de punto de conexión de mensajería del bot.                                                                                |
-   |     <strong>Application Insights</strong>      |               Por                | Decida si desea <strong>Activar</strong> o <strong>Desactivar</strong> [Application Insights](bot-service-manage-analytics.md). Si selecciona <strong>Activar</strong>, también debe especificar una ubicación regional. |
-   | <strong>Id. y contraseña de la aplicación de Microsoft</strong> | Creación automática del id. y contraseña de la aplicación |              Use esta opción si tiene que escribir manualmente un Id. y contraseña de aplicación de Microsoft. En caso contrario, un Id. y contraseña nuevos de aplicación de Microsoft se crearán automáticamente en el proceso de creación del bot.               |
+   |     <strong>Application Insights</strong>      |               Por                | Decida si quiere <strong>Activar</strong> o <strong>Desactivar</strong> [Application Insights](bot-service-manage-analytics.md). Si selecciona <strong>Activar</strong>, también debe especificar una ubicación regional. |
+   | <strong>Id. y contraseña de la aplicación de Microsoft</strong> | Creación automática del id. y contraseña de la aplicación |              Use esta opción si tiene que escribir manualmente un id. y contraseña de aplicación de Microsoft. En caso contrario, un Id. y contraseña nuevos de aplicación de Microsoft se crearán automáticamente en el proceso de creación del bot.               |
 
 
 4. Haga clic en **Crear** para crear el servicio y registrar punto de conexión de mensajería del bot.
@@ -75,14 +78,14 @@ Si usa el Bot Builder SDK para Node.js, establezca las variables de entorno sigu
 * MICROSOFT_APP_ID
 * MICROSOFT_APP_PASSWORD
 
-Si usa el Bot Builder SDK para. NET, establezca los siguientes valores de clave en el archivo web.config:
+Si usa Bot Builder SDK para. NET, establezca los siguientes valores de clave en el archivo web.config:
 
 * MicrosoftAppId
 * MicrosoftAppPassword
 
 ## <a name="test-the-bot"></a>Probar el bot
 
-Una vez ha creado el servicio de bots, [pruébelo en Chat en web](bot-service-manage-test-webchat.md). Escriba un mensaje, el bot debería responder.
+Una vez ha creado el servicio de bots, [pruébelo en Chat en web](bot-service-manage-test-webchat.md). Escriba un mensaje y el bot debería responder.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

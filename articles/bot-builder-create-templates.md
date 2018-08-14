@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/25/2018
-ms.openlocfilehash: 60cdc3de200336b00173749a553205a47a32457e
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 7cf05b3396099f1c65fce7abbceb143a3ad43e9a
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304741"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574591"
 ---
 # <a name="create-bots-with-botbuilder-templates"></a>Creación de bots con las plantillas de Bot Builder
 
@@ -96,7 +96,7 @@ Para crear un nuevo proyecto de bot con la plantilla, simplemente abra Visual St
 
 ## <a name="store-your-bot-information-with-msbot"></a>Almacenamiento de la información del bot con MSBot
 
-La nueva herramienta [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/MSBot) permite crear un archivo **.bot**, en el que se almacenan metadatos sobre los distintos servicios que consume el bot; todo en una sola ubicación. Este archivo también permite que el bot se conecte a estos servicios desde la CLI. La herramienta está disponible como un módulo npm; para instalarlo, ejecute lo siguiente:
+La nueva herramienta [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/MSBot) permite crear un archivo **.bot**, en el que se almacenan metadatos sobre otros servicios que consume el bot, todo en una única ubicación. Este archivo también permite que el bot se conecte a estos servicios desde la CLI. La herramienta está disponible como un módulo npm; para instalarlo, ejecute lo siguiente:
 
 ```shell
 npm install -g msbot 
@@ -222,7 +222,7 @@ ludown parse ToQna --in <luFile>
 
 LUIS y QnA pueden usar los archivos JSON resultantes a través de sus portales correspondientes, o bien a través de las nuevas herramientas de la CLI. 
 
-## <a name="connect-to-luis-an-qna-maker-services-from-the-cli"></a>Conexión de un servicio de QnA Maker a LUIS desde la CLI
+## <a name="connect-to-luis-an-qna-maker-services-from-the-cli"></a>Conexión a servicios de LUIS y QnA Maker desde la CLI
 
 ### <a name="connect-to-luis-from-the-cli"></a>Conexión a LUIS desde la CLI 
 

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7fdcd6e0e56ef11cd887b9d5493fd0b25c23cf89
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 8ba63ad99c772c7cf5884180a62244e0dfe11db2
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304733"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574911"
 ---
 # <a name="global-message-handlers-using-scorables"></a>Controladores de mensajes globales mediante diálogos puntuables
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Los usuarios intentan acceder a ciertas funcionalidades dentro del bot con palabras como "ayuda", "cancelar" o "empezar de nuevo" en medio de una conversación cuando el bot está esperando una respuesta distinta. Puede diseñar su bot para controlar correctamente estas solicitudes mediante los diálogos puntuables.
 

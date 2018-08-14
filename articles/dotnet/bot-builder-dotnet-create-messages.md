@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a97d21e64ce12f6158f276889762a73ac2aff49b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 00ea81558bf4b8206dc6142ab26e47e3652be563
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306353"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574551"
 ---
 # <a name="create-messages"></a>Creación de mensajes
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 El bot enviará [actividades](bot-builder-dotnet-activities.md) de **mensajes** para comunicar información a los usuarios y, del mismo modo, recibirá actividades de **mensajes** de los usuarios. Algunos mensajes pueden constar simplemente de texto sin formato, mientras que otros pueden incluir contenido más enriquecido, como [texto que se va a decir](bot-builder-dotnet-text-to-speech.md), [acciones sugeridas](bot-builder-dotnet-add-suggested-actions.md), [datos adjuntos multimedia](bot-builder-dotnet-add-media-attachments.md), [tarjetas enriquecidas](bot-builder-dotnet-add-rich-card-attachments.md) y [datos específicos del canal](bot-builder-dotnet-channeldata.md). 
 
@@ -29,7 +31,7 @@ En este ejemplo se muestra cómo crear un objeto `message` personalizado y estab
 
 [!code-csharp[Set message properties](../includes/code/dotnet-create-messages.cs#setBasicProperties)]
 
-La propiedad `TextFormat` de un mensaje puede usarse para especificar el formato del texto. La propiedad `TextFormat` puede establecerse en **plain**, **markdown** o **xml**. El valor predeterminado de `TextFormat` es **markdown**. 
+La propiedad `TextFormat` de un mensaje puede usarse para especificar el formato del texto. La propiedad `TextFormat` se puede establecer en **plain**, **markdown** o **xml**. El valor predeterminado de `TextFormat` es **markdown**. 
 
 Para obtener una lista del formato de texto normalmente compatible, vea [Text formatting](../bot-service-channel-inspector.md#text-formatting) (Formato de texto). Para asegurarse de que las características que quiere usar son compatibles con el canal de destino, obtenga una vista previa de las características mediante el [Inspector de canales](../bot-service-channel-inspector.md).
 
@@ -47,7 +49,7 @@ Muchos canales ofrecen la posibilidad de que un bot o usuario "mencione" a algui
 
 | Propiedad | DESCRIPCIÓN | 
 |----|----|
-| Escriba | Tipo de entidad ("mention") | 
+| Escriba | Tipo de la entidad ("mention") | 
 | Mentioned | Objeto `ChannelAccount` que indica a qué usuario se ha mencionado | 
 | Texto | Texto de la propiedad `Activity.Text` que representa la mención en sí misma (puede estar vacío o ser nulo) |
 
@@ -66,9 +68,9 @@ El objeto `Place` contiene estas propiedades:
 
 | Propiedad | DESCRIPCIÓN | 
 |----|----|
-| Escriba | Tipo de entidad ("Place") |
+| Escriba | Tipo de la entidad ("Place") |
 | Dirección | Descripción u objeto `PostalAddress` (en un futuro) | 
-| Geoárea | Coordenadas geográficas | 
+| Geoárea | GeoCoordinates | 
 | HasMap | Dirección URL de un mapa u objeto `Map` (en un futuro) |
 | NOMBRE | Nombre del lugar |
 
@@ -76,7 +78,7 @@ El objeto `GeoCoordinates` contiene estas propiedades:
 
 | Propiedad | DESCRIPCIÓN | 
 |----|----|
-| Escriba | Tipo de entidad ("GeoCoordinates") |
+| Escriba | Tipo de la entidad ("GeoCoordinates") |
 | NOMBRE | Nombre del lugar |
 | Longitud | Longitud de la ubicación (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
 | Latitud | Latitud de la ubicación (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
@@ -119,7 +121,7 @@ Un bot y un usuario pueden enviarse mensajes entre sí. Cuando el mensaje es má
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- [Introducción a las actividades](bot-builder-dotnet-activities.md)
+- [Activities overview](bot-builder-dotnet-activities.md) (Introducción a las actividades)
 - [Envío y recepción de actividades](bot-builder-dotnet-connector.md)
 - [Incorporación de datos adjuntos con elementos multimedia a mensajes](bot-builder-dotnet-add-media-attachments.md)
 - [Incorporación de tarjetas enriquecidas a mensajes](bot-builder-dotnet-add-rich-card-attachments.md)
