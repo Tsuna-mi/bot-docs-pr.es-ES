@@ -1,0 +1,1 @@
+Cuando el bot recibe una devolución de llamada, debe comprobar que la información especificada en la devolución de llamada es válida y confirmar esa devolución de llamada mediante el envío de una respuesta HTTP. 

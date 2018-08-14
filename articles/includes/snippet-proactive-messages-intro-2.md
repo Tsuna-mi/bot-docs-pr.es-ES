@@ -1,0 +1,7 @@
+Un **mensaje proactivo ad hoc** es el tipo más simple de mensaje proactivo. El bot simplemente interpone el mensaje en la conversación cada vez que se desencadena, sin tener en cuenta si el usuario está implicado actualmente en otro tema de conversación con el bot, y no intentará cambiar la conversación de ninguna manera. 
+
+Un **mensaje proactivo basado en diálogo** es más complejo que un mensaje proactivo ad hoc. Antes de interponer este tipo de mensaje proactivo en la conversación, el bot debe identificar el contexto de la conversación existente y decidir cómo (o si) reanudará esa conversación después de la interrupción del mensaje. 
+
+Por ejemplo, considere un bot que necesita iniciar una encuesta en un momento dado en el tiempo. Cuando llega ese momento, el bot detiene la conversación existente con el usuario y redirige al usuario a `SurveyDialog`. `SurveyDialog` se agrega a la parte superior de la pila del diálogo y toma el control de la conversación. Cuando el usuario finaliza todas las tareas necesarias en `SurveyDialog`, `SurveyDialog` se cierra y devuelve el control al diálogo anterior, donde el usuario puede continuar con el tema anterior de la conversación.
+
+Un mensaje proactivo basado en el diálogo es más que una simple notificación. Al enviar la notificación, el bot cambia el tema de la conversación existente. A continuación, debe decidir si desea reanudar más adelante esa conversación o abandonarla por completo mediante el restablecimiento de la pila del diálogo. 

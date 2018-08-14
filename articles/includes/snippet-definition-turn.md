@@ -1,0 +1,1 @@
+La recepción de una actividad y su posterior procesamiento a través del bot se denomina **turno**; representa un ciclo completo del bot. Un turno finaliza cuando se termina toda la ejecución, la actividad se ha procesado por completo y se han completado todas las capas del bot.
