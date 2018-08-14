@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/03/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e1b25a3b5c090cbb13b4c27279745a81da64e6c4
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 30a0c463698d9ab7e3b2b0f9ddb0e872f007d1d8
+ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305449"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39515045"
 ---
 # <a name="add-media-to-messages"></a>Incorporación de elementos multimedia a los mensajes
 
@@ -79,8 +79,7 @@ Para enviar una lista de datos adjuntos, apilados uno sobre otro: <!-- TODO: Con
 
 ```javascript
 // require MessageFactory and CardFactory from botbuilder.
-const {MessageFactory} = require('botbuilder');
-const {CardFactory} = require('botbuilder');
+const {MessageFactory, CardFactory} = require('botbuilder');
 
 let messageWithCarouselOfCards = MessageFactory.list([
     CardFactory.heroCard('title1', ['imageUrl1'], ['button1']),
@@ -461,8 +460,7 @@ await context.SendActivity(activity);
 
 ```javascript
 // require MessageFactory and CardFactory from botbuilder.
-const {MessageFactory} = require('botbuilder');
-const {CardFactory} = require('botbuilder');
+const {MessageFactory, CardFactory} = require('botbuilder');
 
 //  init message object
 let messageWithCarouselOfCards = MessageFactory.carousel([

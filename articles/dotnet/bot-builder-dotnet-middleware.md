@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2acb6a59176bb9e6e666331293642d3a1b95717c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: fbcb72fcd8f3903efc437d32dae4427538662c7f
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306220"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574881"
 ---
 # <a name="intercept-messages"></a>Interceptación de mensajes
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-middleware.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-intercept-messages.md)
@@ -62,5 +65,5 @@ Para obtener un ejemplo completo en el que se muestre cómo interceptar y regist
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencias de Bot Builder SDK para .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia del SDK de Bot Builder para .NET</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-Middleware" target="_blank">Ejemplo de software intermedio (GitHub)</a>

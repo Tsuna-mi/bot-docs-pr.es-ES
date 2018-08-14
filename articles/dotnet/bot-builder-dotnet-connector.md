@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c8919712331a5f78bdbc35f28adeab966435d737
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2a5c9dcad0d9fd70caaf28ff7ac95830bd47e2d6
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305436"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574601"
 ---
 # <a name="send-and-receive-activities"></a>Envío y recepción de actividades
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Bot Framework Connector proporciona una única API de REST que permite que un bot se comunique a través de varios canales, como Skype, correo electrónico, Slack y mucho más. Facilita la comunicación entre el bot y el usuario mediante la retransmisión de mensajes del bot al canal y viceversa. 
 
@@ -82,7 +84,7 @@ Este ejemplo de código utiliza el método `CreateConversation` para crear una c
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- [Introducción a las actividades](bot-builder-dotnet-activities.md)
+- [Activities overview](bot-builder-dotnet-activities.md) (Introducción a las actividades)
 - [Creación de mensajes](bot-builder-dotnet-create-messages.md)
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia del SDK de Bot Builder para .NET</a>
 - <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Clase Activity</a>
