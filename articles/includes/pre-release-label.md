@@ -1,0 +1,1 @@
+**[Este tema es documentación preliminar con contenido sobre la versión 4 del SDK y está sujeto a cambios. Puede encontrar contenido del SDK v3 [aquí](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-3.0)]**.
