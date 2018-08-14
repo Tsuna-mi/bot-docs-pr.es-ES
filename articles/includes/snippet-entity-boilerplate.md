@@ -1,0 +1,5 @@
+> [!NOTE]
+> <span data-ttu-id="b892e-101">Distintos elementos del SDK definen a clases o elementos de entidad independientes.</span><span class="sxs-lookup"><span data-stu-id="b892e-101">Different parts of the SDK define separate Entity classes or elements.</span></span>
+> - <span data-ttu-id="b892e-102">Para las entidades de mensajes, consulte [Entity and activity types](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-activities-entities?view=azure-bot-service-4.0) (Tipos de entidades y actividades).</span><span class="sxs-lookup"><span data-stu-id="b892e-102">For message entities, see [Entity and activity types](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-activities-entities?view=azure-bot-service-4.0).</span></span>
+> - <span data-ttu-id="b892e-103">Para las entidades de reconocimiento de LUIS, consulte [Extract entities](https://aka.ms/bot-v4-luis-result-entities) (Extracción de entidades).</span><span class="sxs-lookup"><span data-stu-id="b892e-103">For LUIS recognition entities, see [Extract entities](https://aka.ms/bot-v4-luis-result-entities).</span></span>
+
