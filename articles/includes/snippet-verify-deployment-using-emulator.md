@@ -1,0 +1,5 @@
+<span data-ttu-id="17304-101">Verifique la implementación del bot mediante el [Emulador de Bot Framework](~/bot-service-debug-emulator.md).</span><span class="sxs-lookup"><span data-stu-id="17304-101">Verify the deployment of your bot by using the [Bot Framework Emulator](~/bot-service-debug-emulator.md).</span></span> 
+
+<span data-ttu-id="17304-102">Escriba el **punto de conexión de mensajería** del bot en la barra de direcciones del emulador.</span><span class="sxs-lookup"><span data-stu-id="17304-102">Enter the bot's **Messaging endpoint** into the address bar of the Emulator.</span></span> <span data-ttu-id="17304-103">Si ha creado el bot con Bot Builder SDK, el punto de conexión debería terminar con */api/messages*.</span><span class="sxs-lookup"><span data-stu-id="17304-103">If you built your bot with the Bot Builder SDK, the endpoint should end with */api/messages*.</span></span>
+
+<span data-ttu-id="17304-104">Ejemplo: `https://<appname>.azurewebsites.net/api/messages`</span><span class="sxs-lookup"><span data-stu-id="17304-104">Example: `https://<appname>.azurewebsites.net/api/messages`</span></span>

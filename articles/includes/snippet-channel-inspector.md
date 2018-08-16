@@ -1,0 +1,2 @@
+> [!TIP]
+> <span data-ttu-id="d4e3e-101">Para ver el aspecto y el funcionamiento de las distintas características de Bot Framework en este canal, [use Channel Inspector](~/bot-service-channel-inspector.md).</span><span class="sxs-lookup"><span data-stu-id="d4e3e-101">To see how various Bot Framework features look and work on this channel, [use the Channel Inspector](~/bot-service-channel-inspector.md).</span></span>
