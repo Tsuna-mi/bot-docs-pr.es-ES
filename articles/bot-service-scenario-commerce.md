@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b809e98ec971abaac98fd33c4fb2c285baca898f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 15745bc25013df2fd18b0a2045ae2314d6c361e2
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306064"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574861"
 ---
 # <a name="commerce-bot-scenario"></a>Escenario de bot comercial
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 El escenario de [bot comercial](bot-service-scenario-commerce.md) describe un bot que reemplaza las interacciones tradicionales de correo electrónico y llamada telefónica que normalmente tienen los usuarios con el servicio de conserjería de un hotel. El bot aprovecha Cognitive Services para procesar mejor las solicitudes de los clientes por medio de texto y voz con contexto recopilado de la integración con servicios back-end.
 
 ![El diagrama de bot de aplicación](~/media/scenarios/bot-service-scenario-commerce-bot.png)

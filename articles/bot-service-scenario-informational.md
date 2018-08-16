@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7c85227d062f32f9f1e8096f1dad83c09ed85a9f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 43eb8e25e2a17e1d6b1d30e767dd15569fcad78b
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305889"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574871"
 ---
 # <a name="information-bot-scenario"></a>Escenario de bot de información
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Este bot de información podría responder a preguntas definidas en un conjunto de conocimientos o en preguntas frecuentes mediante QnA Maker de Cognitive Services y responder a más preguntas abiertas con Azure Search.
 
 A menudo, la información se encuentra enterrada en almacenes de datos estructurados, como SQL Server, que se pueden desenterrar fácilmente mediante una búsqueda. Imagine buscar el estado del pedido de un cliente mediante sencillos comandos conversacionales. Con QnA Maker de Cognitive Services, al usuario se le presentan un conjunto de opciones de búsqueda válidas, como buscar un cliente, revisar el pedido más reciente del cliente, etc. Con el formato de QnA definido, el usuario puede hacer preguntas fácilmente que estén respaldadas por Azure Search, que puede buscar los datos almacenados en una instancia de SQL Database.

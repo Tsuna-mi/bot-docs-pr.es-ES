@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2f56a855990675ccae4845c13541150ab205379a
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 87fc068c831dba752fa52a6430327232719a74a9
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306089"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574831"
 ---
 # <a name="add-input-hints-to-messages"></a>Incorporación de sugerencias de entrada a los mensajes
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-input-hints.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-input-hints.md)
@@ -27,23 +30,38 @@ Al especificar una sugerencia de entrada para un mensaje, puede indicar si el bo
 
 Para indicar que el bot está preparado pasivamente para la entrada, pero que no espera ninguna respuesta del usuario, establezca la sugerencia de entrada del mensaje en `InputHints.AcceptingInput`. En muchos canales, esto hará que se habilite el cuadro de entrada del cliente y que el micrófono se desactive, sin dejar de estar accesible para el usuario. Por ejemplo, Cortana activará el micrófono para aceptar la entrada del usuario si este mantiene presionado el botón de micrófono. En el ejemplo de código siguiente se crea un mensaje que indica que el bot acepta la entrada del usuario.
 
-[!code-csharp[Accepting input](../includes/code/dotnet-input-hints.cs#InputHintAcceptingInput)]
+```cs
+Activity reply = activity.CreateReply("This is the text that will be displayed.");
+reply.Speak = "This is the text that will be spoken.";
+reply.InputHint = InputHints.AcceptingInput;
+await connector.Conversations.ReplyToActivityAsync(reply);
+```
 
 ## <a name="expecting-input"></a>Esperar entradas
 
 Para indicar que el bot espera una respuesta del usuario, establezca la sugerencia de entrada del mensaje en `InputHints.ExpectingInput`. En muchos canales, esto hará que se habilite el cuadro de entrada del cliente y que el micrófono se active. En el ejemplo de código siguiente se crea un mensaje que indica que el bot espera la entrada del usuario.
 
-[!code-csharp[Expecting input](../includes/code/dotnet-input-hints.cs#InputHintExpectingInput)]
+```cs
+Activity reply = activity.CreateReply("This is the text that will be displayed.");
+reply.Speak = "This is the text that will be spoken.";
+reply.InputHint = InputHints.ExpectingInput;
+await connector.Conversations.ReplyToActivityAsync(reply);
+```
 
 ## <a name="ignoring-input"></a>Ignorar entradas
- 
+
 Para indicar que el bot no está preparado para recibir la entrada del usuario, establezca la sugerencia de entrada del mensaje en `InputHints.IgnorningInput`. En muchos canales, esto hará que se deshabilite el cuadro de entrada del cliente y que el micrófono se desactive. En el ejemplo de código siguiente se crea un mensaje que indica que el bot ignora la entrada del usuario.
 
-[!code-csharp[Ignoring input](../includes/code/dotnet-input-hints.cs#InputHintIgnoringInput)]
+```cs
+Activity reply = activity.CreateReply("This is the text that will be displayed.");
+reply.Speak = "This is the text that will be spoken.";
+reply.InputHint = InputHints.IgnoringInput;
+await connector.Conversations.ReplyToActivityAsync(reply);
+```
 
 ## <a name="default-values-for-input-hint"></a>Valores predeterminados para las sugerencias de entrada
 
-Si no establece la sugerencia de entrada para un mensaje, Bot Builder SDK la establecerá automáticamente mediante esta lógica: 
+Si no establece la sugerencia de entrada para un mensaje, Bot Builder SDK la establecerá automáticamente mediante esta lógica:
 
 - Si el bot envía un aviso, en la sugerencia de datos de entrada del mensaje se especificará que el bot **espera datos de entrada**.</li>
 - Si el bot envía un solo mensaje, en la sugerencia de entrada del mensaje se especificará que el bot **acepta entradas**.</li>
