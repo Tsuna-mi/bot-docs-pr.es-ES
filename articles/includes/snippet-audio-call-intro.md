@@ -1,0 +1,3 @@
+Si va a crear un bot para Skype, el bot puede comunicarse con los usuarios por medio de llamadas de audio. Las llamadas de audio son útiles cuando el usuario no quiere o no puede proporcionar información tecleando, pulsando o haciendo clic.  
+
+Además de llamadas de audio, un bot puede admitir otros controles de usuario como tarjetas enriquecidas o texto, o comunicarse solo por medio de llamadas de audio.
