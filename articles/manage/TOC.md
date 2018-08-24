@@ -1,16 +1,16 @@
 # [Administración de un bot](../bot-service-manage-overview.md)
 # Compilación
-## [Uso del editor de código en línea](../bot-service-build-online-code-editor.md)
-## [Descarga del código fuente del bot](../bot-service-build-download-source-code.md)
+## [Edición de un bot con el editor de código en línea](../bot-service-build-online-code-editor.md)
+## [Descarga y reimplementación del código fuente de un bot](../bot-service-build-download-source-code.md)
 ## [Configuración de la implementación continua](../bot-service-build-continuous-deployment.md)
 # [Probar en Chat en web](../bot-service-manage-test-webchat.md)
-# [Visualización de análisis](../bot-service-manage-analytics.md)
+# [Análisis de un bot](../bot-service-manage-analytics.md)
 # Canales
-## [Configuración de canales](../bot-service-manage-channels.md)
+## [Conexión de un bot a canales](../bot-service-manage-channels.md)
 ## [Cortana](../bot-service-channel-connect-cortana.md) 
 ## [Skype](../bot-service-channel-connect-skype.md)
 ## [Skype Empresarial](../bot-service-channel-connect-skypeforbusiness.md)
-## [Línea directa](../bot-service-channel-connect-directline.md)
+## [Direct Line](../bot-service-channel-connect-directline.md)
 ## [Microsoft Teams](https://msdn.microsoft.com/en-us/microsoft-teams/bots)
 ## Chat en web
 ### [Conexión de un bot a un chat en web](../bot-service-channel-connect-webchat.md)
