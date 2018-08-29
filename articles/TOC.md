@@ -48,7 +48,7 @@
 ## [Manage](manage/TOC.md)
 ## Desarrollo
 ### [Envío de mensajes](v4sdk/bot-builder-howto-send-messages.md)
-### [Incorporación de datos adjuntos multimedia](v4sdk/bot-builder-howto-add-media-attachments.md)
+### [Incorporación de elementos multimedia a los mensajes](v4sdk/bot-builder-howto-add-media-attachments.md)
 ### [Incorporación de sugerencias de entrada a los mensajes](v4sdk/bot-builder-howto-add-input-hints.md)
 ### [Incorporación de acciones sugeridas a mensajes](v4sdk/bot-builder-howto-add-suggested-actions.md)
 ### [Creación de mensajes propios para recopilar datos de entrada del usuario](v4sdk/bot-builder-primitive-prompts.md)
