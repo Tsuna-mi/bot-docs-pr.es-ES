@@ -2,7 +2,7 @@
 # [Primera interacción](../bot-service-design-first-interaction.md)
 # [Diseño y flujo de control](../bot-service-design-conversation-flow.md)
 # [Navegación](../bot-service-design-navigation.md)
-# [Elementos de experiencia del usuario](../bot-service-design-user-experience.md)
+# [Componentes de la interfaz de usuario](../bot-service-design-user-experience.md)
 # Patrones
 ## [Automatización de tareas](../bot-service-design-pattern-task-automation.md)
 ## [Knowledge Base](../bot-service-design-pattern-knowledge-base.md)
