@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f7fe3181a4c361b47a7ef6fbdf815b4c495c6f76
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 834702024c99873ca9f0bbedb53a24a16ba55878
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574641"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756469"
 ---
 # <a name="activities-overview"></a>Introducción a las actividades
 
@@ -31,7 +31,6 @@ Bot Builder SDK para. NET admite los siguientes tipos de actividades.
 | [conversationUpdate](#conversationupdate) | IConversationUpdateActivity | Indica que el bot se agregó a una conversación, que otros miembros se agregaron o se quitaron de la conversación, o bien que los metadatos de la conversación han cambiado. |
 | [contactRelationUpdate](#contactrelationupdate) | IContactRelationUpdateActivity | Indica que el bot se agregó o quitó de la lista de contactos de un usuario. |
 | [typing](#typing) | ITypingActivity | Indica que el usuario o el bot en el otro extremo de la conversación está redactando una respuesta. | 
-| [ping](#ping) | N/D | Representa un intento para determinar si el punto de conexión de un bot es accesible. | 
 | [deleteUserData](#deleteuserdata) | N/D | Indica a un bot que un usuario ha solicitado que el bot elimine todos los datos de usuario que haya podido almacenar. |
 | [endOfConversation](#endofconversation) | IEndOfConversationActivity | Indica el final de una conversación. |
 | [event](#event) | IEventActivity | Representa una comunicación enviada a un bot que no es visible para el usuario. |
@@ -62,10 +61,6 @@ Un bot recibe una actividad **contactRelationUpdate** siempre que se agrega o se
 ## <a name="typing"></a>typing
 
 Un bot recibe una actividad **typing** para indicar que el usuario está escribiendo una respuesta. Un bot puede enviar una actividad **tyiping** para indicar al usuario que está trabajando para satisfacer una solicitud o compilar una respuesta. 
-
-## <a name="ping"></a>ping
-
-Un bot recibe una actividad **ping** para determinar si su punto de conexión es accesible. El bot responderá con el código de estado HTTP 200 (Correcto), 403 (Prohibido) o 401 (No autorizado).
 
 ## <a name="deleteuserdata"></a>deleteUserData
 
