@@ -8,23 +8,26 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b218ae4ffd2ffbfe9144b4143f2600be15d688dd
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3a924503ecadc9f56fa2543881c116f7fbbb4d9a
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305041"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904333"
 ---
-# <a name="manage-state-data"></a>Administrar datos de estado
+# <a name="manage-state-data"></a>Administración de datos de estado
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-state.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-state.md)
 
 [!INCLUDE [State concept overview](../includes/snippet-dotnet-concept-state.md)]
 
-## <a name="in-memory-data-storage"></a>Almacenar datos en la memoria
+## <a name="in-memory-data-storage"></a>Almacenamiento de datos en memoria
 
-El almacenamiento de datos en la memoria solo está pensado para realizar pruebas. Este tipo de almacenamiento es volátil y temporal. Los datos se borran cada vez que se reinicia el bot. Para usar el almacenamiento en la memoria para hacer pruebas, necesitará: 
+El almacenamiento de datos en memoria solo está pensado para realizar pruebas. Este tipo de almacenamiento es volátil y temporal. Los datos se borran cada vez que se reinicia el bot. Para usar el almacenamiento en la memoria para hacer pruebas, necesitará: 
 
 Instale los siguientes paquetes NuGet: 
 - Microsoft.Bot.Builder.Azure
@@ -60,7 +63,7 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 
 Puede usar este método para establecer su propio almacenamiento de datos personalizado o usar cualquiera de las *extensiones de Azure*.
 
-## <a name="manage-custom-data-storage"></a>Administrar el almacenamiento de datos personalizado
+## <a name="manage-custom-data-storage"></a>Administración del almacenamiento de datos personalizado
 
 Por motivos de seguridad y rendimiento en el entorno de producción, puede implementar su propio almacenamiento de datos o considerar la posibilidad de implementar una de las siguientes opciones de almacenamiento de datos:
 

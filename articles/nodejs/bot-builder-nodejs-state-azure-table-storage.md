@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c77b07801b8eb0168ac3e09d7b271ddfb17a04ac
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 84fdbecfe59db49e2e88567a6c942c300ea226a2
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305301"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904365"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-nodejs"></a>Administración de datos de estado personalizado con Azure Table Storage para Node.js
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 En este artículo, implementará Azure Table Storage para almacenar y administrar los datos de estado del bot. El servicio de estado de Connector predeterminado que usan los bots no es adecuado para el entorno de producción. Deberá usar las [extensiones de Azure](https://www.npmjs.com/package/botbuilder-azure) disponibles en GitHub o implementar un cliente de estado personalizado mediante la plataforma de almacenamiento de datos de su elección. Estas son algunas de las razones para usar el almacenamiento de estado personalizado:
 
@@ -37,7 +39,7 @@ En este artículo, implementará Azure Table Storage para almacenar y administra
 Si no tiene una cuenta de Azure, haga clic [aquí](https://azure.microsoft.com/en-us/free/) para registrarse y obtener una gratuita.
 
 ## <a name="set-up-the-azure-table-storage-service"></a>Configuración del servicio de Azure Table Storage
-1. Una vez que ha iniciado sesión en Azure Portal, haga clic en **Nuevo** para crear un nuevo servicio de Azure Table Storage. 
+1. Una vez que ha iniciado sesión en Azure Portal, haga clic en **Nuevo** para crear un servicio de Azure Table Storage. 
 2. Busque la **cuenta de almacenamiento** que implementa la tabla de Azure. Haga clic en **Crear** para comenzar a crear la cuenta de almacenamiento. 
 3. Rellene los campos, haga clic en el botón **Crear** en la parte inferior de la pantalla para implementar el nuevo servicio de almacenamiento. 
 4. Después de implementar el nuevo servicio de almacenamiento, vaya a la cuenta de almacenamiento que acaba de crear. Puede encontrarla en la hoja **Cuentas de almacenamiento**.

@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4ef96c82229d44a88e6063c64cd435cf7127a4b3
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: add83b0534ff950e9e7dd5c97a970d251b9c8fea
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305077"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904121"
 ---
 # <a name="deploy-a-real-time-media-bot-from-visual-studio-to-azure"></a>Implementación de un bot multimedia en tiempo real de Visual Studio en Azure
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 Los bots multimedia en tiempo real pueden hospedarse en una instancia de Azure Virtual Machine "IaaS" o en un servicio de nube de Azure "clásico". En este artículo se muestra cómo implementar un bot, hospedado en un rol de trabajo del servicio de nube de Azure, desde Visual Studio con la funcionalidad de publicación integrada.
 
 ## <a name="prerequisites"></a>Requisitos previos

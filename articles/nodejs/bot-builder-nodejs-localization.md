@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8f58c8d0b884e929c575e01aa5e0fee5c21ea4e6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f9af8cbbc5f457d5e8684ad57bb147f9d42a62c7
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305953"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905149"
 ---
 # <a name="support-localization"></a>Compatibilidad con la localización
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Bot Builder incluye un completo sistema de localización para la creación de bots que pueden comunicarse con el usuario en varios idiomas. Todos los avisos del bot se pueden localizar mediante archivos JSON almacenados en la estructura de directorios del bot. Si usa un sistema como LUIS para realizar el procesamiento de lenguaje natural, puede configurar [LuisRecognizer][LUISRecognizer] con un modelo independiente para cada idioma que admita su bot, y el SDK seleccionará automáticamente el modelo que coincida con la configuración regional preferida del usuario.
 

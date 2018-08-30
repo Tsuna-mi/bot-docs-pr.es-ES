@@ -7,27 +7,30 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e2d8e6a5a390a27b61b11ad22f07ce0ab95f1686
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e5ff23caa1bdb1158ab19fa7c66e1fe4f6899f49
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306120"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905118"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-net"></a>Administración de datos de estado personalizado con Azure Table Storage para .NET
-En este artículo, implementará Azure Table Storage para almacenar y administrar los datos de estado del bot. El servicio de estado de Connector predeterminado que usan los bots no es adecuado para el entorno de producción. Debería usar las [extensiones de Azure](https://github.com/Microsoft/BotBuilder-Azure) disponibles en GitHub o implementar un cliente de estado personalizado mediante la plataforma de almacenamiento de datos de su elección. Estas son algunas de las razones para usar el almacenamiento de estado personalizado:
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
+En este artículo, implementará Azure Table Storage para almacenar y administrar los datos de estado del bot. El servicio de estado de Connector predeterminado que usan los bots no es adecuado para el entorno de producción. Deberá usar las [extensiones de Azure](https://github.com/Microsoft/BotBuilder-Azure) disponibles en GitHub o implementar un cliente de estado personalizado mediante la plataforma de almacenamiento de datos de su elección. Estas son algunas de las razones para usar el almacenamiento de estado personalizado:
  - Mayor rendimiento de la API de estado (más control sobre el rendimiento)
  - Latencia más baja para la distribución geográfica
  - Control sobre dónde se almacenan los datos
- - Acceso a los datos de estado real
+ - Acceso a los datos de estado reales
  - Almacenamiento de más de 32 kb de datos.
 
 ## <a name="prerequisites"></a>Requisitos previos
 Necesitará:
  - [Cuenta de Microsoft Azure](https://azure.microsoft.com/en-us/free/)
  - [Visual Studio 2015 o posterior](https://www.visualstudio.com/)
- - [Paquete de NuGet en Azure para Bot Builder](https://www.nuget.org/packages/Microsoft.Bot.Builder.Azure/)
- - [Paquete de NuGet Autofac Web Api2](https://www.nuget.org/packages/Autofac.WebApi2/)
+ - [Paquete NuGet de Azure para Bot Builder](https://www.nuget.org/packages/Microsoft.Bot.Builder.Azure/)
+ - [Paquete NuGet Autofac Web Api2](https://www.nuget.org/packages/Autofac.WebApi2/)
  - [Bot Framework Emulator](https://emulator.botframework.com/)
  - [Explorador de Azure Storage](http://storageexplorer.com/)
  
@@ -93,11 +96,11 @@ Registre el servicio como se muestra a continuación:
 Guarde el archivo Global.asax.cs.
 
 ## <a name="run-your-bot-app"></a>Ejecución de la aplicación bot
-Ejecute el bot en Visual Studio, el código que agregó creará la tabla **botdata** personalizada en Azure.
+Ejecute el bot en Visual Studio; el código que agregó creará la tabla **botdata** personalizada en Azure.
 
 ## <a name="connect-your-bot-to-the-emulator"></a>Conexión del bot al emulador
 En este momento, el bot se ejecuta de forma local. A continuación, inicie el emulador y, después, conéctese al bot en el emulador:
-1. Escriba http://localhost:port-number/api/messages en la barra de dirección, donde port-number coincide con el número de puerto mostrado en el explorador donde se ejecuta la aplicación. Por ahora puede dejar en blanco los campos <strong>Microsoft App ID</strong> (Id. de aplicación de Microsoft) y <strong>Microsoft App Password</strong> (Contraseña de aplicación de Mictosoft). Más adelante obtendrá esta información al [registrar el bot](~/bot-service-quickstart-registration.md).
+1. Escriba http://localhost:port-number/api/messages en la barra de dirección, donde port-number coincide con el número de puerto mostrado en el explorador donde se ejecuta la aplicación. Por ahora puede dejar en blanco los campos <strong>Microsoft App ID</strong> (Id. de aplicación de Microsoft) y <strong>Microsoft App Password</strong> (Contraseña de aplicación de Microsoft). Más adelante obtendrá esta información al [registrar el bot](~/bot-service-quickstart-registration.md).
 2. Haga clic en **Conectar**. 
 3. Para probar su bot, escriba unos cuantos mensajes en el emulador. 
 
@@ -108,7 +111,7 @@ Para ver los datos de estado, abra el **Explorador de Storage** y conéctese a A
 En este artículo, implementó Azure Table Storage para guardar y administrar los datos del bot. A continuación, obtenga información sobre cómo modelar el flujo de la conversación con diálogos.
 
 > [!div class="nextstepaction"]
-> [Administración de flujo de conversación](bot-builder-dotnet-manage-conversation-flow.md)
+> [Administración del flujo de conversación](bot-builder-dotnet-manage-conversation-flow.md)
 
 
 ## <a name="additional-resources"></a>Recursos adicionales

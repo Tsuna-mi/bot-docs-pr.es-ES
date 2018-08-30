@@ -7,15 +7,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b99dc4cd9011871d52479ade92968ebb29c8c73f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: cb64d25582589b7bcbbe715cb4288cf56ac93e1c
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305977"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906089"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-net"></a>Administración de datos de estado personalizado con Azure Cosmos DB para Node.js
-En este artículo, implementará Azure Cosmos DB para almacenar y administrar los datos de estado del bot. El servicio de estado de Connector predeterminado que usan los bots no es adecuado para el entorno de producción. Usará las [extensiones de Azure](https://github.com/Microsoft/BotBuilder-Azure) disponibles en GitHub o implementará un cliente de estado personalizado mediante la plataforma de almacenamiento de datos de su elección. Estas son algunas de las razones para usar el almacenamiento de estado personalizado:
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
+En este artículo, implementará Azure Cosmos DB para almacenar y administrar los datos de estado del bot. El servicio de estado de Connector predeterminado que usan los bots no es adecuado para el entorno de producción. Deberá usar las [extensiones de Azure](https://github.com/Microsoft/BotBuilder-Azure) disponibles en GitHub o implementar un cliente de estado personalizado mediante la plataforma de almacenamiento de datos de su elección. Estas son algunas de las razones para usar el almacenamiento de estado personalizado:
  - Mayor rendimiento de la API de estado (más control sobre el rendimiento)
  - Latencia más baja para la distribución geográfica
  - Control sobre dónde se almacenan los datos
@@ -115,7 +118,7 @@ Para ver los datos de estado, inicie sesión en Azure Portal y vaya a la base de
 En este artículo, ha usado Cosmos DB para guardar y administrar datos del bot. A continuación, aprenda cómo modelar el flujo de la conversación con diálogos.
 
 > [!div class="nextstepaction"]
-> [Administración de flujo de conversación](bot-builder-dotnet-manage-conversation-flow.md)
+> [Administración del flujo de conversación](bot-builder-dotnet-manage-conversation-flow.md)
 
 ## <a name="additional-resources"></a>Recursos adicionales
 Si no está familiarizado con los contenedores de inversión de control y el patrón de inserción de dependencias usados en el código anterior, visite el sitio de [Autofac](http://autofac.readthedocs.io/en/latest/) para obtener información. 

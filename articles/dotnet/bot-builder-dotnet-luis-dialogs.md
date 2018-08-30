@@ -8,22 +8,26 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b98eea6bdae097beec85e93301e5380a1de991c3
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: fc260f34f28e406dc88dd5b688d84cd79c7e9449
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305781"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905957"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Reconocimiento de intenciones y entidades con LUIS 
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Este artículo usa el ejemplo de un bot para tomar notas, a fin de demostrar cómo Language Understanding ([LUIS][LUIS]) ayuda a que el bot responda correctamente a la entrada de lenguaje natural. Un bot detecta lo que un usuario desea hacer mediante la identificación de su **intención**. Esta intención se determina a partir de la entrada de texto, voz o **grabaciones de voz**. La intención asigna grabaciones de voz a acciones que realiza el bot. Por ejemplo, un bot de toma de notas reconoce una intención `Notes.Create` para invocar la funcionalidad para crear una nota. Puede que un bot también necesite extraer **entidades**, que son palabras importantes de las grabaciones de voz. En el ejemplo de un bot de toma de notas, la entidad `Notes.Title` identifica el título de cada nota.
 
 ## <a name="create-a-language-understanding-bot-with-bot-service"></a>Crear un bot de Language Understanding con Bot Service
 
-1. En [Azure Portal](https://portal.azure.com), haga clic en **Crear nuevo recurso** en la hoja de menú y, después, en **Ver todo**.<!-- Start with the steps in [Create a bot with Bot Service](../bot-service-quickstart.md) to start creating a new bot service.  -->
+1. En [Azure Portal](https://portal.azure.com), haga clic en **Crear nuevo recurso** en la hoja de menú y, después, en **Ver todo**.
 
-    ![Crear recurso](../media/bot-builder-dotnet-use-luis/bot-service-creation.png)
+<!-- Start with the steps in [Create a bot with Bot Service](../bot-service-quickstart.md) to start creating a new bot service.  -->
+
+    ![Create new resource](../media/bot-builder-dotnet-use-luis/bot-service-creation.png)
 
 2. En el cuadro de búsqueda, busque **Bot de aplicación web**. 
 
@@ -385,7 +389,7 @@ Al probar el bot, puede observar como una intención de LUIS invoca las tareas. 
 - [Diálogos](bot-builder-dotnet-dialogs.md)
 - [Administración del flujo de conversación con diálogos](bot-builder-dotnet-manage-conversation-flow.md)
 - <a href="https://www.luis.ai" target="_blank">LUIS</a>
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencias de Bot Builder SDK para .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Builder SDK para .NET</a>
 
 [LUIS]: https://www.luis.ai/
 [NotesSample]: https://github.com/Microsoft/BotFramework-Samples/tree/master/docs-samples/CSharp/Simple-LUIS-Notes-Sample

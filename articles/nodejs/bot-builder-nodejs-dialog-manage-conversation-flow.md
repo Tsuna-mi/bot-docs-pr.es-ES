@@ -8,21 +8,24 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d6c8ad06b9fb198e684deae26e9cbad05a86a611
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 656b6304a576c553db948a348b1c6d8c3fc5ae71
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306176"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905669"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>Administración del flujo de conversación con diálogos
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
-La administración del flujo de conversación es una tarea esencial en la compilación de bots. Un bot debe ser capaz de realizar tareas importantes con elegancia y de controlar las interrupciones correctamente. Gracias a Bot Builder SDK para Node.js, puede administrar el flujo de conversación mediante diálogos.
+Administrar el flujo de conversación es una tarea esencial en la creación de bots. Un bot debe ser capaz de realizar tareas importantes con elegancia y de controlar las interrupciones correctamente. Gracias a Bot Builder SDK para Node.js, puede administrar el flujo de conversación mediante diálogos.
 
-Un diálogo es como una función de un programa. Por lo general, está diseñado para realizar una operación específica y se puede invocar con la frecuencia que sea necesaria. Puede encadenar varios diálogos para controlar casi cualquier flujo de conversación que desee que su bot controle. Bot Builder SDK para Node.js incluye características integradas como [avisos](bot-builder-nodejs-dialog-prompt.md) y [cascadas](bot-builder-nodejs-dialog-waterfall.md), que le ayudarán a administrar el flujo de conversación.
+Un diálogo es como una función de un programa. Por lo general está diseñado para realizar una operación específica y se puede invocar con la frecuencia que sea necesaria. Puede encadenar varios diálogos para controlar casi cualquier flujo de conversación que desee que su bot controle. Bot Builder SDK para Node.js incluye características integradas como [avisos](bot-builder-nodejs-dialog-prompt.md) y [cascadas](bot-builder-nodejs-dialog-waterfall.md), que le ayudarán a administrar el flujo de conversación.
 
 En este artículo se proporciona una serie de ejemplos para explicar cómo administrar flujos de conversación sencillos y flujos complejos en los que el bot puede controlar las interrupciones y reanudar el flujo correctamente mediante diálogos. Los ejemplos se basan en los siguientes escenarios: 
 

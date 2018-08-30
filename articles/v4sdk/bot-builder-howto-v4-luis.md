@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/30/17
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9a04a73e8ac8716ec528586e069aa2d16d90e28f
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: 88651a2c86698d55e3a429d7ea62662976d2115f
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39306489"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906169"
 ---
 # <a name="using-luis-for-language-understanding"></a>Uso de LUIS para la comprensión del lenguaje
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 La tarea de entender qué quiere decir el usuario conversacionalmente y contextualmente puede ser difícil, pero hace que la conversación del bot parezca más natural. Language Understanding, denominado LUIS, le permite hacer precisamente esto, de modo que el bot pueda reconocer la intención de los mensajes de usuario, permitir al usuario emplear un lenguaje más natural y dirigir mejor el flujo de conversación. Si necesita más información sobre cómo se integra LUIS con un bot, vea [Language understanding for bots](./bot-builder-concept-LUIS.md) (Language Understanding para bots). 
 
@@ -1018,7 +1020,7 @@ await dc.begin("Weather_GetForecast", luisResults);
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-Para más información sobre LUIS, vea [Language Understanding](./bot-builder-concept-luis.md).
+Para más información sobre LUIS, consulte [Language Understanding](./bot-builder-concept-luis.md).
 
 Para información sobre cómo compilar las aplicaciones de LUIS que se usan en estos ejemplos, vea [LUIS apps for Bot Builder](https://aka.ms/luis-bot-examples) (Aplicaciones de LUIS para Bot Builder).
 

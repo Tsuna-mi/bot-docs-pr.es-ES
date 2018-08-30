@@ -7,14 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 2/13/2018
-ms.openlocfilehash: 1f14329958711cc7f9ef8832b267587e1232da2a
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 60a3796e255611ff09d5418cdeaa6f363ad8da15
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304873"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904971"
 ---
 # <a name="create-task-automation-bots"></a>Creación de bots para automatizar tareas
+
+[!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
 
 Un bot para automatizar tareas permite que el usuario complete una tarea específica o un conjunto de tareas sin la ayuda de ninguna persona. Este tipo de bot a menudo se asemeja a una aplicación o un sitio web típicos, ya que se comunica con el usuario principalmente a través de texto y controles de usuario avanzados. Puede incluir funcionalidades de comprensión del lenguaje natural para enriquecer las conversaciones con los usuarios. 
 
@@ -105,8 +107,8 @@ Para obtener un ejemplo completo que muestre cómo implementar la automatizació
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- [Dialogs](~/dotnet/bot-builder-dotnet-dialogs.md) (Diálogos)
-- [Manage conversation flow with dialogs (.NET)](~/dotnet/bot-builder-dotnet-manage-conversation-flow.md) (Administración del flujo de conversación con cuadros de diálogo [.NET])
+- [Diálogos](~/dotnet/bot-builder-dotnet-dialogs.md)
+- [Administración del flujo de conversación con diálogos (.NET)](~/dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 - [Manage conversation flow with dialogs (Node.js)](~/nodejs/bot-builder-nodejs-manage-conversation-flow.md) (Administración del flujo de conversación con cuadros de diálogo [Node.js])
 
 ::: moniker-end

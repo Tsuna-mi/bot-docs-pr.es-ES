@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6df7923caa708ac2b10af37d860dfac317e113a0
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 431367cf4afe702fd83feff60b0ee4e260d50f17
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305097"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905767"
 ---
 # <a name="authenticating-activities-using-net-core"></a>Autenticación de actividades con .NET Core
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Si decide desarrollar el bot con [.NET Core](/dotnet/core/index), puede usar el [Bot Framework Connector](bot-builder-dotnet-connector.md) para enviar y recibir mensajes de [actividad](https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html) desde el bot. Para usar el servicio Connector, debe configurar el modelo de autenticación adecuado para la versión del marco de destino.
 

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 23cb3189de10a67a524114d0c7d9f1f9d2b0441d
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: c37823b94a5cc4715dd1278bba196335de3e3bdb
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305132"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906028"
 ---
 # <a name="handle-user-and-conversation-events"></a>Control de eventos de usuario y conversación
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 En este artículo se muestra cómo el bot puede controlar eventos, como la unión de un usuario a una conversación, agregar un bot a una lista de contactos o decir **Adiós** cuando se quita un bot de una conversación.
 

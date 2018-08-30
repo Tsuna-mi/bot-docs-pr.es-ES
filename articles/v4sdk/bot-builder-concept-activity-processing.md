@@ -9,16 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/22/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8e08ac4721ee78bbd5d13dac09d9e505d3a1b134
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: 278005c25e98c7c5b7d523030846909aed830224
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39306492"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905358"
 ---
 # <a name="activity-processing"></a>Procesamiento de actividades
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 El bot y el usuario intercambian información a través de actividades. Cada una de las actividades que recibe la aplicación de bot se pasa a un adaptador de bot, que a su vez pasa la información de la actividad a la lógica del bot y, por último, envía las respuestas al usuario.
 

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: bb0ac4b8e3fa34ec8863bb323ae968db37972a6f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 587e21049ed8c9c3259f04f929784153d06db40c
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305100"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904229"
 ---
 # <a name="localize-form-content"></a>Localización del contenido de un formulario
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 El idioma de localización de un formulario viene determinado por las propiedades [CurrentUICulture](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentuiculture(v=vs.110).aspx) y [CurrentCulture](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentculture(v=vs.110).aspx) del subproceso actual. De manera predeterminada, la referencia cultural se obtiene del campo **Configuración regional** del mensaje actual, pero es posible invalidar este comportamiento predeterminado. Según cómo se construye el bot, la información localizada puede proceder de hasta tres orígenes diferentes:
 
@@ -154,8 +156,8 @@ Par pain "neuf" vouliez-vous dire (1. Neuf grains miel avoine, ou 2. Neuf grains
 - [Características avanzadas de FormFlow](bot-builder-dotnet-formflow-advanced.md)
 - [Customize a form using FormBuilder](bot-builder-dotnet-formflow-formbuilder.md) (Personalización de un formulario mediante FormBuilder)
 - [Define a form using JSON schema](bot-builder-dotnet-formflow-json-schema.md) (Definición de un formulario mediante esquemas JSON)
-- [Customize user experience with pattern language](bot-builder-dotnet-formflow-pattern-language.md) (Personalización de la experiencia de usuario con lenguaje de patrones)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencias de Bot Builder SDK para .NET</a>
+- [Personalización de la experiencia de usuario con lenguaje de patrones](bot-builder-dotnet-formflow-pattern-language.md)
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Builder SDK para .NET</a>
 
 [build]: /dotnet/api/microsoft.bot.builder.formflow.formbuilder-1.build 
 

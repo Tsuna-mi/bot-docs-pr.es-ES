@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/06/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7241b67b582b3e31c1b3c15dc5474e750b7cc558
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e316ff90b68f860274579f06e7196deec364e082
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306360"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905638"
 ---
 # <a name="translate-from-the-users-language-to-make-your-bot-multilingual"></a>Traducir del idioma del usuario para que el bot sea multilingüe
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 El bot puede usar [Microsoft Translator](https://www.microsoft.com/en-us/translator/) para traducir automáticamente los mensajes a un lenguaje que el bot entienda y, opcionalmente, traducir las respuestas del bot al idioma del usuario.
 <!-- 
@@ -46,7 +48,7 @@ Si va a combinar la traducción con Language Understanding (LUIS), agregue tambi
 
 # <a name="javascripttabjsrefs"></a>[JavaScript](#tab/jsrefs)
 
-Cualquiera de estos servicios se puede agregar al bot mediante el paquete botbuilder-ai. Puede agregar este paquete al proyecto a través de npm:
+Puede agregar cualquiera de estos servicios al bot mediante el paquete botbuilder-ai. Puede agregar este paquete al proyecto a través de npm:
 * `npm install --save botbuilder@preview`
 * `npm install --save botbuilder-ai@preview`
 
@@ -93,7 +95,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!TIP] 
-> BotBuilder SDK detecta automáticamente el idioma del usuario en función del mensaje que acaba de enviar. Para invalidar esta funcionalidad, puede proporcionar parámetros adicionales de devolución de llamada para agregar su propia lógica a fin de detectar y cambiar el idioma del usuario.  
+> El SDK de Bot Builder detecta automáticamente el idioma del usuario en función del mensaje que acaba de enviar. Para invalidar esta funcionalidad, puede proporcionar parámetros adicionales de devolución de llamada para agregar su propia lógica a fin de detectar y cambiar el idioma del usuario.  
 
 
 
@@ -206,7 +208,7 @@ Ejecute el bot y escriba algunos mensajes en otros idiomas. Verá que el bot ha 
 
 ## <a name="invoke-logic-in-the-bots-native-language"></a>Invocar lógica en el lenguaje nativo del bot
 
-Ahora, agregue lógica que busca palabras en inglés. Si el usuario dice "ayuda" o "cancelar" en un idioma que no sea inglés, el bot lo traduce al inglés y se invoca la lógica que busca las palabras en inglés "help" o "cancel".
+Ahora, agregue la lógica que busque palabras en inglés. Si el usuario dice "ayuda" o "cancelar" en un idioma que no sea inglés, el bot lo traduce al inglés y se invoca la lógica que busca las palabras en inglés "help" o "cancel".
 
 # <a name="ctabcshelp"></a>[C#](#tab/cshelp)
 ```cs
@@ -513,18 +515,18 @@ adapter.use(languageTranslator);
 
 ## <a name="localize-dates"></a>Localizar fechas
 
-Si necesita localizar fechas, puede agregar `LocaleConverterMiddleware`. Por ejemplo, si sabe que el bot espera las fechas en el formato `MM/DD/YYYY` y es posible que los usuarios de otras configuraciones regionales escriban las fechas en el formato `DD/MM/YYYY`, el software intermedio de convertidor de configuración regional puede convertir automáticamente las fechas al formato que espera el bot.
+Si necesita localizar fechas, puede agregar `LocaleConverterMiddleware`. Por ejemplo, si sabe que el bot espera las fechas en el formato `MM/DD/YYYY` y es posible que los usuarios de otras configuraciones regionales escriban las fechas en el formato `DD/MM/YYYY`, el software intermedio del convertidor de configuración regional puede convertir automáticamente las fechas al formato que espera el bot.
 
 > [!NOTE]
-> El software intermedio de convertidor de configuración regional está pensado para convertir solo fechas. No tiene ningún conocimiento sobre los resultados del software intermedio de traducción. Si usa software intermedio de traducción, tenga cuidado al combinarlo con el convertidor de configuración regional. El software intermedio de traducción traduce las fechas que están en formato de texto junto con el resto de la entrada de texto, pero no traduce fechas.
+> El software intermedio del convertidor de configuración regional está pensado para convertir solo fechas. No tiene ningún conocimiento sobre los resultados del software intermedio de traducción. Si usa software intermedio de traducción, tenga cuidado al combinarlo con el convertidor de configuración regional. El software intermedio de traducción traduce las fechas que están en formato de texto junto con el resto de la entrada de texto, pero no traduce otras fechas.
 
 Por ejemplo, en la imagen siguiente se muestra un bot que devuelve la entrada de usuario después de traducirla de inglés a francés. Usa `TranslationMiddleware` sin usar `LocaleConverterMiddleware`.
 
-![bot que traduce las fechas sin conversión de fecha](./media/how-to-bot-translate/locale-date-before.png)
+![bot que traduce las fechas sin conversión de fechas](./media/how-to-bot-translate/locale-date-before.png)
 
 A continuación se muestra el mismo bot con `LocaleConverterMiddleware` agregado.
 
-![bot que traduce las fechas sin conversión de fecha](./media/how-to-bot-translate/locale-date-after.png)
+![bot que traduce las fechas sin conversión de fechas](./media/how-to-bot-translate/locale-date-after.png)
 
 Los convertidores de configuración regional son compatibles con las configuraciones regionales de inglés, francés, alemán y chino. <!-- TODO: ADD DETAIL ABOUT SUPPORTED LOCALES -->
 

@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 5/16/17
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6a88b0a7f44f43d0676ba88314fbba7c486e6be4
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 07f4ad7d53c456de53be196977458a3d8b03c6f0
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304964"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906199"
 ---
 # <a name="extract-intents-and-entities-using-luisgen"></a>Extraer intenciones y entidades mediante LUISGen
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Además de reconocer la intención, una aplicación de LUIS puede extraer entidades (es decir, palabras importantes) para cumplir la solicitud de un usuario. Por ejemplo, en una reserva de restaurante, la aplicación LUIS puede extraer el tamaño del grupo, la fecha de la reserva o la ubicación del restaurante del mensaje del usuario. 
 
@@ -484,7 +486,7 @@ npm install
 
 6. En el emulador, diga `reserve a table` para iniciar el cuadro de diálogo de reserva.
 
-![ejecute el bot](media/how-to-luisgen/run-bot.png)
+![ejecutar el bot](media/how-to-luisgen/run-bot.png)
 
 ---
 

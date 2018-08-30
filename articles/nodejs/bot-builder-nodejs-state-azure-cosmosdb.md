@@ -8,21 +8,23 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9d3e1c315399ce3cadc6371ceb93055c836590a6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e326147f32161c2e99dacdfa24ff41080a9b33e9
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306216"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906239"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-nodejs"></a>Administración de datos de estado personalizado con Azure Cosmos DB para Node.js
 
-En este artículo, implementará el almacenamiento de Cosmos DB para almacenar y administrar los datos de estado del bot. El servicio de estado de Connector predeterminado que usan los bots no es adecuado para el entorno de producción. Debería usar las [extensiones de Azure](https://www.npmjs.com/package/botbuilder-azure) disponibles en GitHub o implementar un cliente de estado personalizado mediante la plataforma de almacenamiento de datos de su elección. Estas son algunas de las razones para usar el almacenamiento de estado personalizado:
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
+En este artículo, implementará el almacenamiento de Cosmos DB para almacenar y administrar los datos de estado del bot. El servicio de estado de Connector predeterminado que usan los bots no es adecuado para el entorno de producción. Deberá usar las [extensiones de Azure](https://www.npmjs.com/package/botbuilder-azure) disponibles en GitHub o implementar un cliente de estado personalizado mediante la plataforma de almacenamiento de datos de su elección. Estas son algunas de las razones para usar el almacenamiento de estado personalizado:
 
 - mayor rendimiento de la API de estado (más control sobre el rendimiento)
 - latencia más baja para la distribución geográfica
-- control sobre dónde se almacenan los datos (p. ej.: Oeste de EE. UU. frente a Este de EE. UU.)
-- acceso a los datos de estado real
+- control sobre dónde se almacenan los datos (p. ej.: oeste de Estados Unidos frente a este de Estados Unidos)
+- acceso a los datos de estado reales
 - base de datos de estado no compartida con otros bots
 - almacenamiento de más de 32 kb
 
@@ -101,7 +103,7 @@ node app.js
 
 En este momento, el bot se ejecuta de forma local. Inicie el emulador y, después, conéctese al bot desde él:
 
-1. Escriba <strong>http://localhost:port-number/api/messages</strong> en la barra de direcciones del emulador, donde port-number coincide con el número de puerto mostrado en el explorador donde se ejecuta la aplicación. Por ahora puede dejar en blanco los campos <strong>Microsoft App ID</strong> (Id. de aplicación de Microsoft) y <strong>Microsoft App Password</strong> (Contraseña de aplicación de Mictosoft). Más adelante obtendrá esta información al [registrar el bot](~/bot-service-quickstart-registration.md).
+1. Escriba <strong>http://localhost:port-number/api/messages</strong> en la barra de direcciones del emulador, donde port-number coincide con el número de puerto mostrado en el explorador donde se ejecuta la aplicación. Por ahora puede dejar en blanco los campos <strong>Microsoft App ID</strong> (Id. de aplicación de Microsoft) y <strong>Microsoft App Password</strong> (Contraseña de aplicación de Microsoft). Más adelante obtendrá esta información al [registrar el bot](~/bot-service-quickstart-registration.md).
 2. Haga clic en **Conectar**.
 3. Para probar el bot, envíe a su bot un mensaje. Interactúe con el bot como haría normalmente. Cuando haya terminado, vaya a **Explorador de Storage** y vea los datos de estado guardados.
 

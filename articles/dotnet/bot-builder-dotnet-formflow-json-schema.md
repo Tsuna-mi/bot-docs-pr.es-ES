@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a7f6e3f186e0c4b9f6096cad72a91ef6f3fdffd4
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 03478431822c8be0e696577a18a2e693d441509b
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306096"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904556"
 ---
 # <a name="define-a-form-using-json-schema"></a>Definición de un formulario mediante esquemas JSON
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Si usa una [clase de C#](bot-builder-dotnet-formflow.md#create-class) para definir el formulario cuando crea un bot con FormFlow, el formulario se deriva de la definición estática de su tipo en C#. En su lugar, puede definir el formulario mediante <a href="http://json-schema.org/documentation.html" target="_blank">esquemas JSON</a>. Un formulario que se define mediante esquemas JSON se basa por completo en datos. Puede cambiar el formulario (y por tanto, el comportamiento del bot) solo con actualizar el esquema. 
 

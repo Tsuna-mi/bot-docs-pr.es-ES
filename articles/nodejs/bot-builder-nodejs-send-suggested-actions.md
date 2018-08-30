@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 06/06/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 510a340506416e61f906228ccd26c0bdd6e5d4d3
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 15313b6938c01fe84d4fea93c3dc9f607eeb95d2
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305033"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904302"
 ---
-# <a name="add-suggested-actions-to-messages"></a>Agregar acciones sugeridas a los mensajes
+# <a name="add-suggested-actions-to-messages"></a>Incorporación de acciones sugeridas a mensajes
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-suggested-actions.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-suggested-actions.md)
@@ -24,7 +27,7 @@ ms.locfileid: "39305033"
 [!INCLUDE [Introduction to suggested actions](../includes/snippet-suggested-actions-intro.md)]
 
 > [!TIP]
-> Use el [Inspector de canal][channelInspector] para ver la apariencia de las acciones sugeridas y cómo funcionan en varios canales.
+> Use el [Inspector de canales][channelInspector] para ver la apariencia de las acciones sugeridas y cómo funcionan en varios canales.
 
 ## <a name="suggested-actions-example"></a>Ejemplo de acciones sugeridas
 
@@ -40,7 +43,7 @@ Tenga en cuenta que el método `imBack` registrará el elemento `value` en la ve
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Características en versión preliminar con el Inspector de canales][inspector]
+* [Preview features with the Channel Inspector][inspector] (Vista previa de las características con el Inspector de canales)
 * [IMessage][IMessage]
 * [ICardAction][ICardAction]
 * [session.send][SessionSend]

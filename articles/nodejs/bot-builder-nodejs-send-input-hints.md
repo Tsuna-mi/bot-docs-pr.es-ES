@@ -8,20 +8,23 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b5efb024c01437867b6ab1cf99b2f544077eee0c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2bbf75f166a90d2e0a905bd269f51cef4398a2ef
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305556"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904497"
 ---
 # <a name="add-input-hints-to-messages"></a>Incorporación de sugerencias de entrada a los mensajes
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-input-hints.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-input-hints.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-input-hints.md)
 
-Al especificar una sugerencia de entrada para un mensaje, puede indicar si el bot acepta, espera o ignora la entrada del usuario después de que el mensaje se haya entregado al cliente. En muchos canales, esto permite a los clientes establecer en consecuencia el estado de los controles de entrada del usuario. Por ejemplo, si la sugerencia de entrada de un mensaje indica que el bot ignora la entrada del usuario, el cliente podría cerrar el micrófono y deshabilitar el cuadro de entrada para impedir que el usuario proporcione una entrada.
+Al especificar una sugerencia de entrada para un mensaje, puede indicar si el bot acepta, espera o ignora la entrada del usuario después de que el mensaje se haya entregado al cliente. En muchos canales, esto permite a los clientes establecer en consecuencia el estado de los controles de entrada de usuario. Por ejemplo, si la sugerencia de entrada de un mensaje indica que el bot ignora la entrada de usuario, el cliente podría desactivar el micrófono y deshabilitar el cuadro de entrada para impedir que el usuario proporcione una entrada.
 
 ## <a name="accepting-input"></a>Aceptar entradas
 

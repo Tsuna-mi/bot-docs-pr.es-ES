@@ -8,20 +8,23 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: be5018b43a8a015ed763d69a0448e264c5a9fe87
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 4203e9d7a9c5c8e6ab068def879747a4c6158367
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306441"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904049"
 ---
 # <a name="send-and-receive-attachments"></a>Envío y recepción de datos adjuntos
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-media-attachments.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-media-attachments.md)
 
-Un intercambio de mensajes entre usuario y bot puede contener adjuntos multimedia, como imágenes, vídeo, audio y archivos. Los tipos de datos adjuntos que se pueden enviar varía según el canal, pero estos son los tipos básicos:
+Un intercambio de mensajes entre el usuario y el bot puede contener datos adjuntos con elementos multimedia, como imágenes, vídeo, audio y archivos. Los tipos de datos adjuntos que se pueden enviar varía según el canal, pero estos son los tipos básicos:
 
 * **Multimedia y archivos**: puede enviar archivos, como imágenes, audio y vídeos, estableciendo **contentType** en el tipo MIME del [objeto IAttachment][IAttachment] y, a continuación, pasando un vínculo al archivo en **contentUrl**.
 * **Tarjetas**: puede enviar un amplio conjunto de tarjetas visuales <!-- and custom keyboards --> estableciendo **contentType** en el tipo de tarjeta deseado y, a continuación, pasando el código JSON de la tarjeta. Si usa una de las clases de generador de tarjetas enriquecidas, como **HeroCard**, los adjuntos se rellenan automáticamente. Consulte [envío de una tarjeta enriquecida](bot-builder-nodejs-send-rich-cards.md) para obtener un ejemplo de esto.
@@ -58,7 +61,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
 ```
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Características en versión preliminar con el Inspector de canales][inspector]
+* [Preview features with the Channel Inspector][inspector] (Vista previa de las características con el Inspector de canales)
 * [IMessage][IMessage]
 * [Envío de una tarjeta enriquecida][SendRichCard]
 * [session.send][SessionSend]

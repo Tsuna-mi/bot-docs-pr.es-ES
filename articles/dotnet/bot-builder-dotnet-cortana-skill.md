@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e6bfd890944cfea052e07ee99451ab90db75415b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: a3d049e349a86437f8c342df1702281600aeddd4
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304740"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904397"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Creación de un bot habilitado para la voz con habilidades de Cortana
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-cortana-skill.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-cortana-skill.md)
@@ -30,7 +33,7 @@ El SDK de Bot Builder para .NET le permite crear un bot habilitado para la voz a
 La creación de una habilidad de Cortana con Bot Framework requiere muy poco conocimiento específico de Cortana y consiste básicamente en compilar un bot. Una de las posibles diferencias principales respecto a otros bots que ha creado en el pasado es que Cortana tiene un componente visual y uno de audio. Para el componente visual, Cortana proporciona un área del lienzo para representar el contenido, como tarjetas. Para el componente de audio, proporcione texto o SSML en los mensajes del bot para que Cortana los lea al usuario, dándole una voz. 
 
 > [!NOTE]
-> Cortana está disponible en muchos dispositivos diferentes. Algunos tienen una pantalla mientras que otros, como los altavoces independientes, puede que no. Asegúrese de que su bot es capaz de actuar en ambos escenarios. Consulte [Cortana-specific entities][CortanaSpecificEntities] (Las entidades específicas de Cortana) para obtener información sobre cómo comprobar la información del dispositivo.
+> Cortana está disponible en muchos dispositivos diferentes. Algunos tienen una pantalla mientras que otros, como los altavoces independientes, puede que no. Asegúrese de que su bot es capaz de actuar en ambos escenarios. Consulte las [entidades específicas de Cortana][CortanaSpecificEntities] para obtener información sobre cómo comprobar la información del dispositivo.
 
 ## <a name="adding-speech-to-your-bot"></a>Adición de voz al bot
 
@@ -80,9 +83,9 @@ Además de las respuestas de voz, Cortana puede mostrar datos adjuntos de tarjet
 | Tipo de tarjeta | DESCRIPCIÓN |
 |----|----|
 | [HeroCard][heroCard] | Una tarjeta que normalmente contiene una sola imagen grande, uno o varios botones y texto. |
-| [ThumbnailCard][thumbnailCard] | Una tarjeta que normalmente contiene una sola imagen miniatura, uno o varios botones y texto. |
-| [ReceiptCard][receiptCard] | Una tarjeta que permite que un bot proporcione un recibo al usuario. Normalmente, contiene la lista de elementos que se incluyen en el recibo, la información de impuestos y del total y texto adicional. |
-| [SignInCard][signinCard] | Una tarjeta que permite al bot solicitar el inicio de sesión del usuario. Normalmente contiene texto y uno o más botones en los cuales el usuario puede hacer clic para comenzar el proceso de inicio de sesión. |
+| [ThumbnailCard][thumbnailCard] | Una tarjeta que normalmente contiene una sola imagen miniatura, uno o varios botones, y texto. |
+| [ReceiptCard][receiptCard] | Una tarjeta que permite que un bot proporcione un recibo al usuario. Normalmente, contiene la lista de elementos que se incluyen en el recibo, la información de impuestos y del total, y texto adicional. |
+| [SignInCard][signinCard] | Una tarjeta que permite al bot solicitar que un usuario inicie sesión. Normalmente contiene texto y uno o más botones en los cuales el usuario puede hacer clic para comenzar el proceso de inicio de sesión. |
 
 
 Consulte [Card design best practices][CardDesign] (Prácticas recomendadas para el diseño de tarjetas) para ver el diseño de estas tarjetas en Cortana. Para obtener un ejemplo de cómo usar una tarjeta enriquecida en un bot, consulte [Add rich card attachments to messages](bot-builder-dotnet-add-rich-card-attachments.md) (Adición de tarjetas enriquecidas a mensajes). 
@@ -324,11 +327,11 @@ Si su bot se ejecuta localmente o se implementa en la nube, puede invocarlo desd
 
 
 ## <a name="additional-resources"></a>Recursos adicionales
-* [The Cortana Skills Kit][CortanaGetStarted] (El kit de habilidades de Cortana)
-* [Add speech to messages](bot-builder-dotnet-text-to-speech.md) (Incorporación de voz a los mensajes)
-* [SSML Reference][SSMLRef] (Referencias de SSML)
-* [Prácticas recomendadas para diseño de voz de Cortana][VoiceDesign]
-* [Prácticas recomendadas para diseño de tarjetas de Cortana][CardDesign]
+* [Kit de habilidades de Cortana][CortanaGetStarted]
+* [Incorporación de voz a mensajes](bot-builder-dotnet-text-to-speech.md)
+* [Referencias de SSML][SSMLRef]
+* [Procedimientos recomendados para el diseño de voz de Cortana][VoiceDesign]
+* [Procedimientos recomendados para el diseño de tarjetas de Cortana][CardDesign]
 * [Centro de desarrollo de Cortana][CortanaDevCenter]
 * [Prácticas recomendadas para probar y depurar a Cortana][Cortana-TestBestPractice]
 * <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET Reference</a> (Referencias del SDK de Bot Builder para .NET)

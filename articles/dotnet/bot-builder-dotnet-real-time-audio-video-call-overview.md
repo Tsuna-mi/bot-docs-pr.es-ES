@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3e990da2abcb63c695cc79d5d8d9af40d8966cfa
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 35aca6f5f50602d0a90c41997eff2e8b1d2cdb4e
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305468"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905617"
 ---
 # <a name="build-a-real-time-media-bot-for-skype"></a>Compilar de un bot de elementos multimedia en tiempo real para Skype
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 La Plataforma de elementos multimedia en tiempo real para bots es una funcionalidad avanzada que permite que el bot envíe y reciba contenido de voz y vídeo trama a trama y fotograma a fotograma. El bot tiene acceso "sin procesar" a las modalidades de voz, vídeo y pantalla compartida en tiempo real. En este artículo se proporciona información general sobre la compilación de un bot que realiza llamadas de audio y vídeo y el acceso a las modalidades en tiempo real.
 

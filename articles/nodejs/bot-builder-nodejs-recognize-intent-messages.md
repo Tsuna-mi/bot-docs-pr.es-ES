@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b737b11db3876d8b98cbd9f46f6e23f8b8564244
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 67dc8a196393458b37bb6447ceaa8f36a28a564a
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306264"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905936"
 ---
 # <a name="recognize-user-intent-from-message-content"></a>Reconocimiento de intenciones del usuario a partir del contenido del mensaje
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Cuando su bot recibe un mensaje de un usuario, el bot puede usar un **reconocedor** para examinar el mensaje y determinar la intención. La intención proporciona una asignación de mensajes a diálogos que se puede invocar. En este artículo se explica cómo reconocer la intención mediante expresiones regulares o inspeccionando el contenido de un mensaje. Por ejemplo, un bot puede utilizar expresiones regulares para comprobar si un mensaje contiene la palabra "ayuda" e invocar un diálogo de ayuda. Un bot también puede comprobar las propiedades del mensaje del usuario, por ejemplo, para ver si el usuario envió una imagen en lugar de texto e invocar un diálogo de procesamiento de imágenes. 
 

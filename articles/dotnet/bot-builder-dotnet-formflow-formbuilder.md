@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d24e43a3f48db024ab55c2089acbc42edebab929
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3ad843530b70b75a6db728a399a315534d2234ac
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306108"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904198"
 ---
 # <a name="customize-a-form-using-formbuilder"></a>Personalización de un formulario mediante FormBuilder
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 En [Características básicas de FormFlow](bot-builder-dotnet-formflow.md) se describe una implementación básica de FormFlow que ofrece una experiencia de usuario más o menos genérica y en [Características avanzadas de FormFlow](bot-builder-dotnet-formflow-advanced.md) se describe cómo puede personalizar la experiencia del usuario mediante el uso de atributos y lógica de negocios. En este artículo se describe cómo puede usar [FormBuilder][formBuilder] para personalizar la experiencia del usuario aún más, especificando la secuencia en que el formulario ejecuta los pasos y definiendo de forma dinámica los valores de campos, las confirmaciones y los mensajes. 
 
@@ -83,7 +85,7 @@ En este ejemplo, el formulario ejecuta estos pasos:
 - [Localización del contenido del formulario](bot-builder-dotnet-formflow-localize.md)
 - [Definición de un formulario mediante esquemas JSON](bot-builder-dotnet-formflow-json-schema.md)
 - [Personalización de la experiencia de usuario con lenguaje de patrones](bot-builder-dotnet-formflow-pattern-language.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencias de Bot Builder SDK para .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Builder SDK para .NET</a>
 
 [formBuilder]: /dotnet/api/microsoft.bot.builder.formflow.formbuilder-1
 

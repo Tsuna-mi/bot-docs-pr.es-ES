@@ -8,15 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: aff2509a426fb42f136fb9d2b4a2df9ec1accda0
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 1c6b01b1cab9165b1513bfda5af182f27635290e
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306117"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904387"
 ---
 # <a name="send-a-typing-indicator"></a>Envío de un indicador de escritura 
 
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Los usuarios esperan una respuesta a tiempo a sus mensajes. Si el bot realiza alguna tarea de larga ejecución como llamar a un servidor o ejecutar una consulta sin proporcionar al usuario ninguna indicación de que el bot le ha escuchado, el usuario podría impacientarse o simplemente suponer que el bot no funciona.
 Muchos canales admiten el envío de una indicación de escritura para mostrar al usuario que el mensaje se recibió y que se está procesando.

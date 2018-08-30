@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9c1a0944a24af3f2a51a90818890c50edfe139d4
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 82a4d0843a9aaab25779d833f2b1b1d2ab2516c2
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305664"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905107"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Reconocimiento de intenciones y entidades con LUIS 
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Este artículo usa el ejemplo de un bot para tomar notas, a fin de demostrar cómo Language Understanding ([LUIS][LUIS]) ayuda a que el bot responda correctamente a la entrada de lenguaje natural. Un bot detecta lo que un usuario desea hacer mediante la identificación de su **intención**. Esta intención se determina a partir de la entrada de texto, voz o **grabaciones de voz**. La intención asigna grabaciones de voz a acciones que realiza el bot, como invocar un diálogo. Puede que un bot también necesite extraer **entidades**, que son palabras importantes de las grabaciones de voz. A veces, las entidades deben cumplir una intención. En el ejemplo de un bot de toma de notas, la entidad `Notes.Title` identifica el título de cada nota.
 

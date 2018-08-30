@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 71e04d2c76d6bff22352c6b4e90aae933f209638
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 091c90da9b14c0abe70d08f45f528a3cce818cef
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305800"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904039"
 ---
 # <a name="requirements-and-considerations-for-real-time-media-bots"></a>Requisitos y consideraciones para bots de elementos multimedia en tiempo real
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 No todas las instrucciones aplicables al desarrollo de bots de mensajería y llamadas IVR se aplican por igual a la creación de bots de elementos multimedia en tiempo real. En este artículo se describe algunos de los importantes requisitos y consideraciones para el desarrollo de bots de elementos multimedia en tiempo real. 
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/02/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ca4714d3b3988fd08021f55a4905d9426996b7eb
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3b618bfb7cd1a462390aee4d564778c8ec0a7247
+ms.sourcegitcommit: d486dd088b87a44fc8142f7a08877ff993861a42
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305116"
+ms.lasthandoff: 08/26/2018
+ms.locfileid: "42928434"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-java"></a>Creación de un bot con el SDK de Bot Builder para Java
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -159,14 +159,12 @@ A continuación, inicie el emulador y, después, conéctese al bot en el emulado
 
 3. Escriba `http://localhost:port-number/api/messages` en el campo **Endpoint URL** (Dirección URL del punto de conexión), donde *port-number* coincide con el número de puerto que se muestra en el explorador en el que se ejecuta la aplicación.
 
-4. Haga clic en **Connect** (Conectar) para conectarse al bot. No tendrá que especificar el **identificador de aplicación de Microsoft** ni la **contraseña de aplicación de Microsoft**. Por ahora puede dejar estos campos en blanco. Más adelante obtendrá esta información al registrar el bot.
+4. Haga clic en **Connect** (Conectar) para conectarse al bot. No tendrá que especificar los valores de **Microsoft App ID** (id. de la aplicación de Microsoft) ni **Microsoft App Password** (contraseña de la aplicación de Microsoft). Por ahora puede dejar estos campos en blanco. Más adelante obtendrá esta información al registrar el bot.
 
 ### <a name="interact-with-your-bot"></a>Interacción con el bot
 Envíe "Hola" a su bot y el bot repetirá el mensaje.
 
 ## <a name="next-steps"></a>Pasos siguientes
-
-A continuación, vaya a los conceptos que explican qué es un bot y cómo funciona.
 
 > [!div class="nextstepaction"]
 > [Conceptos básicos de bot](../v4sdk/bot-builder-basics.md)

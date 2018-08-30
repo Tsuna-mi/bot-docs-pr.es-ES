@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8860c6b3fa0eaaf9f9bfc92984a501c066f2fe5c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6637876b016b8680fe722602f530a0c6b0ddfc5a
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304742"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905409"
 ---
 # <a name="advanced-features-of-formflow"></a>Características avanzadas de FormFlow
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 [Basic features of FormFlow](bot-builder-dotnet-formflow.md) (Características básicas de FromFlow) describe una implementación básica de FormFlow que ofrece una experiencia de usuario bastante genérica. Para ofrecer una experiencia de usuario más personalizada mediante FormFlow, puede especificar el estado inicial del formulario, agregar lógica de negocios para administrar las interdependencias entre los campos y procesar los datos del usuario, y usar atributos para personalizar mensajes, reemplazar plantillas, designar campos opcionales, establecer coincidencias con la entrada del usuario y validar dicha entrada. 
 
@@ -269,12 +271,12 @@ En este artículo se describe cómo ofrecer una experiencia de usuario personali
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- [Basic features of FormFlow](bot-builder-dotnet-formflow.md) (Características básicas de FormFlow)
+- [Características básicas de FormFlow](bot-builder-dotnet-formflow.md)
 - [Customize a form using FormBuilder](bot-builder-dotnet-formflow-formbuilder.md) (Personalización de un formulario mediante FormBuilder)
-- [Localize form content](bot-builder-dotnet-formflow-localize.md) (Localización del contenido del formulario)
-- [Define a form using JSON schema](bot-builder-dotnet-formflow-json-schema.md) (Definición de un formulario mediante esquemas JSON)
-- [Customize user experience with pattern language](bot-builder-dotnet-formflow-pattern-language.md) (Personalización de la experiencia de usuario con lenguaje de patrones)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET Reference</a> (Referencias del SDK de Bot Builder para .NET)
+- [Localización del contenido del formulario](bot-builder-dotnet-formflow-localize.md)
+- [Definición de un formulario mediante esquemas JSON](bot-builder-dotnet-formflow-json-schema.md)
+- [Personalización de la experiencia de usuario con lenguaje de patrones](bot-builder-dotnet-formflow-pattern-language.md)
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Builder SDK para .NET</a>
 
 [formDialog]: /dotnet/api/microsoft.bot.builder.formflow.formdialog
 

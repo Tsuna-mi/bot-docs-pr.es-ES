@@ -7,14 +7,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a5936f3a622bdc91084ba9a636d8be3b782f9a11
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: c213c1155b1eef5f5c776ba42a221d95b74f99a5
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306100"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906086"
 ---
-# <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Creación de un bot habilitado por voz con habilidades de Cortana
+# <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Creación de un bot habilitado para la voz con habilidades de Cortana
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-cortana-skill.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-cortana-skill.md)
@@ -24,10 +27,10 @@ El SDK de Bot Builder para Node.js le permite crear un bot habilitado por voz al
 > [!TIP]
 > Para más información sobre qué es una habilidad y qué puede hacer, vea [The Cortana Skills Kit][CortanaGetStarted] (El kit de habilidades de Cortana).
 
-La creación de una habilidad de Cortana con Bot Framework requiere muy poco conocimiento específico de Cortana y se compone principalmente de la creación de un bot. Una de las diferencias principales respecto a otros bots que ha creado es que Cortana tiene componentes visuales y de audio. Para el componente visual, Cortana proporciona un área del lienzo para representar el contenido, como tarjetas. Para el componente de audio, se proporciona texto o SSML en los mensajes del bot para que Cortana lo lea al usuario según la voz del bot. 
+La creación de una habilidad de Cortana con Bot Framework requiere muy poco conocimiento específico de Cortana y se compone principalmente de la creación de un bot. Una de las diferencias principales respecto a otros bots que ha creado es que Cortana tiene componentes visuales y de audio. Para el componente visual, Cortana proporciona un área del lienzo para representar el contenido, como tarjetas. Para el componente de audio, proporcione texto o SSML en los mensajes del bot para que Cortana los lea al usuario, dándole una voz. 
 
 > [!NOTE]
-> Cortana está disponible en muchos dispositivos diferentes. Algunos tienen una pantalla mientras que otros, como un hablante independiente, puede que no. Asegúrese de que su bot es capaz de controlar ambos escenarios. Consulte las [entidades específicas de Cortana][CortanaSpecificEntities] para obtener información sobre cómo comprobar la información del dispositivo.
+> Cortana está disponible en muchos dispositivos diferentes. Algunos tienen una pantalla mientras que otros, como los altavoces independientes, puede que no. Asegúrese de que su bot es capaz de actuar en ambos escenarios. Consulte las [entidades específicas de Cortana][CortanaSpecificEntities] para obtener información sobre cómo comprobar la información del dispositivo.
 
 ## <a name="adding-speech-to-your-bot"></a>Adición de voz al bot
 
@@ -183,9 +186,9 @@ module.exports.speak = function (template, params, options) {
 
 ```
 ## <a name="sample-rollerskill"></a>Ejemplo: RollerSkill
-El código en las secciones siguientes procede de una habilidad de Cortana de ejemplo para lanzar los dados. Descargue el código completo para el bot desde el [repositorio de ejemplos de BotBuilder](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill).
+El código en las secciones siguientes procede de una habilidad de Cortana de ejemplo para lanzar los dados. Descargue el código completo para el bot desde el [repositorio de ejemplos de Bot Builder](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill).
 
-La habilidad se invoca al decir el [nombre de invocación][InvocationNameGuidelines] a Cortana. Para la habilidad Roller, después de que [agregue el bot en al canal de Cortana][CortanaChannel] y lo registre como una habilidad de Cortana, puede invocarlo si le dice a Cortina "Pide a Roller" o "Pídele a Roller que lance los dados".
+La habilidad se invoca al decir el [nombre de invocación][InvocationNameGuidelines] a Cortana. Para la habilidad Roller, después de que [agregue el bot al canal de Cortana][CortanaChannel] y lo registre como una habilidad de Cortana, puede invocarlo si dice a Cortana “Pedir a Roller” o “Pedir a Roller que lance los dados”.
 
 ### <a name="explore-the-code"></a>Exploración del código
 

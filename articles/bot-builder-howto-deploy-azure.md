@@ -8,14 +8,16 @@ manager: kamrani
 ms.topic: get-started-article
 ms.prod: bot-framework
 ms.date: 05/14/2018
-ms.openlocfilehash: 70a3b7f093bb80dd16c854c65331c141fbba3725
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f3e5ed5b14ffb81c597b10aeac45854464bad8b0
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306073"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905597"
 ---
 # <a name="deploy-your-bot-to-azure"></a>Implementación de un bot en Azure
+
+[!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
 
 Una vez que haya creado su bot y lo haya comprobado localmente, puede insertarlo en Azure para que sea accesible desde cualquier lugar. Para ello, primero implementará el bot en Azure en una instancia de App Service y luego configurará el bot con Azure Bot Service mediante el elemento Bot Channels Registration.
 
