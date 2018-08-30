@@ -1,8 +1,8 @@
 # [Principios de diseño de bots](../bot-service-design-principles.md)
 # [Primera interacción](../bot-service-design-first-interaction.md)
-# [Diseño y flujo de control](../bot-service-design-conversation-flow.md)
-# [Navegación](../bot-service-design-navigation.md)
-# [Componentes de la interfaz de usuario](../bot-service-design-user-experience.md)
+# [Diseño y control del flujo de conversación](../bot-service-design-conversation-flow.md)
+# [Diseño de navegación de bots](../bot-service-design-navigation.md)
+# [Diseño de la experiencia de usuario](../bot-service-design-user-experience.md)
 # Patrones
 ## [Automatización de tareas](../bot-service-design-pattern-task-automation.md)
 ## [Knowledge Base](../bot-service-design-pattern-knowledge-base.md)
