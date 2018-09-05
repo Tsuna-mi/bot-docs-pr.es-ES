@@ -1,5 +1,5 @@
 ---
-title: Habilitar la característica de voz en un canal Chat en web | Microsoft Docs
+title: Habilitación de voz en un chat en web | Microsoft Docs
 description: Obtenga información sobre cómo habilitar la característica de voz en un control de chat en web para un bot conectado al canal Chat en web.
 keywords: característica de voz, chat en web, voz, audio, micrófono
 author: DeniseMak
@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 37e18f49eb55fcb7d0bf94e96051479753eec8aa
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2499197d82b618d7a535efca78f98ce260dd15a7
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304953"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756631"
 ---
-# <a name="how-to-enable-speech-in-web-chat"></a>Cómo habilitar la característica de voz en un chat en web
+# <a name="enable-speech-in-web-chat"></a>Habilitación de voz en un chat en web
 Puede habilitar una interfaz de voz en el control de chat en web. Los usuarios interactúan con la interfaz de voz utilizando el micrófono en el control de chat en web.
 
 ![Muestra de voz en el chat en web](~/media/bot-service-channel-webchat/webchat-sample-speech.png)

@@ -1,5 +1,5 @@
 ---
-title: Uso de la mensajería automática | Microsoft Docs
+title: Envío de mensajes automáticos | Microsoft Docs
 description: Obtenga información sobre cómo usar mensajes automáticos con el bot.
 keywords: mensaje automático
 author: jonathanfingold
@@ -9,14 +9,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/01/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fd53a897d9847432fd337402d40edfcd6f4ff061
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: c22ce6a35d4d49506360a78a439f15137c429d9d
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305725"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905139"
 ---
-# <a name="how-to-use-proactive-messaging"></a>Uso de la mensajería automática
+# <a name="send-proactive-messages"></a>Envío de mensajes automáticos 
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+
 
 A menudo, los bots envían _mensajes reactivos_, pero hay veces que necesitamos enviar también un [mensaje automático](bot-builder-proactive-messages.md). 
 
@@ -120,7 +123,7 @@ Como respuesta, el bot realizará los siguientes pasos en dicho turno:
 
 El trabajo que se va a iniciar es un sencillo temporizador de cinco segundos que se completa con el envío del mensaje automático.
 - La llamada al método de continuación de la conversación del adaptador crea un turno iniciado por el bot.
-- Este turno tiene su propio contexto, del que se recupera la información de estado.
+- Este turno tiene su propio [contexto de turno](bot-builder-concept-activity-processing.md#turn-context), del que se recupera la información de estado.
 - Este contexto se usa para enviar el mensaje automático al usuario.
 
 

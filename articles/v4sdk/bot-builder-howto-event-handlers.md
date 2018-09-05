@@ -1,5 +1,5 @@
 ---
-title: Controladores de eventos | Microsoft Docs
+title: Uso de controladores de eventos | Microsoft Docs
 description: Comprenda cómo usar controladores de eventos.
 author: ivorb
 ms.author: v-ivorb
@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 06/14/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0c054b8f4209004806e4564be45e83bdf3a8ec25
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 36bd2638c599de1662a37dd85790b6126184d51b
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305981"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905694"
 ---
-# <a name="event-handlers"></a>Controladores de eventos
+# <a name="using-event-handlers"></a>Uso de controladores de eventos
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Los controladores de eventos son funciones que podemos agregar a eventos de actividad futura dentro de un [turno](bot-builder-basics.md#defining-a-turn). Dichas actividades son `SendActivity`, `UpdateActivity` y `DeleteActivity`, y cada una tiene su propio controlador. Estos controladores son útiles cuando necesite realizar algo en cada actividad futura de ese tipo para el objeto de contexto actual.
 

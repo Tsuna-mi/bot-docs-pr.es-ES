@@ -1,5 +1,5 @@
 ---
-title: Prueba y depuración del bot | Microsoft Docs
+title: Directrices de prueba y depuración | Microsoft Docs
 description: Comprenda cómo probar y depurar el bot.
 keywords: principios de prueba, elementos ficticios, preguntas más frecuentes, niveles de prueba
 author: ivorb
@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/09/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ea1c458e98f67f76c56fdd70595307a0e0252c1d
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: caa424ed0ea0944805836739ed48a7a61f78d21c
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304797"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905264"
 ---
-# <a name="testing-and-debugging-your-bot"></a>Prueba y depuración del bot
+# <a name="testing-and-debugging-guidelines"></a>Directrices de prueba y depuración
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Los bots son aplicaciones complejas con una gran cantidad de elementos diferentes que funcionan conjuntamente. Como cualquier otra aplicación compleja, esto puede provocar algunos errores interesantes o que el bot se comporte de forma diferente a la esperada.
 

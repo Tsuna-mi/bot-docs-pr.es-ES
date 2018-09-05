@@ -1,5 +1,5 @@
 ---
-title: Envío de mensajes con Bot Builder SDK | Microsoft Docs
+title: Envío de mensajes | Microsoft Docs
 description: Obtenga información sobre cómo enviar mensajes con Bot Builder SDK.
 keywords: envío de mensajes, actividades de mensajes, mensaje de texto simple, voz, mensaje hablado
 author: ivorb
@@ -7,18 +7,20 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 04/04/2018
+ms.date: 08/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b854eeb4ecb45a875ab3be5d867333cd63babffd
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b56ad56e19691cfbd7b39606832ed10fce951aa3
+ms.sourcegitcommit: f89ed979eb6321232fb21100ef376d9b0d5113c9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305560"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42914595"
 ---
-# <a name="sending-messages"></a>Envío de mensajes
+# <a name="send-messages"></a>Envío de mensajes
 
-La forma principal comunicación del bot con los usuarios y de recepción de comunicación es mediante actividades de **mensaje**. Algunos mensajes pueden constar simplemente de texto sin formato, mientras que otros pueden tener un contenido más rico, como tarjetas o datos adjuntos. El controlador de turnos del bot recibe mensajes del usuario y puede enviar respuestas al usuario desde ahí. El objeto de contexto de turnos proporciona métodos para enviar mensajes al usuario. Para más información acerca del procesamiento de actividades en general, consulte [Procesamiento de actividades](bot-builder-concept-activity-processing.md).
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+
+La forma principal comunicación del bot con los usuarios y de recepción de comunicación es mediante actividades de **mensaje**. Algunos mensajes pueden constar simplemente de texto sin formato, mientras que otros pueden tener un contenido más rico, como tarjetas o datos adjuntos. El controlador de turnos del bot recibe mensajes del usuario y puede enviar respuestas al usuario desde ahí. El objeto del [contexto de turno](bot-builder-concept-activity-processing.md#turn-context) proporciona métodos para enviar mensajes al usuario. Para más información acerca del procesamiento de actividades en general, consulte [Procesamiento de actividades](bot-builder-concept-activity-processing.md).
 
 Este artículo describe cómo enviar mensajes de voz y de texto simple. Para enviar contenido más rico, consulte el procedimiento de [Incorporación de datos adjuntos multimedia enriquecidos](bot-builder-howto-add-media-attachments.md). Para más información sobre cómo usar los objetos de aviso, consulte cómo [pedir datos de entrada a los usuarios](bot-builder-prompts.md).
 

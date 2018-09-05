@@ -6,13 +6,13 @@ ms.author: mateusv
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: 3264388cf253bb949eabe3be04fdaebabdc36b99
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 08/15/2018
+ms.openlocfilehash: 68d2d4f7a19aecfcb2c630e5e9e55ca5b8a21d89
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305084"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756663"
 ---
 # <a name="embed-a-bot-in-an-app"></a>Inserción de un bot en una aplicación
 
@@ -42,9 +42,7 @@ Otros tipos de aplicaciones y juegos pueden comunicarse con Bot Framework median
 
 Este ejemplo de creación de una aplicación móvil que ejecuta un bot usa <a href="https://www.xamarin.com/" target="_blank">Xamarin</a>, una herramienta popular para crear aplicaciones móviles multiplataforma. 
 
-En primer lugar, cree un componente de vista web simple y úsela para hospedar un <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">control de chat en web</a>. Luego, desde el Portal de Bot Framework, [TODO](~/bot-service-manage-channels.md) al canal Chat en web. 
-
-![Opciones de configuración del bot](~/media/bot-service-design-pattern-embed-app/webchat-channel.png)
+En primer lugar, cree un componente de vista web simple y úsela para hospedar un <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">control de chat en web</a>. A continuación, mediante Azure Portal, agregue el canal del chat en web. 
 
 A continuación, especifique la dirección URL de chat en web registrada como origen para el control de vista web en la aplicación de Xamarin:
 
@@ -70,7 +68,7 @@ Para obtener un ejemplo completo que muestra cómo crear una aplicación móvil 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- [Direct Line API][directLineAPI]
+- [Direct Line API][directLineAPI] (API de Direct Line)
 - <a href="https://www.microsoft.com/cognitive-services/" target="_blank">Microsoft Cognitive Services</a>
 
 [directLineAPI]: https://docs.botframework.com/en-us/restapi/directline3/#navtitle

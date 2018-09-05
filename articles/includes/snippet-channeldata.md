@@ -2,14 +2,14 @@
 
 Algunos canales proporcionan características que no se puede implementar mediante el uso de [texto y datos adjuntos del mensaje](../dotnet/bot-builder-dotnet-create-messages.md) únicamente. Para implementar la funcionalidad específica del canal, puede pasar metadatos nativo a un canal en la propiedad `ChannelData` del objeto `Activity`. Por ejemplo, el bot puede usar la propiedad `ChannelData` para indicar a Telegram que envíe un adhesivo o para indicar a Office 365 que envíe un correo electrónico.
 
-En este artículo se describe cómo usar la propiedad `ChannelData` de la actividad de un mensaje para implementar esta funcionalidad específica del canal:
+En este artículo se describe cómo usar la propiedad `ChannelData` de la actividad de un mensaje para implementar esta funcionalidad específica de canal:
 
 | Canal | Funcionalidad |
 |----|----|
-| Email | Envío y recepción de un correo electrónico que contiene metadatos de importancia, cuerpo y asunto |
-| Slack | Envío de mensajes de Slack de plena fidelidad |
-| Facebook | Envío de notificaciones de Facebook de forma nativa |
-| Telegram | Acciones específicas de Telegram, como compartir una nota de voz o un sticker |
+| Email | Envío y recepción de un correo electrónico que contiene metadatos de importancia, cuerpo y asunto. |
+| Slack | Envío de mensajes de Slack de plena fidelidad. |
+| Facebook | Envío de notificaciones de Facebook de forma nativa. |
+| Telegram | Acciones específicas de Telegram, como compartir una nota de voz o un adhesivo. |
 | Kik | Envío y recepción mensajes nativos de Kik | 
 
 > [!NOTE]
@@ -120,22 +120,139 @@ En este fragmento de código se muestra un ejemplo de la propiedad `channelData`
 }
 ```
 
-El bot puede responder a este mensaje de la [forma normal](../dotnet/bot-builder-dotnet-connector.md#create-reply) o puede registrar su respuesta directamente en punto de conexión especificado por la propiedad `response_url` del objeto `payload`.
+El bot puede responder a este mensaje de la [forma normal](../dotnet/bot-builder-dotnet-connector.md#create-reply) o puede registrar su respuesta directamente en punto de conexión que haya especificado la propiedad `response_url` del objeto `payload`.
 Para obtener información sobre cuándo y cómo publicar una respuesta en `response_url`, consulte <a href="https://api.slack.com/docs/message-buttons" target="_blank">Botones de Slack</a>. 
 
-## <a name="create-a-facebook-notification"></a>Creación de una notificación de Facebook
+Puede crear botones dinámicos con el código siguiente:
+```cs
+private async Task DemoButtonsAsync(IDialogContext context)
+        {
+            var reply = context.MakeMessage();
+
+            string s = @"{
+                ""text"": ""Would you like to play a game ? "",
+                ""attachments"": [
+                    {
+                        ""text"": ""Choose a game to play!"",
+                        ""fallback"": ""You are unable to choose a game"",
+                        ""callback_id"": ""wopr_game"",
+                        ""color"": ""#3AA3E3"",
+                        ""attachment_type"": ""default"",
+                        ""actions"": [
+                            {
+                                ""name"": ""game"",
+                                ""text"": ""Chess"",
+                                ""type"": ""button"",
+                                ""value"": ""chess""
+                            },
+                            {
+                                ""name"": ""game"",
+                                ""text"": ""Falken's Maze"",
+                                ""type"": ""button"",
+                                ""value"": ""maze""
+                            },
+                            {
+                                ""name"": ""game"",
+                                ""text"": ""Thermonuclear War"",
+                                ""style"": ""danger"",
+                                ""type"": ""button"",
+                                ""value"": ""war"",
+                                ""confirm"": {
+                                    ""title"": ""Are you sure?"",
+                                    ""text"": ""Wouldn't you prefer a good game of chess?"",
+                                    ""ok_text"": ""Yes"",
+                                    ""dismiss_text"": ""No""
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }";
+
+            reply.Text = null;
+            reply.ChannelData = JObject.Parse(s);
+            await context.PostAsync(reply);
+            context.Wait(MessageReceivedAsync);
+        }
+```
+
+Para crear menús interactivos, use el código siguiente:
+```cs
+private async Task DemoMenuAsync(IDialogContext context)
+        {
+            var reply = context.MakeMessage();
+
+            string s = @"{
+                ""text"": ""Would you like to play a game ? "",
+                ""response_type"": ""in_channel"",
+                ""attachments"": [
+                    {
+                        ""text"": ""Choose a game to play"",
+                        ""fallback"": ""If you could read this message, you'd be choosing something fun to do right now."",
+                        ""color"": ""#3AA3E3"",
+                        ""attachment_type"": ""default"",
+                        ""callback_id"": ""game_selection"",
+                        ""actions"": [
+                            {
+                                ""name"": ""games_list"",
+                                ""text"": ""Pick a game..."",
+                                ""type"": ""select"",
+                                ""options"": [
+                                    {
+                                        ""text"": ""Hearts"",
+                                        ""value"": ""menu_id_hearts""
+                                    },
+                                    {
+                                        ""text"": ""Bridge"",
+                                        ""value"": ""menu_id_bridge""
+                                    },
+                                    {
+                                        ""text"": ""Checkers"",
+                                        ""value"": ""menu_id_checkers""
+                                    },
+                                    {
+                                        ""text"": ""Chess"",
+                                        ""value"": ""menu_id_chess""
+                                    },
+                                    {
+                                        ""text"": ""Poker"",
+                                        ""value"": ""menu_id_poker""
+                                    },
+                                    {
+                                        ""text"": ""Falken's Maze"",
+                                        ""value"": ""menu_id_maze""
+                                    },
+                                    {
+                                        ""text"": ""Global Thermonuclear War"",
+                                        ""value"": ""menu_id_war""
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }";
+
+            reply.Text = null;
+            reply.ChannelData = JObject.Parse(s);
+            await context.PostAsync(reply);
+            context.Wait(MessageReceivedAsync);
+        }
+```
+
+## <a name="create-a-facebook-notification"></a>Crear una notificación de Facebook
 
 Para crear una notificación de Facebook, establezca la propiedad `ChannelData` del objeto `Activity` en un objeto JSON que especifique estas propiedades: 
 
 | Propiedad | DESCRIPCIÓN |
 |----|----|
 | notification_type | El tipo de notificación (por ejemplo, **REGULAR**, **SILENT_PUSH**, **NO_PUSH**).
-| attachment | Un adjunto que especifica una imagen, un vídeo u otro tipo multimedia, o un adjunto con plantilla, por ejemplo, un recibo. |
+| attachment | Un elemento adjunto que especifica una imagen, un vídeo u otro tipo de elemento multimedia, o un adjunto con plantilla como, por ejemplo, un recibo. |
 
 > [!NOTE]
-> Para obtener más información sobre el formato y el contenido de la `notification_type` propiedad y la propiedad `attachment`, consulte la <a href="https://developers.facebook.com/docs/messenger-platform/send-api-reference#guidelines" target="_blank">documentación de la API de Facebook</a>. 
+> Para obtener más información sobre el formato y el contenido de la propiedad `notification_type` y la propiedad `attachment`, consulte la <a href="https://developers.facebook.com/docs/messenger-platform/send-api-reference#guidelines" target="_blank">documentación de la API de Facebook</a>. 
 
-En este fragmento de código se muestra un ejemplo de la propiedad `channelData` para un adjunto de recibo de Facebook.
+En este fragmento de código se muestra un ejemplo de la propiedad `channelData` para un elemento adjunto con recibo de Facebook.
 
 ```json
 "channelData": {
@@ -156,7 +273,7 @@ Para crear un mensaje que implemente las acciones específicas de Telegram, como
 
 | Propiedad | DESCRIPCIÓN |
 |----|----|
-| estático | El método de Bot API de Telegram al que se llamará. |
+| estático | El método de Telegram Bot API al que se llamará. |
 | parameters | Los parámetros del método especificado. |
 
 Se admiten los métodos de Telegram siguientes: 
@@ -180,11 +297,11 @@ Se admiten los métodos de Telegram siguientes:
 - sendVoice
 - unbanChateMember
 
-Para obtener más información sobre estos métodos de Telegram y sus parámetros, consulte la <a href="https://core.telegram.org/bots/api#available-methods" target="_blank">documentación de Bot API de Telegram</a>.
+Para obtener más información sobre estos métodos de Telegram y sus parámetros, consulte la <a href="https://core.telegram.org/bots/api#available-methods" target="_blank">documentación de Telegram Bot API</a>.
 
 > [!NOTE]
-> <ul><li>El parámetro <code>chat_id</code> es común a todos los métodos de Telegram. Si no especifica <code>chat_id</code> como parámetro, el marco de trabajo proporcionará el identificador automáticamente.</li>
-> <li>En lugar de pasar insertado el contenido del archivo, especifique el archivo mediante una dirección URL y el tipo de medio, tal como se muestra en el ejemplo siguiente.</li>
+> <ul><li>El parámetro <code>chat_id</code> es común a todos los métodos de Telegram. Si no especifica <code>chat_id</code> como parámetro, el marco proporcionará el identificador automáticamente.</li>
+> <li>En lugar de pasar el contenido del archivo insertado, especifique el archivo mediante una dirección URL y el tipo de medio, tal como se muestra en el ejemplo siguiente.</li>
 > <li>Dentro de cada mensaje que recibe su bot del canal de Telegram, la propiedad <code>ChannelData</code> incluirá el mensaje que su bot envió anteriormente.</li></ul>
 
 En este fragmento de código se muestra un ejemplo de una propiedad `channelData` que especifica un único método de Telegram.
@@ -260,6 +377,6 @@ En este fragmento de código se muestra un ejemplo de la propiedad `channelData`
  
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- [Introducción a las actividades](../dotnet/bot-builder-dotnet-activities.md)
-- [Creación de mensajes](../dotnet/bot-builder-dotnet-create-messages.md)
+- [Activities overview](../dotnet/bot-builder-dotnet-activities.md) (Introducción a las actividades)
+- [Create messages](../dotnet/bot-builder-dotnet-create-messages.md) (Creación de mensajes)
 - <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Clase Activity</a>

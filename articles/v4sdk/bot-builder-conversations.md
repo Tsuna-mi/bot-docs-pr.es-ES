@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/11/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 679109cad2f7b0c0c5826a47884b98e1149cb380
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: 32486cb024dfe852a7478ccba4a0eedc476431b0
+ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39306480"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42795034"
 ---
 # <a name="conversation-flow"></a>Flujo de conversación
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -52,7 +52,7 @@ The EchoBot sample in the BotBuilder SDK is a single-turn bot. Here are other ex
 
 ![Bot del tiempo de un solo turno](./media/concept-conversation/weather-single-turn.png)
 
-Un bot del tiempo tiene un flujo de un solo turno. Simplemente le proporciona al usuario un informe meteorológico, sin necesidad de preguntar la ciudad o la fecha. Toda la lógica para mostrar el informe meteorológico se basa en el mensaje que el bot acaba de recibir. En cada turno de una conversación, el bot recibe un contexto de turno que puede usar para determinar qué hará a continuación y cómo fluye la conversación. 
+Un bot del tiempo tiene un flujo de un solo turno. Simplemente le proporciona al usuario un informe meteorológico, sin necesidad de preguntar la ciudad o la fecha. Toda la lógica para mostrar el informe meteorológico se basa en el mensaje que el bot acaba de recibir. En cada turno de una conversación, el bot recibe un [contexto de turno](bot-builder-concept-activity-processing.md#turn-context) que puede usar para determinar qué hará a continuación y cómo fluye la conversación. 
 
 ## <a name="multiple-turns"></a>Varios turnos
 
@@ -84,7 +84,7 @@ Tal vez diseñe su bot para que controle más de un tipo de tareas. Por ejemplo,
 
 ### <a name="recognize-intent"></a>Reconocimiento de intenciones
 
-Bot Builder SDK proporciona _reconocedores_ que procesan cada mensaje entrante para determinar la intención, de modo que el bot pueda iniciar el flujo de conversación correspondiente. Antes de la _devolución de llamada de recepción_, los reconocedores examinan el contenido del mensaje del usuario para determinar la intención y, después, devuelven la intención al bot mediante el uso del objeto de contexto de turno dentro de la devolución de llamada de recepción, almacenada como la **intención principal** en el objeto de contexto de turno. 
+Bot Builder SDK proporciona _reconocedores_ que procesan cada mensaje entrante para determinar la intención, de modo que el bot pueda iniciar el flujo de conversación correspondiente. Antes de la _devolución de llamada de recepción_, los reconocedores examinan el contenido del mensaje del usuario para determinar la intención y, después, devuelven la intención al bot mediante el uso del objeto de contexto de turno dentro de la devolución de llamada de recepción, almacenada como la **intención principal** en el objeto de [contexto de turno](bot-builder-concept-activity-processing.md#turn-context). 
 
 El reconocedor que determina la **intención principal** puede usar simplemente expresiones regulares, Language Understanding (LUIS) u otra lógica que se haya desarrollado como software intermedio. Aquí se muestran ejemplos de posibles reconocedores:
    

@@ -7,22 +7,22 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/03/2018
-ms.openlocfilehash: 129c3a2b92297980e6b5e209f6e7f400a854d3a1
-ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
+ms.openlocfilehash: 7aff56dfc60d9d5cce42a5b6a2624c1364ff1b72
+ms.sourcegitcommit: 44f100a588ffda19c275b118f4f97029f12d1449
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39515075"
+ms.lasthandoff: 08/26/2018
+ms.locfileid: "42928383"
 ---
-::: moniker range="azure-bot-service-3.0"
-
 # <a name="bot-builder-sdk-for-net-samples"></a>Ejemplos del SDK de Bot Builder para .NET
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label-v3.md)]
+::: moniker range="azure-bot-service-3.0"
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 En estos ejemplos se describen bots basados en tareas en los que se muestra cómo aprovechar las características del SDK de Bot Builder para .NET. Puede usar los ejemplos para empezar a trabajar rápidamente en la compilación de bots excelentes con funcionalidades enriquecidas.
 
-## <a name="get-the-samples"></a>Obtener los ejemplos
+## <a name="get-the-samples"></a>Obtención de los ejemplos
 Para obtener los ejemplos, clone el repositorio [BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples) de GitHub mediante Git.
 
 ```cmd
@@ -41,9 +41,9 @@ Muestra | DESCRIPCIÓN
 ------------ | ------------- 
 [Send Attachment](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-SendAttachment) | Bot de ejemplo que envía al usuario datos adjuntos de elementos multimedia sencillos (imágenes). 
 [Receive Attachment](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-ReceiveAttachment) | Bot de ejemplo que recibe los datos adjuntos enviados por el usuario y los descarga. 
-[Create New Conversation](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-CreateNewConversation)  | Bot de ejemplo que inicia una conversación nueva mediante una dirección de usuario almacenada previamente.
-[Get Members of a Conversation](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GetConversationMembers) | Bot de ejemplo que recupera la lista de miembros de la conversación y detecta cuándo cambia. 
-[Direct Line](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-DirectLine) | Bot de ejemplo y cliente personalizado que se comunican entre sí mediante Direct Line API. 
+[Create New Conversation](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-CreateNewConversation)  | Bot de ejemplo que inicia una conversación nueva usando una dirección de usuario almacenada previamente.
+[Get Members of a Conversation](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GetConversationMembers) | Bot de ejemplo que recupera la lista de miembros de la conversación y detecta cuando cambia. 
+[Direct Line](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-DirectLine) | Bot de ejemplo y cliente personalizado que se comunican entre sí usando Direct Line API. 
 [Direct Line (WebSockets)](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-DirectLineWebSockets) | Bot de ejemplo y cliente personalizado que se comunican entre sí mediante Direct Line API + WebSockets. 
 [Multi Dialogs](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-MultiDialogs) | Bot de ejemplo que muestra varios tipos de cuadros de diálogo.
 [State API](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-State) | Bot de ejemplo sin estado que realiza el seguimiento del contexto de una conversación.
@@ -68,12 +68,12 @@ Muestra | DESCRIPCIÓN
 [Carousel of Cards](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/cards-CarouselCards) | Bot de ejemplo que envía varias tarjetas enriquecidas dentro de un solo mensaje con el diseño de carrusel.
 
 ## <a name="intelligence"></a>Inteligencia
-En estos ejemplos se muestra cómo agregar funcionalidades de inteligencia artificial a un bot con Bing y las API de Microsoft Cognitive Services.
+En estos ejemplos se muestra cómo agregar funcionalidades de inteligencia artificial a un bot con las API de Bing y Microsoft Cognitive Services.
 
 Muestra | DESCRIPCIÓN
 ------------ | -------------
 [LUIS](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-LUIS) | Bot de ejemplo que usa LuisDialog para integrarse con una aplicación LUIS.ai.
-[Image Caption](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-ImageCaption) | Bot de ejemplo que obtiene un título de imagen mediante la API Vision de Microsoft Cognitive Services.
+[Image Caption](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-ImageCaption) | Bot de ejemplo que obtiene un título de imagen mediante Vision API de Microsoft Cognitive Services.
 [Speech To Text](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-SpeechToText)  | Bot de ejemplo que obtiene texto de audio mediante Bing Speech API.
 [Similar Products](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-SimilarProducts) | Bot de ejemplo que busca productos visualmente similares con Bing Image Search API. 
 [Zummer](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-Zummer) | Bot de ejemplo que busca artículos de Wikipedia mediante Bing Search API.
@@ -89,10 +89,10 @@ Muestra | DESCRIPCIÓN
 ::: moniker-end
 
 ::: moniker range="azure-bot-service-4.0"
-# <a name="bot-builder-sdk-v4-net-samples"></a>Ejemplos del SDK v4 de Bot Builder para .NET
+
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-En estos ejemplos se describen bots basados en tareas en los que se muestra cómo aprovechar las características del SDK de Bot Builder para .NET. Puede usar los ejemplos para empezar a trabajar rápidamente en la compilación de bots excelentes con funcionalidades enriquecidas. 
+En estos ejemplos se describen bots basados en tareas en los que se muestra cómo aprovechar las características de Bot Builder SDK v4 para .NET. Puede usar los ejemplos para empezar a trabajar rápidamente en la compilación de bots excelentes con funcionalidades enriquecidas. 
 
 Nota: El SDK v4 se encuentra en fase de desarrollo activo y, por tanto, solo se debe usar para realizar experimentos. 
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 ROBOTS: NoIndex, NoFollow
-ms.openlocfilehash: 01f52a6aa6e2c9fc3d2613ff03386a7d87e64a3a
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2dec87fbdce1cc556c15f7220200da98a4496513
+ms.sourcegitcommit: a2f3d87c0f252e876b3e63d75047ad1e7e110b47
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306068"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42928220"
 ---
 # <a name="configure-adaptive-cards"></a>Configuración de tarjetas adaptables
 > [!IMPORTANT]
@@ -24,18 +24,16 @@ Conversation Designer proporciona un entorno de creación profundamente integrad
 
 Las tarjetas adaptables se pueden definir en distintos lugares clave.
 
-- Una respuesta sencilla a una [acción](conversation-designer-tasks.md) para una tarea.
+- Una respuesta sencilla a una acción para una tarea.
 - En estado de comentario en un diálogo.
 - En los estados de aviso, en un diálogo. Tenga en cuenta que los avisos pueden tener tarjetas distintas: una para la respuesta y otra para volver a pedir información.
 
 Para definir una tarjeta adaptable, vaya al editor correspondiente. Examine y elija una de las plantillas de tarjeta adaptable existentes o cree la suya propia en el editor de código JSON. 
 
-<!--TODO: Insert screenshot -->
-
 A medida que se crea una tarjeta, se representa una vista previa completa de ella en el portal de creación.
 
 > [!NOTE]
-> Las características de las tarjetas adaptables permanecen en desarrollo continuado. En este momento, no todos los canales admiten todas las características de las tarjetas adaptables. Para ver qué características admite cada canal, consulte la sección [Estado del canal](/adaptive-cards/get-started/bots#channel-status).
+> Las características de las tarjetas adaptables permanecen en desarrollo continuado. En este momento, no todos los canales admiten todas las características de las tarjetas adaptables. Para ver qué características admite cada canal, consulte la sección Estado del canal.
 
 ## <a name="input-form"></a>Formulario de entrada
 
@@ -74,13 +72,7 @@ Las tarjetas adaptables admiten la resolución de generación de idioma completo
 * `entityName` usa entidades dentro de la tarjeta.
 * `responseTemplateName` usa plantillas de respuesta simple o condicional dentro de la tarjeta.
 
-<!--
-# Binding form flow input fields to bot entities
-TODO: fill this out based on design/ implementation -->
-
-<!-- ## Adaptive Card schema
-
-You can learn more about adaptive cards here  TODO: Insert link to adaptive cards schema documentation -->
+Más información acerca de las tarjetas adaptables aquí TODO: Insertar vínculo a la documentación del esquema de las tarjetas adaptables -->
 
 ## <a name="sample-adaptive-card-payload"></a>Ejemplo de carga de tarjeta adaptable
 
@@ -149,6 +141,3 @@ El siguiente código JSON muestra la carga de una tarjeta adaptable.
 }
 ```
 
-## <a name="next-step"></a>Paso siguiente
-> [!div class="nextstepaction"]
-> [Conexión a canales](conversation-designer-deploy.md)

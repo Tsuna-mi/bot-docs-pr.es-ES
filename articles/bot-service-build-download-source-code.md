@@ -1,5 +1,5 @@
 ---
-title: Descarga y reimplementación del código fuente para Bot Service | Microsoft Docs
+title: Descarga y reimplementación del código fuente de un bot | Microsoft Docs
 description: Aprenda a descargar y publicar un bot de Bot Service.
 keywords: descargar código fuente, volver a implementar, implementar, archivo zip, publicar
 author: v-ducvo
@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/08/2018
-ms.openlocfilehash: 6d76388712ffeff94c56ba89b4bf4f4831caf45c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b77e096d28f51f605db9c49d36e796553f9293ef
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305821"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756672"
 ---
-# <a name="download-and-redeploy-bot-service-source-code"></a>Descarga y reimplementación del código fuente de Bot Service
+# <a name="download-and-redeploy-bot-source-code"></a>Descarga y reimplementación del código fuente de un bot
 
 Bot Service le permite descargar el proyecto de código fuente completo para el bot. Así, puede trabajar en el bot localmente con el IDE que prefiera. Cuando haya terminado de realizar los cambios, puede publicarlos en Azure. 
 

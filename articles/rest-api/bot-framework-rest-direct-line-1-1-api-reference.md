@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 2f688b9c80e762b93c2eba8f4671ff1760f624f9
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3569e3bfbb3be51cf9023b4686ed4693e90ed50c
+ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305957"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42795184"
 ---
 # <a name="api-reference---direct-line-api-11"></a>Referencia de API: Direct Line API 1.1
 
@@ -55,7 +55,8 @@ El <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_bla
 | 401 | El cliente no está autorizado a realizar solicitudes. A menudo, este código de estado se produce porque falta el encabezado `Authorization` o tiene un formato incorrecto. |
 | 403 | El cliente no tiene permitido llevar a cabo la operación solicitada. A menudo, este código de estado se produce porque el encabezado `Authorization` especifica un token o un secreto no válidos. |
 | 404 | No se encontró el recurso solicitado. Normalmente, este código de estado indica un URI de solicitud no válido. |
-| 500 | Se ha producido un error interno del servidor en el servicio Direct Line o se ha producido un error en el bot. Si recibe un error 500 al enviar una solicitud POST para enviar un mensaje a un bot, es posible que el error se desencadenara por un error en el bot. **Se trata de un código de error común.** |
+| 500 | Se ha producido un error interno del servidor en el servicio de Direct Line |
+| 502 | Se produjo un error en el bot; el bot no está disponible o devolvió un error.  **Se trata de un código de error común.** |
 
 ## <a name="token-operations"></a>Operaciones con tokens 
 Use estas operaciones para crear o actualizar un token que un cliente pueda utilizar para acceder a una conversación única.

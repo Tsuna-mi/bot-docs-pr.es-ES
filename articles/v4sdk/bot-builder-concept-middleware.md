@@ -9,16 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9986ac7d46acfa94694456d653b91dd66c1f55f0
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: d8201da0fb406f30888dfaa4ff6017f125990104
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39306488"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905379"
 ---
 # <a name="middleware"></a>Software intermedio
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 El software intermedio es simplemente una clase que se encuentra entre el adaptador y la lógica del bot, que se agrega a la colección de software intermedio del adaptador durante la inicialización. El SDK le permite escribir su propio software intermedio o agregar componentes reutilizables de software intermedio creado por otros usuarios. ¿Qué se puede hacer en el software intermedio? Prácticamente de todo. Todas las actividades que entran y salen de su bot fluyen a través del software intermedio.
 
@@ -36,7 +36,7 @@ Existen muchas situaciones que requieren que nuestro bot haga algo en todas las 
 
 ### <a name="modifying-or-enhancing-the-turn-context"></a>Modificar o mejorar el contexto de turno
 
-Algunas conversaciones pueden ser mucho más provechosas si el bot tiene más información de la que se proporciona en la actividad. En este caso, el software intermedio podría comprobar la información de estado de la conversación que se tiene hasta el momento, consultar un origen de datos externo y anexarlo al objeto de contexto antes de pasar la ejecución a la lógica del bot.
+Algunas conversaciones pueden ser mucho más provechosas si el bot tiene más información de la que se proporciona en la actividad. En este caso, el middleware podría comprobar la información de estado de la conversación que se tiene hasta el momento, consultar un origen de datos externo y anexarlo al objeto del [contexto de turno](bot-builder-concept-activity-processing.md#turn-context) antes de pasar la ejecución a la lógica del bot.
 Por ejemplo, el software intermedio podría identificar los detalles de la conversación, como el identificador de conversación y el estado, y consultar un servicio de directorio para obtener información. También podría agregar el objeto de usuario que se recibe de esa consulta externa al objeto de contexto y pasarlo, con lo que proporciona más datos sobre el usuario y permite que el bot controle mejor la solicitud.
 
 El software intermedio puede usarse para las dos finalidades anteriores, o bien para otra completamente diferente; todo depende de cómo quiera que se estructure el bot y de lo que el bot intente conseguir.

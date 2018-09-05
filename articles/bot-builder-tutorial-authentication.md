@@ -8,17 +8,13 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 7/2/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6d2e22bdfaa9fc4e3ce55bc1dd969921e90c87cc
-ms.sourcegitcommit: 97bb24f15041caccef4ca5736aa14f144881e0c6
+ms.openlocfilehash: ca9ccb0f0425bd0cabf1ce7ef236acb7a008aefe
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39567514"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905916"
 ---
-# <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Incorporación de autenticación al bot mediante Azure Bot Service
-
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
-
 En este tutorial se usan las nuevas funciones de autenticación de bot de Azure Bot Service, que proporciona características para facilitar el desarrollo de un bot que autentica a los usuarios en varios proveedores de identidades como Azure AD (Azure Active Directory), GitHub, Uber y así sucesivamente. Estas actualizaciones también adoptan pasos hacia una mejor experiencia del usuario mediante la eliminación de la _comprobación del código mágico_ para algunos clientes.
 
 Antes de esto, era necesario que el bot incluyera controladores de OAuth y vínculos de inicio de sesión, que almacenara los identificadores de cliente de destino y los secretos, y que realizara la administración de los tokens de usuario.
@@ -48,7 +44,7 @@ Puede extrapolar a partir de los pasos descritos en este artículo para agregar 
 > [!NOTE]
 > Las características de autenticación también funcionan con Node.js con BotBuilder v3. Pero en este artículo solo se describe código de C# de ejemplo.
 
-Para obtener más información y soporte técnico, vea [Bot Framework additional resources](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-links-help) (Recursos adicionales de Bot Framework).
+Para obtener más información y soporte técnico, vea [Bot Framework additional resources](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help) (Recursos adicionales de Bot Framework).
 
 ## <a name="overview"></a>Información general
 
@@ -90,7 +86,7 @@ Para obtener información sobre las diferencias entre los puntos de conexión v1
    1. Establezca **Tipo de aplicación** en **Aplicación web o API**.
    1. Establezca **URL de inicio de sesión** en `https://token.botframework.com/.auth/web/redirect`.
    1. Haga clic en **Create**(Crear).
-      - Una vez creada, se muestra en una hoja **Aplicación registrada**.
+      - Una vez creada, se muestra en un panel de **Aplicación registrada**.
       - Anote el **Id. de aplicación**. Más adelante lo proporcionará como el _Id. de cliente_.
 1. Haga clic en **Configuración** para configurar la aplicación.
 1. Haga clic en **Claves** para abrir el panel **Claves**.
@@ -178,7 +174,7 @@ Ahora puede usar este nombre de conexión en el código del bot para recuperar l
 
 #### <a name="to-register-an-azure-ad-v2-application"></a>Para registrar una aplicación v2 de Azure AD
 
-1. Vaya a la hoja Registro de canales de bot del bot en [Azure Portal](http://portal.azure.com/).
+1. Vaya a la página de registro de canales del bot en [Azure Portal](http://portal.azure.com/).
 1. Haga clic en **Configuración**.
 1. En **Configuración de conexión de OAuth**, cerca de la parte inferior de la página, haga clic en **Agregar configuración**.
 1. Rellene el formulario de la siguiente manera:
@@ -205,7 +201,7 @@ Ahora puede usar este nombre de conexión en el código del bot para recuperar l
 #### <a name="to-test-your-connection"></a>Para probar la conexión
 
 1. Abra la conexión que acaba de crear.
-1. Haga clic en **Probar conexión** en la parte superior de la hoja **Configuración de conexión del proveedor de servicios**.
+1. Haga clic en **Probar conexión** en la parte superior del panel **Configuración de conexión del proveedor de servicios**.
 1. La primera vez, se debería abrir una pestaña del explorador nueva con los permisos que solicita la aplicación y en la que se le pide que acepte.
 1. Haga clic en **Aceptar**.
 1. Después, esto debería redirigirle a una página **Prueba de conexión a "<nombreDeLaConexión>" correcta**.

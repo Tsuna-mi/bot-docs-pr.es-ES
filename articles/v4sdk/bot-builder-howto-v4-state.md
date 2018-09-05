@@ -1,5 +1,5 @@
 ---
-title: Guardar el estado mediante las propiedades de usuario y de conversación | Microsoft Docs
+title: Administración del estado de la conversación y del usuario | Microsoft Docs
 description: Obtenga información sobre cómo guardar y recuperar datos con el SDK V4 de Bot Builder para .NET.
 keywords: estado de la conversación, estado del usuario, software intermedio de estado, flujo de la conversación, almacenamiento de archivos, almacenamiento de tablas de azure
 author: ivorb
@@ -9,14 +9,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/03/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 16df371b1cabb4b3eb47d1f491a5d45e26627d38
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: a74c52af0ca56b62491ca3aa39d09885c2540c18
+ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352854"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42795214"
 ---
-# <a name="save-state-using-conversation-and-user-properties"></a>Guardar el estado mediante las propiedades de usuario y de conversación
+# <a name="manage-conversation-and-user-state"></a>Administración del estado de la conversación y del usuario
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -30,6 +30,16 @@ En el SDK, debe inicializar el adaptador de bot para usar el software intermedio
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 Para ver cómo se inicializa `ConversationState`, vea `Startup.cs` en el ejemplo Microsoft.Bot.Samples.EchoBot AspNetCore.
+
+Bibliotecas necesarias para este código:
+
+```csharp
+using Microsoft.Bot.Builder.BotFramework;
+using Microsoft.Bot.Builder.Core.Extensions;
+using Microsoft.Bot.Builder.Integration.AspNet.Core;
+```
+
+Inicializando `ConversationState`:
 
 ```csharp
 services.AddBot<EchoBot>(options =>
@@ -80,7 +90,7 @@ adapter.use(conversationState);
 ---
 
 > [!NOTE] 
-> El almacenamiento de datos en memoria solo está pensado para pruebas. Este almacenamiento es volátil y temporal. Los datos se borran cada vez que se reinicia el bot. Vea [Almacenamiento de archivos](#file-storage) y [Almacenamiento de tablas de Azure](#azure-table-storage) más adelante en este artículo para configurar otros medios de almacenamiento subyacentes para el estado de la conversación y el usuario. 
+> El almacenamiento de datos en memoria solo está pensado para pruebas. Este tipo de almacenamiento es volátil y temporal. Los datos se borran cada vez que se reinicia el bot. Vea [Almacenamiento de archivos](#file-storage) y [Almacenamiento de tablas de Azure](#azure-table-storage) más adelante en este artículo para configurar otros medios de almacenamiento subyacentes para el estado de la conversación y el usuario. 
 
 ### <a name="configuring-state-manager-middleware"></a>Configuración del software intermedio de administrador de estado
 
@@ -304,7 +314,7 @@ server.post('/api/messages', (req, res) => {
 
 ---
 
-Una alternativa consiste en usar el modelo de _cascada_ de un cuadro de diálogo. El cuadro de diálogo realiza el seguimiento del estado de la conversación de forma automática, por lo que no es necesario crear marcas para realizar el seguimiento del estado. Para obtener más información, vea [Manage conversation with Dialogs](bot-builder-dialog-manage-conversation-flow.md) (Administración de la conversación con cuadros de diálogo).
+Una alternativa consiste en usar el modelo de _cascada_ de un cuadro de diálogo. El cuadro de diálogo realiza el seguimiento del estado de la conversación de forma automática, por lo que no es necesario crear marcas para realizar el seguimiento del estado. Para más información, consulte [Administración de conversaciones simples con diálogos](bot-builder-dialog-manage-conversation-flow.md).
 
 ## <a name="file-storage"></a>File Storage
 
@@ -465,5 +475,5 @@ Ahora que sabe cómo usar el estado para leer y escribir datos de bot en el alma
 Para obtener más información sobre el almacenamiento, vea [Almacenamiento en el SDK de Bot Builder](bot-builder-storage-concept.md)
 
 <!-- Links -->
-[AzureStorageEmulator]: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator
-[AzureStorageExplorer]: https://azure.microsoft.com/en-us/features/storage-explorer/
+[AzureStorageEmulator]: https://docs.microsoft.com/azure/storage/common/storage-use-emulator
+[AzureStorageExplorer]: https://azure.microsoft.com/features/storage-explorer/

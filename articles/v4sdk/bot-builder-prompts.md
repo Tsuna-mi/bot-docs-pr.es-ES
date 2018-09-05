@@ -1,6 +1,6 @@
 ---
-title: Solicitud de entradas a los usuarios | Microsoft Docs
-description: Obtenga información sobre cómo solicitar entradas a los usuarios en el SDK de Bot Builder para Node.js.
+title: Petición de datos de entrada a los usuarios con la biblioteca Dialogs | Microsoft Docs
+description: Obtenga información sobre cómo solicitar datos de entrada a los usuarios en Bot Builder SDK para Node.js.
 keywords: mensajes, cuadros de diálogo, AttachmentPrompt, ChoicePrompt, ConfirmPrompt, DatetimePrompt, NumberPrompt, TextPrompt, volver a solicitar, validación
 author: v-ducvo
 ms.author: v-ducvo
@@ -9,22 +9,22 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/10/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b08c087bcce4a3dcee5de20311e2f7b890ea2f6b
-ms.sourcegitcommit: b45e16cac2febb7034da4ccd3af3bd7e6f430c31
+ms.openlocfilehash: 0b238ed510fd1d6fda82734af373f344b0dc28e3
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39469282"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905369"
 ---
-# <a name="prompt-users-for-input"></a>Solicitud de entradas a los usuarios
+# <a name="prompt-users-for-input-using-the-dialogs-library"></a>Petición de datos de entrada a los usuarios con la biblioteca Dialogs
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-A menudo los bots recopilan su información a través de preguntas que se realizan a los usuarios. Puede enviar un mensaje estándar al usuario mediante el método _send activity_ del objeto de contexto de turno para pedir una cadena de entrada; pero el SDK de Bot Builder ofrece una biblioteca de **cuadros de diálogo** que se puede usar para solicitar otros tipos de información. En este tema se detalla cómo usar **preguntas** para pedir entradas al usuario.
+A menudo los bots recopilan su información a través de preguntas que se realizan a los usuarios. Puede enviar un mensaje estándar al usuario mediante el método _send activity_ del objeto del [contexto de turno](bot-builder-concept-activity-processing.md#turn-context) para pedir una cadena de entrada; sin embargo, Bot Builder SDK ofrece la biblioteca **Dialogs** que se puede usar para solicitar otros tipos de información. En este tema se detalla cómo usar **preguntas** para pedir entradas al usuario.
 
-En este artículo se describe cómo usar las preguntas dentro de un cuadro de diálogo. Para obtener información sobre el uso de los cuadros de diálogo en general, vea [Uso de cuadros de diálogo para administrar el flujo de conversación](bot-builder-dialog-manage-conversation-flow.md).
+En este artículo se describe cómo usar las preguntas dentro de un cuadro de diálogo. Para obtener información sobre el uso de los diálogos en general, consulte [Uso de diálogos para administrar un flujo de conversación simple](bot-builder-dialog-manage-conversation-flow.md).
 
-## <a name="prompt-types"></a>Tipos de preguntas
+## <a name="prompt-types"></a>Tipos de avisos
 
 La biblioteca de cuadros de diálogo ofrece una serie de tipos de preguntas, cada una para solicitar un tipo de respuesta diferente.
 
@@ -33,13 +33,13 @@ La biblioteca de cuadros de diálogo ofrece una serie de tipos de preguntas, cad
 | **AttachmentPrompt** | Solicita al usuario un archivo adjunto como un documento o una imagen. |
 | **ChoicePrompt** | Solicita al usuario que elija entre un conjunto de opciones. |
 | **ConfirmPrompt** | Solicita al usuario que confirme su acción. |
-| **DatetimePrompt** | Solicita al usuario una fecha y una hora. Los usuarios puedan responder con lenguaje natural, como "Mañana a las 8 p.m." o "Viernes a las 10 a.m.". El SDK de Bot Framework usa la entidad precompilada `builtin.datetimeV2` de LUIS. Para obtener más información, vea [builtin.datetimev2](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-prebuilt-entities#builtindatetimev2). |
+| **DatetimePrompt** | Solicita al usuario una fecha y una hora. Los usuarios puedan responder con lenguaje natural, como "Mañana a las 8 p.m." o "Viernes a las 10 a.m.". El SDK de Bot Framework usa la entidad precompilada `builtin.datetimeV2` de LUIS. Para obtener más información, vea [builtin.datetimev2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-entities#builtindatetimev2). |
 | **NumberPrompt** | Solicita al usuario un número. El usuario puede responder con "10" o "diez". Si la respuesta es "diez", por ejemplo, la pregunta convertirá la respuesta en un número y devolverá `10` como resultado. |
 | **TextPrompt** | Solicita al usuario una cadena de texto. |
 
 ## <a name="add-references-to-prompt-library"></a>Agregar referencias a la biblioteca de preguntas
 
-Puede obtener la biblioteca **dialogs** si agrega el paquete **dialogs** al bot. Los cuadros de diálogo se describen en [Uso de cuadros de diálogo para administrar el flujo de conversación](bot-builder-dialog-manage-conversation-flow.md), pero se usarán para las preguntas.
+Puede obtener la biblioteca **dialogs** si agrega el paquete **dialogs** al bot. Trataremos los diálogos en [Uso de diálogos para administrar un flujo de conversación simple](bot-builder-dialog-manage-conversation-flow.md), pero vamos a usar diálogos en nuestros avisos.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -75,7 +75,7 @@ public class MyDialog : DialogSet
 Instale el paquete dialogs desde NPM:
 
 ```cmd
-npm install --save botbuilder-dialogs
+npm install --save botbuilder-dialogs@preview
 ```
 
 Para usar **dialogs** en el bot, inclúyalo en el código del bot.
@@ -93,7 +93,7 @@ const dialogs = new DialogSet();
 
 Para solicitar entradas al usuario, puede agregar una pregunta al cuadro de diálogo. Por ejemplo, puede definir una pregunta de tipo **TextPrompt** y asignarle un identificador de cuadro de diálogo de **textPrompt**:
 
-Después de agregar un cuadro de diálogo de pregunta, se puede usar en un cuadro de diálogo de cascada de dos pasos simple o usar varias preguntas juntas en una cascada de varios pasos. Un cuadro de diálogo de *cascada* es simplemente una manera de definir una secuencia de pasos. Para obtener más información, vea la sección [Uso de cuadros de diálogo](bot-builder-dialog-manage-conversation-flow.md#using-dialogs-to-guide-the-user-through-steps) de [Administración del flujo de conversación con cuadros de diálogo](bot-builder-dialog-manage-conversation-flow.md).
+Después de agregar un cuadro de diálogo de pregunta, se puede usar en un cuadro de diálogo de cascada de dos pasos simple o usar varias preguntas juntas en una cascada de varios pasos. Un cuadro de diálogo de *cascada* es simplemente una manera de definir una secuencia de pasos. Para más información, consulte la sección [Uso de diálogos](bot-builder-dialog-manage-conversation-flow.md#using-dialogs-to-guide-the-user-through-steps) en [Uso de diálogos para administrar un flujo de conversación simple](bot-builder-dialog-manage-conversation-flow.md).
 
 En el primer turno, el cuadro de diálogo solicita el nombre al usuario y, en el segundo, procesa la entrada del usuario como respuesta a la solicitud.
 
@@ -129,13 +129,13 @@ public class MyDialog : DialogSet
             async (dc, args, next) =>
             {
                 // Prompt for the user's name.
-                await dc.Prompt(Inputs.Text, "What is your name?").ConfigureAwait(false);
+                await dc.Prompt(Inputs.Text, "What is your name?");
             },
             async(dc, args, next) =>
             {
                 var user = (string)args["Text"];
-                await dc.Context.SendActivity($"Hi {user}!").ConfigureAwait(false);
-                await dc.End().ConfigureAwait(false);
+                await dc.Context.SendActivity($"Hi {user}!");
+                await dc.End();
             }
         });
     }
@@ -166,7 +166,7 @@ dialogs.add('greetings', [
 ---
 
 > [!NOTE]
-> Para iniciar un cuadro de diálogo, obtenga un contexto de cuadro de diálogo y use su método _begin_. Para obtener más información, vea [Uso de cuadros de diálogo para administrar el flujo de conversación](./bot-builder-dialog-manage-conversation-flow.md).
+> Para iniciar un cuadro de diálogo, obtenga un contexto de cuadro de diálogo y use su método _begin_. Para más información, consulte [Uso de diálogos para administrar un flujo de conversación simple](./bot-builder-dialog-manage-conversation-flow.md).
 
 ## <a name="reusable-prompts"></a>Preguntas reutilizables
 
@@ -197,21 +197,21 @@ public class MyDialog : DialogSet
             async (dc, args, next) =>
             {
                 // Prompt for the user's name.
-                await dc.Prompt(Inputs.Text, "What is your name?").ConfigureAwait(false);
+                await dc.Prompt(Inputs.Text, "What is your name?");
             },
             async(dc, args, next) =>
             {
                 var user = (string)args["Text"];
 
                 // Ask them where they work.
-                await dc.Prompt(Inputs.Text, $"Hi {user}! Where do you work?").ConfigureAwait(false);
+                await dc.Prompt(Inputs.Text, $"Hi {user}! Where do you work?");
             },
             async(dc, args, next) =>
             {
                 var workplace = (string)args["Text"];
 
-                await dc.Context.SendActivity($"{workplace} is a cool place!").ConfigureAwait(false);
-                await dc.End().ConfigureAwait(false);
+                await dc.Context.SendActivity($"{workplace} is a cool place!");
+                await dc.End();
             }
         });
     }
@@ -273,21 +273,21 @@ public MyDialog()
         async (dc, args, next) =>
         {
             // Prompt for the user's name.
-            await dc.Prompt(Inputs.Name, "What is your name?").ConfigureAwait(false);
+            await dc.Prompt(Inputs.Name, "What is your name?");
         },
         async(dc, args, next) =>
         {
             var user = (string)args["Text"];
 
             // Ask them where they work.
-            await dc.Prompt(Inputs.Work, $"Hi {user}! Where do you work?").ConfigureAwait(false);
+            await dc.Prompt(Inputs.Work, $"Hi {user}! Where do you work?");
         },
         async(dc, args, next) =>
         {
             var workplace = (string)args["Text"];
 
-            await dc.Context.SendActivity($"{workplace} is a cool place!").ConfigureAwait(false);
-            await dc.End().ConfigureAwait(false);
+            await dc.Context.SendActivity($"{workplace} is a cool place!");
+            await dc.End();
         }
     });
 }
@@ -334,7 +334,7 @@ En un paso de cuadro de diálogo, el código siguiente podría solicitar entrada
 await dc.Prompt("numberPrompt", "How many people are in your party?", new PromptOptions()
 {
     RetryPromptString = "Sorry, please specify the number of people in your party."
-}).ConfigureAwait(false);
+});
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -405,14 +405,14 @@ public class MyDialog : DialogSet
                     Choices = ChoiceFactory.ToChoices(Colors),
                     RetryPromptActivity =
                         MessageFactory.SuggestedActions(Colors, "Please choose a color.") as Activity
-                }).ConfigureAwait(false);
+                });
             },
             async(dc, args, next) =>
             {
                 var color = (FoundChoice)args["Value"];
 
-                await dc.Context.SendActivity($"You chose {color.Value}.").ConfigureAwait(false);
-                await dc.End().ConfigureAwait(false);
+                await dc.Context.SendActivity($"You chose {color.Value}.");
+                await dc.End();
             }
         });
     }
@@ -482,14 +482,14 @@ public class MyDialog : DialogSet
                 await dc.Prompt(Inputs.Size, "How many people are in your party?", new PromptOptions()
                 {
                     RetryPromptString = "Please specify party size between 6 and 20."
-                }).ConfigureAwait(false);
+                });
             },
             async(dc, args, next) =>
             {
                 var size = (int)args["Value"];
 
-                await dc.Context.SendActivity($"Okay, {size} people!").ConfigureAwait(false);
-                await dc.End().ConfigureAwait(false);
+                await dc.Context.SendActivity($"Okay, {size} people!");
+                await dc.End();
             }
         });
     }
@@ -569,7 +569,7 @@ private static async Task TimeValidator(ITurnContext context, DateTimeResult res
 {
     if (result.Resolution.Count == 0)
     {
-        await context.SendActivity("Sorry, I did not recognize the time that you entered.").ConfigureAwait(false);
+        await context.SendActivity("Sorry, I did not recognize the time that you entered.");
         result.Status = PromptStatus.NotRecognized;
     }
 
@@ -588,7 +588,7 @@ private static async Task TimeValidator(ITurnContext context, DateTimeResult res
     else
     {
         // Otherwise, flag the input as out of range.
-        await context.SendActivity("Please enter a time in the future, such as \"tomorrow at 9am\"").ConfigureAwait(false);
+        await context.SendActivity("Please enter a time in the future, such as \"tomorrow at 9am\"");
         result.Status = PromptStatus.OutOfRange;
     }
 }
@@ -635,5 +635,4 @@ Al solicitar entradas al usuario, tiene varias opciones sobre cómo controlarlas
 
 Ahora que sabe cómo solicitar entradas al usuario, vamos a mejorar la experiencia de usuario y el código de bot mediante la administración de varios flujos de conversación a través de cuadros de diálogo.
 
-> [!div class="nextstepaction"]
-> [Administración del flujo de conversación con cuadros de diálogo](bot-builder-dialog-manage-conversation-flow.md)
+

@@ -7,14 +7,14 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 04/03/2018
+ms.date: 08/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 30a0c463698d9ab7e3b2b0f9ddb0e872f007d1d8
-ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
+ms.openlocfilehash: 5883b31df95da26fa0432f4cfe195f12fc3089ad
+ms.sourcegitcommit: 86ddf3ebe6cc3385d1c4d30b971ac9c3e1fc5a77
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39515045"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43055999"
 ---
 # <a name="add-media-to-messages"></a>Incorporación de elementos multimedia a los mensajes
 
@@ -160,7 +160,7 @@ Para que el funcionamiento sea correcto, asigne un tipo de acción a cada elemen
 | Escriba | Valor |
 | :---- | :---- |
 | openUrl | Dirección URL que se abrirá en el explorador integrado. Responde a Pulsar o Hacer clic mediante la apertura de la dirección URL. |
-| imBack | Texto del mensaje para enviar al bot (desde el usuario que hizo clic en el botón o que pulsó la tarjeta). Este mensaje (del usuario al bot) será visible para todos los participantes de la conversación a través de la aplicación cliente que hospeda la conversación. |
+| imBack | Texto del mensaje para enviar al bot (desde el usuario que hizo clic en el botón o que pulsó la tarjeta). Este mensaje (del usuario al bot) será visible para todos los participantes de la conversación mediante la aplicación cliente que hospeda la conversación. |
 | postBack | Texto del mensaje para enviar al bot (desde el usuario que hizo clic en el botón o que pulsó la tarjeta). Algunas aplicaciones cliente pueden mostrar este texto en la fuente del mensaje, donde estará visible para todos los participantes de la conversación. |
 | llamada | Destino de una llamada telefónica con este formato: `tel:123123123123` Responde a Pulsar o Hacer clic mediante el inicio de una llamada.|
 | playAudio | Dirección URL del audio que se va a reproducir. Responde a Pulsar o Hacer clic mediante la reproducción del audio. |
@@ -233,8 +233,13 @@ await context.sendActivity(hero);
 ---
 
 ## <a name="send-an-adaptive-card"></a>Envío de una tarjeta adaptable
+Las tarjetas adaptables y MessageFactory se utilizan para enviar mensajes enriquecidos, incluidos textos, imágenes, vídeo, audio y archivos para comunicarse con los usuarios. Sin embargo, hay algunas diferencias entre ellos. 
 
-También puede enviar una tarjeta adaptable como datos adjuntos. No todos los canales admiten actualmente las tarjetas adaptables. Para encontrar la información más reciente sobre la compatibilidad de canales de tarjetas adaptables, consulte <a href="http://adaptivecards.io/visualizer/">Visualizador de tarjetas adaptables</a>.
+En primer lugar, solo algunos canales admiten tarjetas adaptables y aquellos canales que las admiten, podrían hacerlo de un modo parcial. Por ejemplo, si envía una tarjeta adaptable en Facebook, los botones no funcionarán, pero los textos y las imágenes funcionan bien. MessageFactory es simplemente una clase auxiliar en Bot Builder SDK para automatizar los pasos de creación y es compatible con la mayoría de los canales. 
+
+En segundo lugar, una tarjeta adaptable entrega los mensajes en formato de tarjeta y el canal determina el diseño de la tarjeta. El formato de los mensajes que entrega MessageFactory depende del canal y no es necesariamente en formato de tarjeta, a menos que la tarjeta adaptable sea parte de los datos adjuntos. 
+
+Para encontrar la información más reciente sobre la compatibilidad de canales de tarjetas adaptables, consulte <a href="http://adaptivecards.io/visualizer/">Visualizador de tarjetas adaptables</a>.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 Para usar las tarjetas adaptables, no olvide agregar el paquete `Microsoft.AdaptiveCards` de NuGet.

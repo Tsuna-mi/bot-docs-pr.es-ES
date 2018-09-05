@@ -8,14 +8,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 45f138d53ebf12325e17659148f2a95ebabfe1dd
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 7f94ea05fcccfe7bdeb1dec187d735cef28b1d7c
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304916"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905399"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Incorporación de datos adjuntos de tarjetas enriquecidas a mensajes
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-rich-card-attachments.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-rich-cards.md)
@@ -28,13 +32,13 @@ Bot Framework admite actualmente ocho tipos de tarjetas enriquecidas:
 
 | Tipo de tarjeta | DESCRIPCIÓN |
 |------|------|
-| <a href="/adaptive-cards/get-started/bots">Tarjeta adaptable</a> | Tarjeta personalizable que puede contener cualquier combinación de texto, voz, imágenes, botones y campos de entrada.  Consulte la [compatibilidad por canal](/adaptive-cards/get-started/bots#channel-status). |
-| [Tarjeta de animación][animationCard] | Tarjeta que puede reproducir GIF animados o vídeos cortos. |
-| [Tarjeta de audio][audioCard] | Tarjeta que puede reproducir un archivo de audio. |
-| [Tarjeta de imagen prominente][heroCard] | Tarjeta que normalmente contiene una sola imagen grande, uno o varios botones y texto. |
-| [Tarjeta de miniatura][thumbnailCard] | Tarjeta que normalmente contiene una sola imagen en miniatura, uno o varios botones y texto.|
-| [Tarjeta de recepción][receiptCard] | Tarjeta que habilita un bot para que proporcione una recepción al usuario. Normalmente, contiene la lista de elementos que se incluyen en la recepción, la información de impuestos y del total y otro texto. |
-| [Tarjeta de inicio de sesión][signinCard] | Tarjeta que permite que un bot solicite a un usuario que inicie sesión. Normalmente, contiene texto y uno o varios botones en los cuales el usuario puede hacer clic para iniciar el proceso de inicio de sesión. |
+| <a href="/adaptive-cards/get-started/bots">Tarjeta adaptable</a> | Una tarjeta personalizable que puede contener cualquier combinación de texto, voz, imágenes, botones y campos de entrada.  Consulte la [compatibilidad por canal](/adaptive-cards/get-started/bots#channel-status). |
+| [Tarjeta de animación][animationCard] | Una tarjeta que puede reproducir archivos GIF animados o vídeos cortos. |
+| [Tarjeta de audio][audioCard] | Una tarjeta que se puede reproducir un archivo de audio. |
+| [Tarjeta de imagen prominente][heroCard] | Una tarjeta que normalmente contiene una sola imagen grande, uno o varios botones y texto. |
+| [Tarjeta de miniatura][thumbnailCard] | Una tarjeta que normalmente contiene una sola imagen miniatura, uno o varios botones y texto.|
+| [Tarjeta de recepción][receiptCard] | Una tarjeta que permite que un bot proporcione una recepción al usuario. Normalmente, contiene la lista de elementos que se incluyen en la recepción, la información de impuestos y del total y otro texto. |
+| [Tarjeta de inicio de sesión][signinCard] | Tarjeta que permite que un bot solicite a un usuario que inicie sesión. Normalmente contiene texto y uno o más botones en los cuales el usuario puede hacer clic para iniciar el proceso de inicio de sesión. |
 | [Tarjeta de videollamada][videoCard] | Tarjeta que puede reproducir vídeos. |
 
 ## <a name="send-a-carousel-of-hero-cards"></a>Enviar un carrusel de tarjetas de imagen prominente

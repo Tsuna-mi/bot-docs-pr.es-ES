@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 1eb334f719279c987b30e604eacfb3878970ba02
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: d76daffcfc4661a87d1efaf85e6bb08e3e999988
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306224"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756761"
 ---
 # <a name="api-reference"></a>Referencia de API
 
@@ -22,7 +22,7 @@ ms.locfileid: "39306224"
 En Bot Framework, el servicio Bot Connector permite al bot intercambiar mensajes con usuarios en canales configurados en el portal de Bot Framework, y el servicio Bot State permite al bot almacenar y recuperar datos de estado relacionados con las conversaciones que el bot mantiene mediante el servicio Bot Connector. Ambos servicios usan los estándares del sector REST y JSON a través de HTTPS.
 
 > [!IMPORTANT]
-> No se recomienda la API del servicio de estado de Bot Framework para entornos de producción y es posible que se encuentre en desuso en una versión futura. Se recomienda actualizar el código de bot para utilizar el almacenamiento en memoria para realizar pruebas o usar una de las **extensiones de Azure** para bots de producción. Para obtener más información, consulte el tema **Administración de datos de estado** para la implementación de [.NET](~/dotnet/bot-builder-dotnet-state.md) o [Node](~/nodejs/bot-builder-nodejs-state.md).
+> No se recomienda la API del servicio de estado de Bot Framework para entornos de producción y es posible que se encuentre en desuso en una versión futura. Se recomienda actualizar el código del bot para que use el almacenamiento en memoria para realizar pruebas o usar una de las **extensiones de Azure** para bots de producción. Para más información, consulte el tema **Administración de datos de estado** para la implementación de [.NET](~/dotnet/bot-builder-dotnet-state.md) o [Node](~/nodejs/bot-builder-nodejs-state.md).
 
 ## <a name="base-uri"></a>URI base
 
@@ -416,11 +416,11 @@ Define un mensaje que se intercambia entre el bot y el usuario.<br/><br/>
 | **speak** | string | Texto que pronuncia el bot en un canal habilitado para voz. Para controlar diversas características de voz del bot como voz, velocidad, volumen, pronunciación y tono, especifique esta propiedad con el formato de <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">lenguaje de marcado de síntesis de voz (SSML)</a>. |
 | **suggestedActions** | [SuggestedActions](#suggestedactions-object) | Un objeto **SuggestedActions** que define las opciones entre las que el usuario puede elegir. |
 | **summary** | string | Resumen de la información que contiene el mensaje. Por ejemplo, en un mensaje que se envía en un canal de correo electrónico, esta propiedad puede especificar los 50 primeros caracteres del mensaje de correo electrónico. |
-| **text** | string | Texto del mensaje que se envía desde el usuario al bot o del bot al usuario. Consulte la documentación del canal para conocer los límites impuestos en el contenido de esta propiedad. |
+| **text** | string | Texto del mensaje que se envía del usuario al bot o del bot al usuario. Consulte la documentación del canal para conocer los límites impuestos en el contenido de esta propiedad. |
 | **textFormat** | string | Formato del **texto** del mensaje. Uno de estos valores: **markdown**, **plain**, **xml**. Para más información sobre el formato del texto, vea [Creación de mensajes](bot-framework-rest-connector-create-messages.md). |
 | **timestamp** | string | Fecha y hora en que se envió el mensaje en la zona horaria UTC, expresada en el formato <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a>. |
 | **topicName** | string | Tema de la conversación a la que pertenece la actividad. |
-| **type** | string | Tipo de actividad. Uno de estos valores: **contactRelationUpdate**, **conversationUpdate**, **deleteUserData**, **message**, **ping**, **typing**, **endOfConversation**. Para obtener detalles sobre los tipos de actividad, vea [Introducción a las actividades](bot-framework-rest-connector-activities.md). |
+| **type** | string | Tipo de actividad. Uno de estos valores: **contactRelationUpdate**, **conversationUpdate**, **deleteUserData**, **message**, **typing**, **endOfConversation**. Para obtener detalles sobre los tipos de actividad, vea [Introducción a las actividades](bot-framework-rest-connector-activities.md). |
 | **value** | objeto | Valor de final abierto. |
 
 <a href="#objects">Volver a la tabla de esquema</a>

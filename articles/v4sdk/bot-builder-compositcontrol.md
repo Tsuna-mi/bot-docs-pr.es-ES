@@ -1,5 +1,5 @@
 ---
-title: Creación de lógica de bot modular mediante contenedor de diálogos | Microsoft Docs
+title: Creación de un conjunto de diálogos integrado | Microsoft Docs
 description: Aprenda a modularizar su lógica de bot mediante el contenedor de diálogos de Bot Builder SDK para Node.js y C#.
 keywords: control compuesto, lógica de bot modular
 author: v-ducvo
@@ -9,14 +9,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/27/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2441a32167618ebb08e6a43d68d74076c3351d8f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 93037d70a33d66269f3a79ce7e2a55900d25a6a9
+ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306121"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42795204"
 ---
-# <a name="create-modular-bot-logic-with-a-dialog-container"></a>Creación de lógica de bot modular con un contenedor de diálogos
+# <a name="create-an-integrated-set-of-dialogs"></a>Creación de un conjunto de diálogos integrado
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -74,7 +74,7 @@ public class UserInfo
 ```
 
 En un turno de bot, el método `CreateContext` del conjunto de diálogos establece el estado del diálogo.
-El método toma el contexto de turno y un objeto de estado como parámetros.
+El método toma el [contexto de turno](bot-builder-concept-activity-processing.md#turn-context) y un objeto de estado como parámetros.
 
 En el caso de los diálogos, este objeto de estado debe implementar la interfaz `IDictionary<string, object>`. Puesto que este bot solo usa el estado de conversación para alojar el estado del diálogo, nuestra clase de estado de conversación puede ser un simple diccionario.
 
@@ -104,7 +104,7 @@ En primer lugar, vamos a empezar con un sencillo diálogo de registro que pedir�
 1. Pregunte por la habitación en la que le gustaría permanecer.
 1. Envíe un mensaje de confirmación y complete el diálogo.
 
-Para más información acerca de diálogos y cascadas, consulte [Uso de diálogos para administrar el flujo de conversación](bot-builder-dialog-manage-conversation-flow.md).
+Para más información sobre diálogos y cascadas, consulte [Uso de diálogos para administrar un flujo de conversación simple](bot-builder-dialog-manage-conversation-flow.md).
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

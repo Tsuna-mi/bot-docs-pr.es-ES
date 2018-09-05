@@ -1,5 +1,5 @@
 ---
-title: Escritura de software intermedio propio | Microsoft Docs
+title: Creación de middleware propio | Microsoft Docs
 description: Aprenda a escribir su propio software intermedio.
 keywords: software intermedio, software intermedio personalizado, cortocircuito, reserva, controladores de eventos
 author: ivorb
@@ -9,20 +9,22 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6bc73b2886374fbb50d8257c387df54f21a12ed7
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b774f2de5856e6001d1b75c47b92aff6399d8fe3
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305760"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904355"
 ---
-# <a name="write-your-own-middleware"></a>Escritura de software intermedio propio
+# <a name="create-your-own-middleware"></a>Creación de middleware propio
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 El software intermedio le permite escribir complementos enriquecidos para los bots, que otros también pueden utilizar. Aquí se muestra cómo agregar e implementar software intermedio básico y, además, se explica cómo funciona. El SDK v4 le proporciona algún software intermedio, para tareas como la administración de estados, LUIS, QnAMaker y traducción. Eche un vistazo a Bot Builder SDK para [.NET](https://github.com/Microsoft/botbuilder-dotnet) o [JavaScript](https://github.com/Microsoft/botbuilder-js) para obtener más información.
 
 ## <a name="adding-middleware"></a>Adición de software intermedio
 
-En el ejemplo siguiente, basado en nuestro ejemplo básico de HelloBot, se agregan dos fragmentos distintos del software intermedio a nuestros servicios con una instancia nueva de cada una de estas clases.
+En el ejemplo siguiente, basado en el ejemplo de bot básico creado en la experiencia [Creación de un bot con Bot Service](~/bot-service-quickstart.md), se agregan dos fragmentos distintos de middleware a nuestros servicios con una instancia nueva de cada una de estas clases.
 
 > [!IMPORTANT]
 > Recuerde que el orden en que se agregan a las opciones determina el orden en que se ejecutan. Debe tener en cuenta cómo funcionará si usa más de un fragmento del software intermedio.

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/01/2018
-ms.openlocfilehash: 984c0d59c0c80bb53c8cef42db79d444d85941f3
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: 8f4b6c27fc28e4cf3b800dad11c3e6bd58561387
+ms.sourcegitcommit: 0b2be801e55f6baa048b49c7211944480e83ba95
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352944"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43115070"
 ---
 # <a name="entities-and-activity-types"></a>Entidades y tipos de actividad
 
@@ -226,7 +226,7 @@ Este tipo de actividad está reservado para uso interno de Microsoft Bot Framewo
 
 ## <a name="messagereaction"></a>messageReaction
 
-Algunos canales enviarán actividades de reacción de mensaje al bot cuando un usuario reacciona a una actividad existente. Por ejemplo, un usuario hace clic en el botón "Me gusta" de un mensaje. La propiedad reply toId indicará a qué actividad ha reaccionado al usuario.
+Algunos canales enviarán actividades de reacción de mensaje al bot cuando un usuario reacciona a una actividad existente. Por ejemplo, un usuario hace clic en el botón "Me gusta" de un mensaje. La propiedad ReplyToId indicará a qué actividad ha reaccionado al usuario.
 
 La actividad de reacción de mensaje puede corresponder a cualquier número de tipos de reacción de mensaje definidos por el canal. Por ejemplo, "Like" o "PlusOne" son tipos de reacción que un canal puede enviar.
 

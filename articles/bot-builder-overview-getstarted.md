@@ -8,16 +8,16 @@ ms.topic: get-started-article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 21186c5d3b0769311e4703ca1dab2f48a0a0081a
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 3ee7843e64dfa95427ebcb132740eab3db281ffc
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574891"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904018"
 ---
 # <a name="develop-bots-with-bot-builder"></a>Desarrollo de bots con Bot Builder
 
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 
 Bot Builder proporciona un SDK, bibliotecas, ejemplos y herramientas que ayudan a compilar y depurar los bots. Cuando se compila un bot con Bot Service, el bot está respaldado por el SDK de Bot Builder. También puede usar el SDK de Bot Builder para crear un bot desde cero mediante C# o Node.js. Bot Builder incluye Bot Framework Emulator para probar los bots, y el inspector de canales para previsualizar la experiencia del usuario del bot en distintos canales.
 
@@ -55,7 +55,7 @@ El SDK de Bot Builder para Node.js proporciona una manera conocida de escribir b
 
 El [inicio rápido de Node.js](~/nodejs/bot-builder-nodejs-quickstart.md) le guiará a través de la creación de un bot con el SDK de Bot Builder para Node.js. 
 
-El SDK de Bot Builder para Node.js está disponible como un paquete npm. Para instalar el SDK de Bot Builder para Node.js y sus dependencias, primero cree una carpeta para el bot, acceda a ella y ejecute el comando **npm** siguiente:
+El SDK de Bot Builder para Node.js está disponible como un paquete npm. Para instalar Bot Builder SDK para Node.js y sus dependencias, primero cree una carpeta para el bot, vaya a ella y ejecute el comando **npm** siguiente:
 
 ```nodejs
 npm init

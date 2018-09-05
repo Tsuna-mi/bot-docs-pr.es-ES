@@ -7,21 +7,19 @@ ms.author: RobStand
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: 0a9ad7d51234b417d5d0f27dbcffe4ce839ba94a
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 08/16/2018
+ms.openlocfilehash: 7fbff06966ac64260244e8af375aaa6f8f945fcd
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304858"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756599"
 ---
 # <a name="connect-a-bot-to-facebook-messenger"></a>Conexión de un bot a Facebook Messenger
 
 Para obtener más información acerca del desarrollo de Facebook Messenger, consulte la [documentación de la plataforma de Messenger](https://developers.facebook.com/docs/messenger-platform). Puede que quiera revisar la [lista de verificación previa al lanzamiento](https://developers.facebook.com/docs/messenger-platform/product-overview/launch#app_public), el [tutorial de inicio rápido](https://developers.facebook.com/docs/messenger-platform/guides/quick-start) y la [guía de configuración](https://developers.facebook.com/docs/messenger-platform/guides/setup) de Facebook.
 
 Para configurar un bot para que se comunique con Facebook Messenger, habilite Facebook Messenger en una página de Facebook y, a continuación, conecte el bot a la aplicación.
-
-[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 > [!NOTE]
 > La UI de Facebook puede aparecer de forma ligeramente diferente dependiendo de la versión que use.
@@ -72,7 +70,7 @@ Haga clic en **Configurar webhooks** para reenviar eventos de mensajería de Fac
 
 ## <a name="provide-webhook-callback-url-and-verify-token"></a>Aprovisionamiento de la dirección URL de devolución de llamada de webhook y comprobación del token
 
-Vuelva al [portal de Bot Framework](https://dev.botframework.com/). Haga clic en el bot, abra la pestaña **Canales** y, a continuación, haga clic en **Facebook Messenger**.
+En [Azure Portal](https://portal.azure.com/), abra el bot, haga clic en la pestaña **Canales** y, a continuación, haga clic en **Facebook Messenger**.
 
 * Copie los valores **Dirección URL de devolución de llamada** y **Comprobar token** desde el portal.
 
@@ -93,9 +91,9 @@ Vuelva al [portal de Bot Framework](https://dev.botframework.com/). Haga clic en
 
 ## <a name="provide-facebook-credentials"></a>Aprovisionamiento de credenciales de Facebook
 
-En el portal de Bot Framework, pegue los valores **Id. de página**, **Id. de aplicación**, **Secreto de la aplicación** y **Token de acceso a la página** copiados de Facebook Messenger anteriormente.
+En Azure Portal, pegue los valores de **Identificador de aplicación de Facebook**, **Secreto de aplicación de Facebook**, **Identificador de página** y **Token de acceso a la página** copiados de Facebook Messenger anteriormente. Puede usar el mismo bot en varias páginas de Facebook mediante la adición de identificadores de página y tokens de acceso adicionales.
 
-![Escritura de las credenciales](~/media/channels/fb-credentials2.png)
+![Escribir credenciales](~/media/channels/fb-credentials2.png)
 
 ## <a name="submit-for-review"></a>Envío para revisión
 
@@ -110,3 +108,6 @@ Al finalizar el bot, Facebook tiene su propio [proceso de revisión](https://dev
 
 Una vez que la revisión se considere correcta, en el panel de aplicaciones en Revisión de la aplicación, establezca la aplicación en Pública.
 Asegúrese de que la página de Facebook asociada a este bot esté publicada. El estado aparece en la configuración de las páginas.
+
+> [!NOTE]
+> También puede usar Facebook Workplace. Para habilitarlo, cree una [integración personalizada](https://developers.facebook.com/docs/workplace/custom-integrations-new) para el área de trabajo y use su identificador de aplicación, secreto de aplicación y token de acceso. En lugar de un valor de pageID tradicional, use los números que siguen al nombre de la integración en la página Acerca de. Los webhooks se pueden conectar con las credenciales que se muestran en Azure.

@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e276b7f3f4cc46e0978b3ee182b8251e39b86ead
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: fd81b9dfe5d3e16096ffd6ab25c1ee23ff77f79f
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305456"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904933"
 ---
 # <a name="key-concepts-in-the-bot-builder-sdk-for-nodejs"></a>Conceptos clave del SDK de Bot Builder para Node.js
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-concepts.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-concepts.md)
@@ -43,7 +46,8 @@ Para ver un ejemplo que muestra cómo enviar una tarjeta gráfica enriquecida co
 Los diálogos ayudan a organizar la lógica de la conversación en el bot y son fundamentales para [diseñar el flujo de la conversación](../bot-service-design-conversation-flow.md). Para ver una introducción a los diálogos, consulte [Manage a conversation with dialogs](bot-builder-nodejs-dialog-manage-conversation.md) (Administración de una conversación con diálogos).
 
 ## <a name="actions"></a>Acciones
-Querrá diseñar el bot de manera que pueda controlar interrupciones como solicitudes de cancelación o ayuda en cualquier momento durante el flujo de la conversación. El SDK de Bot Builder para Node.js proporciona controladores de mensajes globales que desencadenan acciones como la cancelación o la invocación de otros diálogos. Consulte <!--[Handling cancel](bot-builder-nodejs-manage-conversation-flow.md#handling-cancel), [Confirming interruptions](bot-builder-nodejs-manage-conversation-flow.md#confirming-interruptions) and-->[Handle user actions](bot-builder-nodejs-dialog-actions.md) (Control de acciones del usuario) para ver ejemplos de cómo usar los controladores [triggerAction][triggerAction].
+Querrá diseñar el bot de manera que pueda controlar interrupciones como solicitudes de cancelación o ayuda en cualquier momento durante el flujo de la conversación. El SDK de Bot Builder para Node.js proporciona controladores de mensajes globales que desencadenan acciones como la cancelación o la invocación de otros diálogos. Consulte [Control de acciones del usuario](bot-builder-nodejs-dialog-actions.md) para ver ejemplos de cómo usar los controladores [triggerAction][triggerAction].
+<!--[Handling cancel](bot-builder-nodejs-manage-conversation-flow.md#handling-cancel), [Confirming interruptions](bot-builder-nodejs-manage-conversation-flow.md#confirming-interruptions) and-->
 
 
 ## <a name="recognizers"></a>Reconocedores

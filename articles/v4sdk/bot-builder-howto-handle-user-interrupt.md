@@ -1,5 +1,5 @@
 ---
-title: Control de la interrupción del usuario | Microsoft Docs
+title: Control de las interrupciones del usuario | Microsoft Docs
 description: Obtenga información sobre cómo controlar el flujo de conversación directa y la interrupción del usuario.
 keywords: interrumpir, interrupciones, cambio de tema, interrupción
 author: v-ducvo
@@ -10,14 +10,14 @@ ms.prod: bot-framework
 ms.date: 04/17/2018
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 651a7410893f7a66f5941121edc7b34055807ba7
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: fff4f8e2a4d2d86cf440bee7ab40216e93a8c8c5
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304869"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756415"
 ---
-# <a name="handle-user-interrupt"></a>Control de la interrupción del usuario
+# <a name="handle-user-interruptions"></a>Control de las interrupciones del usuario
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -29,17 +29,19 @@ No hay ninguna respuesta correcta a estas preguntas, ya que cada situación es �
 
 Un flujo de conversación de procedimientos cuenta con un conjunto básico de pasos que quiere que el usuario siga y cualquier acción del usuario que no corresponda con esos pasos son posibles interrupciones. En un flujo normal, existen interrupciones que puede anticipar.
 
-**Reserva de una mesa**: en un bot para reservar una mesa, los pasos principales pueden ser pedir al usuario una fecha y hora, el número de personas y el nombre de reserva. En ese proceso, se pueden anticipar algunas interrupciones esperadas, como por ejemplo: 
- * `cancel`: para salir del proceso.
- * `help`: para proporcionar más instrucciones acerca de este proceso.
- * `more info`: para dar consejos y sugerencias o proporcionar maneras alternativas para reservar una mesa (p. ej.: un número de teléfono o una dirección de correo electrónico de contacto).
- * `show list of available tables`: si es una opción; muestra una lista de mesas disponibles para la fecha y hora indicada por el usuario.
+**Reserva de una mesa**: en un bot para reservar una mesa, los pasos principales pueden ser pedir al usuario una fecha y hora, el número de personas y el nombre de reserva. En ese proceso, se pueden anticipar algunas interrupciones esperadas, como por ejemplo:
 
-**Pedir una cena**: en un bot para pedir una cena, los pasos principales serían proporcionar una lista de los elementos del menú y permitir que el usuario agregue elementos al carro de la compra. En este proceso, se pueden anticipar algunas interrupciones esperadas, como por ejemplo: 
- * `cancel`: para salir del proceso de pedido.
- * `more info`: para proporcionar detalles nutricionales sobre cada elemento del menú.
- * `help`: para proporcionar ayuda sobre cómo usar el sistema.
- * `process order`: para procesar el pedido.
+* `cancel`: para salir del proceso.
+* `help`: para proporcionar más instrucciones acerca de este proceso.
+* `more info`: para dar consejos y sugerencias o proporcionar maneras alternativas para reservar una mesa (p. ej.: un número de teléfono o una dirección de correo electrónico de contacto).
+* `show list of available tables`: si es una opción; muestra una lista de mesas disponibles para la fecha y hora indicada por el usuario.
+
+**Pedir una cena**: en un bot para pedir una cena, los pasos principales serían proporcionar una lista de los elementos del menú y permitir que el usuario agregue elementos al carro de la compra. En este proceso, se pueden anticipar algunas interrupciones esperadas, como por ejemplo:
+
+* `cancel`: para salir del proceso de pedido.
+* `more info`: para proporcionar detalles nutricionales sobre cada elemento del menú.
+* `help`: para proporcionar ayuda sobre cómo usar el sistema.
+* `process order`: para procesar el pedido.
 
 Puede proporcionarlas al usuario como una lista de **acciones sugeridas** o como una sugerencia de modo que el usuario al menos tenga en cuenta qué comandos puede enviar que el bot pueda entender.
 
@@ -71,7 +73,7 @@ public class dinnerMenu
 
 ```javascript
 var dinnerMenu = {
-    choices: ["Potato Salad - $5.99", "Tuna Sandwich - $6.89", "Clam Chowder - $4.50", 
+    choices: ["Potato Salad - $5.99", "Tuna Sandwich - $6.89", "Clam Chowder - $4.50",
             "more info", "Process order", "Cancel"],
     "Potato Salad - $5.99": {
         Description: "Potato Salad",
@@ -140,13 +142,13 @@ dialogs.Add("orderPrompt", new WaterfallStep[]
 
         if(response == "process order")
         {
-            try 
+            try
             {
                 var order = convo["order"];
 
                 await dc.Context.SendActivity("Order is on it's way!");
-                
-                // In production, you may want to store something more helpful, 
+
+                // In production, you may want to store something more helpful,
                 // such as send order off to be made
                 (order as Orders).processOrder = true;
 
@@ -191,13 +193,13 @@ dialogs.Add("orderPrompt", new WaterfallStep[]
         }
         else
         {
-            // Unlikely to get past the prompt verification, but this will catch 
+            // Unlikely to get past the prompt verification, but this will catch
             // anything that isn't a valid menu choice
             if(!dinnerMenu.dinnerChoices.ContainsKey(response))
             {
                 await dc.Context.SendActivity("Sorry, that is not a valid item. " +
                     "Please pick one from the menu.");
-    
+
                 // Ask again
                 await dc.Replace("orderPrompt");
             }
@@ -267,14 +269,14 @@ dialogs.add('orderPrompt', [
                 + "Tuna Sandwich: contains 700 calaries per serving. <br/>" 
                 + "Clam Chowder: contains 650 calaries per serving."
             await dc.context.sendActivity(msg);
-            
+
             // Ask again
             await dc.replace('orderPrompt');
         }
         else if(choice.value.match(/help/ig)){
             var msg = `Help: <br/>To make an order, add as many items to your cart as you like then choose the "Process order" option to check out.`
             await dc.context.sendActivity(msg);
-            
+
             // Ask again
             await dc.replace('orderPrompt');
         }
@@ -284,7 +286,7 @@ dialogs.add('orderPrompt', [
             // Only proceed if user chooses an item from the menu
             if(!choice){
                 await dc.context.sendActivity("Sorry, that is not a valid item. Please pick one from the menu.");
-                
+
                 // Ask again
                 await dc.replace('orderPrompt');
             }
@@ -311,17 +313,20 @@ Hay interrupciones que se encuentran fuera del ámbito de lo que su bot está di
 Aunque no se pueden prever todas las interrupciones, hay patrones de interrupción que puede programar para que su bot controle.
 
 ### <a name="switching-topic-of-conversations"></a>Cambiar el tema de las conversaciones
+
 ¿Qué ocurre si el usuario está en medio de una conversación y quiere cambiar a otra conversación? Por ejemplo, el bot puede reservar una mesa y pedir una cena.
-Mientras el usuario está en el flujo para _reservar una mesa_, en lugar de responder la pregunta "¿Cuántas personas están en la lista?", el usuario envía el mensaje "pedir cena". En este caso, el usuario cambió de opinión y quiere tener una conversación para pedir una cena. ¿Cómo se puede controlar esta interrupción? 
+Mientras el usuario está en el flujo para _reservar una mesa_, en lugar de responder la pregunta "¿Cuántas personas están en la lista?", el usuario envía el mensaje "pedir cena". En este caso, el usuario cambió de opinión y quiere tener una conversación para pedir una cena. ¿Cómo se puede controlar esta interrupción?
 
 Puede cambiar los temas en el flujo para pedir una cena o hacer que sea un problema temporal informando al usuario que se espera un número y solicitárselo de nuevo. Si permite cambiar los temas, a continuación, debe decidir si se guardará el progreso para que el usuario pueda continuar desde donde lo dejó o podría eliminar toda la información que recopiló para que el usuario tenga que reiniciar el proceso desde el principio la próxima vez que quiera reservar una mesa. Para obtener más información acerca de cómo administrar los datos de estado de usuario, consulte el artículo [Save state using conversation and user properties](bot-builder-howto-v4-state.md) (Guardar el estado mediante las propiedades del usuario y la conversación).
 
 ### <a name="apply-artificial-intelligence"></a>Aplicar inteligencia artificial
-Para las interrupciones que no están en el ámbito, puede intentar adivinar la intención del usuario. Puede hacerlo mediante servicios de IA, como QnAMaker, LUIS o su lógica personalizada, y, a continuación, ofrecer sugerencias para lo que el bot considera que el usuario desea. 
 
-Por ejemplo, en medio del flujo para reservar una mesa, el usuario dice: "Quiero pedir una hamburguesa". En este flujo de conversación, el bot no sabe cómo lidiar con esa entrada. Como el flujo actual no tiene nada que ver con el pedido y el otro comando de conversación del bot es "pedir una cena", el bot no sabe qué hacer con esta entrada. Si aplica LUIS, por ejemplo, podría entrenar el modelo para que reconozca que quiere pedir comida (p. ej.: LUIS puede devolver una intención "orderFood"). Por lo tanto, el bot podría responder: "Parece que quiere pedir una comida. ¿Le gustaría cambiar a nuestro proceso de pedido de cena?" Para obtener más información sobre el aprendizaje de LUIS y cómo detectar las intenciones del usuario, consulte [User LUIS for language understanding](bot-builder-howto-v4-luis.md) (LUIS de usuario para comprensión lingüística).
+Para las interrupciones que no están en el ámbito, puede intentar adivinar la intención del usuario. Puede hacerlo mediante servicios de IA, como QnAMaker, LUIS o su lógica personalizada, y, a continuación, ofrecer sugerencias para lo que el bot considera que el usuario desea.
+
+Por ejemplo, en medio del flujo para reservar una mesa, el usuario dice: "Quiero pedir una hamburguesa". En este flujo de conversación, el bot no sabe cómo lidiar con esa entrada. Como el flujo actual no tiene nada que ver con el pedido y el otro comando de conversación del bot es "pedir una cena", el bot no sabe qué hacer con esta entrada. Si aplica LUIS, por ejemplo, podría entrenar el modelo para que reconozca que quiere pedir comida (p. ej.: LUIS puede devolver una intención "orderFood"). Por lo tanto, el bot podría responder: "Parece que quiere pedir una comida. ¿Le gustaría cambiar a nuestro proceso de pedido de cena?" Para más información sobre el aprendizaje de LUIS y cómo detectar las intenciones del usuario, consulte [Uso de LUIS para reconocimiento del lenguaje](bot-builder-howto-v4-luis.md).
 
 ### <a name="default-response"></a>Respuesta predeterminada
+
 Si se produce un error en todo lo demás, puede enviar una respuesta genérica predeterminada en lugar de no hacer nada y dejar al usuario preguntándose qué está ocurriendo. La respuesta predeterminada debe indicar al usuario cuáles son los comandos que entiende el bot, de modo que el usuario pueda retomar el proceso.
 
 Puede comprobar nuevamente la marca de contexto **responded** en la parte final de la lógica del bot para ver si el bot envió algo al usuario durante el turno. Si el bot procesa la entrada del usuario, pero no responde, lo más probable es que el bot no sepa qué hacer con la entrada. En ese caso, puede detectarlo y enviar un mensaje predeterminado al usuario.
@@ -347,4 +352,3 @@ if (!context.responded) {
 ```
 
 ---
-

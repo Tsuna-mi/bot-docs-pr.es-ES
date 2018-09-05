@@ -7,17 +7,17 @@ ms.author: mateusv
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: 21f5b35e992f792a5667ef05d2708b5a446f8023
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 08/27/2018
+ms.openlocfilehash: 0bf58773cfbb6c58773cc5c63b735a0099ad569e
+ms.sourcegitcommit: 86ddf3ebe6cc3385d1c4d30b971ac9c3e1fc5a77
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304960"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43056019"
 ---
 # <a name="design-the-user-experience"></a>Diseñar la experiencia de usuario
 
-Los bots normalmente usan una combinación de **controles de usuario enriquecidos**, **texto y lenguaje naturales** y **voz** para intercambiar información con los usuarios.
+Puede crear bots con una variedad de características como texto, botones, imágenes, tarjetas enriquecidas que se muestran en carrusel o en forma de lista, y mucho más. Sin embargo, cada canal, como Facebook, Slack o Skype, entre otros, controla en última instancia cómo representan las características los clientes de mensajería. Aunque varios canales admitan una característica, cada canal puede representar dicha característica de una manera ligeramente diferente. En los casos en que un mensaje contenga características que un canal no admita de forma nativa, el canal puede intentar representar los contenidos del mensaje como texto o como una imagen estática, lo que puede afectar significativamente la apariencia del mensaje en el cliente. En algunos casos, un canal puede no ser compatible con una característica en particular. Por ejemplo, los clientes de GroupMe no pueden mostrar un indicador de escritura.
 
 ## <a name="rich-user-controls"></a>Controles de usuario enriquecidos
 
@@ -44,39 +44,10 @@ Las tarjetas de Microsoft Bot Service son objetos programables que contienen col
 | VideoCard | ![Imagen de una tarjeta de vídeo](~/media/video-card.png) | Una tarjeta que puede reproducir vídeos. Se utiliza normalmente para abrir una dirección URL y transmitir un vídeo disponible. |
 | CardCarousel | ![Imagen de una tarjeta de carrusel](~/media/card-carousel.png) | Una colección de tarjetas desplazables horizontalmente que permiten al usuario ver fácilmente una serie de posibles opciones.|
 
-Las tarjetas le permiten diseñar su bot una vez, y hacer que funcione en una variedad de canales. Sin embargo, no todos los tipos de tarjeta son totalmente compatibles en todos los canales disponibles. En las siguientes tablas se indica una muestra al compatibilidad actual de los tipos de tarjetas en una selección de canales. Para obtener información actualizada sobre la compatibilidad con los canales, asegúrese de usar [Channel Inspector](bot-service-channel-inspector.md) para ver el aspecto y cómo funcionan determinadas tarjetas en un cana de su elección. Para obtener información detallada sobre las tarjetas adaptables, asegúrese de consultar también <a href="http://adaptivecards.io/visualizer/">Visualizador de tarjetas adaptables</a>.
-
-En la siguiente tabla se muestra la compatibilidad de los canales para tipos de tarjetas que normalmente se usarían dentro de un carrusel de tarjetas.
-
-| Canal | Adaptable | Imagen prominente | Miniatura | Carrusel |
-| ---- | ---- | ---- | ---- | ---- |
-| Cortana | ✔ | ✔ | ✔ | ✔ |
-| Correo electrónico de Office 365 | ✔ | ✔ | ✔ | ✔ |
-| Facebook | - | ✔ | ✔ | ✔ |
-| Kik | ✔ | ✔ | ✔ | ✔ |
-| Skype | ✔ | ✔ | ✔ | ✔ |
-| Slack | ✔ | ✔ | ✔ | ✔ |
-| sms | ✔ | ✔ | ✔ | ✔ |
-| Teams | ✔ | ✔ | ✔ | ✔ |
-| Chat en web | ✔ | ✔ | ✔ | ✔ |
-
-En la tabla siguiente se muestra la compatibilidad de los canales para los tipos adicionales de tarjetas de Microsoft Bot Service.
-
-| Canal | Vídeo | Recibo | Inicio de sesión | SuggestedAction |
-| ---- | ---- | ---- | ---- | ---- |
-| Cortana | ✔ | ✔ | ✔ | - |
-| Correo electrónico de Office 365 | ✔ | ✔ | ✔ | ✔ |
-| Facebook | ✔ | ✔ | ✔ | ✔ |
-| Kik | ✔ | ✔ | ✔ | ✔ |
-| Skype | ✔ | ✔ | ✔ | ✔ |
-| Slack | ✔ | ✔ | ✔ | ✔ |
-| sms | ✔ | ✔ | - | ✔ |
-| Teams | - | ✔ | ✔ | - |
-| Chat en web | ✔ | ✔ | ✔ | ✔ |
-
-✔ = admitido
+Las tarjetas le permiten diseñar su bot una vez, y hacer que funcione en una variedad de canales. Sin embargo, no todos los tipos de tarjeta son totalmente compatibles en todos los canales disponibles. 
 
 Puede encontrar instrucciones detalladas para agregar tarjetas al bot en estas secciones: [Agregar archivos adjuntos multimedia en tarjetas enriquecidas](v4sdk/bot-builder-howto-add-media-attachments.md) y [Agregar acciones sugeridas a los mensajes](v4sdk/bot-builder-howto-add-suggested-actions.md).
+
 
 Cuando diseñe su bot, no descarte automáticamente los elementos comunes de la interfaz de usuario, ya que no son "lo suficientemente inteligentes". Tal como se indicó [anteriormente](~/bot-service-design-principles.md#designing-a-bot), el bot debe estar diseñado para resolver el problema del usuario de la mejor manera posible y de forma rápida y sencilla. Evite la tentación de comenzar incorporando la comprensión del lenguaje natural, ya que a menudo es innecesaria y añade una complejidad injustificada.
 
@@ -129,5 +100,4 @@ Un bot puede usar entradas o salidas de **voz** para comunicarse con los usuario
 Igual que las personas se comunican entre sí mediante una combinación de gestos, voz y símbolos, los bots pueden comunicarse con los usuarios mediante una combinación de controles de usuario enriquecidos, texto (a veces incluido el lenguaje natural) y voz. Estos métodos de comunicación se pueden usar juntos; no es necesario que elija uno u otro. 
 
 Por ejemplo, imagine "bot de cocina" que ayude a los usuarios con las recetas, y donde el bot puede proporcionar instrucciones reproduciendo un vídeo o mostrando una serie de imágenes para explicar lo que se debe hacer. Algunos usuarios pueden preferir pasar las páginas de la receta o hacer preguntas al bot usando la voz mientras siguen la receta. Otros pueden preferir tocar la pantalla de un dispositivo en lugar de interactuar con el bot a través de la voz. Cuando diseñe su bot, incorpore elementos de la experiencia de usuario que respalden la forma en que los usuarios probablemente prefieran interactuar con el bot, dados los casos de uso específicos para los que es compatible. 
-
 
