@@ -1,5 +1,5 @@
 ---
-title: Traducir la entrada de usuario para que el bot sea multilingüe | Microsoft Docs
+title: Traducción de la entrada del usuario | Microsoft Docs
 description: Cómo traducir la entrada de usuario automáticamente al lenguaje nativo del bot y volver a traducirla al idioma del usuario.
 keywords: traducción, traducir, multilingüe, microsoft translator
 author: DeniseMak
@@ -9,18 +9,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/06/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 13139755989afccd85b2e09267dc42619ec1f83c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6304e328e523e73894473620fc1fb7656a8776bf
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304920"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756413"
 ---
-# <a name="translate-user-input-to-make-your-bot-multilingual"></a><span data-ttu-id="3f316-104">Traducir la entrada de usuario para que el bot sea multilingüe</span><span class="sxs-lookup"><span data-stu-id="3f316-104">Translate user input to make your bot multilingual</span></span>
+# <a name="translate-user-input"></a><span data-ttu-id="4df3d-104">Traducción de la entrada del usuario</span><span class="sxs-lookup"><span data-stu-id="4df3d-104">Translate user input</span></span> 
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-<span data-ttu-id="3f316-105">El bot puede usar [Microsoft Translator](https://www.microsoft.com/en-us/translator/) para traducir automáticamente los mensajes a un lenguaje que entienda y, opcionalmente, traducir las respuestas del bot al idioma del usuario.</span><span class="sxs-lookup"><span data-stu-id="3f316-105">Your bot can use [Microsoft Translator](https://www.microsoft.com/en-us/translator/) to automatically translate messages to the language your bot understands, and optionally translate the bot's replies back to the user's language.</span></span> <span data-ttu-id="3f316-106">Agregar la opción de traducción al bot le permite llegar a un público mayor sin cambiar las partes importantes del núcleo de programación del bot.</span><span class="sxs-lookup"><span data-stu-id="3f316-106">Adding translation to your bot allows it to reach a larger audience without changing significant parts of your bot's core programming.</span></span>
+<span data-ttu-id="4df3d-105">El bot puede usar [Microsoft Translator](https://www.microsoft.com/en-us/translator/) para traducir automáticamente los mensajes a un lenguaje que entienda y, opcionalmente, traducir las respuestas del bot al idioma del usuario.</span><span class="sxs-lookup"><span data-stu-id="4df3d-105">Your bot can use [Microsoft Translator](https://www.microsoft.com/en-us/translator/) to automatically translate messages to the language your bot understands, and optionally translate the bot's replies back to the user's language.</span></span> <span data-ttu-id="4df3d-106">Agregar la opción de traducción al bot le permite llegar a un público mayor sin cambiar las partes importantes del núcleo de programación del bot.</span><span class="sxs-lookup"><span data-stu-id="4df3d-106">Adding translation to your bot allows it to reach a larger audience without changing significant parts of your bot's core programming.</span></span>
 <!-- 
 - [Get a Text Services key](#get-a-text-services-key)
 - [Installing Packages](#installing-packages)
@@ -28,49 +28,49 @@ ms.locfileid: "39304920"
 - [Combine translation with QnA Maker](#using-qna-maker)
 -->
 
-<span data-ttu-id="3f316-107">En este tutorial utilizaremos el servicio Microsoft Translator para la traducción, y luego la agregaremos a un bot simple para mostrar cómo funciona.</span><span class="sxs-lookup"><span data-stu-id="3f316-107">In this tutorial we'll be using Microsoft Translator service for the translation, then adding it to a simple bot to show how it works.</span></span>
+<span data-ttu-id="4df3d-107">En este tutorial utilizaremos el servicio Microsoft Translator para la traducción, y luego la agregaremos a un bot simple para mostrar cómo funciona.</span><span class="sxs-lookup"><span data-stu-id="4df3d-107">In this tutorial we'll be using Microsoft Translator service for the translation, then adding it to a simple bot to show how it works.</span></span>
 
-## <a name="get-a-text-services-key"></a><span data-ttu-id="3f316-108">Obtener una clave de Text Services</span><span class="sxs-lookup"><span data-stu-id="3f316-108">Get a Text Services key</span></span>
+## <a name="get-a-text-services-key"></a><span data-ttu-id="4df3d-108">Obtener una clave de Text Services</span><span class="sxs-lookup"><span data-stu-id="4df3d-108">Get a Text Services key</span></span>
 
-<span data-ttu-id="3f316-109">En primer lugar, necesitará una clave para usar el servicio Translator Text.</span><span class="sxs-lookup"><span data-stu-id="3f316-109">First, you'll need a key for using the Translator Text service.</span></span> <span data-ttu-id="3f316-110">Puede obtener una [clave de evaluación gratuita](https://www.microsoft.com/en-us/translator/trial.aspx#get-started) en Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="3f316-110">You can get a [free trial key](https://www.microsoft.com/en-us/translator/trial.aspx#get-started) in the Azure portal.</span></span>
+<span data-ttu-id="4df3d-109">En primer lugar, necesitará una clave para usar el servicio Translator Text.</span><span class="sxs-lookup"><span data-stu-id="4df3d-109">First, you'll need a key for using the Translator Text service.</span></span> <span data-ttu-id="4df3d-110">Puede obtener una [clave de evaluación gratuita](https://www.microsoft.com/en-us/translator/trial.aspx#get-started) en Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="4df3d-110">You can get a [free trial key](https://www.microsoft.com/en-us/translator/trial.aspx#get-started) in the Azure portal.</span></span>
 
-## <a name="installing-packages"></a><span data-ttu-id="3f316-111">Instalar paquetes</span><span class="sxs-lookup"><span data-stu-id="3f316-111">Installing Packages</span></span>
+## <a name="installing-packages"></a><span data-ttu-id="4df3d-111">Instalar paquetes</span><span class="sxs-lookup"><span data-stu-id="4df3d-111">Installing Packages</span></span>
 
-<span data-ttu-id="3f316-112">Asegúrese de que tiene los paquetes necesarios para agregar la traducción al bot.</span><span class="sxs-lookup"><span data-stu-id="3f316-112">Make sure you have the packages necessary to add translation to your bot.</span></span>
+<span data-ttu-id="4df3d-112">Asegúrese de que tiene los paquetes necesarios para agregar la traducción al bot.</span><span class="sxs-lookup"><span data-stu-id="4df3d-112">Make sure you have the packages necessary to add translation to your bot.</span></span>
 
-# <a name="ctabcs"></a>[<span data-ttu-id="3f316-113">C#</span><span class="sxs-lookup"><span data-stu-id="3f316-113">C#</span></span>](#tab/cs)
+# <a name="ctabcs"></a>[<span data-ttu-id="4df3d-113">C#</span><span class="sxs-lookup"><span data-stu-id="4df3d-113">C#</span></span>](#tab/cs)
 
-<span data-ttu-id="3f316-114">[Agregue una referencia](https://docs.microsoft.com/en-us/nuget/tools/package-manager-ui) a la versión preliminar de los siguientes paquetes NuGet:</span><span class="sxs-lookup"><span data-stu-id="3f316-114">[Add a reference](https://docs.microsoft.com/en-us/nuget/tools/package-manager-ui) to the prerelease version of the following NuGet packages:</span></span>
+<span data-ttu-id="4df3d-114">[Agregue una referencia](https://docs.microsoft.com/en-us/nuget/tools/package-manager-ui) a la versión preliminar de los siguientes paquetes NuGet:</span><span class="sxs-lookup"><span data-stu-id="4df3d-114">[Add a reference](https://docs.microsoft.com/en-us/nuget/tools/package-manager-ui) to the prerelease version of the following NuGet packages:</span></span>
 
 * `Microsoft.Bot.Builder.Integration.AspNet.Core`
-* <span data-ttu-id="3f316-115">`Microsoft.Bot.Builder.Ai.Translation` (necesario para la traducción)</span><span class="sxs-lookup"><span data-stu-id="3f316-115">`Microsoft.Bot.Builder.Ai.Translation` (required for translation)</span></span>
+* <span data-ttu-id="4df3d-115">`Microsoft.Bot.Builder.Ai.Translation` (necesario para la traducción)</span><span class="sxs-lookup"><span data-stu-id="4df3d-115">`Microsoft.Bot.Builder.Ai.Translation` (required for translation)</span></span>
 
-<span data-ttu-id="3f316-116">Si va a combinar la traducción con Language Understanding (LUIS), agregue también una referencia a:</span><span class="sxs-lookup"><span data-stu-id="3f316-116">If you're going to combine translation with Language Understanding (LUIS), also add a reference to:</span></span>
+<span data-ttu-id="4df3d-116">Si va a combinar la traducción con Language Understanding (LUIS), agregue también una referencia a:</span><span class="sxs-lookup"><span data-stu-id="4df3d-116">If you're going to combine translation with Language Understanding (LUIS), also add a reference to:</span></span>
 
-* <span data-ttu-id="3f316-117">`Microsoft.Bot.Builder.Ai.Luis` (necesario para LUIS)</span><span class="sxs-lookup"><span data-stu-id="3f316-117">`Microsoft.Bot.Builder.Ai.Luis` (required for LUIS)</span></span>
+* <span data-ttu-id="4df3d-117">`Microsoft.Bot.Builder.Ai.Luis` (necesario para LUIS)</span><span class="sxs-lookup"><span data-stu-id="4df3d-117">`Microsoft.Bot.Builder.Ai.Luis` (required for LUIS)</span></span>
 
-# <a name="javascripttabjs"></a>[<span data-ttu-id="3f316-118">JavaScript</span><span class="sxs-lookup"><span data-stu-id="3f316-118">JavaScript</span></span>](#tab/js)
+# <a name="javascripttabjs"></a>[<span data-ttu-id="4df3d-118">JavaScript</span><span class="sxs-lookup"><span data-stu-id="4df3d-118">JavaScript</span></span>](#tab/js)
 
-<span data-ttu-id="3f316-119">Puede agregar cualquiera de estos servicios al bot mediante el paquete botbuilder-ai.</span><span class="sxs-lookup"><span data-stu-id="3f316-119">Either of these services can be added to your bot using the botbuilder-ai package.</span></span> <span data-ttu-id="3f316-120">Puede agregar este paquete al proyecto a través de npm:</span><span class="sxs-lookup"><span data-stu-id="3f316-120">You can add this package to your project via npm:</span></span>
+<span data-ttu-id="4df3d-119">Puede agregar cualquiera de estos servicios al bot mediante el paquete botbuilder-ai.</span><span class="sxs-lookup"><span data-stu-id="4df3d-119">Either of these services can be added to your bot using the botbuilder-ai package.</span></span> <span data-ttu-id="4df3d-120">Puede agregar este paquete al proyecto a través de npm:</span><span class="sxs-lookup"><span data-stu-id="4df3d-120">You can add this package to your project via npm:</span></span>
 * `npm install --save botbuilder@preview`
 * `npm install --save botbuilder-ai@preview`
 
 ---
 
-## <a name="configure-translation"></a><span data-ttu-id="3f316-121">Configurar la traducción</span><span class="sxs-lookup"><span data-stu-id="3f316-121">Configure translation</span></span>
+## <a name="configure-translation"></a><span data-ttu-id="4df3d-121">Configurar la traducción</span><span class="sxs-lookup"><span data-stu-id="4df3d-121">Configure translation</span></span>
 
-<span data-ttu-id="3f316-122">A continuación, puede configurar el bot de modo que llame al traductor para cada mensaje que reciba de un usuario. Para ello, basta con agregarlo a la pila de software intermedio del bot.</span><span class="sxs-lookup"><span data-stu-id="3f316-122">Next you can configure your bot to call the translator for every message received from a user, simply by adding it to your bot's middleware stack.</span></span> <span data-ttu-id="3f316-123">El software intermedio usa el resultado de la traducción para modificar el mensaje del usuario mediante el objeto de contexto.</span><span class="sxs-lookup"><span data-stu-id="3f316-123">The middleware uses the translation result to modify the user's message using the context object.</span></span>
+<span data-ttu-id="4df3d-122">A continuación, puede configurar el bot de modo que llame al traductor para cada mensaje que reciba de un usuario. Para ello, basta con agregarlo a la pila de software intermedio del bot.</span><span class="sxs-lookup"><span data-stu-id="4df3d-122">Next you can configure your bot to call the translator for every message received from a user, simply by adding it to your bot's middleware stack.</span></span> <span data-ttu-id="4df3d-123">El software intermedio usa el resultado de la traducción para modificar el mensaje del usuario mediante el objeto de contexto.</span><span class="sxs-lookup"><span data-stu-id="4df3d-123">The middleware uses the translation result to modify the user's message using the context object.</span></span>
 
 
-# <a name="ctabcs"></a>[<span data-ttu-id="3f316-124">C#</span><span class="sxs-lookup"><span data-stu-id="3f316-124">C#</span></span>](#tab/cs)
+# <a name="ctabcs"></a>[<span data-ttu-id="4df3d-124">C#</span><span class="sxs-lookup"><span data-stu-id="4df3d-124">C#</span></span>](#tab/cs)
 
-<span data-ttu-id="3f316-125">Comience con el ejemplo EchoBot del SDK v4 y actualice el método `ConfigureServices` en el archivo `Startup.cs` para agregar `TranslationMiddleware` al bot.</span><span class="sxs-lookup"><span data-stu-id="3f316-125">Start with the EchoBot sample in the v4 SDK, and update the `ConfigureServices` method in your `Startup.cs` file to add `TranslationMiddleware` to the bot.</span></span> <span data-ttu-id="3f316-126">Esto configura el bot de modo que traduzca todos los mensajes recibidos de un usuario.</span><span class="sxs-lookup"><span data-stu-id="3f316-126">This configures your bot to translate every message received from a user.</span></span> <!--, by simply adding it to your bot's middleware set. The middleware stores the translation results on the context object. -->
--   <span data-ttu-id="3f316-127">Actualizar el uso de instrucciones.</span><span class="sxs-lookup"><span data-stu-id="3f316-127">Update your using statements.</span></span>
--   <span data-ttu-id="3f316-128">Actualice el método `ConfigureServices` para incluir el software intermedio de traducción.</span><span class="sxs-lookup"><span data-stu-id="3f316-128">Update your `ConfigureServices` method to include the translation middleware.</span></span>
+<span data-ttu-id="4df3d-125">Comience con el ejemplo EchoBot del SDK v4 y actualice el método `ConfigureServices` en el archivo `Startup.cs` para agregar `TranslationMiddleware` al bot.</span><span class="sxs-lookup"><span data-stu-id="4df3d-125">Start with the EchoBot sample in the v4 SDK, and update the `ConfigureServices` method in your `Startup.cs` file to add `TranslationMiddleware` to the bot.</span></span> <span data-ttu-id="4df3d-126">Esto configura el bot de modo que traduzca todos los mensajes recibidos de un usuario.</span><span class="sxs-lookup"><span data-stu-id="4df3d-126">This configures your bot to translate every message received from a user.</span></span> <!--, by simply adding it to your bot's middleware set. The middleware stores the translation results on the context object. -->
+-   <span data-ttu-id="4df3d-127">Actualizar el uso de instrucciones.</span><span class="sxs-lookup"><span data-stu-id="4df3d-127">Update your using statements.</span></span>
+-   <span data-ttu-id="4df3d-128">Actualice el método `ConfigureServices` para incluir el software intermedio de traducción.</span><span class="sxs-lookup"><span data-stu-id="4df3d-128">Update your `ConfigureServices` method to include the translation middleware.</span></span>
 
-    <span data-ttu-id="3f316-129">Este fragmento de código se ha simplificado quitando la mayoría de los comentarios y el software intermedio de control de excepciones.</span><span class="sxs-lookup"><span data-stu-id="3f316-129">The snippet here has been simplified by removing most of the comments and removing the exception handling middleware.</span></span>
+    <span data-ttu-id="4df3d-129">Este fragmento de código se ha simplificado quitando la mayoría de los comentarios y el software intermedio de control de excepciones.</span><span class="sxs-lookup"><span data-stu-id="4df3d-129">The snippet here has been simplified by removing most of the comments and removing the exception handling middleware.</span></span>
 
-<span data-ttu-id="3f316-130">**Startup.cs**</span><span class="sxs-lookup"><span data-stu-id="3f316-130">**Startup.cs**</span></span>
+<span data-ttu-id="4df3d-130">**Startup.cs**</span><span class="sxs-lookup"><span data-stu-id="4df3d-130">**Startup.cs**</span></span>
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -103,11 +103,11 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!TIP] 
-> <span data-ttu-id="3f316-131">El SDK de Bot Builder detecta automáticamente el idioma del usuario en función del mensaje que acaba de enviar.</span><span class="sxs-lookup"><span data-stu-id="3f316-131">The BotBuilder SDK automatically detects the user's language based on the message they just submitted.</span></span> <span data-ttu-id="3f316-132">Para invalidar esta funcionalidad, puede proporcionar parámetros adicionales de devolución de llamada para agregar su propia lógica a fin de detectar y cambiar el idioma del usuario.</span><span class="sxs-lookup"><span data-stu-id="3f316-132">To override this functionality, you can supply additional callback parameters to add your own logic for detecting and changing the user's language.</span></span>  
+> <span data-ttu-id="4df3d-131">El SDK de Bot Builder detecta automáticamente el idioma del usuario en función del mensaje que acaba de enviar.</span><span class="sxs-lookup"><span data-stu-id="4df3d-131">The BotBuilder SDK automatically detects the user's language based on the message they just submitted.</span></span> <span data-ttu-id="4df3d-132">Para invalidar esta funcionalidad, puede proporcionar parámetros adicionales de devolución de llamada para agregar su propia lógica a fin de detectar y cambiar el idioma del usuario.</span><span class="sxs-lookup"><span data-stu-id="4df3d-132">To override this functionality, you can supply additional callback parameters to add your own logic for detecting and changing the user's language.</span></span>  
 
 
 
-<span data-ttu-id="3f316-133">Eche un vistazo al código de `EchoBot.cs`, en el que se envía "You sent" seguido de lo que dice el usuario:</span><span class="sxs-lookup"><span data-stu-id="3f316-133">Take a look at the code in `EchoBot.cs`, where it sends "You sent" followed by what the user says:</span></span>
+<span data-ttu-id="4df3d-133">Eche un vistazo al código de `EchoBot.cs`, en el que se envía "You sent" seguido de lo que dice el usuario:</span><span class="sxs-lookup"><span data-stu-id="4df3d-133">Take a look at the code in `EchoBot.cs`, where it sends "You sent" followed by what the user says:</span></span>
 
 ```cs
 using Microsoft.Bot.Builder;
@@ -145,7 +145,7 @@ namespace Microsoft.Bot.Samples
 }
 ```
 
-<span data-ttu-id="3f316-134">Cuando se agrega software intermedio de traducción, un parámetro opcional especifica si se deben volver a traducir las respuestas al idioma del usuario.</span><span class="sxs-lookup"><span data-stu-id="3f316-134">When you add translation middleware, an optional parameter specifies whether to translate replies back to the user's language.</span></span> <span data-ttu-id="3f316-135">En `Startup.cs`, hemos especificado `false` para simplemente traducir los mensajes de usuario al lenguaje del bot.</span><span class="sxs-lookup"><span data-stu-id="3f316-135">In `Startup.cs`, we specified `false` to just translate the user messages to the bot's language.</span></span>
+<span data-ttu-id="4df3d-134">Cuando se agrega software intermedio de traducción, un parámetro opcional especifica si se deben volver a traducir las respuestas al idioma del usuario.</span><span class="sxs-lookup"><span data-stu-id="4df3d-134">When you add translation middleware, an optional parameter specifies whether to translate replies back to the user's language.</span></span> <span data-ttu-id="4df3d-135">En `Startup.cs`, hemos especificado `false` para simplemente traducir los mensajes de usuario al lenguaje del bot.</span><span class="sxs-lookup"><span data-stu-id="4df3d-135">In `Startup.cs`, we specified `false` to just translate the user messages to the bot's language.</span></span>
 
 ```cs
 // The first parameter is a list of languages the bot recognizes
@@ -154,9 +154,9 @@ namespace Microsoft.Bot.Samples
 middleware.Add(new TranslationMiddleware(new string[] { "en" }, "<YOUR MICROSOFT TRANSLATOR TEXT API KEY>", false));
 ```
 
-# <a name="javascripttabjs"></a>[<span data-ttu-id="3f316-136">JavaScript</span><span class="sxs-lookup"><span data-stu-id="3f316-136">JavaScript</span></span>](#tab/js)
+# <a name="javascripttabjs"></a>[<span data-ttu-id="4df3d-136">JavaScript</span><span class="sxs-lookup"><span data-stu-id="4df3d-136">JavaScript</span></span>](#tab/js)
 
-<span data-ttu-id="3f316-137">Para configurar el software intermedio de traducción con un bot de eco, pegue lo siguiente en app.js.</span><span class="sxs-lookup"><span data-stu-id="3f316-137">To set up translation middleware with an echo bot, paste the following into app.js.</span></span>
+<span data-ttu-id="4df3d-137">Para configurar el software intermedio de traducción con un bot de eco, pegue lo siguiente en app.js.</span><span class="sxs-lookup"><span data-stu-id="4df3d-137">To set up translation middleware with an echo bot, paste the following into app.js.</span></span>
 
 ```javascript
 const { BotFrameworkAdapter, MemoryStorage, ConversationState } = require('botbuilder');
@@ -199,21 +199,21 @@ server.post('/api/messages', (req, res) => {
 
 ---
 
-## <a name="run-the-bot-and-see-translated-input"></a><span data-ttu-id="3f316-138">Ejecutar el bot y ver la entrada traducida</span><span class="sxs-lookup"><span data-stu-id="3f316-138">Run the bot and see translated input</span></span>
+## <a name="run-the-bot-and-see-translated-input"></a><span data-ttu-id="4df3d-138">Ejecutar el bot y ver la entrada traducida</span><span class="sxs-lookup"><span data-stu-id="4df3d-138">Run the bot and see translated input</span></span>
 
-<span data-ttu-id="3f316-139">Ejecute el bot y escriba algunos mensajes en otros idiomas.</span><span class="sxs-lookup"><span data-stu-id="3f316-139">Run the bot, and type in a few messages in other languages.</span></span> <span data-ttu-id="3f316-140">Verá que el bot ha traducido el mensaje de usuario e indica la traducción en su respuesta.</span><span class="sxs-lookup"><span data-stu-id="3f316-140">You'll see that the bot translated the user message and indicates the translation in its response.</span></span>
+<span data-ttu-id="4df3d-139">Ejecute el bot y escriba algunos mensajes en otros idiomas.</span><span class="sxs-lookup"><span data-stu-id="4df3d-139">Run the bot, and type in a few messages in other languages.</span></span> <span data-ttu-id="4df3d-140">Verá que el bot ha traducido el mensaje de usuario e indica la traducción en su respuesta.</span><span class="sxs-lookup"><span data-stu-id="4df3d-140">You'll see that the bot translated the user message and indicates the translation in its response.</span></span>
 
 ![el bot detecta el idioma y traduce la entrada](./media/how-to-bot-translate/bot-detects-language-translates-input.png)
 
 
 
 
-## <a name="invoke-logic-in-the-bots-native-language"></a><span data-ttu-id="3f316-142">Invocar lógica en el lenguaje nativo del bot</span><span class="sxs-lookup"><span data-stu-id="3f316-142">Invoke logic in the bot's native language</span></span>
+## <a name="invoke-logic-in-the-bots-native-language"></a><span data-ttu-id="4df3d-142">Invocar lógica en el lenguaje nativo del bot</span><span class="sxs-lookup"><span data-stu-id="4df3d-142">Invoke logic in the bot's native language</span></span>
 
-<span data-ttu-id="3f316-143">Ahora, agregue la lógica que busque palabras en inglés.</span><span class="sxs-lookup"><span data-stu-id="3f316-143">Now, add logic that checks for English words.</span></span> <span data-ttu-id="3f316-144">Si el usuario dice "ayuda" o "cancelar" en un idioma que no sea inglés, el bot lo traduce al inglés y se invoca la lógica que busca las palabras en inglés "help" o "cancel".</span><span class="sxs-lookup"><span data-stu-id="3f316-144">If the user says "help" or "cancel" in another language, the bot translates it into English and the logic that checks for the english words "help" or "cancel" is invoked.</span></span>
+<span data-ttu-id="4df3d-143">Ahora, agregue la lógica que busque palabras en inglés.</span><span class="sxs-lookup"><span data-stu-id="4df3d-143">Now, add logic that checks for English words.</span></span> <span data-ttu-id="4df3d-144">Si el usuario dice "ayuda" o "cancelar" en un idioma que no sea inglés, el bot lo traduce al inglés y se invoca la lógica que busca las palabras en inglés "help" o "cancel".</span><span class="sxs-lookup"><span data-stu-id="4df3d-144">If the user says "help" or "cancel" in another language, the bot translates it into English and the logic that checks for the english words "help" or "cancel" is invoked.</span></span>
 
-# <a name="ctabcs"></a>[<span data-ttu-id="3f316-145">C#</span><span class="sxs-lookup"><span data-stu-id="3f316-145">C#</span></span>](#tab/cs)
-<span data-ttu-id="3f316-146">En `EchoBot.cs`, actualice la instrucción `case` de las actividades de mensaje en el método `OnTurn` del bot.</span><span class="sxs-lookup"><span data-stu-id="3f316-146">In `EchoBot.cs`, update the `case` statement for message activities in your bot's `OnTurn` method.</span></span>
+# <a name="ctabcs"></a>[<span data-ttu-id="4df3d-145">C#</span><span class="sxs-lookup"><span data-stu-id="4df3d-145">C#</span></span>](#tab/cs)
+<span data-ttu-id="4df3d-146">En `EchoBot.cs`, actualice la instrucción `case` de las actividades de mensaje en el método `OnTurn` del bot.</span><span class="sxs-lookup"><span data-stu-id="4df3d-146">In `EchoBot.cs`, update the `case` statement for message activities in your bot's `OnTurn` method.</span></span>
 ```cs
 case ActivityTypes.Message:
     // check the message text before calling context.SendActivity
@@ -224,7 +224,7 @@ case ActivityTypes.Message:
     }
 ```
 
-# <a name="javascripttabjs"></a>[<span data-ttu-id="3f316-147">JavaScript</span><span class="sxs-lookup"><span data-stu-id="3f316-147">JavaScript</span></span>](#tab/js)
+# <a name="javascripttabjs"></a>[<span data-ttu-id="4df3d-147">JavaScript</span><span class="sxs-lookup"><span data-stu-id="4df3d-147">JavaScript</span></span>](#tab/js)
 ```javascript
 if (context.activity.type === 'message') {
     // check the message text before calling context.sendActivity
@@ -241,19 +241,19 @@ if (context.activity.type === 'message') {
 
 
 
-## <a name="translate-replies-back-to-the-users-language"></a><span data-ttu-id="3f316-149">Traducir las respuestas de nuevo al idioma del usuario</span><span class="sxs-lookup"><span data-stu-id="3f316-149">Translate replies back to the user's language</span></span>
+## <a name="translate-replies-back-to-the-users-language"></a><span data-ttu-id="4df3d-149">Traducir las respuestas de nuevo al idioma del usuario</span><span class="sxs-lookup"><span data-stu-id="4df3d-149">Translate replies back to the user's language</span></span>
 
-<span data-ttu-id="3f316-150">También puede volver a traducir las respuestas al idioma del usuario. Para ello, establezca el último parámetro de constructor en `true`.</span><span class="sxs-lookup"><span data-stu-id="3f316-150">You can also translate replies back to the user's language, by setting the last constructor parameter to `true`.</span></span>
+<span data-ttu-id="4df3d-150">También puede volver a traducir las respuestas al idioma del usuario. Para ello, establezca el último parámetro de constructor en `true`.</span><span class="sxs-lookup"><span data-stu-id="4df3d-150">You can also translate replies back to the user's language, by setting the last constructor parameter to `true`.</span></span>
 
-# <a name="ctabcs"></a>[<span data-ttu-id="3f316-151">C#</span><span class="sxs-lookup"><span data-stu-id="3f316-151">C#</span></span>](#tab/cs)
-<span data-ttu-id="3f316-152">En `Startup.cs`, actualice la siguiente línea del método `ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="3f316-152">In `Startup.cs`, update the following line of the `ConfigureServices` method.</span></span>
+# <a name="ctabcs"></a>[<span data-ttu-id="4df3d-151">C#</span><span class="sxs-lookup"><span data-stu-id="4df3d-151">C#</span></span>](#tab/cs)
+<span data-ttu-id="4df3d-152">En `Startup.cs`, actualice la siguiente línea del método `ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="4df3d-152">In `Startup.cs`, update the following line of the `ConfigureServices` method.</span></span>
 ```cs
 // Use language recognition to detect the user's language from their message, instead of providing helper callbacks.
 // Last parameter indicates that we'll translate replies back to the user's language
 middleware.Add(new TranslationMiddleware(new string[] { "en" }, "TRANSLATION-SUBSCRIPTION-KEY", true));
 ```
 
-# <a name="javascripttabjs"></a>[<span data-ttu-id="3f316-153">JavaScript</span><span class="sxs-lookup"><span data-stu-id="3f316-153">JavaScript</span></span>](#tab/js)
+# <a name="javascripttabjs"></a>[<span data-ttu-id="4df3d-153">JavaScript</span><span class="sxs-lookup"><span data-stu-id="4df3d-153">JavaScript</span></span>](#tab/js)
 ```javascript
 // Use language recognition to detect the user's language from their message, instead of providing helper callbacks.
 // Last parameter indicates that we'll translate replies back to the user's language
@@ -268,29 +268,29 @@ adapter.use(languageTranslator);
 
 ---
 
-## <a name="run-the-bot-to-see-replies-in-the-users-language"></a><span data-ttu-id="3f316-154">Ejecutar el bot para ver las respuestas en el idioma del usuario</span><span class="sxs-lookup"><span data-stu-id="3f316-154">Run the bot to see replies in the user's language</span></span>
+## <a name="run-the-bot-to-see-replies-in-the-users-language"></a><span data-ttu-id="4df3d-154">Ejecutar el bot para ver las respuestas en el idioma del usuario</span><span class="sxs-lookup"><span data-stu-id="4df3d-154">Run the bot to see replies in the user's language</span></span>
 
-<span data-ttu-id="3f316-155">Ejecute el bot y escriba algunos mensajes en otros idiomas.</span><span class="sxs-lookup"><span data-stu-id="3f316-155">Run the bot, and type in a few messages in other languages.</span></span> <span data-ttu-id="3f316-156">Verá que detecta el idioma del usuario y traduce la respuesta.</span><span class="sxs-lookup"><span data-stu-id="3f316-156">You'll see that it detects the user's language and translates the response.</span></span>
+<span data-ttu-id="4df3d-155">Ejecute el bot y escriba algunos mensajes en otros idiomas.</span><span class="sxs-lookup"><span data-stu-id="4df3d-155">Run the bot, and type in a few messages in other languages.</span></span> <span data-ttu-id="4df3d-156">Verá que detecta el idioma del usuario y traduce la respuesta.</span><span class="sxs-lookup"><span data-stu-id="4df3d-156">You'll see that it detects the user's language and translates the response.</span></span>
 
 ![el bot detecta el idioma y traduce la respuesta](./media/how-to-bot-translate/bot-detects-language-translates-response.png)
 
 
-## <a name="adding-logic-for-detecting-or-changing-the-user-language"></a><span data-ttu-id="3f316-158">Agregar lógica para detectar o cambiar el idioma del usuario</span><span class="sxs-lookup"><span data-stu-id="3f316-158">Adding logic for detecting or changing the user language</span></span>
+## <a name="adding-logic-for-detecting-or-changing-the-user-language"></a><span data-ttu-id="4df3d-158">Agregar lógica para detectar o cambiar el idioma del usuario</span><span class="sxs-lookup"><span data-stu-id="4df3d-158">Adding logic for detecting or changing the user language</span></span>
 
-<span data-ttu-id="3f316-159">En lugar de dejar que el SDK de Bot Builder detecte automáticamente el idioma del usuario, puede proporcionar devoluciones de llamada para agregar su propia lógica a fin de determinar el idioma del usuario, o bien determinar cuándo ha cambiado el idioma del usuario.</span><span class="sxs-lookup"><span data-stu-id="3f316-159">Instead of letting the Botbuilder SDK automatically detect the user's language, you can provide a callback to add your own logic to determining the user's language, or to determine when the user's language has changed.</span></span>
+<span data-ttu-id="4df3d-159">En lugar de dejar que el SDK de Bot Builder detecte automáticamente el idioma del usuario, puede proporcionar devoluciones de llamada para agregar su propia lógica a fin de determinar el idioma del usuario, o bien determinar cuándo ha cambiado el idioma del usuario.</span><span class="sxs-lookup"><span data-stu-id="4df3d-159">Instead of letting the Botbuilder SDK automatically detect the user's language, you can provide a callback to add your own logic to determining the user's language, or to determine when the user's language has changed.</span></span>
 
 
-<span data-ttu-id="3f316-160">En el ejemplo siguiente, la devolución de llamada `CheckUserChangedLanguage` comprueba si hay un mensaje de usuario específico para cambiar el idioma.</span><span class="sxs-lookup"><span data-stu-id="3f316-160">In the following example, the `CheckUserChangedLanguage` callback checks for a specific user message to change the language.</span></span> 
+<span data-ttu-id="4df3d-160">En el ejemplo siguiente, la devolución de llamada `CheckUserChangedLanguage` comprueba si hay un mensaje de usuario específico para cambiar el idioma.</span><span class="sxs-lookup"><span data-stu-id="4df3d-160">In the following example, the `CheckUserChangedLanguage` callback checks for a specific user message to change the language.</span></span> 
 
-# <a name="ctabcs"></a>[<span data-ttu-id="3f316-161">C#</span><span class="sxs-lookup"><span data-stu-id="3f316-161">C#</span></span>](#tab/cs)
-<span data-ttu-id="3f316-162">En `Startup.cs`, agregue una devolución de llamada al software intermedio de traducción.</span><span class="sxs-lookup"><span data-stu-id="3f316-162">In `Startup.cs`, add a callback to the translation middleware.</span></span>
+# <a name="ctabcs"></a>[<span data-ttu-id="4df3d-161">C#</span><span class="sxs-lookup"><span data-stu-id="4df3d-161">C#</span></span>](#tab/cs)
+<span data-ttu-id="4df3d-162">En `Startup.cs`, agregue una devolución de llamada al software intermedio de traducción.</span><span class="sxs-lookup"><span data-stu-id="4df3d-162">In `Startup.cs`, add a callback to the translation middleware.</span></span>
 ```csharp
 middleware.Add(new TranslationMiddleware(new string[] { "en" },
      "<YOUR MICROSOFT TRANSLATOR TEXT API KEY>", null,
      TranslatorLocaleHelper.GetActiveLanguage,
      TranslatorLocaleHelper.CheckUserChangedLanguage));
 ```
-<span data-ttu-id="3f316-163">Agregue un archivo `TranslatorLocalHelper.cs` y la siguiente información a la definición de clase TranslatorLocalHelper.</span><span class="sxs-lookup"><span data-stu-id="3f316-163">Add a `TranslatorLocalHelper.cs` file and add the following to the TranslatorLocalHelper class definition.</span></span>
+<span data-ttu-id="4df3d-163">Agregue un archivo `TranslatorLocalHelper.cs` y la siguiente información a la definición de clase TranslatorLocalHelper.</span><span class="sxs-lookup"><span data-stu-id="4df3d-163">Add a `TranslatorLocalHelper.cs` file and add the following to the TranslatorLocalHelper class definition.</span></span>
 ```csharp
     class CurrentUserState
     {
@@ -351,7 +351,7 @@ middleware.Add(new TranslationMiddleware(new string[] { "en" },
 
 ```
 
-# <a name="javascripttabjs"></a>[<span data-ttu-id="3f316-164">JavaScript</span><span class="sxs-lookup"><span data-stu-id="3f316-164">JavaScript</span></span>](#tab/js)
+# <a name="javascripttabjs"></a>[<span data-ttu-id="4df3d-164">JavaScript</span><span class="sxs-lookup"><span data-stu-id="4df3d-164">JavaScript</span></span>](#tab/js)
 ```javascript
 // When the user inputs 'set my language to fr'
 // The bot will automatically change all text to French
@@ -392,11 +392,11 @@ server.post('/api/messages', (req, res) => {
 
 ---
 
-## <a name="combining-luis-or-qna-with-translation"></a><span data-ttu-id="3f316-165">Combinar LUIS o QnA con la traducción</span><span class="sxs-lookup"><span data-stu-id="3f316-165">Combining LUIS or QnA with translation</span></span>
+## <a name="combining-luis-or-qna-with-translation"></a><span data-ttu-id="4df3d-165">Combinar LUIS o QnA con la traducción</span><span class="sxs-lookup"><span data-stu-id="4df3d-165">Combining LUIS or QnA with translation</span></span>
 
-<span data-ttu-id="3f316-166">Si combina la traducción con otros servicios en el bot, como LUIS o QnA Maker, agregue primero el software intermedio de traducción para que los mensajes se traduzcan antes de pasarlos a otro software intermedio que espera el lenguaje nativo del bot.</span><span class="sxs-lookup"><span data-stu-id="3f316-166">If you're combining translation with other services in your bot, like LUIS or QnA maker, add the translation middleware first, so that the messages are translated before passing them to other middleware that expects the bot's native language.</span></span>
+<span data-ttu-id="4df3d-166">Si combina la traducción con otros servicios en el bot, como LUIS o QnA Maker, agregue primero el software intermedio de traducción para que los mensajes se traduzcan antes de pasarlos a otro software intermedio que espera el lenguaje nativo del bot.</span><span class="sxs-lookup"><span data-stu-id="4df3d-166">If you're combining translation with other services in your bot, like LUIS or QnA maker, add the translation middleware first, so that the messages are translated before passing them to other middleware that expects the bot's native language.</span></span>
 
-# <a name="ctabcs"></a>[<span data-ttu-id="3f316-167">C#</span><span class="sxs-lookup"><span data-stu-id="3f316-167">C#</span></span>](#tab/cs)
+# <a name="ctabcs"></a>[<span data-ttu-id="4df3d-167">C#</span><span class="sxs-lookup"><span data-stu-id="4df3d-167">C#</span></span>](#tab/cs)
 ```cs
 public void ConfigureServices(IServiceCollection services)
 {
@@ -418,7 +418,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<span data-ttu-id="3f316-168">En el código del bot, los resultados de LUIS se basan en la entrada que ya se ha traducido al lenguaje nativo del bot.</span><span class="sxs-lookup"><span data-stu-id="3f316-168">In your bot code, the LUIS results are based on input that has already been translated to the bot's native language.</span></span> <span data-ttu-id="3f316-169">Pruebe a modificar el código del bot para comprobar los resultados de una aplicación de LUIS:</span><span class="sxs-lookup"><span data-stu-id="3f316-169">Try modifying the bot code to check the results of a LUIS app:</span></span>
+<span data-ttu-id="4df3d-168">En el código del bot, los resultados de LUIS se basan en la entrada que ya se ha traducido al lenguaje nativo del bot.</span><span class="sxs-lookup"><span data-stu-id="4df3d-168">In your bot code, the LUIS results are based on input that has already been translated to the bot's native language.</span></span> <span data-ttu-id="4df3d-169">Pruebe a modificar el código del bot para comprobar los resultados de una aplicación de LUIS:</span><span class="sxs-lookup"><span data-stu-id="4df3d-169">Try modifying the bot code to check the results of a LUIS app:</span></span>
 
 ```cs
 public async Task OnTurn(ITurnContext context)
@@ -447,7 +447,7 @@ public async Task OnTurn(ITurnContext context)
 }          
 ```
 
-# <a name="javascripttabjs"></a>[<span data-ttu-id="3f316-170">JavaScript</span><span class="sxs-lookup"><span data-stu-id="3f316-170">JavaScript</span></span>](#tab/js)
+# <a name="javascripttabjs"></a>[<span data-ttu-id="4df3d-170">JavaScript</span><span class="sxs-lookup"><span data-stu-id="4df3d-170">JavaScript</span></span>](#tab/js)
 ```javascript
 // Add language translator middleware
 const languageTranslator = new LanguageTranslator({
@@ -484,11 +484,11 @@ server.post('/api/messages', (req, res) => {
 
 ---
 
-## <a name="bypass-translation-for-specified-patterns"></a><span data-ttu-id="3f316-171">Omitir la traducción de patrones especificados</span><span class="sxs-lookup"><span data-stu-id="3f316-171">Bypass translation for specified patterns</span></span>
-<span data-ttu-id="3f316-172">Es posible que no le interese que el bot traduzca ciertas palabras, como los nombres propios.</span><span class="sxs-lookup"><span data-stu-id="3f316-172">There may be certain words you don't want your bot to translate, such as proper names.</span></span> <span data-ttu-id="3f316-173">Puede proporcionar expresiones regulares para indicar los patrones que no hay que traducir.</span><span class="sxs-lookup"><span data-stu-id="3f316-173">You can provide regular expressions to indicate patterns that shouldn't be translated.</span></span> <span data-ttu-id="3f316-174">Por ejemplo, si el usuario dice "Me llamo…" en un lenguaje no nativo para el bot y quiere impedir que su nombre se traduzca, puede usar un patrón para especificarlo.</span><span class="sxs-lookup"><span data-stu-id="3f316-174">For example, if the user says "My name is ..." in a non-native language for your bot, and you want to avoid translating their name, you can use a pattern to specify that.</span></span>
+## <a name="bypass-translation-for-specified-patterns"></a><span data-ttu-id="4df3d-171">Omitir la traducción de patrones especificados</span><span class="sxs-lookup"><span data-stu-id="4df3d-171">Bypass translation for specified patterns</span></span>
+<span data-ttu-id="4df3d-172">Es posible que no le interese que el bot traduzca ciertas palabras, como los nombres propios.</span><span class="sxs-lookup"><span data-stu-id="4df3d-172">There may be certain words you don't want your bot to translate, such as proper names.</span></span> <span data-ttu-id="4df3d-173">Puede proporcionar expresiones regulares para indicar los patrones que no hay que traducir.</span><span class="sxs-lookup"><span data-stu-id="4df3d-173">You can provide regular expressions to indicate patterns that shouldn't be translated.</span></span> <span data-ttu-id="4df3d-174">Por ejemplo, si el usuario dice "Me llamo…" en un lenguaje no nativo para el bot y quiere impedir que su nombre se traduzca, puede usar un patrón para especificarlo.</span><span class="sxs-lookup"><span data-stu-id="4df3d-174">For example, if the user says "My name is ..." in a non-native language for your bot, and you want to avoid translating their name, you can use a pattern to specify that.</span></span>
 
-# <a name="ctabcs"></a>[<span data-ttu-id="3f316-175">C#</span><span class="sxs-lookup"><span data-stu-id="3f316-175">C#</span></span>](#tab/cs)
-<span data-ttu-id="3f316-176">En Startup.cs</span><span class="sxs-lookup"><span data-stu-id="3f316-176">In Startup.cs</span></span>
+# <a name="ctabcs"></a>[<span data-ttu-id="4df3d-175">C#</span><span class="sxs-lookup"><span data-stu-id="4df3d-175">C#</span></span>](#tab/cs)
+<span data-ttu-id="4df3d-176">En Startup.cs</span><span class="sxs-lookup"><span data-stu-id="4df3d-176">In Startup.cs</span></span>
 ```cs
 // Pattern representing input to not translate
 Dictionary<string, List<string>> patterns = new Dictionary<string, List<string>>();
@@ -503,7 +503,7 @@ middleware.Add(new TranslationMiddleware(new string[] { "en" },
 ```
 <!-- TODO: ADD more explanation (both of these callbacks are run every time), fix image by debugging regex for l'etat -->
 
-# <a name="javascripttabjs"></a>[<span data-ttu-id="3f316-177">JavaScript</span><span class="sxs-lookup"><span data-stu-id="3f316-177">JavaScript</span></span>](#tab/js)
+# <a name="javascripttabjs"></a>[<span data-ttu-id="4df3d-177">JavaScript</span><span class="sxs-lookup"><span data-stu-id="4df3d-177">JavaScript</span></span>](#tab/js)
 ```javascript
 // Add language translator middleware
 const languageTranslator = new LanguageTranslator({
@@ -522,25 +522,25 @@ adapter.use(languageTranslator);
 
 ![el bot omite la traducción de un patrón](./media/how-to-bot-translate/bot-no-translate-name-fr.png)
 
-## <a name="localize-dates"></a><span data-ttu-id="3f316-179">Localizar fechas</span><span class="sxs-lookup"><span data-stu-id="3f316-179">Localize dates</span></span>
+## <a name="localize-dates"></a><span data-ttu-id="4df3d-179">Localizar fechas</span><span class="sxs-lookup"><span data-stu-id="4df3d-179">Localize dates</span></span>
 
-<span data-ttu-id="3f316-180">Si necesita localizar fechas, puede agregar `LocaleConverterMiddleware`.</span><span class="sxs-lookup"><span data-stu-id="3f316-180">If need to localize dates, you can add `LocaleConverterMiddleware`.</span></span> <span data-ttu-id="3f316-181">Por ejemplo, si sabe que el bot espera las fechas en el formato `MM/DD/YYYY` y es posible que los usuarios de otras configuraciones regionales escriban las fechas en el formato `DD/MM/YYYY`, el software intermedio del convertidor de configuración regional puede convertir automáticamente las fechas al formato que espera el bot.</span><span class="sxs-lookup"><span data-stu-id="3f316-181">For example, if you know that your bot expects dates in the format `MM/DD/YYYY`, and users in other locales might enter dates in the format `DD/MM/YYYY`, the locale converter middleware can automatically convert dates to the format your bot expects.</span></span>
+<span data-ttu-id="4df3d-180">Si necesita localizar fechas, puede agregar `LocaleConverterMiddleware`.</span><span class="sxs-lookup"><span data-stu-id="4df3d-180">If need to localize dates, you can add `LocaleConverterMiddleware`.</span></span> <span data-ttu-id="4df3d-181">Por ejemplo, si sabe que el bot espera las fechas en el formato `MM/DD/YYYY` y es posible que los usuarios de otras configuraciones regionales escriban las fechas en el formato `DD/MM/YYYY`, el software intermedio del convertidor de configuración regional puede convertir automáticamente las fechas al formato que espera el bot.</span><span class="sxs-lookup"><span data-stu-id="4df3d-181">For example, if you know that your bot expects dates in the format `MM/DD/YYYY`, and users in other locales might enter dates in the format `DD/MM/YYYY`, the locale converter middleware can automatically convert dates to the format your bot expects.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="3f316-182">El software intermedio del convertidor de configuración regional está pensado para convertir solo fechas.</span><span class="sxs-lookup"><span data-stu-id="3f316-182">The locale converter middleware is intended to convert only dates.</span></span> <span data-ttu-id="3f316-183">No tiene ningún conocimiento sobre los resultados del software intermedio de traducción.</span><span class="sxs-lookup"><span data-stu-id="3f316-183">It has no knowledge of the results of translation middleware.</span></span> <span data-ttu-id="3f316-184">Si usa software intermedio de traducción, tenga cuidado al combinarlo con el convertidor de configuración regional.</span><span class="sxs-lookup"><span data-stu-id="3f316-184">If you're using translation middleware, be careful how you combine it with locale converter.</span></span> <span data-ttu-id="3f316-185">El software intermedio de traducción traduce las fechas que están en formato de texto junto con el resto de la entrada de texto, pero no traduce otras fechas.</span><span class="sxs-lookup"><span data-stu-id="3f316-185">Translation middleware will translate some dates that are in textual format along with other text input, but it doesn't translate dates</span></span>
+> <span data-ttu-id="4df3d-182">El software intermedio del convertidor de configuración regional está pensado para convertir solo fechas.</span><span class="sxs-lookup"><span data-stu-id="4df3d-182">The locale converter middleware is intended to convert only dates.</span></span> <span data-ttu-id="4df3d-183">No tiene ningún conocimiento sobre los resultados del software intermedio de traducción.</span><span class="sxs-lookup"><span data-stu-id="4df3d-183">It has no knowledge of the results of translation middleware.</span></span> <span data-ttu-id="4df3d-184">Si usa software intermedio de traducción, tenga cuidado al combinarlo con el convertidor de configuración regional.</span><span class="sxs-lookup"><span data-stu-id="4df3d-184">If you're using translation middleware, be careful how you combine it with locale converter.</span></span> <span data-ttu-id="4df3d-185">El software intermedio de traducción traduce las fechas que están en formato de texto junto con el resto de la entrada de texto, pero no traduce otras fechas.</span><span class="sxs-lookup"><span data-stu-id="4df3d-185">Translation middleware will translate some dates that are in textual format along with other text input, but it doesn't translate dates</span></span>
 
-<span data-ttu-id="3f316-186">Por ejemplo, en la imagen siguiente se muestra un bot que devuelve la entrada de usuario después de traducirla de inglés a francés.</span><span class="sxs-lookup"><span data-stu-id="3f316-186">For example, the following image shows a bot that echos back the user input, after translating from English to French.</span></span> <span data-ttu-id="3f316-187">Usa `TranslationMiddleware` sin usar `LocaleConverterMiddleware`.</span><span class="sxs-lookup"><span data-stu-id="3f316-187">It uses `TranslationMiddleware` without using `LocaleConverterMiddleware`.</span></span>
+<span data-ttu-id="4df3d-186">Por ejemplo, en la imagen siguiente se muestra un bot que devuelve la entrada de usuario después de traducirla de inglés a francés.</span><span class="sxs-lookup"><span data-stu-id="4df3d-186">For example, the following image shows a bot that echos back the user input, after translating from English to French.</span></span> <span data-ttu-id="4df3d-187">Usa `TranslationMiddleware` sin usar `LocaleConverterMiddleware`.</span><span class="sxs-lookup"><span data-stu-id="4df3d-187">It uses `TranslationMiddleware` without using `LocaleConverterMiddleware`.</span></span>
 
 ![bot que traduce las fechas sin conversión de fechas](./media/how-to-bot-translate/locale-date-before.png)
 
-<span data-ttu-id="3f316-189">A continuación se muestra el mismo bot con `LocaleConverterMiddleware` agregado.</span><span class="sxs-lookup"><span data-stu-id="3f316-189">The following shows the same bot if the `LocaleConverterMiddleware` is added.</span></span>
+<span data-ttu-id="4df3d-189">A continuación se muestra el mismo bot con `LocaleConverterMiddleware` agregado.</span><span class="sxs-lookup"><span data-stu-id="4df3d-189">The following shows the same bot if the `LocaleConverterMiddleware` is added.</span></span>
 
 ![bot que traduce las fechas sin conversión de fechas](./media/how-to-bot-translate/locale-date-after.png)
 
-<span data-ttu-id="3f316-191">Los convertidores de configuración regional son compatibles con las configuraciones regionales de inglés, francés, alemán y chino.</span><span class="sxs-lookup"><span data-stu-id="3f316-191">Locale converters can support English, French, German, and Chinese locales.</span></span> <!-- TODO: ADD DETAIL ABOUT SUPPORTED LOCALES -->
+<span data-ttu-id="4df3d-191">Los convertidores de configuración regional son compatibles con las configuraciones regionales de inglés, francés, alemán y chino.</span><span class="sxs-lookup"><span data-stu-id="4df3d-191">Locale converters can support English, French, German, and Chinese locales.</span></span> <!-- TODO: ADD DETAIL ABOUT SUPPORTED LOCALES -->
 
-# <a name="ctabcs"></a>[<span data-ttu-id="3f316-192">C#</span><span class="sxs-lookup"><span data-stu-id="3f316-192">C#</span></span>](#tab/cs)
-<span data-ttu-id="3f316-193">En Startup.cs</span><span class="sxs-lookup"><span data-stu-id="3f316-193">In Startup.cs</span></span>
+# <a name="ctabcs"></a>[<span data-ttu-id="4df3d-192">C#</span><span class="sxs-lookup"><span data-stu-id="4df3d-192">C#</span></span>](#tab/cs)
+<span data-ttu-id="4df3d-193">En Startup.cs</span><span class="sxs-lookup"><span data-stu-id="4df3d-193">In Startup.cs</span></span>
 ```cs
 // Add locale converter middleware
 middleware.Add(new LocaleConverterMiddleware(
@@ -548,7 +548,7 @@ middleware.Add(new LocaleConverterMiddleware(
     TranslatorLocaleHelper.CheckUserChangedLocale,
      "en-us", LocaleConverter.Converter));
 ```
-<span data-ttu-id="3f316-194">En TranslatorLocaleHelper.cs</span><span class="sxs-lookup"><span data-stu-id="3f316-194">In TranslatorLocaleHelper.cs</span></span>
+<span data-ttu-id="4df3d-194">En TranslatorLocaleHelper.cs</span><span class="sxs-lookup"><span data-stu-id="4df3d-194">In TranslatorLocaleHelper.cs</span></span>
 ```cs
 // TranslatorLocaleHelper.cs
 public static async Task<bool> CheckUserChangedLocale(ITurnContext context)
@@ -603,7 +603,7 @@ public static string GetActiveLocale(ITurnContext context)
 }
 ```
 
-# <a name="javascripttabjs"></a>[<span data-ttu-id="3f316-195">JavaScript</span><span class="sxs-lookup"><span data-stu-id="3f316-195">JavaScript</span></span>](#tab/js)
+# <a name="javascripttabjs"></a>[<span data-ttu-id="4df3d-195">JavaScript</span><span class="sxs-lookup"><span data-stu-id="4df3d-195">JavaScript</span></span>](#tab/js)
 
 <!-- this snippet only works if the user doesn't actually try to change their locale.  Emailed Mostafa about the issue 
 It should change the locale after you type in 'set my locale to....' -->

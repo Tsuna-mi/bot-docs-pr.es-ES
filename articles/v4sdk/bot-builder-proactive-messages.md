@@ -1,5 +1,5 @@
 ---
-title: Mensajería proactiva | Microsoft Docs
+title: Mensajes proactivos | Microsoft Docs
 description: Descubra cómo enviar mensajes de manera proactiva.
 keywords: dar la bienvenida al usuario, iniciar conversación
 author: ivorb
@@ -9,14 +9,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 47f3dd9405a36260a01b28bcc389355d6726ae11
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f311f70e9bfb72db780546b5e289f09d803589dc
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305120"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756581"
 ---
-# <a name="proactive-messaging"></a><span data-ttu-id="3653f-104">Mensajería proactiva</span><span class="sxs-lookup"><span data-stu-id="3653f-104">Proactive messaging</span></span>
+# <a name="proactive-messages"></a><span data-ttu-id="7056c-104">Mensajes proactivos</span><span class="sxs-lookup"><span data-stu-id="7056c-104">Proactive messages</span></span>
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 <!--
 When you think about the exchange of messages between your bot and the user, you're probably thinking about the scenario where the user sends a message to your bot and your bot then replies to the user with a message of its own. We call this _reactive messaging_ and it's by far the most common flow that you should optimize your bot's code for.
@@ -36,13 +36,13 @@ A common case of proactive messaging comes when our bot is performing a time-con
 
 [!include[Introduction to proactive messages - part 1](../includes/snippet-proactive-messages-intro-1.md)] 
 
-## <a name="types-of-proactive-messages"></a><span data-ttu-id="3653f-105">Tipos de mensajes proactivos</span><span class="sxs-lookup"><span data-stu-id="3653f-105">Types of proactive messages</span></span> 
+## <a name="types-of-proactive-messages"></a><span data-ttu-id="7056c-105">Tipos de mensajes automáticos</span><span class="sxs-lookup"><span data-stu-id="7056c-105">Types of proactive messages</span></span> 
 
 [!include[Introduction to proactive messages - part 2](../includes/snippet-proactive-messages-intro-2.md)] 
 
-## <a name="next-steps"></a><span data-ttu-id="3653f-106">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="3653f-106">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="7056c-106">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="7056c-106">Next steps</span></span>
 
-<span data-ttu-id="3653f-107">Ahora que está familiarizado con las actividades, la mensajería y el flujo de conversación, echemos un vistazo a otros aspectos importantes de su bot comenzando por la comprensión del lenguaje con LUIS.</span><span class="sxs-lookup"><span data-stu-id="3653f-107">Now that you're familiar with activites, messaging, and conversation flow, lets look at other important aspects of your bot starting with language understanding using LUIS.</span></span>
+<span data-ttu-id="7056c-107">Ahora que está familiarizado con las actividades, la mensajería y el flujo de conversación, echemos un vistazo a otros aspectos importantes de su bot comenzando por la comprensión del lenguaje con LUIS.</span><span class="sxs-lookup"><span data-stu-id="7056c-107">Now that you're familiar with activites, messaging, and conversation flow, lets look at other important aspects of your bot starting with language understanding using LUIS.</span></span>
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="3653f-108">Comprensión del lenguaje</span><span class="sxs-lookup"><span data-stu-id="3653f-108">Language understanding</span></span>](bot-builder-concept-luis.md)
+> [<span data-ttu-id="7056c-108">Comprensión del lenguaje</span><span class="sxs-lookup"><span data-stu-id="7056c-108">Language understanding</span></span>](bot-builder-concept-luis.md)

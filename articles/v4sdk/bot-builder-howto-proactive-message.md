@@ -1,5 +1,5 @@
 ---
-title: Uso de la mensajería automática | Microsoft Docs
+title: Envío de mensajes automáticos | Microsoft Docs
 description: Obtenga información sobre cómo usar mensajes automáticos con el bot.
 keywords: mensaje automático
 author: jonathanfingold
@@ -9,37 +9,40 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/01/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fd53a897d9847432fd337402d40edfcd6f4ff061
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: c22ce6a35d4d49506360a78a439f15137c429d9d
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305725"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905139"
 ---
-# <a name="how-to-use-proactive-messaging"></a><span data-ttu-id="0ef2e-104">Uso de la mensajería automática</span><span class="sxs-lookup"><span data-stu-id="0ef2e-104">How to use proactive messaging</span></span>
+# <a name="send-proactive-messages"></a><span data-ttu-id="9b420-104">Envío de mensajes automáticos</span><span class="sxs-lookup"><span data-stu-id="9b420-104">Send proactive messages</span></span> 
 
-<span data-ttu-id="0ef2e-105">A menudo, los bots envían _mensajes reactivos_, pero hay veces que necesitamos enviar también un [mensaje automático](bot-builder-proactive-messages.md).</span><span class="sxs-lookup"><span data-stu-id="0ef2e-105">Often bots send _reactive messages_, but there are times when we need to be able to send a [proactive message](bot-builder-proactive-messages.md) as well.</span></span> 
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-<span data-ttu-id="0ef2e-106">Un caso común de mensajería automática es cuando el bot realiza una tarea puede llevar una cantidad indeterminada de tiempo.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-106">A common case of proactive messaging comes when our bot is performing a task that can take an indeterminate amount of time.</span></span> <span data-ttu-id="0ef2e-107">En este caso, puede almacenar información sobre la tarea, indicar al usuario que el bot regresará cuando la tarea termine y dejar que la conversación continúe.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-107">In this case, you can store information about the task, tell the user that the bot will get back to them when the task finishes, and let the conversation proceed.</span></span> <span data-ttu-id="0ef2e-108">Cuando la tarea se completa, el bot puede reanudar la conversación con el envío automático del mensaje de confirmación.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-108">When the task completes, the bot can resume the conversation by sending the confirmation message proactively.</span></span>
 
-# <a name="ctabcs"></a>[<span data-ttu-id="0ef2e-109">C#</span><span class="sxs-lookup"><span data-stu-id="0ef2e-109">C#</span></span>](#tab/cs)
+<span data-ttu-id="9b420-105">A menudo, los bots envían _mensajes reactivos_, pero hay veces que necesitamos enviar también un [mensaje automático](bot-builder-proactive-messages.md).</span><span class="sxs-lookup"><span data-stu-id="9b420-105">Often bots send _reactive messages_, but there are times when we need to be able to send a [proactive message](bot-builder-proactive-messages.md) as well.</span></span> 
 
-## <a name="notes-about-this-sample"></a><span data-ttu-id="0ef2e-110">Notas sobre este ejemplo</span><span class="sxs-lookup"><span data-stu-id="0ef2e-110">Notes about this sample</span></span>
+<span data-ttu-id="9b420-106">Un caso común de mensajería automática es cuando el bot realiza una tarea puede llevar una cantidad indeterminada de tiempo.</span><span class="sxs-lookup"><span data-stu-id="9b420-106">A common case of proactive messaging comes when our bot is performing a task that can take an indeterminate amount of time.</span></span> <span data-ttu-id="9b420-107">En este caso, puede almacenar información sobre la tarea, indicar al usuario que el bot regresará cuando la tarea termine y dejar que la conversación continúe.</span><span class="sxs-lookup"><span data-stu-id="9b420-107">In this case, you can store information about the task, tell the user that the bot will get back to them when the task finishes, and let the conversation proceed.</span></span> <span data-ttu-id="9b420-108">Cuando la tarea se completa, el bot puede reanudar la conversación con el envío automático del mensaje de confirmación.</span><span class="sxs-lookup"><span data-stu-id="9b420-108">When the task completes, the bot can resume the conversation by sending the confirmation message proactively.</span></span>
 
-<span data-ttu-id="0ef2e-111">Se va a modificar el ejemplo básico de EchoBot.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-111">We're modifying the basic EchoBot sample.</span></span>
-- <span data-ttu-id="0ef2e-112">Se usará `Microsoft.Samples.Proactive` como el espacio de nombres.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-112">We're using `Microsoft.Samples.Proactive` as the namespace.</span></span>
-- <span data-ttu-id="0ef2e-113">Se sustituirá el archivo de estado con un archivo `JobData.cs`.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-113">We're replacing the state file with a `JobData.cs` file.</span></span>
-- <span data-ttu-id="0ef2e-114">Se sustituirá el archivo del bot con un archivo `ProactiveBot.cs`.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-114">We're replacing the bot file with a `ProactiveBot.cs` file.</span></span>
+# <a name="ctabcs"></a>[<span data-ttu-id="9b420-109">C#</span><span class="sxs-lookup"><span data-stu-id="9b420-109">C#</span></span>](#tab/cs)
+
+## <a name="notes-about-this-sample"></a><span data-ttu-id="9b420-110">Notas sobre este ejemplo</span><span class="sxs-lookup"><span data-stu-id="9b420-110">Notes about this sample</span></span>
+
+<span data-ttu-id="9b420-111">Se va a modificar el ejemplo básico de EchoBot.</span><span class="sxs-lookup"><span data-stu-id="9b420-111">We're modifying the basic EchoBot sample.</span></span>
+- <span data-ttu-id="9b420-112">Se usará `Microsoft.Samples.Proactive` como el espacio de nombres.</span><span class="sxs-lookup"><span data-stu-id="9b420-112">We're using `Microsoft.Samples.Proactive` as the namespace.</span></span>
+- <span data-ttu-id="9b420-113">Se sustituirá el archivo de estado con un archivo `JobData.cs`.</span><span class="sxs-lookup"><span data-stu-id="9b420-113">We're replacing the state file with a `JobData.cs` file.</span></span>
+- <span data-ttu-id="9b420-114">Se sustituirá el archivo del bot con un archivo `ProactiveBot.cs`.</span><span class="sxs-lookup"><span data-stu-id="9b420-114">We're replacing the bot file with a `ProactiveBot.cs` file.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="0ef2e-115">La mensajería automática requiere actualmente que el bot tenga un identificador de aplicación y una contraseña válidos.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-115">Proactive messaging currently requires your bot to have a valid ApplicationID and password.</span></span>
+> <span data-ttu-id="9b420-115">La mensajería automática requiere actualmente que el bot tenga un identificador de aplicación y una contraseña válidos.</span><span class="sxs-lookup"><span data-stu-id="9b420-115">Proactive messaging currently requires your bot to have a valid ApplicationID and password.</span></span>
 
 
-## <a name="define-task-data"></a><span data-ttu-id="0ef2e-116">Definición de datos de tareas</span><span class="sxs-lookup"><span data-stu-id="0ef2e-116">Define task data</span></span>
+## <a name="define-task-data"></a><span data-ttu-id="9b420-116">Definición de datos de tareas</span><span class="sxs-lookup"><span data-stu-id="9b420-116">Define task data</span></span>
 
-<span data-ttu-id="0ef2e-117">En este escenario, se va a realizar un seguimiento de las tareas arbitrarias que diferentes usuarios pueden crear en distintas conversaciones.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-117">In this scenario, we're tracking arbitrary tasks that can be created by various users in different conversations.</span></span> <span data-ttu-id="0ef2e-118">Por tanto, se va a usar el software intermedio de estado del bot general, en lugar del software intermedio de estado del usuario o de la conversación.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-118">So, we're using general bot state middleware, instead of user or conversation state middleware.</span></span>
+<span data-ttu-id="9b420-117">En este escenario, se va a realizar un seguimiento de las tareas arbitrarias que diferentes usuarios pueden crear en distintas conversaciones.</span><span class="sxs-lookup"><span data-stu-id="9b420-117">In this scenario, we're tracking arbitrary tasks that can be created by various users in different conversations.</span></span> <span data-ttu-id="9b420-118">Por tanto, se va a usar el software intermedio de estado del bot general, en lugar del software intermedio de estado del usuario o de la conversación.</span><span class="sxs-lookup"><span data-stu-id="9b420-118">So, we're using general bot state middleware, instead of user or conversation state middleware.</span></span>
 
-<span data-ttu-id="0ef2e-119">La siguiente clase define la estructura de datos que se usará para los trabajos individuales.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-119">The following class defines the data structure we'll use for individual jobs.</span></span>
+<span data-ttu-id="9b420-119">La siguiente clase define la estructura de datos que se usará para los trabajos individuales.</span><span class="sxs-lookup"><span data-stu-id="9b420-119">The following class defines the data structure we'll use for individual jobs.</span></span>
 
 
 ```csharp
@@ -70,10 +73,10 @@ namespace Microsoft.Samples.Proactive
 ```
 
 
-<span data-ttu-id="0ef2e-120">También es necesario agregar el software intermedio de estado al código de inicio.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-120">We also need to add the state middleware to our startup code.</span></span>
+<span data-ttu-id="9b420-120">También es necesario agregar el software intermedio de estado al código de inicio.</span><span class="sxs-lookup"><span data-stu-id="9b420-120">We also need to add the state middleware to our startup code.</span></span>
 
 
-<span data-ttu-id="0ef2e-121">En el archivo `StartUp.cs`, actualice el método `ConfigureServices` para agregar un diccionario de trabajos al estado del bot.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-121">In the `StartUp.cs` file, update the `ConfigureServices` method to add a dictionary of jobs to our bot state.</span></span> <span data-ttu-id="0ef2e-122">En el código siguiente, es la última llamada a `options.Middleware.Add`.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-122">In the following code, it is the last call to `options.Middleware.Add`.</span></span>
+<span data-ttu-id="9b420-121">En el archivo `StartUp.cs`, actualice el método `ConfigureServices` para agregar un diccionario de trabajos al estado del bot.</span><span class="sxs-lookup"><span data-stu-id="9b420-121">In the `StartUp.cs` file, update the `ConfigureServices` method to add a dictionary of jobs to our bot state.</span></span> <span data-ttu-id="9b420-122">En el código siguiente, es la última llamada a `options.Middleware.Add`.</span><span class="sxs-lookup"><span data-stu-id="9b420-122">In the following code, it is the last call to `options.Middleware.Add`.</span></span>
 ```csharp
 // This method gets called by the runtime. Use this method to add services to the container.
 public void ConfigureServices(IServiceCollection services)
@@ -107,26 +110,26 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 
-## <a name="update-your-bot-to-create-and-run-jobs"></a><span data-ttu-id="0ef2e-123">Actualización del bot para crear y ejecutar trabajos</span><span class="sxs-lookup"><span data-stu-id="0ef2e-123">Update your bot to create and run jobs</span></span>
+## <a name="update-your-bot-to-create-and-run-jobs"></a><span data-ttu-id="9b420-123">Actualización del bot para crear y ejecutar trabajos</span><span class="sxs-lookup"><span data-stu-id="9b420-123">Update your bot to create and run jobs</span></span>
 
-<span data-ttu-id="0ef2e-124">En cada turno, se permitirá al usuario crear un trabajo escribiendo `run` o `run job`.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-124">Each turn, we'll let a user create a job by typing `run` or `run job`.</span></span>
+<span data-ttu-id="9b420-124">En cada turno, se permitirá al usuario crear un trabajo escribiendo `run` o `run job`.</span><span class="sxs-lookup"><span data-stu-id="9b420-124">Each turn, we'll let a user create a job by typing `run` or `run job`.</span></span>
 
-<span data-ttu-id="0ef2e-125">Como respuesta, el bot realizará los siguientes pasos en dicho turno:</span><span class="sxs-lookup"><span data-stu-id="0ef2e-125">In response, our bot will take the following steps within that turn:</span></span>
-- <span data-ttu-id="0ef2e-126">Crear el trabajo.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-126">Create the job.</span></span>
-- <span data-ttu-id="0ef2e-127">Registrar información sobre la conversación actual para poder enviarle el mensaje automático más adelante.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-127">Record information about the current conversation so we can send the proactive message later.</span></span>
-- <span data-ttu-id="0ef2e-128">Permitir que el usuario sepa que se va a iniciar el trabajo y cuándo se finalizará.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-128">Let the user know that we are starting their job and will let them know later when it is complete.</span></span>
-- <span data-ttu-id="0ef2e-129">Iniciar el trabajo asincrónico.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-129">Start the asynchronous job.</span></span>
-- <span data-ttu-id="0ef2e-130">Dejar que el turno se cierre.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-130">Let the turn exit.</span></span>
+<span data-ttu-id="9b420-125">Como respuesta, el bot realizará los siguientes pasos en dicho turno:</span><span class="sxs-lookup"><span data-stu-id="9b420-125">In response, our bot will take the following steps within that turn:</span></span>
+- <span data-ttu-id="9b420-126">Crear el trabajo.</span><span class="sxs-lookup"><span data-stu-id="9b420-126">Create the job.</span></span>
+- <span data-ttu-id="9b420-127">Registrar información sobre la conversación actual para poder enviarle el mensaje automático más adelante.</span><span class="sxs-lookup"><span data-stu-id="9b420-127">Record information about the current conversation so we can send the proactive message later.</span></span>
+- <span data-ttu-id="9b420-128">Permitir que el usuario sepa que se va a iniciar el trabajo y cuándo se finalizará.</span><span class="sxs-lookup"><span data-stu-id="9b420-128">Let the user know that we are starting their job and will let them know later when it is complete.</span></span>
+- <span data-ttu-id="9b420-129">Iniciar el trabajo asincrónico.</span><span class="sxs-lookup"><span data-stu-id="9b420-129">Start the asynchronous job.</span></span>
+- <span data-ttu-id="9b420-130">Dejar que el turno se cierre.</span><span class="sxs-lookup"><span data-stu-id="9b420-130">Let the turn exit.</span></span>
 
-<span data-ttu-id="0ef2e-131">El trabajo que se va a iniciar es un sencillo temporizador de cinco segundos que se completa con el envío del mensaje automático.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-131">The job we're starting is a simple 5 second timer that then completes by sending the proactive message.</span></span>
-- <span data-ttu-id="0ef2e-132">La llamada al método de continuación de la conversación del adaptador crea un turno iniciado por el bot.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-132">The call to the adapter's continue conversation method creates a new turn initiated by the bot.</span></span>
-- <span data-ttu-id="0ef2e-133">Este turno tiene su propio contexto, del que se recupera la información de estado.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-133">This turn has its own turn context from which we retrieve the state information.</span></span>
-- <span data-ttu-id="0ef2e-134">Este contexto se usa para enviar el mensaje automático al usuario.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-134">We use this context to send the proactive message to the user.</span></span>
+<span data-ttu-id="9b420-131">El trabajo que se va a iniciar es un sencillo temporizador de cinco segundos que se completa con el envío del mensaje automático.</span><span class="sxs-lookup"><span data-stu-id="9b420-131">The job we're starting is a simple 5 second timer that then completes by sending the proactive message.</span></span>
+- <span data-ttu-id="9b420-132">La llamada al método de continuación de la conversación del adaptador crea un turno iniciado por el bot.</span><span class="sxs-lookup"><span data-stu-id="9b420-132">The call to the adapter's continue conversation method creates a new turn initiated by the bot.</span></span>
+- <span data-ttu-id="9b420-133">Este turno tiene su propio [contexto de turno](bot-builder-concept-activity-processing.md#turn-context), del que se recupera la información de estado.</span><span class="sxs-lookup"><span data-stu-id="9b420-133">This turn has its own [turn context](bot-builder-concept-activity-processing.md#turn-context) from which we retrieve the state information.</span></span>
+- <span data-ttu-id="9b420-134">Este contexto se usa para enviar el mensaje automático al usuario.</span><span class="sxs-lookup"><span data-stu-id="9b420-134">We use this context to send the proactive message to the user.</span></span>
 
 
 
 > [!NOTE]
-> <span data-ttu-id="0ef2e-135">El método `GetAppId` es una solución alternativa para habilitar la mensajería automática en el SDK de .NET.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-135">The `GetAppId` method is a work around to enable proactive messaging in the .NET SDK.</span></span>
+> <span data-ttu-id="9b420-135">El método `GetAppId` es una solución alternativa para habilitar la mensajería automática en el SDK de .NET.</span><span class="sxs-lookup"><span data-stu-id="9b420-135">The `GetAppId` method is a work around to enable proactive messaging in the .NET SDK.</span></span>
 
 ```csharp
 using Microsoft.Bot;
@@ -280,13 +283,13 @@ namespace Microsoft.Samples.Proactive
 }
 ```
 
-# <a name="javascripttabjs"></a>[<span data-ttu-id="0ef2e-136">JavaScript</span><span class="sxs-lookup"><span data-stu-id="0ef2e-136">JavaScript</span></span>](#tab/js)
+# <a name="javascripttabjs"></a>[<span data-ttu-id="9b420-136">JavaScript</span><span class="sxs-lookup"><span data-stu-id="9b420-136">JavaScript</span></span>](#tab/js)
 
-<span data-ttu-id="0ef2e-137">Para poder enviar un mensaje automático a un usuario, el usuario tendrá que enviar al menos un mensaje de estilo reactivo al bot.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-137">Before you can send a proactive message to a user, the user will have to send at least one reactive style message to your bot.</span></span> 
+<span data-ttu-id="9b420-137">Para poder enviar un mensaje automático a un usuario, el usuario tendrá que enviar al menos un mensaje de estilo reactivo al bot.</span><span class="sxs-lookup"><span data-stu-id="9b420-137">Before you can send a proactive message to a user, the user will have to send at least one reactive style message to your bot.</span></span> 
 
-<span data-ttu-id="0ef2e-138">Debe enviar un mensaje al bot, ya que necesita obtener una referencia al objeto de actividad y guardarlo en algún sitio para su futuro uso.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-138">You need to send one message to the bot since it needs to get a reference to the activity object and save it somewhere for future use.</span></span> <span data-ttu-id="0ef2e-139">El objeto de actividad se puede considerar como la dirección de los usuarios que contiene información sobre el canal al que pertenecen, su identificador de usuario, el identificador de la conversación e incluso el servidor que debe recibir los futuros mensajes.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-139">You can think of the activity object as the users address as it contains information about the channel they came in on, their user ID, the conversation ID, and even the server that should receive any future messages.</span></span> <span data-ttu-id="0ef2e-140">Se trata de un objeto JSON sencillo y debe guardarse completo sin manipularlo.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-140">This object is simple JSON and should be saved whole without tampering.</span></span>
+<span data-ttu-id="9b420-138">Debe enviar un mensaje al bot, ya que necesita obtener una referencia al objeto de actividad y guardarlo en algún sitio para su futuro uso.</span><span class="sxs-lookup"><span data-stu-id="9b420-138">You need to send one message to the bot since it needs to get a reference to the activity object and save it somewhere for future use.</span></span> <span data-ttu-id="9b420-139">El objeto de actividad se puede considerar como la dirección de los usuarios que contiene información sobre el canal al que pertenecen, su identificador de usuario, el identificador de la conversación e incluso el servidor que debe recibir los futuros mensajes.</span><span class="sxs-lookup"><span data-stu-id="9b420-139">You can think of the activity object as the users address as it contains information about the channel they came in on, their user ID, the conversation ID, and even the server that should receive any future messages.</span></span> <span data-ttu-id="9b420-140">Se trata de un objeto JSON sencillo y debe guardarse completo sin manipularlo.</span><span class="sxs-lookup"><span data-stu-id="9b420-140">This object is simple JSON and should be saved whole without tampering.</span></span>
 
-<span data-ttu-id="0ef2e-141">Se va a empezar con un fragmento de código corto que muestra cómo guardar la referencia de la conversación cada vez que el usuario diga "suscribir":</span><span class="sxs-lookup"><span data-stu-id="0ef2e-141">Let's start with a short code snippet that shows how to save the conversation reference anytime the user says subscribe:</span></span>
+<span data-ttu-id="9b420-141">Se va a empezar con un fragmento de código corto que muestra cómo guardar la referencia de la conversación cada vez que el usuario diga "suscribir":</span><span class="sxs-lookup"><span data-stu-id="9b420-141">Let's start with a short code snippet that shows how to save the conversation reference anytime the user says subscribe:</span></span>
 ```javascript
 const { MemoryStorage } = require('botbuilder');
 
@@ -311,9 +314,9 @@ server.post('/api/messages', (req, res) => {
     });
 });
 ```
-<span data-ttu-id="0ef2e-142">El fragmento de código anterior llama a la función `saveReference()` que guardará la referencia del usuario con `MemoryStorage` y devuelve `userId`.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-142">The snippets above calls the `saveReference()` function that will save the user's reference with `MemoryStorage` and returns `userId`.</span></span> <span data-ttu-id="0ef2e-143">Una vez que se haya guardado correctamente la referencia, se llama a `subscribeUser()`, que notificará al usuario que se ha suscrito.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-143">Once the reference is successfully saved we then call `subscribeUser()` which will notify the user that they have been subscribed.</span></span> 
+<span data-ttu-id="9b420-142">El fragmento de código anterior llama a la función `saveReference()` que guardará la referencia del usuario con `MemoryStorage` y devuelve `userId`.</span><span class="sxs-lookup"><span data-stu-id="9b420-142">The snippets above calls the `saveReference()` function that will save the user's reference with `MemoryStorage` and returns `userId`.</span></span> <span data-ttu-id="9b420-143">Una vez que se haya guardado correctamente la referencia, se llama a `subscribeUser()`, que notificará al usuario que se ha suscrito.</span><span class="sxs-lookup"><span data-stu-id="9b420-143">Once the reference is successfully saved we then call `subscribeUser()` which will notify the user that they have been subscribed.</span></span> 
 
-<span data-ttu-id="0ef2e-144">La función `subscribeUser()` es la que configura la suscripción real.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-144">The `subscribeUser()` function is what sets up the actual subscription.</span></span> <span data-ttu-id="0ef2e-145">Echemos un vistazo a una implementación sencilla que inicia un temporizador de dos segundos y que envía un mensaje automático al usuario una vez transcurrido dicho período:</span><span class="sxs-lookup"><span data-stu-id="0ef2e-145">Let's take a look at a simple implementation that starts a 2 second timer and proactively messages the user once the timer elapses:</span></span>
+<span data-ttu-id="9b420-144">La función `subscribeUser()` es la que configura la suscripción real.</span><span class="sxs-lookup"><span data-stu-id="9b420-144">The `subscribeUser()` function is what sets up the actual subscription.</span></span> <span data-ttu-id="9b420-145">Echemos un vistazo a una implementación sencilla que inicia un temporizador de dos segundos y que envía un mensaje automático al usuario una vez transcurrido dicho período:</span><span class="sxs-lookup"><span data-stu-id="9b420-145">Let's take a look at a simple implementation that starts a 2 second timer and proactively messages the user once the timer elapses:</span></span>
 
 ```javascript
 // Persist info to storage
@@ -348,10 +351,10 @@ async function findReference(userId){
 }
 ```
 
-<span data-ttu-id="0ef2e-146">La función `subscribeUser()` configura un temporizador que buscará el objeto de referencia leyéndolo en el almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-146">The `subscribeUser()` function sets up a timer that will locate the reference object by reading it from storage.</span></span> <span data-ttu-id="0ef2e-147">Si se encontró el objeto de referencia, se puede continuar la conversación con el usuario.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-147">If the reference object was found we can continue the conversation with the user.</span></span> <span data-ttu-id="0ef2e-148">El método `continueConversation` permite al bot enviar mensajes automáticos a una conversación o usuario con los que ya se ha comunicado.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-148">The `continueConversation` method lets the bot proactively send messages to a conversation or user that it has already communicated with.</span></span>
+<span data-ttu-id="9b420-146">La función `subscribeUser()` configura un temporizador que buscará el objeto de referencia leyéndolo en el almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="9b420-146">The `subscribeUser()` function sets up a timer that will locate the reference object by reading it from storage.</span></span> <span data-ttu-id="9b420-147">Si se encontró el objeto de referencia, se puede continuar la conversación con el usuario.</span><span class="sxs-lookup"><span data-stu-id="9b420-147">If the reference object was found we can continue the conversation with the user.</span></span> <span data-ttu-id="9b420-148">El método `continueConversation` permite al bot enviar mensajes automáticos a una conversación o usuario con los que ya se ha comunicado.</span><span class="sxs-lookup"><span data-stu-id="9b420-148">The `continueConversation` method lets the bot proactively send messages to a conversation or user that it has already communicated with.</span></span>
 
 ---
 
-## <a name="test-your-bot"></a><span data-ttu-id="0ef2e-149">Prueba del bot</span><span class="sxs-lookup"><span data-stu-id="0ef2e-149">Test your bot</span></span>
+## <a name="test-your-bot"></a><span data-ttu-id="9b420-149">Prueba del bot</span><span class="sxs-lookup"><span data-stu-id="9b420-149">Test your bot</span></span>
 
-<span data-ttu-id="0ef2e-150">Para probar el bot, impleméntelo en Azure como un bot de solo registro y pruébelo en Chat en web o localmente con el emulador.</span><span class="sxs-lookup"><span data-stu-id="0ef2e-150">To test your bot, deploy it to Azure as a registration only bot, and test it in Web Chat, or test it locally using the Emulator.</span></span>
+<span data-ttu-id="9b420-150">Para probar el bot, impleméntelo en Azure como un bot de solo registro y pruébelo en Chat en web o localmente con el emulador.</span><span class="sxs-lookup"><span data-stu-id="9b420-150">To test your bot, deploy it to Azure as a registration only bot, and test it in Web Chat, or test it locally using the Emulator.</span></span>
