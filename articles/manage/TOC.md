@@ -1,9 +1,4 @@
 # [Administración de un bot](../bot-service-manage-overview.md)
-# Compilación
-## [Edición de un bot con el editor de código en línea](../bot-service-build-online-code-editor.md)
-## [Descarga y reimplementación del código fuente de un bot](../bot-service-build-download-source-code.md)
-## [Configuración de la implementación continua](../bot-service-build-continuous-deployment.md)
-# [Probar en Chat en web](../bot-service-manage-test-webchat.md)
 # [Análisis de un bot](../bot-service-manage-analytics.md)
 # Canales
 ## [Conexión de un bot a canales](../bot-service-manage-channels.md)
@@ -12,9 +7,8 @@
 ## [Skype Empresarial](../bot-service-channel-connect-skypeforbusiness.md)
 ## [Direct Line](../bot-service-channel-connect-directline.md)
 ## [Microsoft Teams](https://msdn.microsoft.com/en-us/microsoft-teams/bots)
-## Chat en web
-### [Conexión de un bot a un chat en web](../bot-service-channel-connect-webchat.md)
-### [Habilitar voz en un chat en web](../bot-service-channel-connect-webchat-speech.md)
+## [Conexión de un bot a un chat en web](../bot-service-channel-connect-webchat.md)
+## [Habilitar voz en un chat en web](../bot-service-channel-connect-webchat-speech.md)
 ## [Correo electrónico](../bot-service-channel-connect-email.md)
 ## [GroupMe](../bot-service-channel-connect-groupme.md) 
 ## [Facebook](../bot-service-channel-connect-facebook.md) 
@@ -22,10 +16,7 @@
 ## [Slack](../bot-service-channel-connect-slack.md) 
 ## [Telegram](../bot-service-channel-connect-telegram.md) 
 ## [Twilio](../bot-service-channel-connect-twilio.md)
-## [Visualización previa de las características de los bots](../bot-service-channel-inspector.md)
 # [Configuración de opciones](../bot-service-manage-settings.md)
 # [Configuración de la preparación para la voz](../bot-service-manage-speech-priming.md)
 # [Registro de un bot con Azure Bot Service](../bot-service-quickstart-registration.md)
 # [Migración del bot](../bot-service-migrate-bot.md)
-# [Implementación de un bot en Azure](../bot-builder-howto-deploy-azure.md)
-
