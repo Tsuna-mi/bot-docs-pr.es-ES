@@ -1,9 +1,11 @@
-# [API REST de Bot Framework](bot-framework-rest-overview.md)
-# [Creación de un bot con REST](~/rest-api/bot-framework-rest-connector-quickstart.md)
-# [Conceptos clave](bot-framework-rest-connector-concepts.md)
+# API REST de Bot Framework
+## [Información general](bot-framework-rest-overview.md)
+## [Conceptos clave](bot-framework-rest-connector-concepts.md)
+## [Creación de un bot con REST](~/rest-api/bot-framework-rest-connector-quickstart.md)
+## [Referencia de API](bot-framework-rest-connector-api-reference.md)
 # Conector
 ## [Autenticación](bot-framework-rest-connector-authentication.md)
-## [Introducción a las actividades](bot-framework-rest-connector-activities.md)
+## [Activities overview](bot-framework-rest-connector-activities.md) (Introducción a las actividades)
 ## [Creación de mensajes](bot-framework-rest-connector-create-messages.md)
 ## [Envío y recepción de mensajes](bot-framework-rest-connector-send-and-receive-messages.md)
 ## [Incorporación de datos adjuntos con elementos multimedia a mensajes](bot-framework-rest-connector-add-media-attachments.md)
