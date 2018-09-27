@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 5/16/17
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 07f4ad7d53c456de53be196977458a3d8b03c6f0
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 87ab8d3ceb872cdb0342458b24a9756ccb710fb6
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42906199"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46706991"
 ---
 # <a name="extract-intents-and-entities-using-luisgen"></a>Extraer intenciones y entidades mediante LUISGen
 
@@ -23,7 +23,7 @@ ms.locfileid: "42906199"
 Además de reconocer la intención, una aplicación de LUIS puede extraer entidades (es decir, palabras importantes) para cumplir la solicitud de un usuario. Por ejemplo, en una reserva de restaurante, la aplicación LUIS puede extraer el tamaño del grupo, la fecha de la reserva o la ubicación del restaurante del mensaje del usuario. 
 
 
-Puede usar la [herramienta LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/LUISGen) para crear clases que faciliten la extracción de las entidades de LUIS en el código del bot.
+Puede usar la [herramienta LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) para crear clases que faciliten la extracción de las entidades de LUIS en el código del bot.
 
 En una línea de comandos de Node.js, instale `luisgen` en la ruta de acceso global.
 ```

@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 6/22/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 19dc16d6e90192ec758b4b73789d930053ad0462
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 41f3355102147e0d403629f23de79a90ac301209
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905799"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707901"
 ---
 # <a name="migrate-your-bot-to-azure"></a>Migración de un bot a Azure
 
@@ -43,7 +43,7 @@ Al hacer clic en el nombre de un bot migrado, se abrirá el bot en [Azure Portal
 
 Los bots de Functions creados con Node.js deben empaquetarse con [Funcpack](https://github.com/Azure/azure-functions-pack) antes de su migración. Para empaquetar el proyecto con Funcpack, siga estos pasos:
 
-1.  [Descargue](bot-service-build-download-source-code.md#download-bot-source-code) el código localmente si no lo ha hecho ya.
+1.  [Descargue](bot-service-build-download-source-code.md) el código localmente si no lo ha hecho ya.
 2.  Actualice todos los paquetes de npm de **packages.json** a las versiones más recientes y ejecute `npm install`.
 3.  Abra **messages/index.js** y cambie `module.exports = { default: connector.listen() }` por `module.exports = connector.listen();`
 4.  Instale Funcpack con npm: `npm install -g azure-functions-pack`

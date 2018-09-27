@@ -8,12 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 2499197d82b618d7a535efca78f98ce260dd15a7
-ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
+monikerRange: azure-bot-service-3.0
+ms.openlocfilehash: 563fdd480ac5165d5301faa3ed43af3118d2f7d7
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42756631"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707481"
 ---
 # <a name="enable-speech-in-web-chat"></a>Habilitación de voz en un chat en web
 Puede habilitar una interfaz de voz en el control de chat en web. Los usuarios interactúan con la interfaz de voz utilizando el micrófono en el control de chat en web.

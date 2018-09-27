@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 2fbff9c6d7fe1e06fa87e5b2695056dbc1414570
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 62088ecdf2f8402ec5456eea758f5db994de0cf9
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306357"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707321"
 ---
 # <a name="create-messages"></a>Creación de mensajes
 
@@ -23,8 +23,6 @@ El bot enviará objetos [Activity][Activity] de tipo **mensaje** para comunicar 
 Se puede aplicar formato al texto del mensaje mediante **plain**, **markdown** o **xml**. El formato predeterminado de la propiedad `textFormat` es **markdown** e interpreta el texto mediante los estándares de formato de Markdown. El nivel de compatibilidad con el formato de texto según el canal. Para ver si una característica que quiere usar es compatible con el canal de destino, realice una vista previa de la característica mediante el [Inspector de canales][ChannelInspector]. 
 
 La propiedad `textFormat` de un objeto [Activity][Activity] se puede usar para especificar el formato del texto. Por ejemplo, para crear un mensaje básico que contenga solo texto sin formato, establezca la propiedad `textFormat` del objeto [Activity][Activity] en **plain**, establezca la propiedad `text` en el contenido del mensaje y establezca la propiedad `locale` en la configuración regional del remitente. 
-
-Para obtener una lista del formato de texto normalmente compatible, vea [Text formatting](../bot-service-channel-inspector.md#text-formatting) (Formato de texto).
 
 ## <a name="attachments"></a>Datos adjuntos
 
@@ -56,8 +54,8 @@ La propiedad `suggestedActions` de un objeto [Activity][Activity] puede usarse p
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- [Características en versión preliminar con el Inspector de canales][ChannelInspector]
-- [Introducción a las actividades](bot-framework-rest-connector-activities.md)
+- [Preview features with the Channel Inspector][ChannelInspector] (Vista previa de las características con el Inspector de canales)
+- [Activities overview](bot-framework-rest-connector-activities.md) (Introducción a las actividades)
 - [Envío y recepción de mensajes](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Incorporación de datos adjuntos con elementos multimedia a mensajes](bot-framework-rest-connector-add-media-attachments.md)
 - [Incorporación de tarjetas enriquecidas a mensajes](bot-framework-rest-connector-add-rich-cards.md)

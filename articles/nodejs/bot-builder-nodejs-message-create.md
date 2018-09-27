@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 804081e52a03a27da418f549f0fadb6dc8bca52b
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: ebe95791d795b0117da34cc0352847c5f27f837c
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905679"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707301"
 ---
 # <a name="create-messages"></a>Creación de mensajes
 
@@ -68,8 +68,6 @@ session.send(customMessage);
 En casos donde el objeto `session` no está en el ámbito, se puede usar el método `bot.send` para enviar un mensaje con formato al usuario.
 
 La propiedad `textFormat` de un mensaje se puede usar para especificar el formato del texto. La propiedad `textFormat` se puede establecer en **plain**, **markdown** o **xml**. El valor predeterminado de `textFormat` es **markdown**. 
-
-Para obtener una lista del formato de texto normalmente compatible, vea [Text formatting](../bot-service-channel-inspector.md#text-formatting) (Formato de texto). Para asegurarse de que las características que quiere usar son compatibles con el canal de destino, obtenga una vista previa de las características mediante el [Inspector de canales](../bot-service-channel-inspector.md).
 
 ## <a name="message-property"></a>Propiedad de mensajes
 

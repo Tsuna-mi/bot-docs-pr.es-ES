@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 08/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 02c6cf56a0c1161fa0393880810c1481c5eb2461
-ms.sourcegitcommit: f89ed979eb6321232fb21100ef376d9b0d5113c9
+ms.openlocfilehash: acf119a05d4c9f37b74c4fcaf2ad944978504560
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42914635"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707251"
 ---
 # <a name="add-input-hints-to-messages"></a>Incorporación de sugerencias de entrada a mensajes
 
@@ -122,3 +122,4 @@ Si no establece la sugerencia de entrada para un mensaje, Bot Builder SDK la est
 - Si el bot envía un aviso, en la sugerencia de entrada del mensaje se especificará que el bot **espera una entrada**.</li>
 - Si el bot envía un solo mensaje, en la sugerencia de entrada del mensaje se especificará que el bot **acepta entradas**.</li>
 - Si el bot envía una serie de mensajes consecutivos, la sugerencia de entrada de todos los mensajes excepto el último de la serie especificará que el bot **ignora las entradas**, mientras que la sugerencia de entrada del último mensaje de la serie especificará que el bot **acepta entradas**.
+

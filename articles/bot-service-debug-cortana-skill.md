@@ -7,14 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/01/18
-ms.openlocfilehash: 25474f821d64ea50442d9777d8f891124eb27573
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+monikerRange: azure-bot-service-3.0
+ms.openlocfilehash: ceeb854ace1388b6e0435aacc3acf9027763ee73
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305072"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707971"
 ---
 # <a name="test-a-cortana-skill"></a>Probar una habilidad de Cortana
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
  
 Si ah compilado una habilidad de Cortana con el SDK de Bot Builder, puede probarla invocándola desde Cortana. Las siguientes instrucciones le guiarán a través de los pasos necesarios para probar una habilidad de Cortana.
 
@@ -82,8 +85,7 @@ Consulte [Enable Debugging of Cortana skills][Cortana-TestBestPractice] (Habilit
 Una vez que haya probado la habilidad de Cortana y comprobado que funciona adecuadamente, puede implementarla en un grupo de evaluadores beta o publicarla para el público en general. Consulte [Publishing Cortana Skills][Cortana-Publish] (Publicar habilidades de Cortana) para obtener más información.
 
 ## <a name="additional-resources"></a>Recursos adicionales
-* [The Cortana Skills Kit][CortanaGetStarted] (El kit de habilidades de Cortana)
-* [Preview features with the Channel Inspector](bot-service-channel-inspector.md) (Vista previa de las características con el Inspector de canales)
+* [Kit de habilidades de Cortana][CortanaGetStarted]
 
 [CortanaGetStarted]: /cortana/getstarted
 
