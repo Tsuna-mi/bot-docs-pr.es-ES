@@ -69,6 +69,6 @@
 # Temas relacionados
 ## [Aplicaciones web](https://docs.microsoft.com/azure/app-service/)
 ## [Funciones](https://docs.microsoft.com/azure/azure-functions/)
-## [Cognitive Services](https://docs.microsoft.com/azure/index#pivot=products&panel=cognitive)
-## [Application Insights](https://docs.microsoft.com/azure/application-insights/)
+## [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+## [Application Insights](https://docs.microsoft.com/azure/azure-monitor/)
 # [Recursos](resources/TOC.md)
