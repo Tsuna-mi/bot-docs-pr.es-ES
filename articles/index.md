@@ -7,23 +7,23 @@ manager: kamrani
 ms.topic: landing-page
 layout: LandingPage
 ms.prod: bot-framework
-ms.date: 09/17/2018
-ms.openlocfilehash: 737cd0f2f39ff512f82d4ea8611098fa265e4776
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.date: 09/27/2018
+ms.openlocfilehash: 061354d57fed8863f12a01e976ef0b11faf699c0
+ms.sourcegitcommit: 1ef8f4fd2cb8955270a1bc317c9039e5b8f6bbc4
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707001"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47418837"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
 > [!NOTE]
-> Este tema se aplica a la versión anterior del SDK (v3). Puede encontrar la documentación sobre la versión actual de SDK v4 [aquí](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0).
+> Este tema se aplica a la **versión anterior del SDK (v3)**. Puede encontrar la documentación sobre la versión actual de SDK (v4) [aquí](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0).
 
 <div class="content">
     <h1>Documentación sobre Azure Bot Service</h1>
     <div class="intro" style="min-width: 200px">
-        <p>Bot Service proporciona un entorno integrado, creado para el desarrollo de bots, que le permite compilar, conectar, probar, implementar y administrar bots inteligentes, todo desde un solo sitio. Azure Bot Service utiliza Bot Builder SDK compatible con .NET y Node.js. Aprenda a usar Bot Service con nuestras guías de inicio rápido, tutoriales y ejemplos.</p>
+        <p>Bot Service proporciona un entorno integrado, creado para el desarrollo de bots, que le permite compilar, conectar, probar, implementar y administrar bots inteligentes, todo desde un solo sitio. Azure Bot Service utiliza Bot Builder SDK compatible con .NET y Node.js. Aprenda a usar Bot Service con nuestras guías de inicio rápido y ejemplos.</p>
     </div>
 <h2 style="margin-top: 18px; margin-bottom: 0px;">Inicios rápidos en 5 minutos</h2>
 <div class="ico48Case">
@@ -33,31 +33,16 @@ ms.locfileid: "46707001"
             <span>Bot Service</span>
         </a>
     </div>
-    <div class="ico48Link">
-        <a href="/bot-framework/dotnet/bot-builder-dotnet-quickstart">
-            <img src="media/index/logo_csharp.svg" alt="">
-            <span>C&#35;</span>
-        </a>
-    </div>
-    <div class="ico48Link">
-        <a href="/bot-framework/nodejs/bot-builder-nodejs-quickstart">
-            <img src="media/index/logo_nodejs.svg" alt="">
-            <span>Nodejs</span>
-        </a>
-    </div>
 </div>
  
 <h2 style="margin-top: 36px">Ejemplos</h2>
 <p>Empiece a trabajar rápidamente en la compilación de bots excelentes con funcionalidades enriquecidas.</p>
 <ul>
-    <li><a href="/bot-framework/dotnet/bot-builder-dotnet-samples">.NET</a></li>
-    <li><a href="/bot-framework/nodejs/bot-builder-nodejs-samples">Node.js</a></li>
+    <li><a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp">.NET</a></li>
+    <li><a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node">Node.js</a></li>
 </ul>
 <h2 style="margin-top: 36px">Tutoriales detallados</h2>
-<p>Desarrollo de bots con Azure Bot Service:</p>
-<ol>
-    <li><a href="/bot-framework/bot-builder-tutorial-authentication">Adición de autenticación al bot</a></li>
-</ol>
+<p> <a href="/bot-framework/bot-builder-tutorial-authentication">Adición de autenticación al bot</a> </p>
 <h2 style="margin-top: 36px">Referencia</h2>
 <ul class="panelContent cardsD">
     <li>
@@ -68,18 +53,6 @@ ms.locfileid: "46707001"
                         <h3>Lenguajes</h3>
                         <p><a href="/dotnet/api/?view=botbuilder-3.12.2.4">.NET</a></p>
                         <p><a href="https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html">Node.js</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST</h3>
-                        <p><a href="/Bot-Framework/rest-api/bot-framework-rest-connector-api-reference">Referencia de API de REST</a></p>
                     </div>
                 </div>
             </div>
