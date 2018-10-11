@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/09/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: caa424ed0ea0944805836739ed48a7a61f78d21c
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 4195ae016513c809e4677879e0abe1b2bf8d799e
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905264"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389784"
 ---
 # <a name="testing-and-debugging-guidelines"></a>Directrices de prueba y depuración
 
@@ -50,7 +50,7 @@ Para ayudarle, se proporcionan diferentes herramientas. Por ejemplo, [Azure Bot 
 
 ### <a name="level-2-use-a-direct-line-client"></a>Nivel 2: uso de un cliente de Direct Line
 
-Después de comprobar si el bot funciona como le gustaría, el siguiente paso consiste en conectarlo a un canal. Para ello, puede implementarlo en un servidor de almacenamiento provisional y crear su propio [cliente de Direct Line](bot-builder-howto-direct-line.md) del bot al que conectarse.
+Después de comprobar si el bot funciona como le gustaría, el siguiente paso consiste en conectarlo a un canal. Para ello, puede implementarlo en un servidor de almacenamiento provisional y crear su propio cliente de línea directa <!--IBTODO [Direct Line client](bot-builder-howto-direct-line.md)--> del bot al que conectarse.
 
 La creación de su propio cliente le permite definir el funcionamiento interno del canal, así como probar específicamente cómo responde el bot a determinados intercambios de actividad. Una vez conectado al cliente, ejecute las pruebas para configurar el estado del bot y comprobar sus características. Si el bot usa una característica como la voz, el uso de estos canales puede ofrecer una manera de comprobar esa funcionalidad.
 
@@ -64,7 +64,7 @@ La forma de conseguirlo puede variar considerablemente, desde su uso individual 
 
 ### <a name="other-testing"></a>Otras pruebas
 
-Los diferentes tipos de pruebas pueden realizarse junto con los niveles anteriores o desde distintos ángulos, como pruebas de esfuerzo, pruebas de rendimiento o generación de perfiles de la actividad del bot. Visual Studio proporciona métodos para hacerlo de manera local, así como un [conjunto de herramientas](https://www.visualstudio.com/team-services/testing-tools/) para probar la aplicación, mientras que [Azure Portal](https://portal.azure.com) proporciona información acerca del rendimiento del bot.
+Los diferentes tipos de pruebas pueden realizarse junto con los niveles anteriores o desde distintos ángulos, como pruebas de esfuerzo, pruebas de rendimiento o generación de perfiles de la actividad del bot. Visual Studio proporciona métodos para hacerlo de manera local, así como un [conjunto de herramientas](https://azure.microsoft.com/en-us/solutions/dev-test/) para probar la aplicación, mientras que [Azure Portal](https://portal.azure.com) proporciona información acerca del rendimiento del bot.
 
 ## <a name="debugging"></a>Depuración
 
@@ -74,7 +74,17 @@ Los bots siguen un paradigma de programación controlado por eventos, que puede 
 
 **Información sobre las actividades del bot con el emulador**
 
-El bot se ocupa de diferentes tipos de [actividades](bot-builder-concept-activity-processing.md), además de la actividad normal de _mensajes_. Mediante el [emulador](../bot-service-debug-emulator.md), le mostraremos cuáles son esas actividades, cuándo se producen y qué información contienen. La información sobre esas actividades le ayudará a codificar el bot de forma eficaz y le permitirá comprobar si las actividades que el bot envía y recibe son las esperadas.
+El bot se ocupa de diferentes tipos de [actividades](bot-builder-basics.md#the-activity-processing-stack), además de la actividad normal de _mensajes_. Mediante el [emulador](../bot-service-debug-emulator.md), le mostraremos cuáles son esas actividades, cuándo se producen y qué información contienen. La información sobre esas actividades le ayudará a codificar el bot de forma eficaz y le permitirá comprobar si las actividades que el bot envía y recibe son las esperadas.
+
+**Guardado y recuperación de las interacciones del usuario con transcripciones**
+
+El almacenamiento de transcripciones de blobs de Azure proporciona un recurso especializado en el que puede [almacenar y recuperar transcripciones](bot-builder-howto-v4-storage.md) que contengan interacciones entre los usuarios y el bot.  
+
+Además, cuando las interacciones de entrada del usuario se han almacenado, puede usar el "_explorador de almacenamiento_" de Azure para ver manualmente los datos contenidos en las transcripciones almacenadas dentro del almacén de transcripciones de blobs. En el siguiente ejemplo se abre el "_explorador de almacenamiento_" de la configuración de "_mynewtestblobstorage_". Para abrir la entrada de usuario guardada, seleccione : contenedor de blob > ChannelId > TranscriptId > ConversationId
+
+![Examine_stored_transcript_text](./media/examine_transcript_text_in_azure.png)
+
+Abre la entrada de conversación de usuario almacenada en formato JSON. La entrada de usuario se conserva junto con la clave "_text:_".
 
 **Funcionamiento del software intermedio**
 
@@ -84,7 +94,7 @@ Si usa varios fragmentos de software intermedio, el delegado puede pasar la ejec
 
 Si no se llama al delegado `next()`, se denomina [enrutamiento de cortocircuito](bot-builder-concept-middleware.md#short-circuiting). Esto sucede cuando el software intermedio satisface la actividad actual y determina que no es necesario pasar la ejecución. 
 
-Comprender cuándo y por qué se produce el cortocircuito del software intermedio ayuda a indicar qué fragmento del software intermedio debe aparecer en primer lugar en la canalización. Además, la comprensión de lo que se puede esperar es especialmente importante para el software intermedio integrado que proporciona el SDK u otros desarrolladores. A algunos usuarios les resulta útil intentar [crear su propio software intermedio](bot-builder-create-middleware.md) primero para experimentar un poco antes de profundizar en el software intermedio integrado.
+Comprender cuándo y por qué se produce el cortocircuito del software intermedio ayuda a indicar qué fragmento del software intermedio debe aparecer en primer lugar en la canalización. Además, la comprensión de lo que se puede esperar es especialmente importante para el software intermedio integrado que proporciona el SDK u otros desarrolladores. A algunos usuarios les resulta útil intentar crear su propio software intermedio primero para experimentar un poco antes de profundizar en el software intermedio integrado.
 
 Por ejemplo [QnA Maker](bot-builder-howto-qna.md) está diseñado para controlar ciertas interacciones y cortocircuitar la canalización al mismo tiempo, lo que puede resultar confuso si está aprendiendo a usarlo.
 
