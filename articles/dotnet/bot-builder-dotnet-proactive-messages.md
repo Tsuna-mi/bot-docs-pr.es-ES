@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f5cc520704c4bebef6250195fd3e6cbdc3b0be3f
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: c00913c4e6fa7133dad734e69167d2723257f75a
+ms.sourcegitcommit: 6c2426c43cd2212bdea1ecbbf8ed245145b3c30d
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574961"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48852310"
 ---
 # <a name="send-proactive-messages"></a>Envío de mensajes automáticos
 
@@ -176,7 +176,7 @@ public class SurveyDialog : IDialog<object>
 
 ## <a name="sample-code"></a>Código de ejemplo
 
-Para obtener un ejemplo completo en el que se muestre cómo enviar mensajes automáticos con Bot Builder SDK para .NET, consulte el <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">ejemplo de mensajes automáticos</a> en GitHub. En el ejemplo de mensajes automáticos, <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> muestra cómo enviar un mensaje automático ad hoc y <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages/startNewDialog" target="_blank">startNewDialog</a> muestra cómo enviar un mensaje automático basado en diálogos. 
+Para obtener un ejemplo completo en el que se muestre cómo enviar mensajes automáticos con Bot Builder SDK para .NET, consulte el <a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">ejemplo de mensajes automáticos</a> en GitHub. En el ejemplo de mensajes automáticos, <a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> muestra cómo enviar un mensaje automático ad hoc y <a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank">startNewDialog</a> muestra cómo enviar un mensaje automático basado en diálogos. 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
