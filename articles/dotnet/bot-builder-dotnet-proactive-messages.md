@@ -8,14 +8,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f5cc520704c4bebef6250195fd3e6cbdc3b0be3f
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: c00913c4e6fa7133dad734e69167d2723257f75a
+ms.sourcegitcommit: 6c2426c43cd2212bdea1ecbbf8ed245145b3c30d
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574961"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48852310"
 ---
-# <a name="send-proactive-messages"></a><span data-ttu-id="e138d-103">Envío de mensajes automáticos</span><span class="sxs-lookup"><span data-stu-id="e138d-103">Send proactive messages</span></span>
+# <a name="send-proactive-messages"></a><span data-ttu-id="37830-103">Envío de mensajes automáticos</span><span class="sxs-lookup"><span data-stu-id="37830-103">Send proactive messages</span></span>
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
@@ -25,15 +25,15 @@ ms.locfileid: "39574961"
 
 [!INCLUDE [Introduction to proactive messages - part 1](../includes/snippet-proactive-messages-intro-1.md)]
 
-## <a name="types-of-proactive-messages"></a><span data-ttu-id="e138d-106">Tipos de mensajes automáticos</span><span class="sxs-lookup"><span data-stu-id="e138d-106">Types of proactive messages</span></span> 
+## <a name="types-of-proactive-messages"></a><span data-ttu-id="37830-106">Tipos de mensajes automáticos</span><span class="sxs-lookup"><span data-stu-id="37830-106">Types of proactive messages</span></span> 
 
 [!INCLUDE [Introduction to proactive messages - part 2](../includes/snippet-proactive-messages-intro-2.md)]
 
-## <a name="send-an-ad-hoc-proactive-message"></a><span data-ttu-id="e138d-107">Envío de un mensaje automático ad hoc</span><span class="sxs-lookup"><span data-stu-id="e138d-107">Send an ad hoc proactive message</span></span>
+## <a name="send-an-ad-hoc-proactive-message"></a><span data-ttu-id="37830-107">Envío de un mensaje automático ad hoc</span><span class="sxs-lookup"><span data-stu-id="37830-107">Send an ad hoc proactive message</span></span>
 
-<span data-ttu-id="e138d-108">Los ejemplos de código siguientes muestran cómo enviar un mensaje automático ad hoc con Bot Builder SDK para .NET.</span><span class="sxs-lookup"><span data-stu-id="e138d-108">The following code samples show how to send an ad hoc proactive message with the Bot Builder SDK for .NET.</span></span>
+<span data-ttu-id="37830-108">Los ejemplos de código siguientes muestran cómo enviar un mensaje automático ad hoc con Bot Builder SDK para .NET.</span><span class="sxs-lookup"><span data-stu-id="37830-108">The following code samples show how to send an ad hoc proactive message with the Bot Builder SDK for .NET.</span></span>
 
-<span data-ttu-id="e138d-109">Para poder enviar un mensaje ad hoc a un usuario, el bot en primer lugar debe recopilar y almacenar información sobre el usuario de la conversación actual.</span><span class="sxs-lookup"><span data-stu-id="e138d-109">To be able to send an ad hoc message to a user, the bot must first collect and store some information about the user from the current conversation.</span></span> 
+<span data-ttu-id="37830-109">Para poder enviar un mensaje ad hoc a un usuario, el bot en primer lugar debe recopilar y almacenar información sobre el usuario de la conversación actual.</span><span class="sxs-lookup"><span data-stu-id="37830-109">To be able to send an ad hoc message to a user, the bot must first collect and store some information about the user from the current conversation.</span></span> 
 
 ```cs
 public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
@@ -60,7 +60,7 @@ public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitabl
 > [!NOTE]
 > Por motivos de simplicidad, este ejemplo no especifica cómo almacenar los datos de usuario. No importa cómo se almacenen los datos, siempre y cuando el bot pueda recuperarlos posteriormente.
 
-<span data-ttu-id="e138d-112">Ahora que se han almacenado los datos, el bot puede recuperar los datos simplemente, crear el mensaje automático ad hoc y enviarlo.</span><span class="sxs-lookup"><span data-stu-id="e138d-112">Now that the data has been stored, the bot can simply retrieve the data, construct the ad hoc proactive message, and send it.</span></span> 
+<span data-ttu-id="37830-112">Ahora que se han almacenado los datos, el bot puede recuperar los datos simplemente, crear el mensaje automático ad hoc y enviarlo.</span><span class="sxs-lookup"><span data-stu-id="37830-112">Now that the data has been stored, the bot can simply retrieve the data, construct the ad hoc proactive message, and send it.</span></span> 
 
 ```cs
 // Use the data stored previously to create the required objects.
@@ -94,11 +94,11 @@ await connector.Conversations.SendToConversationAsync((Activity)message);
 > [!NOTE]
 > Si el bot especifica un identificador de conversación que se almacenó previamente, es probable que el mensaje se entregue al usuario en la ventana de conversación existente en el cliente. Si el bot genera un nuevo identificador de conversación, el mensaje se entregará al usuario en una nueva ventana de conversación en el cliente, siempre que el cliente admita varias ventanas de conversación. 
 
-## <a name="send-a-dialog-based-proactive-message"></a><span data-ttu-id="e138d-115">Envío de un mensaje automático basado en diálogos</span><span class="sxs-lookup"><span data-stu-id="e138d-115">Send a dialog-based proactive message</span></span>
+## <a name="send-a-dialog-based-proactive-message"></a><span data-ttu-id="37830-115">Envío de un mensaje automático basado en diálogos</span><span class="sxs-lookup"><span data-stu-id="37830-115">Send a dialog-based proactive message</span></span>
 
-<span data-ttu-id="e138d-116">Los ejemplos de código siguientes muestran cómo enviar un mensaje automático basado en diálogos con Bot Builder SDK para .NET.</span><span class="sxs-lookup"><span data-stu-id="e138d-116">The following code samples show how to send a dialog-based proactive message by using the Bot Builder SDK for .NET.</span></span>
+<span data-ttu-id="37830-116">Los ejemplos de código siguientes muestran cómo enviar un mensaje automático basado en diálogos con Bot Builder SDK para .NET.</span><span class="sxs-lookup"><span data-stu-id="37830-116">The following code samples show how to send a dialog-based proactive message by using the Bot Builder SDK for .NET.</span></span>
 
-<span data-ttu-id="e138d-117">Para poder enviar un mensaje automático basado en diálogos a un usuario, el bot en primer lugar debe recopilar y guardar información de la conversación actual.</span><span class="sxs-lookup"><span data-stu-id="e138d-117">To be able to send a dialog-based proactive message to a user, the bot must first collect and save information from the current conversation.</span></span> 
+<span data-ttu-id="37830-117">Para poder enviar un mensaje automático basado en diálogos a un usuario, el bot en primer lugar debe recopilar y guardar información de la conversación actual.</span><span class="sxs-lookup"><span data-stu-id="37830-117">To be able to send a dialog-based proactive message to a user, the bot must first collect and save information from the current conversation.</span></span> 
 
 ```cs
 public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
@@ -114,7 +114,7 @@ public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitabl
 }
 ```
 
-<span data-ttu-id="e138d-118">Cuando llega el momento de enviar el mensaje, el bot crea un diálogo y lo agrega a la parte superior de la pila del diálogo.</span><span class="sxs-lookup"><span data-stu-id="e138d-118">When it is time to send the message, the bot creates a new dialog and adds it to the top of the dialog stack.</span></span> <span data-ttu-id="e138d-119">El nuevo diálogo controla la conversación, entrega el mensaje automático, lo cierra y luego devuelve el control al diálogo anterior de la pila.</span><span class="sxs-lookup"><span data-stu-id="e138d-119">The new dialog takes control of the conversation, delivers the proactive message, closes, and then returns control to the previous dialog in the stack.</span></span> 
+<span data-ttu-id="37830-118">Cuando llega el momento de enviar el mensaje, el bot crea un diálogo y lo agrega a la parte superior de la pila del diálogo.</span><span class="sxs-lookup"><span data-stu-id="37830-118">When it is time to send the message, the bot creates a new dialog and adds it to the top of the dialog stack.</span></span> <span data-ttu-id="37830-119">El nuevo diálogo controla la conversación, entrega el mensaje automático, lo cierra y luego devuelve el control al diálogo anterior de la pila.</span><span class="sxs-lookup"><span data-stu-id="37830-119">The new dialog takes control of the conversation, delivers the proactive message, closes, and then returns control to the previous dialog in the stack.</span></span> 
 
 ```cs
 // This will interrupt the conversation and send the user to SurveyDialog, then wait until that's done 
@@ -146,7 +146,7 @@ public static async Task Resume()
     }
 }
 ```
-<span data-ttu-id="e138d-120">`SurveyDialog` controla la conversación hasta que termina.</span><span class="sxs-lookup"><span data-stu-id="e138d-120">The `SurveyDialog` controls the conversation until it finishes.</span></span> <span data-ttu-id="e138d-121">Cuando finaliza su tarea, llama a `context.Done` y se cierra, devolviendo el control al diálogo anterior.</span><span class="sxs-lookup"><span data-stu-id="e138d-121">When its task is finished, it calls `context.Done` and closes, returning control to the previous dialog.</span></span> 
+<span data-ttu-id="37830-120">`SurveyDialog` controla la conversación hasta que termina.</span><span class="sxs-lookup"><span data-stu-id="37830-120">The `SurveyDialog` controls the conversation until it finishes.</span></span> <span data-ttu-id="37830-121">Cuando finaliza su tarea, llama a `context.Done` y se cierra, devolviendo el control al diálogo anterior.</span><span class="sxs-lookup"><span data-stu-id="37830-121">When its task is finished, it calls `context.Done` and closes, returning control to the previous dialog.</span></span> 
 
 ```cs
 [Serializable]
@@ -174,13 +174,13 @@ public class SurveyDialog : IDialog<object>
 }
 ```
 
-## <a name="sample-code"></a><span data-ttu-id="e138d-122">Código de ejemplo</span><span class="sxs-lookup"><span data-stu-id="e138d-122">Sample code</span></span>
+## <a name="sample-code"></a><span data-ttu-id="37830-122">Código de ejemplo</span><span class="sxs-lookup"><span data-stu-id="37830-122">Sample code</span></span>
 
-<span data-ttu-id="e138d-123">Para obtener un ejemplo completo en el que se muestre cómo enviar mensajes automáticos con Bot Builder SDK para .NET, consulte el <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">ejemplo de mensajes automáticos</a> en GitHub.</span><span class="sxs-lookup"><span data-stu-id="e138d-123">For a complete sample that shows how to send proactive messages using the Bot Builder SDK for .NET, see the <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">Proactive Messages sample</a> in GitHub.</span></span> <span data-ttu-id="e138d-124">En el ejemplo de mensajes automáticos, <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> muestra cómo enviar un mensaje automático ad hoc y <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages/startNewDialog" target="_blank">startNewDialog</a> muestra cómo enviar un mensaje automático basado en diálogos.</span><span class="sxs-lookup"><span data-stu-id="e138d-124">Within the Proactive Messages sample, <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> shows how to send an ad-hoc proactive message and <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages/startNewDialog" target="_blank">startNewDialog</a> shows how to send a dialog-based proactive message.</span></span> 
+<span data-ttu-id="37830-123">Para obtener un ejemplo completo en el que se muestre cómo enviar mensajes automáticos con Bot Builder SDK para .NET, consulte el <a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">ejemplo de mensajes automáticos</a> en GitHub.</span><span class="sxs-lookup"><span data-stu-id="37830-123">For a complete sample that shows how to send proactive messages using the Bot Builder SDK for .NET, see the <a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">Proactive Messages sample</a> in GitHub.</span></span> <span data-ttu-id="37830-124">En el ejemplo de mensajes automáticos, <a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> muestra cómo enviar un mensaje automático ad hoc y <a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank">startNewDialog</a> muestra cómo enviar un mensaje automático basado en diálogos.</span><span class="sxs-lookup"><span data-stu-id="37830-124">Within the Proactive Messages sample, <a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> shows how to send an ad-hoc proactive message and <a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank">startNewDialog</a> shows how to send a dialog-based proactive message.</span></span> 
 
-## <a name="additional-resources"></a><span data-ttu-id="e138d-125">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="e138d-125">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="37830-125">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="37830-125">Additional resources</span></span>
 
-- [<span data-ttu-id="e138d-126">Diseño y control del flujo de conversación</span><span class="sxs-lookup"><span data-stu-id="e138d-126">Design and control conversation flow</span></span>](../bot-service-design-conversation-flow.md)
-- <span data-ttu-id="e138d-127"><a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencias de Bot Builder SDK para .NET</a></span><span class="sxs-lookup"><span data-stu-id="e138d-127"><a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET Reference</a></span></span>
-- <span data-ttu-id="e138d-128"><a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">Ejemplo de mensajes automáticos (GitHub)</a></span><span class="sxs-lookup"><span data-stu-id="e138d-128"><a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">Proactive Messages sample (GitHub)</a></span></span>
+- [<span data-ttu-id="37830-126">Diseño y control del flujo de conversación</span><span class="sxs-lookup"><span data-stu-id="37830-126">Design and control conversation flow</span></span>](../bot-service-design-conversation-flow.md)
+- <span data-ttu-id="37830-127"><a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencias de Bot Builder SDK para .NET</a></span><span class="sxs-lookup"><span data-stu-id="37830-127"><a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET Reference</a></span></span>
+- <span data-ttu-id="37830-128"><a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">Ejemplo de mensajes automáticos (GitHub)</a></span><span class="sxs-lookup"><span data-stu-id="37830-128"><a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">Proactive Messages sample (GitHub)</a></span></span>
 
