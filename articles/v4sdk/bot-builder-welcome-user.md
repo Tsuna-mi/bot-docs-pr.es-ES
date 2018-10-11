@@ -1,0 +1,75 @@
+---
+title: Dar la bienvenida al usuario | Microsoft Docs
+description: Aprenda a diseñar su bot para proporcionar una experiencia de bienvenida al usuario.
+keywords: información general, diseño, experiencia de usuario, bienvenida, experiencia personalizada
+author: dashel
+ms.author: dashel
+manager: kamrani
+ms.topic: article
+ms.prod: bot-framework
+ms.date: 8/30/2018
+monikerRange: azure-bot-service-4.0
+ms.openlocfilehash: beefa14fbfca10e8a9369793c6229b47a23b4adf
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46708873"
+---
+# <a name="welcoming-the-user"></a><span data-ttu-id="76e36-104">Dar la bienvenida al usuario</span><span class="sxs-lookup"><span data-stu-id="76e36-104">Welcoming the user</span></span>
+
+<span data-ttu-id="76e36-105">El objetivo principal al crear cualquier bot es que el usuario participe en una conversación que tenga sentido.</span><span class="sxs-lookup"><span data-stu-id="76e36-105">The primary goal when creating any bot is to engage your user in a meaningful conversation.</span></span> <span data-ttu-id="76e36-106">Una de las mejores formas de lograr este objetivo es asegurarse de que desde el momento en que un usuario se conecta por primera vez, comprende la finalidad principal del bot y sus funcionalidades, es decir, el motivo de que se haya creado el bot.</span><span class="sxs-lookup"><span data-stu-id="76e36-106">One of the best ways to achieve this goal is to ensure that from the moment a user first connects, they understand your bot’s main purpose and capabilities, the reason your bot was created.</span></span>
+
+## <a name="show-your-purpose"></a><span data-ttu-id="76e36-107">Mostrar su finalidad</span><span class="sxs-lookup"><span data-stu-id="76e36-107">Show your purpose</span></span>
+
+<span data-ttu-id="76e36-108">Imagine por un momento la experiencia de un usuario que se conecta al bot llamado "Información turística de Chicago" con el fin de informarse sobre los hoteles de Chicago.</span><span class="sxs-lookup"><span data-stu-id="76e36-108">Imagine for a moment the experience of a user who connects to your bot labeled, “Chicago Tourist Information,” hoping to find out about hotels in Chicago.</span></span> <span data-ttu-id="76e36-109">Poco se imagina que el bot es en realidad para los entusiastas de las pizzas estilo Chicago y solo ofrece sugerencias de restaurantes.</span><span class="sxs-lookup"><span data-stu-id="76e36-109">Little do they know, your bot is actually for deep-dish pizza enthusiasts and only offers restaurant tips.</span></span> <span data-ttu-id="76e36-110">Una vez que ha quedado claro que las preguntas no se están respondiendo correctamente, este usuario se desconectaría rápidamente y consideraría que el sitio proporciona una mala experiencia en línea.</span><span class="sxs-lookup"><span data-stu-id="76e36-110">Once it became clear that their questions were not being answered correctly, this user would quickly disengage and consider that your site provided a bad online experience.</span></span> <span data-ttu-id="76e36-111">Una mala experiencia como esta para el usuario puede evitarse dando la bienvenida a los usuarios con información suficiente para que comprendan la finalidad principal y las funcionalidades del bot.</span><span class="sxs-lookup"><span data-stu-id="76e36-111">A bad user experience such as this can be avoided by welcoming your users with enough information for them to understand the primary purpose and capabilities of your bot.</span></span> 
+
+![Mensaje de bienvenida](./media/welcome_message.png)
+
+<span data-ttu-id="76e36-113">Tras leer el mensaje de bienvenida, si el bot no proporciona el tipo de información que un usuario desea, este puede avanzar rápidamente antes de experimentar una interacción frustrante.</span><span class="sxs-lookup"><span data-stu-id="76e36-113">Upon reading your welcome message, if your bot does not provide the type of information a user desires, they can then quickly move on before experiencing a frustrating interaction.</span></span>
+<span data-ttu-id="76e36-114">Cada vez que los usuarios interactúan por primera vez con el bot, se debe generar un mensaje de bienvenida.</span><span class="sxs-lookup"><span data-stu-id="76e36-114">A welcome message should be generated whenever your users first interacts with your bot.</span></span> <span data-ttu-id="76e36-115">Para lograr esto, puede supervisar los tipos de **actividad** del bot y esperar nuevas conexiones.</span><span class="sxs-lookup"><span data-stu-id="76e36-115">To achieve this, you can monitor your bot’s **Activity** types and watch for new connections.</span></span> <span data-ttu-id="76e36-116">Según el canal, cada nueva conexión puede generar hasta dos actividades de actualización de la conversación.</span><span class="sxs-lookup"><span data-stu-id="76e36-116">Each new connection can generate up to two conversation update activities depending upon the channel.</span></span>
+
+- <span data-ttu-id="76e36-117">Una cuando el bot del usuario está conectado a la conversación.</span><span class="sxs-lookup"><span data-stu-id="76e36-117">One when the user’s bot is connected to the conversation.</span></span>
+- <span data-ttu-id="76e36-118">Y otra cuando el usuario se une a la conversación.</span><span class="sxs-lookup"><span data-stu-id="76e36-118">One when the user joins the conversation.</span></span>
+
+<span data-ttu-id="76e36-119">Resulta tentador generar simplemente un mensaje de bienvenida cada vez que se detecta una nueva actualización de la conversación, pero eso puede provocar resultados inesperados cuando se accede al bot mediante diversos canales.</span><span class="sxs-lookup"><span data-stu-id="76e36-119">It is tempting to simply generate a welcome message whenever a new conversation update is detected, but that can lead to unexpected results when your bot is accessed across a variety of channels.</span></span>
+
+## <a name="design-for-different-channels"></a><span data-ttu-id="76e36-120">Diseñar para diferentes canales</span><span class="sxs-lookup"><span data-stu-id="76e36-120">Design for different channels</span></span>
+
+<span data-ttu-id="76e36-121">Aunque tiene control total sobre la información presentada por el bot, puede que no tenga control sobre cómo los diferentes canales implementan la presentación de esa información.</span><span class="sxs-lookup"><span data-stu-id="76e36-121">While you have full control over the information presented by your bot, you may not have control over how different channels implement the presentation of that information.</span></span> <span data-ttu-id="76e36-122">Algunos canales crean una actualización de la conversación cuando un usuario se conecta inicialmente a ese canal y otra solo después de recibir un mensaje de entrada inicial del usuario.</span><span class="sxs-lookup"><span data-stu-id="76e36-122">Some channels create one conversation update when a user initially connects to that channel, and a separate conversation update only after an initial input message is received from the user.</span></span> <span data-ttu-id="76e36-123">Otros canales generan ambas actividades cuando el usuario se conecta inicialmente al canal.</span><span class="sxs-lookup"><span data-stu-id="76e36-123">Other channels generate both these activities when the user initially connects to the channel.</span></span> <span data-ttu-id="76e36-124">Si simplemente espera un evento de actualización de la conversación y muestra un mensaje de bienvenida en un canal con dos actividades de actualización de la conversación, el usuario podría recibir lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="76e36-124">If you simply watch for a conversation update event and display a welcome message on a channel with two conversation update activities, your user could receive the following:</span></span>
+
+![Doble mensaje de bienvenida](./media/double_welcome_message.png)
+
+<span data-ttu-id="76e36-126">Este mensaje duplicado se puede evitar mediante la generación de un mensaje de bienvenida inicial solo para el segundo evento de actualización de la conversación.</span><span class="sxs-lookup"><span data-stu-id="76e36-126">This duplicate message can be avoided by generating an initial welcome message for only the second conversation update event.</span></span> <span data-ttu-id="76e36-127">El segundo evento se puede detectar en estos dos casos:</span><span class="sxs-lookup"><span data-stu-id="76e36-127">The second event can be detected when both:</span></span>
+- <span data-ttu-id="76e36-128">Se ha producido un evento de actualización de la conversación.</span><span class="sxs-lookup"><span data-stu-id="76e36-128">A conversation update event has occurred.</span></span>
+- <span data-ttu-id="76e36-129">Se ha agregado un nuevo miembro (usuario) a la conversación.</span><span class="sxs-lookup"><span data-stu-id="76e36-129">A new member (user) has been added to the conversation.</span></span>
+
+<span data-ttu-id="76e36-130">También es importante tener en cuenta cuándo la intervención del usuario puede contener realmente información útil, y esto también puede variar según el canal.</span><span class="sxs-lookup"><span data-stu-id="76e36-130">It is also important to consider when your user’s input may actually contain useful information, and this too can vary per channel.</span></span> <span data-ttu-id="76e36-131">Si un canal genera ambas actividades de actualización de la conversación tras la conexión inicial de un bot, la primera entrada del usuario se puede evaluar correctamente como una respuesta al aviso del mensaje de bienvenida, como la conversación mostrada a continuación.</span><span class="sxs-lookup"><span data-stu-id="76e36-131">If a channel generates both conversation update activities upon a bot’s initial connection, then the user’s first input can be successfully evaluated as an answer to your welcome message’s prompt like the conversation shown below.</span></span>
+
+![Respuesta de entrada única](./media/single_input_response.png)
+
+<span data-ttu-id="76e36-133">Sin embargo, si un canal espera la intervención inicial de un usuario antes de generar un segundo evento de actualización de la conversación, el mismo código exacto usado anteriormente produciría en su lugar la siguiente experiencia de usuario.</span><span class="sxs-lookup"><span data-stu-id="76e36-133">However, if a channel waits for an initial user input before generating a second conversation update event, then the exact same code used above would instead produce the following user experience.</span></span>
+
+![Respuesta incorrecta de entrada única](./media/single_input_wrong_response.png)
+
+<span data-ttu-id="76e36-135">Para asegurarse de que los usuarios tengan una buena experiencia en todos los canales posibles, un procedimiento recomendado es no esperar información útil dentro de la entrada inicial de conversación de un usuario.</span><span class="sxs-lookup"><span data-stu-id="76e36-135">To ensure that your users have a good experience on all possible channels a best practice is to not expect useful information within a user’s initial conversation input.</span></span> <span data-ttu-id="76e36-136">En su lugar, considere la entrada inicial como datos "desperdiciados" y, tras la recepción, pida al usuario que le proporcione la información necesaria para continuar la conversación.</span><span class="sxs-lookup"><span data-stu-id="76e36-136">Instead, consider the initial input as “throw away” data and upon receipt, prompt your user to provide you with information needed to continue the conversation.</span></span> <span data-ttu-id="76e36-137">Esta técnica generará una experiencia de usuario coherente con independencia del canal que se use para acceder inicialmente a su bot.</span><span class="sxs-lookup"><span data-stu-id="76e36-137">This technique will produce a consistent user experience regardless of the channel used to initially access your bot.</span></span>
+
+![Deshacerse de la primera entrada](./media/no_first_input_response.png)
+
+## <a name="personalize-the-user-experience"></a><span data-ttu-id="76e36-139">Personalizar la experiencia del usuario</span><span class="sxs-lookup"><span data-stu-id="76e36-139">Personalize the user experience</span></span>
+
+<span data-ttu-id="76e36-140">No hay nada que haga sentir a un usuario menos bienvenido y más impersonal que pedirle continuamente información que ya ha proporcionado.</span><span class="sxs-lookup"><span data-stu-id="76e36-140">Nothing feels less welcoming and more impersonal to a user than being continually prompted for information they have already provided.</span></span> <span data-ttu-id="76e36-141">Si su bot conserva información de los usuarios que han visitado anteriormente, es una buena idea comprobar esta información la primera vez y, si está disponible, darle la bienvenida de nuevo al usuario por su nombre almacenado de una visita anterior.</span><span class="sxs-lookup"><span data-stu-id="76e36-141">If your bot preserves information for users who have previously visited, it’s a good practice to check this information first and, if available, welcome your user back using the name you stored from their previous visit.</span></span> 
+
+![Mensaje de bienvenido de nuevo](./media/welcome_back.png)
+
+<span data-ttu-id="76e36-143">En este caso, la lógica de la conversación omite la solicitud de un nombre y continúa a la siguiente actividad de conversación.</span><span class="sxs-lookup"><span data-stu-id="76e36-143">In this case, your conversation logic skips prompting for a name and moves on to your next conversation activity.</span></span>
+
+<span data-ttu-id="76e36-144">Su bot también puede personalizar la experiencia del usuario mediante la respuesta oportuna a intervenciones del usuario inesperadas, como solicitudes para finalizar una conversación.</span><span class="sxs-lookup"><span data-stu-id="76e36-144">Your bot can also personalize a user’s experience through timely response to unexpected user inputs, such as requests to terminate a conversation.</span></span>
+
+![Responder a la solicitud de salida](./media/respond_to_exit.png)
+
+<span data-ttu-id="76e36-146">Mantener las interacciones oportunas y conversacionales ayuda a los usuarios a experimentar una interacción más acogedora y divertida con el bot.</span><span class="sxs-lookup"><span data-stu-id="76e36-146">Keeping your interactions timely and conversational helps users experience a more welcoming and enjoyable interaction with your bot.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="76e36-147">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="76e36-147">Next steps</span></span>
+> [!div class="nextstepaction"]
+> [<span data-ttu-id="76e36-148">Envío de mensajes de bienvenida a los usuarios</span><span class="sxs-lookup"><span data-stu-id="76e36-148">Send welcome message to users</span></span>](bot-builder-send-welcome-message.md)
