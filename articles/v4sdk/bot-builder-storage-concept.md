@@ -1,21 +1,18 @@
 ---
-title: Estado y almacenamiento | Microsoft Docs
-description: Describe el administrador de estado, el estado de la conversación y el estado del usuario dentro del SDK de Bot Builder.
-keywords: LUIS, estado de la conversación, estado del usuario, almacenamiento, administración del estado
-author: DeniseMak
-ms.author: v-demak
-manager: kamrani
-ms.topic: article
-ms.prod: bot-framework
-ms.date: 02/15/2018
-monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e25ecec3aec1cdebe3b9eae4bff0d3c434cb610b
-ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
+redirect_url: /bot-framework/bot-builder-howto-v4-state
+ms.openlocfilehash: e5da105e32ae748383d376f90afd9aebbf4c7aa5
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42756411"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46708121"
 ---
+<a name="--"></a><!--
+---
+title: Estado y almacenamiento | Microsoft Docs description: Describe el administrador de estado, el estado de la conversación y el estado del usuario en el SDK Bot Builder.
+keywords: LUIS, estado de la conversación, estado del usuario, almacenamiento, administración del estado author: DeniseMak ms.author: v-demak manager: kamrani ms.topic: article ms.prod: bot-framework ms.date: 02/15/2018 monikerRange: 'azure-bot-service-4.0'
+---
+
 # <a name="state-and-storage"></a>Estado y almacenamiento
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -37,30 +34,32 @@ You can also store *user state* that persists after a conversation ends. For exa
 <!-- You should generally avoid saving state using a global variable or function closures.
 Doing so will create issues when you want to scale out your bot. Instead, use the conversation state and user state middleware that the BotBuilder SDK provides --> 
 
+<!--
+## Types of underlying storage
 
-## <a name="types-of-underlying-storage"></a>Tipos de almacenamiento subyacente
+The SDK provides bot state manager middleware to persist conversation and user state. State can be accessed using the bot's context. This state manager can use Azure Table Storage, file storage, or memory storage as the underlying data storage. You can also create your own storage components for your bot.
 
-El SDK proporciona software intermedio de administrador de estado de bot para conservar el estado del usuario y la conversación. Se puede acceder al estado mediante el contexto del bot. Este administrador de estado puede usar Azure Table Storage, almacenamiento de archivos o almacenamiento en memoria como el almacenamiento de datos subyacente. También puede crear sus propios componentes de almacenamiento para el bot.
-
-Los bots creados con Azure Table Storage se pueden diseñar para que sean sin estado y escalables en varios nodos de proceso.
+Bots built using Azure Table Storage can be designed to be stateless and scalable across multiple compute nodes.
 
 > [!NOTE] 
-> El almacenamiento de archivos y en memoria no se escalará en todos los nodos.
+> File and memory storage won't scale across nodes.
 
-## <a name="writing-directly-to-storage"></a>Escritura directa en el almacenamiento
+## Writing directly to storage
 
-También puede usar el SDK de Bot Builder para leer y escribir datos directamente en el almacenamiento, sin usar software intermedio ni el contexto del bot. Esto puede ser adecuado para los datos que usa el bot, que provienen de un origen externo al flujo de conversación del bot.
+You can also use the Bot Builder SDK to read and write data directly to storage, without using middleware or without using the bot context. This can be appropriate to data that your bot uses, that comes from a source outside your bot's conversation flow.
 
-Por ejemplo, suponga que el bot permite al usuario solicitar el informe meteorológico y el bot lo recupera para una fecha concreta, leyéndolo de una base de datos externa. El contenido de la base de datos meteorológicos no depende de la información del usuario ni del contexto de la conversación, por lo que se podría leer directamente desde el almacenamiento en lugar de usar el administrador de estado.  Vea [Escritura directa en el almacenamiento](bot-builder-howto-v4-storage.md) para obtener un ejemplo.
+For example, let's say your bot allows the user to ask for the weather report, and your bot retrieves the weather report for a specified date, by reading it from an external database. The content of the weather database isn't dependent on user information or the conversation context, so you could just read it directly from storage instead of using the state manager.  See [How to write directly to storage](bot-builder-howto-v4-storage.md) for an example.
 
-## <a name="next-steps"></a>Pasos siguientes
+## Next steps
 
-A continuación, se describirá la forma de procesar las actividades, en profundidad, y cómo responderlas.
+Next, lets get into how activities are processed, in depth, and how we respond to them.
 
 > [!div class="nextstepaction"]
-> [Procesamiento de actividades](bot-builder-concept-activity-processing.md)
+> [Activity Processing](bot-builder-concept-activity-processing.md)
 
-## <a name="additional-resources"></a>Recursos adicionales
+## Additional resources
 
-- [How to save state](bot-builder-howto-v4-state.md) (Cómo guardar el estado)
-- [Escritura directa en el almacenamiento](bot-builder-howto-v4-storage.md)
+- [How to save state](bot-builder-howto-v4-state.md)
+- [How to write directly to storage](bot-builder-howto-v4-storage.md)
+
+-->

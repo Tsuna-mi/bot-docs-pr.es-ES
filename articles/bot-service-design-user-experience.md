@@ -7,13 +7,13 @@ ms.author: mateusv
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 08/27/2018
-ms.openlocfilehash: 0bf58773cfbb6c58773cc5c63b735a0099ad569e
-ms.sourcegitcommit: 86ddf3ebe6cc3385d1c4d30b971ac9c3e1fc5a77
+ms.date: 09/20/2018
+ms.openlocfilehash: 94882202eca48a4c662f0ffa32a80065953f13fa
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43056019"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389794"
 ---
 # <a name="design-the-user-experience"></a>Diseñar la experiencia de usuario
 
@@ -33,20 +33,21 @@ Las tarjetas de Microsoft Bot Service son objetos programables que contienen col
 
 | Tipo de tarjeta | Ejemplo | DESCRIPCIÓN |
 | ---- | ---- | ---- |
-| AdaptiveCard | ![Imagen de una tarjeta adaptable](~/media/adaptive-card.png) | Un formato abierto de intercambio de tarjetas representado como un objeto JSON. Se utiliza normalmente para la implementación de canales de tarjetas. Las tarjetas se adaptan a la apariencia de cada canal de host. |
-| AnimationCard | ![Imagen de una tarjeta de animación](~/media/animation-card1.png) | Una tarjeta que puede reproducir archivos GIF animados o vídeos cortos. |
-| AudioCard | ![Imagen de una tarjeta de audio](~/media/audio-card.png) | Una tarjeta que puede reproducir un archivo de audio. |
-| HeroCard | ![Imagen de una tarjeta de imagen prominente](~/media/hero-card1.png) | Una tarjeta que normalmente contiene una sola imagen grande, uno o varios botones y texto. Se utiliza normalmente para resaltar visualmente una posible selección del usuario. |
-| ThumbnailCard | ![Imagen de una tarjeta de miniatura](~/media/thumbnail-card.png) | Una tarjeta que normalmente contiene una sola imagen de miniatura, uno o varios botones y texto. Se utiliza normalmente para resaltar visualmente los botones de una posible selección del usuario. |
-| ReceiptCard | ![Imagen de una tarjeta de recepción](~/media/receipt-card1.png) | Una tarjeta que permite que un bot proporcione un recibo al usuario. Normalmente, contiene la lista de elementos que se incluyen en el recibo, la información de impuestos y del total y otro tipo de texto. |
-| SignInCard | ![Imagen de una tarjeta de inicio de sesión](~/media/sign-in-card.png) | Una tarjeta que permite al bot solicitar el inicio de sesión del usuario. Normalmente contiene texto y uno o más botones en los cuales el usuario puede hacer clic para comenzar el proceso de inicio de sesión. |
-| SuggestedAction | ![Imagen de una tarjeta de acciones sugeridas](~/media/suggested-actions.png) | Presenta al usuario un conjunto de CardActions que representan la opción del usuario. Esta tarjeta desaparece una vez que se ha seleccionado alguna de las acciones sugeridas. |
-| VideoCard | ![Imagen de una tarjeta de vídeo](~/media/video-card.png) | Una tarjeta que puede reproducir vídeos. Se utiliza normalmente para abrir una dirección URL y transmitir un vídeo disponible. |
-| CardCarousel | ![Imagen de una tarjeta de carrusel](~/media/card-carousel.png) | Una colección de tarjetas desplazables horizontalmente que permiten al usuario ver fácilmente una serie de posibles opciones.|
+| AdaptiveCard | ![Imagen de una tarjeta adaptable](./media/adaptive-card.png) | Un formato abierto de intercambio de tarjetas representado como un objeto JSON. Se utiliza normalmente para la implementación de canales de tarjetas. Las tarjetas se adaptan a la apariencia de cada canal de host. |
+| AnimationCard | ![Imagen de una tarjeta de animación](./media/animation-card1.png) | Una tarjeta que puede reproducir archivos GIF animados o vídeos cortos. |
+| AudioCard | ![Imagen de una tarjeta de audio](./media/audio-card.png) | Una tarjeta que puede reproducir un archivo de audio. |
+| HeroCard | ![Imagen de una tarjeta de imagen prominente](./media/hero-card1.png) | Una tarjeta que normalmente contiene una sola imagen grande, uno o varios botones y texto. Se utiliza normalmente para resaltar visualmente una posible selección del usuario. |
+| ThumbnailCard | ![Imagen de una tarjeta de miniatura](./media/thumbnail-card.png) | Una tarjeta que normalmente contiene una sola imagen de miniatura, uno o varios botones y texto. Se utiliza normalmente para resaltar visualmente los botones de una posible selección del usuario. |
+| ReceiptCard | ![Imagen de una tarjeta de recepción](./media/receipt-card1.png) | Una tarjeta que permite que un bot proporcione un recibo al usuario. Normalmente, contiene la lista de elementos que se incluyen en el recibo, la información de impuestos y del total y otro tipo de texto. |
+| SignInCard | ![Imagen de una tarjeta de inicio de sesión](./media/sign-in-card.png) | Una tarjeta que permite al bot solicitar el inicio de sesión del usuario. Normalmente contiene texto y uno o más botones en los cuales el usuario puede hacer clic para comenzar el proceso de inicio de sesión. |
+| SuggestedAction | ![Imagen de una tarjeta de acciones sugeridas](./media/suggested-actions.png) | Presenta al usuario un conjunto de CardActions que representan la opción del usuario. Esta tarjeta desaparece una vez que se ha seleccionado alguna de las acciones sugeridas. |
+| VideoCard | ![Imagen de una tarjeta de vídeo](./media/video-card.png) | Una tarjeta que puede reproducir vídeos. Se utiliza normalmente para abrir una dirección URL y transmitir un vídeo disponible. |
+| CardCarousel | ![Imagen de una tarjeta de carrusel](./media/card-carousel.png) | Una colección de tarjetas desplazables horizontalmente que permiten al usuario ver fácilmente una serie de posibles opciones.|
 
 Las tarjetas le permiten diseñar su bot una vez, y hacer que funcione en una variedad de canales. Sin embargo, no todos los tipos de tarjeta son totalmente compatibles en todos los canales disponibles. 
 
-Puede encontrar instrucciones detalladas para agregar tarjetas al bot en estas secciones: [Agregar archivos adjuntos multimedia en tarjetas enriquecidas](v4sdk/bot-builder-howto-add-media-attachments.md) y [Agregar acciones sugeridas a los mensajes](v4sdk/bot-builder-howto-add-suggested-actions.md).
+Puede encontrar instrucciones detalladas para agregar tarjetas al bot en estas secciones: [Agregar archivos adjuntos multimedia en tarjetas enriquecidas](v4sdk/bot-builder-howto-add-media-attachments.md) y [Agregar acciones sugeridas a los mensajes](v4sdk/bot-builder-howto-add-suggested-actions.md). El código de ejemplo también se encuentra aquí para tarjetas: [C#](https://aka.ms/bot-cards-sample-code-cs)/[JS](https://aka.ms/bot-cards-sample-code-js) tarjetas adaptables: [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), datos adjuntos: [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-js-sample-code) y acciones sugeridas: [C#](https://aka.ms/bot-suggested-actions-code)/[JS](https://aka.ms/bot-suggested-actions-js-code).
+
 
 
 Cuando diseñe su bot, no descarte automáticamente los elementos comunes de la interfaz de usuario, ya que no son "lo suficientemente inteligentes". Tal como se indicó [anteriormente](~/bot-service-design-principles.md#designing-a-bot), el bot debe estar diseñado para resolver el problema del usuario de la mejor manera posible y de forma rápida y sencilla. Evite la tentación de comenzar incorporando la comprensión del lenguaje natural, ya que a menudo es innecesaria y añade una complejidad injustificada.
@@ -85,7 +86,7 @@ En otros escenarios, un usuario puede **escribir solicitudes simples basadas en 
 
 Mediante las API, el bot puede extraer los componentes clave del texto del usuario para identificar la intención de este. Cuando implemente las capacidades de comprensión del lenguaje natural en el bot, establezca expectativas realistas para el nivel de detalle que es probable que los usuarios proporcionen en sus comentarios. 
 
-![cómo hablan los usuarios](~/media/bot-service-design-user-experience/buy-house.png)
+![cómo hablan los usuarios](./media/bot-service-design-user-experience/buy-house.png)
 
 > [!TIP]
 > Al construir modelos de lenguaje natural, no suponga que los usuarios proporcionarán toda la información requerida en su consulta inicial. Diseñe el bot para que solicite específicamente la información que necesita, guiando al usuario para que proporcione esa información; para ello, debe hacer una serie de preguntas si fuera necesario. 

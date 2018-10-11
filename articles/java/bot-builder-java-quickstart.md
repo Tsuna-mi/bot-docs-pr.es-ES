@@ -7,30 +7,26 @@ ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 05/02/2018
+ms.date: 08/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3b618bfb7cd1a462390aee4d564778c8ec0a7247
-ms.sourcegitcommit: d486dd088b87a44fc8142f7a08877ff993861a42
+ms.openlocfilehash: bcfc1c76199d8bc729376bbbfe229b0781eb82ab
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2018
-ms.locfileid: "42928434"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707241"
 ---
-# <a name="create-a-bot-with-the-bot-builder-sdk-for-java"></a>Creación de un bot con el SDK de Bot Builder para Java
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
-
-El SDK de Bot Builder para Java proporciona a los desarrolladores de Java una manera conocida de escribir bots. El SDK v4 está en versión preliminar; para más información, visite el [repositorio de GitHub](https://github.com/Microsoft/botbuilder-java) para Java.
-
-> [!NOTE]
-> Nuestros ejemplos de código y documentos van dirigidos actualmente a Java versión 1.8.
+# <a name="create-a-bot-with-the-bot-builder-sdk-for-java"></a>Creación de un bot con el SDK de Bot Builder para Java 
+> [!NOTE] 
+> El SDK v4 para Java está en **versión preliminar**. Para más información, visite el [repositorio de GitHub](https://github.com/Microsoft/botbuilder-java) para Java. Nuestros ejemplos de código y documentos van dirigidos actualmente a Java versión 1.8.
 
 ## <a name="getting-started"></a>Introducción
 
-El SDK v4 está formado por una serie de [bibliotecas](https://github.com/Microsoft/botbuilder-java/tree/master/libraries). Para compilarlas localmente, consulte [Building the SDK](https://github.com/Microsoft/botbuilder-java/wiki/building-the-sdk) (Compilación del SDK).
+El SDK v4 para Java consta de una serie de [bibliotecas](https://github.com/Microsoft/botbuilder-java/tree/master/libraries). Para compilarlas localmente, consulte [Building the SDK](https://github.com/Microsoft/botbuilder-java/wiki/building-the-sdk) (Compilación del SDK).
 
 - Instale [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases)
 
-### <a name="create-echobot"></a>Creación de EchoBot
+## <a name="create-echobot"></a>Creación de EchoBot
 
 En el archivo App.java, agregue lo siguiente:
 
@@ -146,25 +142,21 @@ public class App {
 }
 ```
 
-Si usa Maven, puede copiar el archivo pom.xml de la carpeta de ejemplos en este repositorio. Una vez que ha comenzado la ejecución del ejecutable, inicie Bot Framework Emulator.
+Si usa Maven, puede copiar el archivo pom.xml de la carpeta de ejemplos en este repositorio. Ejecute el archivo ejecutable. En este momento, el bot se ejecuta de forma local.
 
-### <a name="start-the-emulator-and-connect-your-bot"></a>Inicio del emulador y conexión del bot
+## <a name="start-the-emulator-and-connect-your-bot"></a>Inicio del emulador y conexión del bot
 
-En este momento, el bot se ejecuta de forma local.
 A continuación, inicie el emulador y, después, conéctese al bot en el emulador:
 
-1. Haga clic en el vínculo **create a new bot configuration** (Crear configuración de bot) en la pestaña de bienvenida del emulador. 
+1. Haga clic en el vínculo **Open Bot** (Abrir bot) de la pestaña de bienvenida del emulador. 
+2. Seleccione el archivo .bot ubicado en el directorio donde se creó el proyecto.
 
-2. Escriba un **nombre de bot** y la ruta de acceso del directorio al código del bot. El archivo de configuración del bot se guarda en esta ruta de acceso.
+## <a name="interact-with-your-bot"></a>Interacción con el bot
 
-3. Escriba `http://localhost:port-number/api/messages` en el campo **Endpoint URL** (Dirección URL del punto de conexión), donde *port-number* coincide con el número de puerto que se muestra en el explorador en el que se ejecuta la aplicación.
-
-4. Haga clic en **Connect** (Conectar) para conectarse al bot. No tendrá que especificar los valores de **Microsoft App ID** (id. de la aplicación de Microsoft) ni **Microsoft App Password** (contraseña de la aplicación de Microsoft). Por ahora puede dejar estos campos en blanco. Más adelante obtendrá esta información al registrar el bot.
-
-### <a name="interact-with-your-bot"></a>Interacción con el bot
-Envíe "Hola" a su bot y el bot repetirá el mensaje.
+Envíe un mensaje al bot y este responderá con un mensaje.
+![Emulador en ejecución](../media/emulator-v4/emulator-running.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 > [!div class="nextstepaction"]
-> [Conceptos básicos de bot](../v4sdk/bot-builder-basics.md)
+> [Conceptos de bots](../v4sdk/bot-builder-basics.md)

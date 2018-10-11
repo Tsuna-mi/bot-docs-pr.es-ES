@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/27/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 93037d70a33d66269f3a79ce7e2a55900d25a6a9
-ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
+ms.openlocfilehash: b0ce3e6d11d20985e23c1bb74bd5b9dce8190d0c
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42795204"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707161"
 ---
 # <a name="create-an-integrated-set-of-dialogs"></a>Creación de un conjunto de diálogos integrado
 
@@ -90,13 +90,13 @@ public class ConversationInfo : Dictionary<string, object> { }
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Para realizar un seguimiento de la entrada del usuario, se va a pasar un objeto `userState` desde el diálogo principal como parámetro de diálogo. En cada clase de diálogo, se va a integrar el diálogo en el constructor, lo cual le permite guardar información en `userState`. A lo largo de este diálogo, podemos escribir en un objeto de estado local definido como propiedad en el objeto `dc.activeDialog.state` a medida que el usuario introduce la información. Una vez completado el diálogo, se eliminará el objeto de estado local. Por lo tanto, se guardará el objeto de estado local en el `userState` principal, lo cual ayudará a conservar la información acerca del usuario en todas las conversaciones que tenga con este. 
+Para realizar un seguimiento de la entrada del usuario, se va a pasar un objeto `userInfo` desde el diálogo principal como parámetro de diálogo. En cada clase de diálogo, se va a integrar el diálogo en el constructor, lo cual le permite guardar información en `userInfo`. A lo largo de este diálogo, podemos escribir en un objeto de estado local definido como propiedad en el objeto `step.values` a medida que el usuario introduce la información. Una vez completado el diálogo, se eliminará el objeto de estado local. Por lo tanto, se guardará el objeto de estado local en el `userInfo` principal, lo cual ayudará a conservar la información acerca del usuario en todas las conversaciones que tenga con este. 
 
 ---
 
 ## <a name="define-a-modular-check-in-dialog"></a>Definición de un diálogo de registro modular
 
-En primer lugar, vamos a empezar con un sencillo diálogo de registro que pedirá al usuario su nombre y el número de habitación en la que se alojará. Para modularizar esta tarea, vamos a crear una clase `CheckIn` que extienda `DialogContainer`. Esta clase tiene un constructor que define el nombre del diálogo de raíz que, a su vez, se define como una *cascada* con tres pasos. La firma y construcción del objeto de diálogo es exactamente la misma que la de una cascada estándar.
+En primer lugar, vamos a empezar con un sencillo diálogo de registro que pedirá al usuario su nombre y el número de habitación en la que se alojará. Para modularizar esta tarea, vamos a crear una clase `CheckIn` que extienda `ComponentDialog`. Esta clase tiene un constructor que define el nombre del diálogo de raíz que, a su vez, se define como una *cascada* con tres pasos. La firma y construcción del objeto de diálogo es exactamente la misma que la de una cascada estándar.
 
 **Pasos del diálogo de registro**
 
@@ -110,7 +110,7 @@ Para más información sobre diálogos y cascadas, consulte [Uso de diálogos pa
 
 La clase `CheckIn` tiene un constructor privado que define los pasos de nuestro diálogo de registro, crea una única instancia y la expone en una propiedad estática `Instance`.
 
-A lo largo de este diálogo podemos escribir en un objeto de estado local, al que se puede acceder mediante una propiedad del contexto de diálogo, `dc.ActiveDialog.State`. Una vez completado el diálogo, se elimina el objeto de estado local. Por tanto, vamos a guardar el objeto de estado local en el `userState` del bot, lo cual ayudará a conservar la información acerca del usuario en todas las conversaciones que tenga con este.
+A lo largo de este diálogo podemos escribir en un objeto de estado local, al que se puede acceder mediante una propiedad del contexto de paso, `step.values`. Una vez completado el diálogo, se elimina el objeto de estado local. Por tanto, vamos a guardar el objeto de estado local en el `userState` del bot, lo cual ayudará a conservar la información acerca del usuario en todas las conversaciones que tenga con este.
 
 Para más información acerca de la administración de estados, consulte el artículo [Guardar el estado mediante las propiedades del usuario y la conversación](bot-builder-howto-v4-state.md). 
 
@@ -183,39 +183,42 @@ namespace HotelBot
 
 **checkIn.js**
 ```JavaScript
-const { DialogContainer, DialogSet, TextPrompt, NumberPrompt } = require('botbuilder-dialogs');
+const { ComponentDialog, DialogSet, TextPrompt, NumberPrompt, WaterfallDialog } = require('botbuilder-dialogs');
 
-class CheckIn extends DialogContainer {
-    constructor(userState) {
+class CheckIn extends ComponentDialog {
+    constructor(dialogId, userInfo) {
         // Dialog ID of 'checkIn' will start when class is called in the parent
-        super('checkIn');
+        super(dialogId);
 
         // Defining the conversation flow using a waterfall model
-        this.dialogs.add('checkIn', [
-            async function (dc) {
-                // Create a new local guestInfo state object
-                dc.activeDialog.state.guestInfo = {};
-                await dc.context.sendActivity("What is your name?");
+        this.dialogs.add(new WaterfallDialog('checkIn', [
+            async function (step) {
+                // Create a new local guestInfo step.values object
+                step.values.guestInfo = {};
+                return await step.prompt('textPrompt', "What is your name?");
             },
-            async function (dc, name){
+            async function (step) {
                 // Save the name 
-                dc.activeDialog.state.guestInfo.userName = name;
-                await dc.prompt('numberPrompt', `Hi ${name}. What room will you be staying in?`);
+                step.values.guestInfo.userName = step.result;
+                return await step.prompt('numberPrompt', `Hi ${name}. What room will you be staying in?`);
             },
-            async function (dc, room){
+            async function (step) { 
                 // Save the room number
-                dc.activeDialog.state.guestInfo.room = room
-                await dc.context.sendActivity(`Great! Enjoy your stay!`);
+                step.values.guestInfo.room = step.result;
+                await step.context.sendActivity(`Great! Enjoy your stay!`);
 
                 // Save dialog's state object to the parent's state object
-                const user = userState.get(dc.context);
-                user.guestInfo = dc.activeDialog.state.guestInfo;
-                await dc.end();
+                const user = await userInfo.get(step.context);
+                user.guestInfo = step.values.guestInfo;
+                // Save changes
+                await userInfo.set(step.context, user);
+                return await step.endDialog();
             }
-        ]);
+        ]));
+        
         // Defining the prompt used in this conversation flow
-        this.dialogs.add('textPrompt', new TextPrompt());
-        this.dialogs.add('numberPrompt', new NumberPrompt());
+        this.dialogs.add(new TextPrompt('textPrompt'));
+        this.dialogs.add(new NumberPrompt('numberPrompt'));
     }
 }
 exports.CheckIn = CheckIn;
@@ -225,7 +228,7 @@ exports.CheckIn = CheckIn;
 
 ## <a name="define-modular-reserve-table-and-wake-up-dialogs"></a>Definición de los diálogos modulares de reserva de mesa y de despertador
 
-Una ventaja de usar un contenedor de diálogos es la posibilidad de componer diálogos juntos. Como cada `DialogSet` mantiene un conjunto exclusivo de `dialogs`, el uso compartido o la referencia cruzada de `dialogs` no se puede realizar fácilmente. Y es aquí donde entra en juego el contenedor de diálogos. Puede usar contenedores de diálogos para crear un diálogo compuesto que facilite la administración del flujo de conversación mediante diálogos. A modo de ejemplo, vamos a crear dos diálogos más: uno para preguntar al usuario qué mesa le gustaría reservar para cenar y otro para crear una llamada de despertador. Una vez más, vamos a usar una clase aparte para cada diálogo y cada diálogo ampliará `DialogContainer`.
+Una ventaja de usar un diálogo de componentes es la posibilidad de unir diálogos. Como cada `DialogSet` mantiene un conjunto exclusivo de `dialogs`, el uso compartido o la referencia cruzada de `dialogs` no se puede realizar fácilmente. Y es aquí donde entra en juego el diálogo de componentes. Puede usar diálogos de componentes para crear un diálogo compuesto que facilite la administración del flujo de conversación entre diálogos. A modo de ejemplo, vamos a crear dos diálogos más: uno para preguntar al usuario qué mesa le gustaría reservar para cenar y otro para crear una llamada de despertador. Una vez más, vamos a usar una clase aparte para cada diálogo y cada diálogo ampliará `ComponentDialog`.
 
 **Pasos del diálogo de reserva de mesa**
 
@@ -368,43 +371,47 @@ namespace HotelBot
 
 **reserveTable.js**
 ```JavaScript
-const { DialogContainer, DialogSet, ChoicePrompt } = require('botbuilder-dialogs');
+const { ComponentDialog, DialogSet, ChoicePrompt, WaterfallDialog } = require('botbuilder-dialogs');
 
-class ReserveTable extends DialogContainer {
-    constructor(userState) {
-        // Dialog ID of 'reserve_table' will start when class is called in the parent
-        super('reserve_table'); 
+class ReserveTable extends ComponentDialog {
+    constructor(dialogId, userInfo) {
+        super(dialogId); 
 
         // Defining the conversation flow using a waterfall model
-        this.dialogs.add('reserve_table', [
-            async function (dc, args) {
+        this.dialogs.add(new WaterfallDialog('reserve_table', [
+            async function (step) {
                 // Get the user state from context
-                const user = userState.get(dc.context);
+                const user = await userInfo.get(step.context);
 
                 // Create a new local reserveTable state object
-                dc.activeDialog.state.reserveTable = {};
+                step.values.reserveTable = {};
 
-                const prompt = `Welcome ${user.guestInfo.userName}, which table would you like to reserve?`;
+                const prompt = `Welcome ${ user.guestInfo.userName }, which table would you like to reserve?`;
                 const choices = ['1', '2', '3', '4', '5', '6'];
-                await dc.prompt('choicePrompt', prompt, choices);
+                return await step.prompt('choicePrompt', prompt, choices);
             },
-            async function(dc, choice){
+            async function(step) {
+                const choice = step.result;
+                
                 // Save the table number
-                dc.activeDialog.state.reserveTable.tableNumber = choice.value;
-                await dc.context.sendActivity(`Sounds great, we will reserve table number ${choice.value} for you.`);
+                step.values.reserveTable.tableNumber = choice.value;
+                await step.context.sendActivity(`Sounds great, we will reserve table number ${ choice.value } for you.`);
                 
                 // Get the user state from context
-                const user = userState.get(dc.context);
+                const user = await userInfo.get(dc.context);
                 // Persist dialog's state object to the parent's state object
-                user.reserveTable = dc.activeDialog.state.reserveTable;
+                user.reserveTable = step.values.reserveTable;
+               
+                // Save changes
+                await userInfo.set(step.context, user);
 
                 // End the dialog
-                await dc.end();
+                return await step.endDialog();
             }
-        ]);
+        ]));
 
         // Defining the prompt used in this conversation flow
-        this.dialogs.add('choicePrompt', new ChoicePrompt());
+        this.dialogs.add(new ChoicePrompt('choicePrompt'));
     }
 }
 exports.ReserveTable = ReserveTable;
@@ -412,41 +419,46 @@ exports.ReserveTable = ReserveTable;
 
 **wakeUp.js**
 ```JavaScript
-const { DialogContainer, DialogSet, DatetimePrompt } = require('botbuilder-dialogs');
+const { ComponentDialog, DialogSet, DatetimePrompt, WaterfallDialog } = require('botbuilder-dialogs');
 
-class WakeUp extends DialogContainer {
-    constructor(userState) {
+class WakeUp extends ComponentDialog {
+    constructor(userInfo) {
         // Dialog ID of 'wakeup' will start when class is called in the parent
         super('wakeUp');
 
-        this.dialogs.add('wakeUp', [
-            async function (dc, args) {
+        this.dialogs.add(new WaterfallDialog('wakeUp', [
+            async function (step) {
                 // Get the user state from context
-                const user = userState.get(dc.context); 
+                const user = await userInfo.get(step.context); 
 
                 // Create a new local reserveTable state object
-                dc.activeDialog.state.wakeUp = {};  
+                step.values.wakeUp = {};  
                              
-                await dc.prompt('datePrompt', `Hello, ${user.guestInfo.userName}. What time would you like your alarm to be set?`);
+                return await step.prompt('datePrompt', `Hello, ${ user.guestInfo.userName }. What time would you like your alarm to be set?`);
             },
-            async function (dc, time){
+            async function (step) {
+                const time = step.result;
+            
                 // Get the user state from context
-                const user = userState.get(dc.context);
+                const user = await userInfo.get(step.context);
 
                 // Save the time
-                dc.activeDialog.state.wakeUp.time = time[0].value
+                step.values.wakeUp.time = time[0].value
 
-                await dc.context.sendActivity(`Your alarm is set to ${time[0].value} for room ${user.guestInfo.room}`);
+                await step.context.sendActivity(`Your alarm is set to ${ time[0].value } for room ${ user.guestInfo.room }`);
                 
                 // Save dialog's state object to the parent's state object
-                user.wakeUp = dc.activeDialog.state.wakeUp;
+                user.wakeUp = step.values.wakeUp;
+
+                // Save changes
+                await userInfo.step(step.context, user);
 
                 // End the dialog
-                await dc.end();
-            }]);
+                return await step.endDialog();
+            }]));
 
         // Defining the prompt used in this conversation flow
-        this.dialogs.add('datePrompt', new DatetimePrompt());
+        this.dialogs.add(new DatetimePrompt('datePrompt'));
     }
 }
 exports.WakeUp = WakeUp;
@@ -621,8 +633,8 @@ El flujo de diálogo se actualiza con el método `continue` del contexto del di�
 
 **app.js**
 ```JavaScript
-const {BotFrameworkAdapter, FileStorage, ConversationState, UserState, BotStateSet, MessageFactory} = require("botbuilder");
-const {DialogSet} = require("botbuilder-dialogs");
+const { BotFrameworkAdapter, ConversationState, UserState, MemoryStorage, MessageFactory } = require("botbuilder");
+const { DialogSet } = require("botbuilder-dialogs");
 const restify = require("restify");
 var azure = require('botbuilder-azure'); 
 
@@ -638,79 +650,87 @@ const adapter = new BotFrameworkAdapter({
     appPassword: process.env.MICROSOFT_APP_PASSWORD
 });
 
-//Memory Storage
-const storage = new FileStorage("c:/temp");
+// Memory Storage
+const storage = new MemoryStorage();
 // ConversationState lasts for the entirety of a conversation then gets disposed of
-const convoState = new ConversationState(storage);
+const conversationState = new ConversationState(storage);
 
 // UserState persists information about the user across all of the conversations you have with that user
 const userState  = new UserState(storage);
 
-adapter.use(new BotStateSet(convoState, userState));
+// Create a place in the conversation state to store dialog state.
+const dialogState = conversationState.createProperty('dialogState');
+
+// Create a place in the user storage to store a user info.
+const userInfo = userState.createProperty('userInfo');
+
+// Create a dialog set and pass in our dialogState property.
+const dialogs = new DialogSet(dialogState);
 
 // Listen for incoming requests 
 server.post('/api/messages', (req, res) => {
     adapter.processActivity(req, res, async (context) => {
         const isMessage = context.activity.type === 'message';
-
-        // State will store all of your information 
-        const convo = convoState.get(context);
-        const user = userState.get(context); // userState will not be used in this example
-
-        const dc = dialogs.createContext(context, convo);
+        const dc = dialogs.createContext(context);
+ 
         // Continue the current dialog if one is currently active
-        await dc.continue(); 
+        await dc.continueDialog();
 
         // Default action
         if (!context.responded && isMessage) {
 
             // Getting the user info from the state
-            const userinfo = userState.get(dc.context); 
+            const user = await userInfo.get(dc.context); 
             // If guest info is undefined prompt the user to check in
-            if(!userinfo.guestInfo){
-                await dc.begin('checkInPrompt');
-            }else{
-                await dc.begin('mainMenu'); 
+            if (!user.guestInfo) {
+                await dc.beginDialog('checkInPrompt');
+            } else {
+                await dc.beginDialog('mainMenu'); 
             }           
         }
+        
+        // End by saving any changes to the state that have occured during this turn.
+        await conversationState.saveChanges(dc.context);
+        await userState.saveChanges(dc.context);
     });
 });
 
-const dialogs = new DialogSet();
-dialogs.add('mainMenu', [
-    async function (dc, args) {
+dialogs.add(new WaterfallDialog('mainMenu', [
+    async function (step) {
         const menu = ["Reserve Table", "Wake Up"];
-        await dc.context.sendActivity(MessageFactory.suggestedActions(menu));    
+        await step.context.sendActivity(MessageFactory.suggestedActions(menu));
+        return await step.next();
     },
-    async function (dc, result){
+    async function (step) {
         // Decide which module to start
-        switch(result){
+        switch (step.result) {
             case "Reserve Table":
-                await dc.begin('reservePrompt');
+                return await step.beginDialog('reservePrompt');
                 break;
             case "Wake Up":
-                await dc.begin('wakeUpPrompt');
+                return await step.beginDialog('wakeUpPrompt');
                 break;
             default:
-                await dc.context.sendActivity("Sorry, i don't understand that command. Please choose an option from the list below.");
+                await step.context.sendActivity("Sorry, i don't understand that command. Please choose an option from the list below.");
+                return await step.next();
                 break;            
         }
     },
-    async function (dc, result){
-        await dc.replace('mainMenu'); // Show the menu again
+    async function (step){
+        return await step.replaceDialog('mainMenu'); // Show the menu again
     }
 
-]);
+]));
 
 // Importing the dialogs 
 const checkIn = require("./checkIn");
-dialogs.add('checkInPrompt', new checkIn.CheckIn(userState));
+dialogs.add(new checkIn.CheckIn('checkInPrompt', userState));
 
 const reserve_table = require("./reserveTable");
-dialogs.add('reservePrompt', new reserve_table.ReserveTable(userState));
+dialogs.add(new reserve_table.ReserveTable('reservePrompt', userState));
 
 const wake_up = require("./wake_up");
-dialogs.add('wakeUpPrompt', new wake_up.WakeUp(userState));
+dialogs.add(new wake_up.WakeUp('wakeUpPrompt', userState));
 ```
 
 ---

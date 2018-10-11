@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 3d098afd70bef9cf1a3b3fab87455e96ffd9c292
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 07fb6e9630996a61932da99b0575d43f4604141e
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304787"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389434"
 ---
 # <a name="application-insights-keys"></a>Claves de Application Insights
 
@@ -30,7 +30,7 @@ En este tema le mostraremos cómo crear estas claves de Application Insights.
 ## <a name="instrumentation-key"></a>Clave de instrumentación
 
 Para obtener la clave de instrumentación, haga lo siguiente:
-1. Desde [portal.azure.com](http://portal.azure.com), en la sección Monitor, cree un nuevo recurso de **Application Insights** (o use uno existente).
+1. Desde [Azure Portal](http://portal.azure.com), en la sección Monitor, cree un nuevo recurso de **Application Insights** (o use uno existente).
 ![Captura de pantalla del portal de la lista de Application Insights](~/media/portal-app-insights-add-new.png)
 
 2. En la lista de recursos de Application Insights, haga clic en el recurso de Application Insights que acaba de crear.

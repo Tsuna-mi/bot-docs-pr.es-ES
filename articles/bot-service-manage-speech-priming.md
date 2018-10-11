@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 2e0b85af834bc92a9da8c9f9be2794da88c2b3bc
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: ba2aec255cf160a72c11c3ddfda021baae304568
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304855"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389644"
 ---
 # <a name="configure-speech-priming"></a>Configuración de la preparación para la voz
 
@@ -26,6 +26,9 @@ Es posible que el bot ya se haya integrado con una aplicación de LUIS, pero tam
 
 > [!IMPORTANT]
 > La preparación para la voz solo se aplica a los bots configurados para el canal Cortana o Chat en web.
+
+> [!IMPORTANT]
+> No se admite la preparación desde aplicaciones de LUIS regionales que no sean de EE. UU. incluidas: eu.luis.ai y au.luis.ai
 
 ## <a name="change-the-list-of-luis-apps-your-bot-uses"></a>Cambio de la lista de aplicaciones de LUIS que usa el bot
 

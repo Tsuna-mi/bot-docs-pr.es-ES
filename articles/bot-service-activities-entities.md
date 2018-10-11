@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/01/2018
-ms.openlocfilehash: 8f4b6c27fc28e4cf3b800dad11c3e6bd58561387
-ms.sourcegitcommit: 0b2be801e55f6baa048b49c7211944480e83ba95
+ms.openlocfilehash: f6bf1d99922351a66a4e5401e744fad190746747
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43115070"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389814"
 ---
 # <a name="entities-and-activity-types"></a>Entidades y tipos de actividad
 
@@ -23,7 +23,7 @@ Las entidades son una parte de una actividad y proporcionan información adicion
 
 ## <a name="entities"></a>Entidades
 
-La propiedad *Entities* de un mensaje es una matriz de objetos <a href="http://schema.org/" target="_blank">schema.org</a> de extremo abierto que permite el intercambio de metadatos contextuales comunes entre el canal y el bot.
+La propiedad *entities* de un mensaje es una matriz de objetos <a href="http://schema.org/" target="_blank">schema.org</a> de extremo abierto que permite el intercambio de metadatos contextuales comunes entre el canal y el bot.
 
 ### <a name="mention-entities"></a>Entidades de mención
 

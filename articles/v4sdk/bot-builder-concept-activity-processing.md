@@ -7,37 +7,30 @@ ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 03/22/2018
+ms.date: 09/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 278005c25e98c7c5b7d523030846909aed830224
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: fbcc9532e39fab96b6794c80c29dfc349ad552b1
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905358"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707711"
 ---
 # <a name="activity-processing"></a>Procesamiento de actividades
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-El bot y el usuario intercambian información a través de actividades. Cada una de las actividades que recibe la aplicación de bot se pasa a un adaptador de bot, que a su vez pasa la información de la actividad a la lógica del bot y, por último, envía las respuestas al usuario.
+El bot y el usuario interactúan e intercambian información mediante actividades. Cada una de las actividades que recibe la aplicación de bot se pasa a un adaptador de bot, que a su vez pasa la información de la actividad a la lógica del bot y, por último, envía las respuestas al usuario. La recepción de una actividad y su posterior procesamiento por el bot se denomina turno; representa un ciclo completo del bot. Un turno finaliza cuando se termina toda la ejecución, la actividad se ha procesado por completo y se han completado todas las capas del bot.
 
-[!INCLUDE [Define a turn](~/includes/snippet-definition-turn.md)]
-
-> [!IMPORTANT]
-> Las actividades, especialmente las que [generamos](#generating-responses) durante un turno de bot, se administran de forma asincrónica. Se trata de una parte necesaria de la creación de un bot; si necesita repasar cómo funciona todo esto, vea [Programación asincrónica para .NET](https://docs.microsoft.com/en-us/dotnet/csharp/async) o [async para JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), según el lenguaje que haya elegido.
+Las actividades, especialmente las [enviadas desde un bot](#generating-responses) durante un turno del bot, se controlan de forma asincrónica. Se trata de una parte necesaria de la creación de un bot; si necesita repasar cómo funciona todo esto, vea [Programación asincrónica para .NET](https://docs.microsoft.com/en-us/dotnet/csharp/async) o [async para JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), según el lenguaje que haya elegido.
 
 ## <a name="the-bot-adapter"></a>El adaptador de bot
-
-Un bot está dirigido por su **adaptador**, que podría considerarse como el director del bot. El adaptador se encarga de la autenticación, el enrutamiento de la comunicación entrante y saliente, etc. El adaptador difiere en función de su entorno (es decir, internamente funciona de forma diferente en un entorno local y en Azure), pero en cada instancia se ocupa del mismo objetivo. En la mayoría de los casos no trabajamos con el adaptador directamente (por ejemplo, al crear un bot a partir de una plantilla), pero no está de más saber dónde se encuentra y qué hace.
 
 El adaptador de bot encapsula los procesos de autenticación, envía actividades a Bot Connector Service y recibe actividades de este. Cuando el bot recibe una actividad, el adaptador encapsula todo lo relativo a esa actividad, crea un [objeto de contexto](#turn-context) para el turno, lo pasa a la lógica de aplicación del bot y envía las respuestas que genera el bot al canal del usuario.
 
 ## <a name="authentication"></a>Autenticación
 
-El adaptador autentica todas las actividades entrantes que recibe la aplicación mediante la información de la actividad y el encabezado `Authentication` de la solicitud de REST.
-
-El adaptador usa un objeto de conector y las credenciales de la aplicación para autenticar las actividades de salida con destino al usuario.
+El adaptador autentica todas las actividades entrantes que recibe la aplicación mediante la información de la actividad y el encabezado `Authentication` de la solicitud de REST. El adaptador usa un objeto de conector y las credenciales de la aplicación para autenticar las actividades de salida con destino al usuario.
 
 La autenticación de Bot Connector Service usa tokens `Bearer` de JWT (JSON Web Token), así como el **identificador de aplicación de Microsoft** y la **contraseña de aplicación de Microsoft** que Azure genera automáticamente cuando se crea un servicio de bot o se registra un bot. La aplicación necesitará estas credenciales en el tiempo de inicialización para permitir que el adaptador autentique el tráfico.
 
@@ -50,19 +43,16 @@ Cuando un adaptador recibe una actividad, genera un objeto de **contexto de turn
 
 * Conversación: identifica la conversación e incluye información sobre el bot y el usuario que participan en la conversación.
 * Actividad: las solicitudes y las respuestas de una conversación son los tipos de actividades. Este contexto proporciona información sobre la actividad entrante, incluida la información de enrutamiento, la información sobre el canal, la conversación, el remitente y el receptor.
-* Estado: propiedades que se usan para llevar un seguimiento de su [estado](~/v4sdk/bot-builder-storage-concept.md), por ejemplo, dónde se encuentra en una conversación con un usuario, información sobre el usuario u otra información de la lógica de negocios.
 * Información personalizada: si extiende el bot mediante la implementación de software intermedio o dentro de la lógica del bot, puede hacer que haya información adicional disponible en cada turno.
 
-El objeto de contexto también puede usarse para enviar una respuesta al usuario y obtener una referencia al adaptador para crear una conversación o continuar con una ya existente.
+El objeto de contexto también se puede usar para enviar una respuesta al usuario y obtener una referencia al adaptador <!-- to create a new conversation or continue an existing one-->.
 
 > [!NOTE]
 > La aplicación y el adaptador controlarán las solicitudes de forma asincrónica, pero no es necesario que la lógica de negocios esté controlada por la solicitud-respuesta.
 
 ## <a name="middleware"></a>Software intermedio
 
-Puede agregar software intermedio al adaptador. El software intermedio consiste en capas de complementos que se agregan al bot y a la lógica básica del bot. Para información más detallada sobre el software intermedio, vea el [artículo independiente sobre el software intermedio](~/v4sdk/bot-builder-concept-middleware.md).
-
-El software intermedio y la lógica del bot usan el objeto de contexto para recuperar información sobre la actividad y actuar en consecuencia. El software intermedio y el bot también pueden actualizar o agregar información al objeto de contexto, por ejemplo, para llevar un seguimiento del estado de un turno, una conversación u otro ámbito. El SDK proporciona _software intermedio de estado_ que se puede usar para agregar persistencia de estado al bot.
+Puede agregar software intermedio al adaptador. El software intermedio y la lógica del bot usan el objeto de contexto para recuperar información sobre la actividad y actuar en consecuencia. El software intermedio y el bot también pueden actualizar o agregar información al objeto de contexto, por ejemplo, para llevar un seguimiento del estado de un turno, una conversación u otro ámbito. Para información más detallada sobre el middleware, consulte el [artículo sobre el middleware](~/v4sdk/bot-builder-concept-middleware.md).
 
 ## <a name="generating-responses"></a>Generación de respuestas
 
@@ -72,7 +62,7 @@ El objeto de contexto proporciona métodos de respuesta de actividad para permit
 * Si el canal lo admite, el método _update activity_ actualiza una actividad de la conversación.
 * Si el canal lo admite, el método _delete activity_ elimina una actividad de la conversación.
 
-Cada método de respuesta se ejecuta en un proceso asincrónico. Cuando se llama al método de respuesta de actividad, este clona la lista de controladores de eventos asociados antes de empezar a llamar a los controladores, lo que significa que contendrá todos los controladores agregados hasta ese momento, pero no contendrá nada de lo que se agregue una vez iniciado el proceso.
+Cada método de respuesta se ejecuta en un proceso asincrónico. Cuando se llama al método de respuesta de actividad, este clona la lista de [controladores de eventos](#response-event-handlers) asociados antes de empezar a llamar a los controladores, lo que significa que contendrá todos los controladores agregados hasta ese momento, pero no contendrá nada de lo que se agregue una vez iniciado el proceso.
 
 Esto también significa que no se garantiza el orden de las respuestas, sobre todo cuando una tarea es más compleja que otra. Si el bot puede generar varias respuestas para una actividad entrante, asegúrese de que tienen sentido en cualquier orden en el que las reciba el usuario.
 
@@ -81,20 +71,16 @@ Esto también significa que no se garantiza el orden de las respuestas, sobre to
 
 ## <a name="response-event-handlers"></a>Controladores de eventos de respuesta
 
-Además de la lógica del bot y del software intermedio, se pueden agregar controladores de respuesta (a veces denominados controladores de eventos o controladores de eventos de actividad) al objeto de contexto. Se llama a estos controladores cuando la respuesta asociada se produce en el objeto de contexto actual, antes de ejecutar la respuesta real. Estos controladores son útiles si sabe que querrá hacer algo, ya sea antes o después del evento real, para todas las actividades de ese tipo durante el resto de la respuesta actual.
+Además de la lógica del bot y del software intermedio, se pueden agregar controladores de respuesta (a veces denominados controladores de eventos o controladores de eventos de actividad) al objeto de contexto. Se llama a estos controladores cuando la [respuesta](#generating-responses) asociada se produce en el objeto de contexto actual, antes de ejecutar la respuesta real. Estos controladores son útiles si sabe que querrá hacer algo, ya sea antes o después del evento real, para todas las actividades de ese tipo durante el resto de la respuesta actual.
 
 > [!WARNING]
 > Tenga cuidado de no llamar a un método de respuesta de actividad desde su controlador de eventos de respuesta correspondiente, por ejemplo, mediante una llamada al método de actividad de envío desde un controlador _on send activity_. Si lo hace, puede generar un bucle infinito.
 
 Cada actividad nueva obtiene un nuevo subproceso en el que se ejecuta. Cuando se crea el subproceso para procesar la actividad, la lista de controladores de esa actividad se copia en ese subproceso nuevo. No se ejecutará para ese evento de actividad específico ningún controlador agregado después de ese punto.
 
-El adaptador administra los controladores registrados en un objeto de contexto de forma muy similar al modo en que administra la [canalización de software intermedio](~/v4sdk/bot-builder-concept-middleware.md#the-bot-middleware-pipeline).
-
-Es decir, se llama a los controladores en el orden en que se agregan, y al llamar al delegado _next_ se pasa el control al siguiente controlador de eventos registrado. Si un controlador no llama al delegado next, el adaptador no llama a ninguno de los controladores de eventos posteriores; se produce un [cortocircuito](~/v4sdk/bot-builder-concept-middleware.md#short-circuiting) en el evento y el adaptador no envía la respuesta al canal.
+El adaptador administra los controladores registrados en un objeto de contexto de forma muy similar al modo en que administra la [canalización de middleware](~/v4sdk/bot-builder-concept-middleware.md#the-bot-middleware-pipeline). Es decir, se llama a los controladores en el orden en que se agregan, y al llamar al delegado _next_ se pasa el control al siguiente controlador de eventos registrado. Si un controlador no llama al delegado next, no se llama a ninguno de los controladores de eventos posteriores; se produce un [cortocircuito](~/v4sdk/bot-builder-concept-middleware.md#short-circuiting) en el evento y el adaptador no envía la respuesta al canal.
 
 ## <a name="next-steps"></a>Pasos siguientes
-
-Ahora que está familiarizado con algunos conceptos clave de un bot, vamos a profundizar en la manera en que un bot puede enviar mensajes proactivos.
 
 > [!div class="nextstepaction"]
 > [Software intermedio](~/v4sdk/bot-builder-concept-middleware.md)

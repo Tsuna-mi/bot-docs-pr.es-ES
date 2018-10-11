@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: b560f9f43fc596bc8062676136819922d227d37b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b5a9d20c058fe425d727bf2e39597e7dd29ec077
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304870"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389634"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>Conexión de un bot a un Chat en web
 Cuando se [crea un bot](bot-service-quickstart.md) con Bot Service, el canal Chat en web se configura automáticamente. El canal Chat en web incluye el control Chat en web, que proporciona la capacidad para que los usuarios interactúen con el bot directamente en una página web.
@@ -52,7 +52,7 @@ Para intercambiar el secreto por un token y generar la inserción, siga los sigu
 
 2. La respuesta a su solicitud **GET** contendrá el token (entre comillas) que se puede usar para iniciar una conversación al representar el control Chat en web dentro de un **IFrame**. Un token es válido solo para una conversación. Para iniciar otra conversación, debe generar un nuevo token.
 
-3. Dentro del `iframe` **Código para insertar** que ha copiado del canal Chat en web del portal de Bot Framework (como se describe en el [Paso 1](#step-1) anterior), cambie el parámetro `s=` por `t=` y reemplace "YOUR_SECRET_HERE" por su token. 
+3. Dentro del `iframe` **Código para insertar** que ha copiado del canal WebChat del portal de Bot Framework (como se describe en la sección [Obtener la clave secreta del bot](#step-1) anterior), cambie el parámetro `s=` por `t=` y reemplace "YOUR_SECRET_HERE" por su token.
 
 > [!NOTE]
 > Los tokens se renovarán automáticamente antes de que expiren. 
@@ -109,7 +109,7 @@ Use esta opción si quiere permitir que otros desarrolladores inserten fácilmen
 
 Para insertar el bot en su sitio web indicando el secreto en la etiqueta `iframe`, siga los siguientes pasos:
 
-1. Copie el **Código para insertar** `iframe` desde el canal Chat en web en el portal de Bot Framework (como se describe en el [Paso 1](#step-1) anterior).
+1. Copie el **Código para insertar** `iframe` desde el canal Chat en web en el portal de Bot Framework (como se describe en la sección [Obtener la clave secreta del bot](#step-1) anterior).
 
 2. En ese **Código para insertar**, reemplace "YOUR_SECRET_HERE" por la **clave secreta** que copió de la misma página.
 
@@ -131,4 +131,4 @@ Puede cambiar el tamaño del control Chat en web mediante el uso del atributo `s
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-También puede [descargar el código fuente](https://github.com/Microsoft/BotFramework-WebChat) para el control Chat en web en GitHub.
+También puede [descargar el código fuente](https://github.com/Microsoft/BotFramework-WebChat) para el control de Chat en web en GitHub.

@@ -7,25 +7,27 @@ ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 08/21/2018
+ms.date: 08/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6458bac5140fae14e8925e7af37aa8ac4ef1f1f5
-ms.sourcegitcommit: 7b5675bbf7f1c2432bfc831ee5d627f6e5659e01
+ms.openlocfilehash: 6b63fe2780c51e57ee16c5e3dba5a83f46566157
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381001"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707287"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-python"></a>Creación de un bot con Bot Builder SDK para Python
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-SDK de Bot Builder para Python es un marco fácil de usar para el desarrollo de bots. Este inicio rápido le guía a través del desarrollo de un bot y, a continuación, con la prueba con Bot Framework Emulator. El SDK v4 está en versión preliminar. Visite el [repositorio de GitHub](https://github.com/Microsoft/botbuilder-python) de Python para más información. 
+>[!NOTE] 
+> El SDK para Python está en **versión preliminar**. Visite el [repositorio de GitHub](https://github.com/Microsoft/botbuilder-python) de Python para más información. 
+
+Este inicio rápido le guía a través del desarrollo de un bot y, a continuación, con la prueba con Bot Framework Emulator. 
 
 ## <a name="pre-requisite"></a>Requisito previo
 - [Python 3.6.4](https://www.python.org/downloads/) 
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases)
 
-# <a name="create-a-bot"></a>Creación de un bot
+## <a name="create-a-bot"></a>Creación de un bot
 En el archivo main.py, importe los módulos estándares siguientes:
 
 ```python
@@ -127,22 +129,20 @@ python main.py
 ```
 En el terminal local debería ver el mensaje "Started http server on localhost:9000" ("Se ha iniciado el servidor http en el host local:9000").
 
-### <a name="start-the-emulator-and-connect-your-bot"></a>Inicio del emulador y conexión del bot
+## <a name="start-the-emulator-and-connect-your-bot"></a>Inicio del emulador y conexión del bot
 
 A continuación, inicie el emulador y, después, conéctese al bot en el emulador:
 
+1. Haga clic en el vínculo **Open Bot** (Abrir bot) de la pestaña de bienvenida del emulador. 
+2. Seleccione el archivo .bot ubicado en el directorio donde se creó el proyecto.
 
-1. Haga clic en el vínculo **create a new bot configuration** (Crear configuración de bot) en la pestaña de bienvenida del emulador. 
+## <a name="interact-with-your-bot"></a>Interacción con el bot
 
-2. Escriba un **nombre de bot** y la ruta de acceso del directorio al código del bot. El archivo de configuración del bot se guarda en esta ruta de acceso.
+Envíe un mensaje al bot y este responderá con un mensaje.
+![Emulador en ejecución](../media/emulator-v4/emulator-running.png)
 
-3. Escriba `http://localhost:port-number/api/messages` en el campo **Endpoint URL** (Dirección URL del punto de conexión), donde *port-number* coincide con el número de puerto que se muestra en el explorador en el que se ejecuta la aplicación.
-
-4. Haga clic en **Connect** (Conectar) para conectarse al bot. No tendrá que especificar los valores de **Microsoft App ID** (id. de la aplicación de Microsoft) ni **Microsoft App Password** (contraseña de la aplicación de Microsoft). Por ahora puede dejar estos campos en blanco. Obtendrá esta información más adelante al registrar el bot.
-
-Escriba **Hola** en el emulador y el bot repetirá **Ha dicho "Hola"**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 > [!div class="nextstepaction"]
-> [Conceptos básicos de bot](../v4sdk/bot-builder-basics.md)
+> [Conceptos de bots](../v4sdk/bot-builder-basics.md)

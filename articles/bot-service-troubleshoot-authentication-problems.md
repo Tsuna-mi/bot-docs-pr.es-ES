@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
-ms.openlocfilehash: a64edda73832f4d3fff49b08b5eaf6792c021ece
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 5373b18ce5c11dae4e971cb1a70307ae2901ad36
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305829"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389664"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Solución de problemas de autenticación de Bot Framework
 
@@ -25,10 +25,10 @@ Esta guía puede ayudarle a solucionar problemas de autenticación con el bot ev
 
 La seguridad del bot se configura con el **identificador de aplicación de Microsoft** y la **contraseña de aplicación de Microsoft** que se obtiene al registrar el bot con Bot Framework. Normalmente, estos valores son especificados en el archivo de configuración del bot y se usan para recuperar los tokens de acceso del servicio Cuenta Microsoft. 
 
-Si aún no lo ha hecho, [registre el bot](~/bot-service-quickstart-registration.md) para obtener un **identificador de aplicación de Microsoft** y una **contraseña de aplicación de Microsoft** que pueda usar para la autenticación. 
+Si aún no lo ha hecho, [implemente el bot en Azure](~/bot-builder-howto-deploy-azure.md) para obtener el **id. de la aplicación de Microsoft** y la **contraseña de la aplicación de Microsoft** que pueda usar para la autenticación. 
 
 > [!NOTE]
-> Para buscar los valores **AppID** y **AppPassword** del bot, consulte [MicrosoftAppID y MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
+> Para encontrar los valores de **AppID** y **AppPassword** de un bot que ya se ha implementado, consulte [MicrosoftAppID y MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
 
 ## <a name="step-1-disable-security-and-test-on-localhost"></a>Paso 1: Deshabilitar la seguridad y probar en el host local
 

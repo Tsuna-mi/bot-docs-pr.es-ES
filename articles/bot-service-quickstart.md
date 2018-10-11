@@ -7,21 +7,22 @@ ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 08/13/2018
-ms.openlocfilehash: e62d57a39c87e9de32a1a492b2dc1386d6574fd3
-ms.sourcegitcommit: bff936a6a3dd5b1bd3ddfeed8bd1023e52929f08
+ms.date: 09/18/2018
+ms.openlocfilehash: e676a9bf2c9dac46d728f8a37d87eae6e56df341
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312499"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707691"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
-# <a name="create-a-bot-with-bot-service"></a>Creación de un bot con Bot Service
+
+# <a name="create-a-bot-with-azure-bot-service"></a>Creación de un bot con Azure Bot Service
 
 [!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
 
-Bot Service ofrece los componentes principales para la creación de bots, incluido el SDK de Bot Builder para desarrollar bots y Bot Framework para conectar los bots con canales. Bot Service ofrece cinco plantillas entre las que puede elegir al crear sus bots con compatibilidad con .NET y Node.js. En este tema, aprenda a usar Bot Service para crear un nuevo bot que usa el SDK de Bot Builder.
+Bot Service ofrece los componentes principales para la creación de bots, incluido Bot Builder SDK para desarrollar bots y Bot Framework para conectar bots a canales. Bot Service ofrece cinco plantillas entre las que puede elegir al crear sus bots con compatibilidad con .NET y Node.js. En este tema, aprenda a usar Bot Service para crear un nuevo bot que usa el SDK de Bot Builder.
 
 ## <a name="log-in-to-azure"></a>Inicio de sesión en Azure
 Inicie sesión en [Azure Portal](http://portal.azure.com).
@@ -78,7 +79,7 @@ En este tema, ha aprendido a crear un bot de Functions o un bot de aplicación w
 
 ::: moniker range="azure-bot-service-4.0"
 
-# <a name="create-a-bot-with-bot-service"></a>Creación de un bot con Bot Service
+# <a name="create-a-bot-with-azure-bot-service"></a>Creación de un bot con Azure Bot Service
 [!INCLUDE [pre-release-label](includes/pre-release-label.md)]
 
 Azure Bot Service ofrece los componentes principales para la creación de bots, incluido el SDK de Bot Builder para desarrollar bots y el servicio de bots para conectar los bots con canales. En el tema, podrá elegir una plantilla .NET o Node.js para crear un bot con la versión preliminar del SDK de Bot Builder v4.
@@ -106,7 +107,7 @@ Inicie sesión en [Azure Portal](http://portal.azure.com).
  | **Ubicación** | Ubicación predeterminada | Seleccione la ubicación geográfica del grupo de recursos. Puede elegir cualquier ubicación de la lista, aunque a menudo es mejor elegir la más cercana al cliente. No se puede cambiar la ubicación una vez creado el bot. |
  | **Plan de tarifa** | F0 | Seleccione un plan de tarifa. Puede actualizar el plan de tarifa en cualquier momento. Para más información, consulte [Precios de Azure Bot Service](https://azure.microsoft.com/en-us/pricing/details/bot-service/). |
  | **Nombre de la aplicación** | Un nombre único | Nombre único de la dirección URL del bot. Por ejemplo, si el nombre del bot es *myawesomebot*, la dirección URL del bot será `http://myawesomebot.azurewebsites.net`. El nombre solo debe usar caracteres alfanuméricos y de subrayado. Hay un límite de 35 caracteres para este campo. No se puede cambiar el nombre de la aplicación una vez creado el bot. |
- | **Plantilla de bot** | Básica | Elija **SDK v4**. Elija C# o Node.js y seleccione la plantilla **básica** para este inicio rápido y, a continuación, haga clic en **Seleccionar**. La plantilla básica crea un bot de eco. 
+ | **Plantilla de bot** | Bot de eco | Elija **SDK v4**. Seleccione C# o Node.js para esta guía de inicio rápido y, a continuación, haga clic en **Seleccionar**.  
  | **Plan de App Service/Ubicación** | Su plan de App Service  | Seleccione una ubicación para el [plan de App Service](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/). Puede elegir cualquier ubicación de la lista, aunque a menudo es mejor elegir la más cercana al cliente. |
  | **Azure Storage** | Su cuenta de almacenamiento de Azure | Puede crear una cuenta de almacenamiento de datos o usar una existente. De forma predeterminada, el bot usará [Table Storage](/azure/storage/common/storage-introduction#table-storage). |
  | **Application Insights** | Por | Decida si quiere **Activar** o **Desactivar** [Application Insights](/bot-framework/bot-service-manage-analytics). Si selecciona **Activar**, también debe especificar una ubicación regional. Puede elegir cualquier ubicación de la lista, aunque a menudo es mejor elegir la más cercana al cliente. |
@@ -116,12 +117,18 @@ Inicie sesión en [Azure Portal](http://portal.azure.com).
 
 Para confirmar que el bot se ha implementado, active las **Notificaciones**. Las notificaciones cambiarán de **Implementación en curso...** a **Implementación correcta**. Haga clic en el botón **Ir al recurso** para abrir la hoja de recursos del bot.
 
+Una vez ha creado el bot, pruébelo en Chat en web. 
+
 ## <a name="test-the-bot"></a>Probar el bot
-Una vez ha creado el bot, pruébelo en [Chat en web](bot-service-manage-test-webchat.md). Escriba un mensaje y el bot debería responder.
+En la sección **Administración del bot**, haga clic en **Probar en Chat en web**. Azure Bot Service cargará el control Chat en web y se conectará al bot. 
+
+![Prueba del Chat en web de Azure](~/media/azure-bot-quickstarts/azure-webchat-test.png)
+
+Escriba un mensaje y el bot debería responder.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tema, ha aprendido a crear un Web App Bot **básico** mediante el uso de Bot Service y ha comprobado la funcionalidad del bot con el control Chat en web integrado en Azure. Ahora, obtenga información sobre cómo administrar el bot y empezar a trabajar con su código fuente.
+En este tema, ha aprendido a crear una aplicación web de bot de **eco** mediante el uso de Azure Bot Service y ha comprobado la funcionalidad del bot con el control Chat en web integrado. Ahora, obtenga información sobre cómo administrar el bot y empezar a trabajar con su código fuente.
 
 > [!div class="nextstepaction"]
 > [Administración de un bot](bot-service-manage-overview.md)

@@ -7,195 +7,594 @@ ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 4/23/2018
+ms.date: 09/19/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 28377a1e611464012df28d3edf78d1cf01351345
-ms.sourcegitcommit: 44f100a588ffda19c275b118f4f97029f12d1449
+ms.openlocfilehash: b70f0bfbc76ad06be30fc7f590118b69ab1baf92
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2018
-ms.locfileid: "42928373"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389744"
 ---
 # <a name="persist-user-data"></a>Conservación de datos de usuario
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Cuando el bot pide una entrada a los usuarios, lo más probable es que quiera conservar parte de la información en el almacenamiento de alguna forma. El Bot Builder SDK le permite almacenar entradas de usuario mediante *almacenamiento en memoria*, *almacenamiento de archivos* o almacenamiento en bases de datos, como *CosmosDB* o *SQL*, donde los tipos de almacenamiento local se utilizan principalmente para pruebas o creación de prototipos, y los últimos tipos de almacenamiento son más adecuados para los bots de producción.
+Cuando el bot pide una entrada a los usuarios, lo más probable es que quiera conservar parte de la información en el almacenamiento de alguna forma. El SDK Bot Builder permite almacenar las entradas de los usuarios mediante *almacenamiento en memoria* o almacenamiento en una base de datos como *CosmosDB*. Los tipos de almacenamiento local se usan principalmente durante la realización de pruebas o la creación de prototipos del bot. Sin embargo, los tipos de almacenamiento persistente, como el almacenamiento de base de datos, son los mejores para los bots de producción. 
 
-En este tutorial se mostrará cómo definir el objeto de almacenamiento y guardar las entradas de usuario para el objeto de almacenamiento de modo que se pueda conservar. 
+En este tema se muestra cómo definir un objeto de almacenamiento y guardar las entradas de usuario en dicho objeto para que se pueda conservar. Usaremos un diálogo para pedir al usuario su nombre, en caso de que no lo tengamos aún. Independientemente del tipo de almacenamiento que decida usar, el proceso de enlazar y conservar los datos es el mismo. El código de este tema usa `CosmosDB` como espacio de almacenamiento para conservar los datos.
 
-> [!NOTE]
-> Independientemente del tipo de almacenamiento que decida usar, el proceso de enlazar y conservar los datos es el mismo. En este tutorial se usa `FileStorage` como almacenamiento para conservar los datos.
-> Para obtener más información sobre el estado y otros tipos de almacenamiento, consulte [Administración del estado de la conversación y del usuario](bot-builder-howto-v4-state.md).
+## <a name="prerequisites"></a>Requisitos previos
 
-## <a name="prequisite"></a>Requisito previo 
+Se requieren ciertos recursos, en función del entorno de desarrollo que se desee usar.
 
-Este tutorial se basa en el tutorial para [reservar una mesa](bot-builder-tutorial-waterfall.md). En este tutorial, va a crear un bot que pide al usuario tres tipos de información sobre la reserva de una mesa en su restaurante. Sin embargo, no se conservó la entrada del usuario. En este tutorial se agregará la persistencia del almacenamiento de datos a ese bot.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-## <a name="add-storage-to-middleware-layer"></a>Incorporación de almacenamiento a la capa de software intermedio
+* [Instalación de Visual Studio 2015 o superior](https://www.visualstudio.com/downloads/).
+* [Instalación de la plantilla de Bot Builder V4](https://marketplace.visualstudio.com/items?itemName=BotBuilder.botbuilderv4).
 
-El Bot Builder SDK V4 controla el estado y el almacenamiento a través de software intermedio de administrador de estado. El software intermedio proporciona una capa de abstracción que permite acceder a las propiedades mediante un almacén simple de valor de clave, independiente del tipo de almacenamiento subyacente. El administrador de estado se encarga de escribir los datos en el almacenamiento y de administrar la simultaneidad, con independencia de que el tipo de almacenamiento subyacente sea en memoria, de archivos o almacenamiento de tablas de Azure. En este tutorial, se usará `FileStorage` para conservar las entradas de usuario.
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-El proveedor `FileStorage` viene con el paquete `bot-builder`. El ejemplo con el que empezó usa el proveedor `MemoryStorage`. Ese tipo de almacenamiento que usa almacenamiento *en memoria* volátil del bot, que se elimina cuando se reinicia el bot. Por otro lado, la biblioteca `FileStorage` se comporta de manera similar a una base de datos. Es decir, esta biblioteca escribe la información de almacenamiento en un archivo en el equipo local. Puede especificar dónde colocar este archivo de almacenamiento para que se puede inspeccionar más adelante.
+* [Instalación de Visual Studio Code](https://www.visualstudio.com/downloads/).
+* [Instalación de Node.js v8.5 o superior](https://nodejs.org/en/).
+* [Instalación de Yeoman](http://yeoman.io/).
+* Instale el generador de plantillas para Bot Builder v4 de Node.js.
 
-Para usar `FileStorage`, busque la instrucción en el bot donde se define el objeto `conversationState` y actualícelo para crear un `new botbuilder.FileStorage("c:/temp")`. Además, puede definir la ubicación donde se debe escribir este archivo de almacenamiento. De este modo, puede encontrarlo fácilmente para inspeccionar el contenido de lo que se conservó.
-
-# <a name="ctabcstab"></a>[C#](#tab/cstab)
-```cs
-var storage = new FileStorage("c:/temp");
-
-// These two classes are simply Dictionaries to store state
-options.Middleware.Add(new ConversationState<MyBot.convoState>(storage));
-options.Middleware.Add(new UserState<MyBot.userState>(storage));
-```
-
-El Bot Builder SDK proporciona tres objetos de estado con ámbitos diferentes entre los que puede elegir.
-
-| Estado | Ámbito | DESCRIPCIÓN |
-| ---- | ---- | ---- |
-| `dc.ActiveDialog.State` | cuadro de diálogo | Estado disponible para los pasos del cuadro de diálogo de cascada. |
-| `ConversationState` | conversación | Estado disponible para la conversación actual. |
-| `UserState` | user | Estado disponible para varias conversaciones. |
-
-# <a name="javascripttabjstab"></a>[JavaScript](#tab/jstab)
-
-**app.js**
-```javascript
-// Storage
-const storage = new FileStorage("c:/temp");
-const convoState = new ConversationState(storage);
-const userState  = new UserState(storage);
-adapter.use(new BotStateSet(convoState, userState));
-```
-
-El `BotStateSet` pueden administrar tanto `ConversationState` como `UserState` al mismo tiempo. Cuando llega el momento de guardar los datos de usuario, puede elegir. El Bot Builder SDK proporciona tres objetos de estado con ámbitos diferentes entre los que puede elegir.
-
-| Estado | Ámbito | DESCRIPCIÓN |
-| ---- | ---- | ---- |
-| `dc.activeDialog.state` | cuadro de diálogo | Estado disponible para los pasos del cuadro de diálogo de cascada. |
-| `ConversationState` | conversación | Estado disponible para la conversación actual. |
-| `UserState` | user | Estado disponible para varias conversaciones. |
+    ```shell
+    npm install generator-botbuilder
+    ```
 
 ---
- 
 
-## <a name="persist-state"></a>Conservación del estado
+En este tutorial se usan los siguientes paquetes.
 
-Para el bot, puede escribir en cualquiera de estas tres ubicaciones de estado, según lo que guarde y cuánto tiempo debe conservarse.  
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-# <a name="ctabcstab"></a>[C#](#tab/cstab)
+Instale estos paquetes desde el administrador de paquetes de NuGet.
 
-El *software intermedio del administrador de estado* controla el estado de escritura automáticamente al final de cada turno. Por lo tanto, todo lo que debe hacer en el bot es asignar los datos al objeto de estado de su elección. En este ejemplo, se usa `dc.ActiveDialog.State` para realizar el seguimiento de la entrada del usuario para la reserva. De este modo, en lugar de guardar la entrada del usuario en una variable global, se puede almacenar en un ámbito de objeto de estado temporal en el cuadro de diálogo. Este objeto solo existe en la medida en que el cuadro de diálogo esté activo; si desea conservarlo más tiempo, debe transferirlo a uno de los otros objetos de estado. En este caso, asignamos la reserva `msg` al estado de la conversación en el último paso de la cascada.
+* **Microsoft.Bot.Builder.Azure**
+* **Microsoft.Bot.Builder.Dialogs**
+* **Microsoft.Bot.Builder.Integration.AspNet.Core**
 
-```cs
-dialogs.Add("reserveTable", new WaterfallStep[]
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Vaya a la carpeta de proyecto del bot e instale el paquete `botbuilder-dialogs` de NPM:
+
+```cmd
+npm install --save botbuilder-dialogs
+npm install --save botbuilder-azure
+```
+
+---
+
+Para probar el bot que cree en este tutorial, tendrá que instalar [BotFramework Emulator](https://github.com/Microsoft/BotFramework-Emulator).
+
+## <a name="create-a-cosmosdb-service-and-update-your-application-settings"></a>Creación de un servicio CosmosDB y actualización de la configuración de la aplicación
+Para configurar un servicio CosmosDB y una base de datos, siga las instrucciones para [usar CosmosDB](bot-builder-howto-v4-storage.md#using-cosmos-db). Aquí se resumen los pasos:
+   1. En una nueva ventana del explorador, inicie sesión en <a href="http://portal.azure.com/" target="_blank">Azure Portal</a>.
+   1. Haga clic en **Crear un recurso > Bases de datos > Azure Cosmos DB**.
+   1. En la página **Nueva cuenta**, proporcione un nombre único en el campo **ID**. En **API**, seleccione **SQL** y proporcione la información de **Suscripción**, **Ubicación** y **Grupo de recursos**.
+   1. Haga clic en **Create**(Crear).
+
+A continuación, agregue una colección a ese servicio para su uso con este bot.
+
+Registre el identificador de la base de datos y el identificador de la colección que usó para agregar la colección, así como el identificador URI y la clave principal de la configuración de las claves de la colección, ya que serán necesarios para conectar el bot al servicio.
+
+### <a name="update-your-application-settings"></a>Actualización de la configuración de la aplicación
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Actualice el archivo **appsettings.json** para incluir la información de conexión de CosmosDB.
+
+```csharp
 {
-    async (dc, args, next) =>
-    {
-        // Prompt for the guest's name.
-        await dc.Context.SendActivity("Welcome to the reservation service.");
+  // Settings for CosmosDB.
+  "CosmosDB": {
+    "DatabaseID": "<your-database-identifier>",
+    "CollectionID": "<your-collection-identifier>",
+    "EndpointUri": "<your-CosmosDB-endpoint>",
+    "AuthenticationKey": "<your-primary-key>"
+  }
+}
+```
 
-        dc.ActiveDialog.State = new Dictionary<string, object>();
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-        await dc.Prompt("dateTimePrompt", "Please provide a reservation date and time.");
-    },
-    async(dc, args, next) =>
-    {
-        var dateTimeResult = ((DateTimeResult)args).Resolution.First();
+En la carpeta del proyecto, busque el archivo **.env** y agréguele estas entradas con los datos específicos de Cosmos.
 
-        dc.ActiveDialog.State["date"] = Convert.ToDateTime(dateTimeResult.Value);
-        
-        // Ask for next info
-        await dc.Prompt("partySizePrompt", "How many people are in your party?");
+**.env**
 
-    },
-    async(dc, args, next) =>
-    {
-        dc.ActiveDialog.State["partySize"] = (int)args["Value"];
+```cmd
+DB_SERVICE_ENDPOINT=<database service endpoint>
+AUTH_KEY=<authentication key>
+DATABASE=<database name>
+COLLECTION=<collection name>
+```
 
-        // Ask for next info
-        await dc.Prompt("textPrompt", "Who's name will this be under?");
-    },
-    async(dc, args, next) =>
-    {
-        dc.ActiveDialog.State["name"] = args["Text"];
-        string msg = "Reservation confirmed. Reservation details - " +
-        $"\nDate/Time: {dc.ActiveDialog.State["date"].ToString()} " +
-        $"\nParty size: {dc.ActiveDialog.State["partySize"].ToString()} " +
-        $"\nReservation name: {dc.ActiveDialog.State["name"]}";
+Luego, en el archivo **index.js** principal del bot, reemplace `storage` para usar `CosmosDbStorage` en lugar de `MemoryStorage`. Durante el tiempo de ejecución, se extraerán las variables de entorno y rellenarán estos campos.
 
-        var convo = ConversationState<convoState>.Get(dc.Context);
-
-        // In production, you may want to store something more helpful
-        convo[$"{dc.ActiveDialog.State["name"]} reservation"] = msg;
-
-        await dc.Context.SendActivity(msg);
-        await dc.End();
-    }
+```javascript
+const storage = new CosmosDbStorage({
+    serviceEndpoint: process.env.DB_SERVICE_ENDPOINT, 
+    authKey: process.env.AUTH_KEY, 
+    databaseId: process.env.DATABASE,
+    collectionId: process.env.COLLECTION
 });
 ```
 
-# <a name="javascripttabjstab"></a>[JavaScript](#tab/jstab)
+---
 
-El *software intermedio del administrador de estado* controla el estado de escritura en el archivo automáticamente al final de cada turno. Por lo tanto, todo lo que debe hacer en el bot es asignar los datos al objeto de estado de su elección. En este ejemplo, se usa `dc.activeDialog.state` para realizar el seguimiento de la entrada del usuario en un objeto `reservervationInfo`. De este modo, en lugar de guardar la entrada del usuario en una variable global, se puede almacenar en un ámbito de objeto de estado temporal en el cuadro de diálogo. Dado que este objeto solo existe en la medida en que el cuadro de diálogo esté activo; si desea conservarlo, debe transferirlo a uno de los otros objetos de estado. En este caso, se asigna `reservationInfo` al estado `convo` en el último paso de la cascada.
+## <a name="create-storage-state-manager-and-state-property-accessor-objects"></a>Creación de los objetos del descriptor de acceso de almacenamiento, administrador de estado y de las propiedades del estado
+
+Los bots usan objetos de almacenamiento y administración de estado para administrar y conservar el estado. El administrador proporciona una capa de abstracción que permite acceder a las propiedades de estado mediante descriptores de acceso de las propiedades del estado, independientemente del tipo de almacenamiento subyacente. Use el administrador de estado para escribir datos en el espacio de almacenamiento. 
+
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+### <a name="define-a-class-for-your-user-data"></a>Definición de una clase para los datos de usuario
+
+Cambie el nombre del archivo **CounterState.cs** a **UserData.cs**y el de la clase **CounterState** a **UserData**.
+
+Actualice esta clase para que contenga los datos que va a recopilar.
+
+```csharp
+/// <summary>
+/// Class for storing persistent user data.
+/// </summary>
+public class UserData
+{
+    public string Name { get; set; }
+}
+```
+
+### <a name="define-a-class-for-your-state-and-state-property-accessor-objects"></a>Definición de una clase para el estado y los objetos del descriptor de acceso de las propiedades del estado
+
+Cambie el nombre del archivo **EchoBotAccessors.cs** a **BotAccessors.cs** y cambiar el nombre de la clase **EchoBotAccessors** a **BotAccessors**.
+
+Actualice esta clase para almacenar los objetos del estado y los descriptores de acceso de las propiedades del estado que va a necesitar el bot.
+
+```csharp
+using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Dialogs;
+using System;
+
+public class BotAccessors
+{
+    public UserState UserState { get; }
+
+    public ConversationState ConversationState { get; }
+
+    public IStatePropertyAccessor<DialogState> DialogStateAccessor { get; set; }
+
+    public IStatePropertyAccessor<UserData> UserDataAccessor { get; set; }
+
+    public BotAccessors(UserState userState, ConversationState conversationState)
+    {
+        this.UserState = userState
+            ?? throw new ArgumentNullException(nameof(userState));
+
+        this.ConversationState = conversationState
+            ?? throw new ArgumentNullException(nameof(conversationState));
+    }
+}
+```
+
+### <a name="update-the-startup-code-for-your-bot"></a>Actualización del código de inicio para el bot
+
+En el archivo **Startup.cs**, actualice las instrucciones using.
+
+```csharp
+using System;
+using System.Linq;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Azure;
+using Microsoft.Bot.Builder.BotFramework;
+using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Builder.Integration;
+using Microsoft.Bot.Builder.Integration.AspNet.Core;
+using Microsoft.Bot.Builder.TraceExtensions;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+```
+
+En el método `ConfigureServices`, actualice la llamada para agregar el bot a partir del lugar en que se crea el objeto de almacenamiento de respaldo y, después, registre el objeto de descriptores de acceso del bot.
+
+Necesitamos el estado de la conversación del objeto `DialogState` para realizar un seguimiento del estado del diálogo. Vamos a registrar elementos singleton para el descriptor de acceso de las propiedades del estado del diálogo y el conjunto de diálogos que va a usar nuestro bot. El bot creará su propio descriptor de acceso de las propiedades del estado para el estado de usuario.
+
+El descriptor de acceso `BotAccessors` es una manera eficaz de administrar el almacenamiento de varios objetos de estado de un bot.
+
+```cs
+public void ConfigureServices(IServiceCollection services)
+{
+    // Register your bot.
+    services.AddBot<UserDataBot>(options =>
+    {
+        // ...
+
+        // Use persistent storage and create state management objects.
+        var CosmosSettings = Configuration.GetSection("CosmosDB");
+        IStorage storage = new CosmosDbStorage(
+            new CosmosDbStorageOptions
+            {
+                DatabaseId = CosmosSettings["DatabaseID"],
+                CollectionId = CosmosSettings["CollectionID"],
+                CosmosDBEndpoint = new Uri(CosmosSettings["EndpointUri"]),
+                AuthKey = CosmosSettings["AuthenticationKey"],
+            });
+        options.State.Add(new ConversationState(storage));
+        options.State.Add(new UserState(storage));
+    });
+
+    // Register the bot's state and state property accessor objects.
+    services.AddSingleton<BotAccessors>(sp =>
+    {
+        var options = sp.GetRequiredService<IOptions<BotFrameworkOptions>>().Value;
+        var userState = options.State.OfType<UserState>().FirstOrDefault();
+        var conversationState = options.State.OfType<ConversationState>().FirstOrDefault();
+
+        return new BotAccessors(userState, conversationState)
+        {
+            UserDataAccessor = userState.CreateProperty<UserData>("UserDataBot.UserData"),
+            DialogStateAccessor = conversationState.CreateProperty<DialogState>("UserDataBot.DialogState"),
+        };
+    });
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+### <a name="indexjs"></a>index.js
+
+En el archivo **index.js** de su bot principal, actualice las siguientes instrucciones require.
 
 ```javascript
-// Reserve a table:
-// Help the user to reserve a table
+const { BotFrameworkAdapter, ConversationState, UserState } = require('botbuilder');
+const { CosmosDbStorage } = require('botbuilder-azure');
+```
 
-dialogs.add('reserveTable', [
-    async function(dc, args, next){
-        await dc.context.sendActivity("Welcome to the reservation service.");
+Vamos a usar `UserState` para almacenar los datos de este tutorial. Necesitamos crear un objeto `userState` y actualizar esta línea de código para pasar un segundo parámetro a la clase `MainDialog`.
 
-        dc.activeDialog.state.reservationInfo = {}; // Clears any previous data
-        await dc.prompt('dateTimePrompt', "Please provide a reservation date and time.");
-    },
-    async function(dc, result){
-        dc.activeDialog.state.reservationInfo.dateTime = result[0].value;
+```javascript
+// Create conversation state with in-memory storage provider. 
+const conversationState = new ConversationState(storage);
+const userState = new UserState(storage);
 
-        // Ask for next info
-        await dc.prompt('partySizePrompt', "How many people are in your party?");
-    },
-    async function(dc, result){
-        dc.activeDialog.state.reservationInfo.partySize = result;
+// Create the main dialog.
+const mainDlg = new MainDialog(conversationState, userState);
+```
 
-        // Ask for next info
-        await dc.prompt('textPrompt', "Who's name will this be under?");
-    },
-    async function(dc, result){
-        dc.activeDialog.state.reservationInfo.reserveName = result;
-        
-        // Persist data
-        var convo = conversationState.get(dc.context);; // conversationState.get(dc.context);
-        convo.reservationInfo = dc.activeDialog.state.reservationInfo;
+### <a name="dialogsmaindialogindexjs"></a>dialogs/mainDialog/index.js
 
-        // Confirm reservation
-        var msg = `Reservation confirmed. Reservation details: 
-            <br/>Date/Time: ${dc.activeDialog.state.reservationInfo.dateTime} 
-            <br/>Party size: ${dc.activeDialog.state.reservationInfo.partySize} 
-            <br/>Reservation name: ${dc.activeDialog.state.reservationInfo.reserveName}`;
-            
-        await dc.context.sendActivity(msg);
-        await dc.end();
-    }
-]);
+En la clase `MainDialog`, requiera las bibliotecas necesarias para que el bot funcione. En este tutorial, vamos a usar la biblioteca **Dialogs**.
+
+```javascript
+// Required packages for this bot
+const { ActivityTypes } = require('botbuilder');
+const { DialogSet, WaterfallDialog, TextPrompt, NumberPrompt } = require('botbuilder-dialogs');
+
+```
+
+Actualice el constructor de la clase `MainDialog` para aceptar un segundo parámetro como `userState`. Además, actualice el constructor para definir los estados, diálogos y mensajes necesarios para este tutorial. En este caso, vamos a define una cascada de dos pasos, en la que en el _paso 1_ se pide el nombre al usuario y el _paso 2_ devuelve la entrada del usuario. La lógica principal del bot es la que dicta si se conserva esa información.
+
+```javascript
+constructor (conversationState, userState) {
+
+    // creates a new state accessor property. see https://aka.ms/about-bot-state-accessors to learn more about the bot state and state accessors 
+    this.conversationState = conversationState;
+    this.userState = userState;
+
+    this.dialogState = this.conversationState.createProperty('dialogState');
+
+    this.userDataAccessor = this.userState.createProperty('userData');
+
+    this.dialogs = new DialogSet(this.dialogState);
+    
+    // Add prompts
+    this.dialogs.add(new TextPrompt('textPrompt'));
+    
+    // Check in user:
+    this.dialogs.add(new WaterfallDialog('greetings', [
+        async function (step) {
+            return await step.prompt('textPrompt', "What is your name?");
+        },
+        async function (step){
+            return await step.endDialog(step.result);
+        }
+    ]));
+}
 ```
 
 ---
 
-Ahora, está listo para enlazarlo a la lógica del bot.
+Cuando llega el momento de guardar los datos del usuario, hay varias opciones entre las que se puede elegir. El SDK proporciona varios objetos de estado con ámbitos diferentes entre los que puede elegir. Aquí vamos a usar el estado de la conversación para administrar el objeto de estado del diálogo y el estado del usuario para administrar los datos del usuario.
 
-## <a name="start-the-dialog"></a>Inicio del cuadro de diálogo
+Para más información acerca del almacenamiento y del estado en general, consulte [almacenamiento](bot-builder-howto-v4-storage.md) y [administración del estado del usuario y de la conversación](bot-builder-howto-v4-state.md).
 
-No hay ningún código que deba cambiar aquí. Simplemente ejecute el bot y envíe el mensaje para iniciar la conversación `reserveTable`.
+## <a name="create-a-greeting-dialog"></a>Creación de un diálogo de saludo
 
-## <a name="check-file-storage-content"></a>Comprobación del contenido del almacenamiento de archivo
+Vamos a usar un diálogo para recopilar el nombre del usuario. Para simplificar este escenario, el diálogo devolverá el nombre del usuario y el bot administrará el objeto de datos de usuario y el estado.
 
-Después de ejecutar el bot y haber pasado por la conversación `reserveTable`, busque la información guardada en un archivo en la ubicación especificada (p. ej.: "C:/temp"). Al nombre de archivo se antepone "conversation!" o "user!". Puede ser útil para ordenar los archivos por fecha, para poder encontrar el último de manera más fácil.
+Cree una clase **GreetingsDialog** e incluya el siguiente código.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```cs
+using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Dialogs;
+
+/// <summary>Defines a dialog for collecting a user's name.</summary>
+public class GreetingsDialog : DialogSet
+{
+    /// <summary>The ID of the main dialog.</summary>
+    public const string MainDialog = "main";
+
+    /// <summary>The ID of the the text prompt to use in the dialog.</summary>
+    private const string TextPrompt = "textPrompt";
+
+    /// <summary>Creates a new instance of this dialog set.</summary>
+    /// <param name="dialogState">The dialog state property accessor to use for dialog state.</param>
+    public GreetingsDialog(IStatePropertyAccessor<DialogState> dialogState)
+        : base(dialogState)
+    {
+        // Add the text prompt to the dialog set.
+        Add(new TextPrompt(TextPrompt));
+
+        // Define the main dialog and add it to the set.
+        Add(new WaterfallDialog(MainDialog, new WaterfallStep[]
+        {
+            async (stepContext, cancellationToken) =>
+            {
+                // Ask the user for their name.
+                return await stepContext.PromptAsync(TextPrompt, new PromptOptions
+                {
+                    Prompt = MessageFactory.Text("What is your name?"),
+                }, cancellationToken);
+            },
+            async (stepContext, cancellationToken) =>
+            {
+                // Assume that they entered their name, and return the value.
+                return await stepContext.EndDialogAsync(stepContext.Result, cancellationToken);
+            },
+        }));
+    }
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Vea la sección anterior en la que se crea el diálogo se crea dentro del constructor `MainDialog`.
+
+---
+
+Para más información acerca de los diálogos, consulte [solicitud de entrada](bot-builder-prompts.md) y [administración de un flujo de conversación simple](bot-builder-dialog-manage-conversation-flow.md).
+
+## <a name="update-your-bot-to-use-the-dialog-and-user-state"></a>Actualización del bot para que utilice el estado del diálogo y del usuario
+
+La construcción de bot y la administración de los datos proporcionados por el usuario se trataran por separado.
+
+### <a name="add-the-dialog-and-a-user-state-accessor"></a>Adición del descriptor de acceso del estado del diálogo y del usuario
+
+Es necesario realizar un seguimiento de la instancia del diálogo y del descriptor de acceso de las propiedades del estado en los datos del usuario.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Agregue el código para inicializar nuestro bot.
+
+```cs
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Schema;
+
+/// <summary>Defines the bot for the persisting user data tutorial.</summary>
+public class UserDataBot : IBot
+{
+    /// <summary>The bot's state and state property accessor objects.</summary>
+    private BotAccessors Accessors { get; }
+
+    /// <summary>The dialog set that has the dialog to use.</summary>
+    private GreetingsDialog GreetingsDialog { get; }
+
+    /// <summary>Create a new instance of the bot.</summary>
+    /// <param name="options">The options to use for our app.</param>
+    /// <param name="greetingsDialog">An instance of the dialog set.</param>
+    public UserDataBot(BotAccessors botAccessors)
+    {
+        // Retrieve the bot's state and accessors.
+        Accessors = botAccessors;
+
+        // Create the greetings dialog.
+        GreetingsDialog = new GreetingsDialog(Accessors.DialogStateAccessor);
+    }
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Vea la sección anterior en la que se definen estos descriptores de acceso dentro del constructor de `MainDialog`.
+
+---
+
+### <a name="update-the-turn-handler"></a>Actualización del controlador de turno
+
+El controlador de turno saludará a los usuarios cuando se incorporen a la conversación y les responderá cuando envíen un mensaje al bot. Si en algún momento el botón desconoce el nombre del usuario, iniciará el diálogo de salido para preguntarle su nombre. Cuando el diálogo finaliza, se guarda su nombre en el estado del usuario mediante un objeto de estado generado por nuestro descriptor de acceso de propiedades de los estados. Cuando el turno finaliza, el descriptor de acceso y el administrador de estado escribirán los cambios en el objeto fuera del almacenamiento.
+
+También vamos a agregar compatibilidad con la actividad _eliminar datos de usuario_.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Actualice el método `OnTurnAsync` del bot.
+
+```cs
+/// <summary>Handles incoming activities to the bot.</summary>
+/// <param name="turnContext">The context object for the current turn.</param>
+/// <param name="cancellationToken">A cancellation token that can be used by other objects
+/// or threads to receive notice of cancellation.</param>
+/// <returns>A task that represents the work queued to execute.</returns>
+public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
+{
+    // Retrieve user data from state.
+    UserData userData = await Accessors.UserDataAccessor.GetAsync(turnContext, () => new UserData());
+
+    // Establish context for our dialog from the turn context.
+    DialogContext dc = await GreetingsDialog.CreateContextAsync(turnContext);
+
+    // Handle conversation update, message, and delete user data activities.
+    switch (turnContext.Activity.Type)
+    {
+        case ActivityTypes.ConversationUpdate:
+
+            // Greet any user that is added to the conversation.
+            IConversationUpdateActivity activity = turnContext.Activity.AsConversationUpdateActivity();
+            if (activity.MembersAdded.Any(member => member.Id != activity.Recipient.Id))
+            {
+                if (userData.Name is null)
+                {
+                    // If we don't already have their name, start a dialog to collect it.
+                    await turnContext.SendActivityAsync("Welcome to the User Data bot.");
+                    await dc.BeginDialogAsync(GreetingsDialog.MainDialog);
+                }
+                else
+                {
+                    // Otherwise, greet them by name.
+                    await turnContext.SendActivityAsync($"Hi {userData.Name}! Welcome back to the User Data bot.");
+                }
+            }
+
+            break;
+
+        case ActivityTypes.Message:
+
+            // If there's a dialog running, continue it.
+            if (dc.ActiveDialog != null)
+            {
+                var dialogTurnResult = await dc.ContinueDialogAsync();
+                if (dialogTurnResult.Status == DialogTurnStatus.Complete
+                    && dialogTurnResult.Result is string name
+                    && !string.IsNullOrWhiteSpace(name))
+                {
+                    // If it completes successfully and returns a valid name, save the name and greet the user.
+                    userData.Name = name;
+                    await turnContext.SendActivityAsync($"Pleased to meet you {userData.Name}.");
+                }
+            }
+            // Else, if we don't have the user's name yet, ask for it.
+            else if (userData.Name is null)
+            {
+                await dc.BeginDialogAsync(GreetingsDialog.MainDialog);
+            }
+            // Else, echo the user's message text.
+            else
+            {
+                await turnContext.SendActivityAsync($"{userData.Name} said, '{turnContext.Activity.Text}'.");
+            }
+
+            break;
+
+        case ActivityTypes.DeleteUserData:
+
+            // Delete the user's data.
+            userData.Name = null;
+            await turnContext.SendActivityAsync("I have deleted your user data.");
+
+            break;
+    }
+
+    // Update the user data in the turn's state cache.
+    await Accessors.UserDataAccessor.SetAsync(turnContext, userData, cancellationToken);
+
+    // Persist any changes to storage.
+    await Accessors.UserState.SaveChangesAsync(turnContext, false, cancellationToken);
+    await Accessors.ConversationState.SaveChangesAsync(turnContext, false, cancellationToken);
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Actualice el controlador de `MainDialog` `onTurn`.
+
+**dialogs/mainDialog/index.js**
+
+```javascript
+async onTurn(turnContext) {
+        
+    const dc = await this.dialogs.createContext(turnContext); // Create dialog context
+    const userData = await this.userDataAccessor.get(turnContext, {});
+
+    switch(turnContext.activity.type){
+        case ActivityTypes.ConversationUpdate:
+            if (turnContext.activity.membersAdded[0].name !== 'Bot') {
+                if(userData.name){
+                    await turnContext.sendActivity(`Hi ${userData.name}! Welcome back to the User Data bot.`);
+                }
+                else {
+                    // send a "this is what the bot does" message
+                    await turnContext.sendActivity('Welcome to the User Data bot.');
+                    await dc.beginDialog('greetings');
+                }
+            }
+        break;
+        case ActivityTypes.Message:
+            // If there is an active dialog running, continue it
+            if(dc.activeDialog){
+                var turnResult = await dc.continueDialog();
+                if(turnResult.status == "complete" && turnResult.result){
+                    // If it completes successfully and returns a value, save the name and greet the user.
+                    userData.name = turnResult.result;
+                    await this.userDataAccessor.set(turnContext, userData);
+                    await turnContext.sendActivity(`Pleased to meet you ${userData.name}.`);
+                }
+            }
+            // Else, if we don't have the user's name yet, ask for it.
+            else if(!userData.name){
+                await dc.beginDialog('greetings');
+            }
+            // Else, echo the user's message text.
+            else {
+                await turnContext.sendActivity(`${userData.name} said, ${turnContext.activity.text}.`);
+            }
+        break;
+        case "deleteUserData":
+            // Delete the user's data.
+            // Note: You can use the emuluator to send this activity.
+            userData.name = null;
+            await this.userDataAccessor.set(turnContext, userData);
+            await turnContext.sendActivity("I have deleted your user data.");
+        break;
+    }
+
+    // Save changes to the user name.
+    await this.userState.saveChanges(turnContext);
+
+    // End this turn by saving changes to the conversation state.
+    await this.conversationState.saveChanges(turnContext);
+
+}
+
+```
+
+---
+
+## <a name="start-your-bot-in-visual-studio"></a>Inicio del bot en Visual Studio
+Compile y ejecute la aplicación.
+
+## <a name="start-the-emulator-and-connect-your-bot"></a>Inicio del emulador y conexión del bot
+
+A continuación, inicie el emulador y, después, conéctese al bot en el emulador:
+
+1. Haga clic en el vínculo **Open bot** (Abrir bot) de la pestaña de bienvenida del emulador. 
+2. Seleccione el archivo .bot ubicado en el directorio donde se creó la solución de Visual Studio.
+
+## <a name="interact-with-your-bot"></a>Interacción con el bot
+Envíe un mensaje al bot y este responderá con un mensaje.
+![Emulador en ejecución](../media/emulator-v4/emulator-running.png)
+
 
 ## <a name="next-steps"></a>Pasos siguientes
-
-Ahora que sabe cómo guardar entradas de usuario, eche un vistazo a qué tipo de entrada puede pedir al usuario mediante la biblioteca de avisos.
-
 > [!div class="nextstepaction"]
-> [Solicitud de entradas a los usuarios](~/v4sdk/bot-builder-prompts.md)
+> [Administración del estado de la conversación y del usuario](bot-builder-howto-v4-state.md)
