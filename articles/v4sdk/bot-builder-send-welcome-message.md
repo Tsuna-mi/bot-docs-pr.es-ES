@@ -9,26 +9,26 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 53a701d4ccb861685b67258bd6c51f2bf6e62099
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 2d32e618325e9ddc4abb5c3b42114c86c7644001
+ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46708785"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49315141"
 ---
-# <a name="send-welcome-message-to-users"></a><span data-ttu-id="52757-104">Envío de mensajes de bienvenida a los usuarios</span><span class="sxs-lookup"><span data-stu-id="52757-104">Send welcome message to users</span></span>
+# <a name="send-welcome-message-to-users"></a><span data-ttu-id="1fd57-104">Envío de mensajes de bienvenida a los usuarios</span><span class="sxs-lookup"><span data-stu-id="1fd57-104">Send welcome message to users</span></span>
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-<span data-ttu-id="52757-105">En nuestro anterior artículo sobre diseño de [bienvenida al usuario](./bot-builder-welcome-user.md) se comentaban distintos procedimientos recomendados que se pueden implementar para garantizar una interacción inicial satisfactoria de los usuarios con el bot.</span><span class="sxs-lookup"><span data-stu-id="52757-105">Our previous design article [welcome the user](./bot-builder-welcome-user.md) discussed various best practices you can implement to ensure that your users have a good initial interaction with your bot.</span></span> <span data-ttu-id="52757-106">En este artículo se amplía el tema con códigos de ejemplo breves que le ayudarán a dar la bienvenida a los usuarios al bot.</span><span class="sxs-lookup"><span data-stu-id="52757-106">This article extends that topic by providing short code examples to help you welcome users to your bot.</span></span>
+<span data-ttu-id="1fd57-105">En nuestro anterior artículo sobre diseño de [bienvenida al usuario](./bot-builder-welcome-user.md) se comentaban distintos procedimientos recomendados que se pueden implementar para garantizar una interacción inicial satisfactoria de los usuarios con el bot.</span><span class="sxs-lookup"><span data-stu-id="1fd57-105">Our previous design article [welcome the user](./bot-builder-welcome-user.md) discussed various best practices you can implement to ensure that your users have a good initial interaction with your bot.</span></span> <span data-ttu-id="1fd57-106">En este artículo se amplía el tema con códigos de ejemplo breves que le ayudarán a dar la bienvenida a los usuarios al bot.</span><span class="sxs-lookup"><span data-stu-id="1fd57-106">This article extends that topic by providing short code examples to help you welcome users to your bot.</span></span>
 
-## <a name="same-welcome-for-different-channels"></a><span data-ttu-id="52757-107">Misma bienvenida para diferentes canales</span><span class="sxs-lookup"><span data-stu-id="52757-107">Same welcome for different channels</span></span>
+## <a name="same-welcome-for-different-channels"></a><span data-ttu-id="1fd57-107">Misma bienvenida para diferentes canales</span><span class="sxs-lookup"><span data-stu-id="1fd57-107">Same welcome for different channels</span></span>
 
-<span data-ttu-id="52757-108">En el siguiente ejemplo se observa en caso de actividad de _actualización de la conversación_ nueva, envía solo un mensaje de bienvenida cuando el usuario se une a la conversación y establece una marca de estado de solicitud para ignorar las entradas iniciales del usuario en la conversación.</span><span class="sxs-lookup"><span data-stu-id="52757-108">The following example watches for new _conversation update_ activity, sends only one welcome message based on your user joining the conversation, and sets a Prompt status flag to ignore the user’s initial conversation input.</span></span> <span data-ttu-id="52757-109">El código siguiente usa el ejemplo de bienvenida al usuario del repositorio de [GitHub](https://github.com/Microsoft/BotBuilder-Samples/).</span><span class="sxs-lookup"><span data-stu-id="52757-109">The code below uses the welcome user sample in the [GitHub](https://github.com/Microsoft/BotBuilder-Samples/) repo.</span></span>
+<span data-ttu-id="1fd57-108">En el siguiente ejemplo se observa en caso de actividad de _actualización de la conversación_ nueva, envía solo un mensaje de bienvenida cuando el usuario se une a la conversación y establece una marca de estado de solicitud para ignorar las entradas iniciales del usuario en la conversación.</span><span class="sxs-lookup"><span data-stu-id="1fd57-108">The following example watches for new _conversation update_ activity, sends only one welcome message based on your user joining the conversation, and sets a Prompt status flag to ignore the user’s initial conversation input.</span></span> <span data-ttu-id="1fd57-109">El código siguiente usa el ejemplo de bienvenida al usuario del repositorio de [GitHub](https://github.com/Microsoft/BotBuilder-Samples/).</span><span class="sxs-lookup"><span data-stu-id="1fd57-109">The code below uses the welcome user sample in the [GitHub](https://github.com/Microsoft/BotBuilder-Samples/) repo.</span></span>
 
-## <a name="ctabcsharp"></a>[<span data-ttu-id="52757-110">C#</span><span class="sxs-lookup"><span data-stu-id="52757-110">C#</span></span>](#tab/csharp)
+## <a name="ctabcsharp"></a>[<span data-ttu-id="1fd57-110">C#</span><span class="sxs-lookup"><span data-stu-id="1fd57-110">C#</span></span>](#tab/csharp)
 
-<span data-ttu-id="52757-111">Este conjunto de bibliotecas se utiliza para admitir el siguiente ejemplo de código de C#</span><span class="sxs-lookup"><span data-stu-id="52757-111">This set of libraries are used to support all of the following C# code example</span></span>
+<span data-ttu-id="1fd57-111">Este conjunto de bibliotecas se utiliza para admitir el siguiente ejemplo de código de C#</span><span class="sxs-lookup"><span data-stu-id="1fd57-111">This set of libraries are used to support all of the following C# code example</span></span>
 
 ```csharp
 using System.Collections.Generic;
@@ -40,14 +40,14 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
 ```
 
-<span data-ttu-id="52757-112">Ahora es necesario crear un objeto de estado para un usuario determinado de una conversación y su descriptor de acceso.</span><span class="sxs-lookup"><span data-stu-id="52757-112">Now we need to create a state object for a given user in a conversation and it's accessor.</span></span>
+<span data-ttu-id="1fd57-112">Ahora es necesario crear un objeto de estado para un usuario determinado de una conversación y su descriptor de acceso.</span><span class="sxs-lookup"><span data-stu-id="1fd57-112">Now we need to create a state object for a given user in a conversation and it's accessor.</span></span>
 
 ```csharp
 /// The state object is used to keep track of various state related to a user in a conversation.
 /// In this example, we are tracking if the bot has replied to customer first interaction.
 public class WelcomeUserState
 {
-    public bool DidBotWelcomedUser { get; set; } = false;
+    public bool DidBotWelcomeUser { get; set; } = false;
 }
 
 /// Initializes a new instance of the <see cref="WelcomeUserStateAccessors"/> class.
@@ -58,13 +58,13 @@ public class WelcomeUserStateAccessors
         this.UserState = userState ?? throw new ArgumentNullException(nameof(userState));
     }
 
-    public IStatePropertyAccessor<bool> DidBotWelcomedUser { get; set; }
+    public IStatePropertyAccessor<bool> DidBotWelcomeUser { get; set; }
 
     public UserState UserState { get; }
 }
 ```
 
-<span data-ttu-id="52757-113">A continuación, simplemente se comprueban las actividades de actualización para ver si se ha agregado un nuevo usuario a la conversación y se le envía un mensaje de bienvenida.</span><span class="sxs-lookup"><span data-stu-id="52757-113">We then simply check for an activity update to see if a new user has been added to the conversation and then send them a welcome message.</span></span>
+<span data-ttu-id="1fd57-113">A continuación, simplemente se comprueban las actividades de actualización para ver si se ha agregado un nuevo usuario a la conversación y se le envía un mensaje de bienvenida.</span><span class="sxs-lookup"><span data-stu-id="1fd57-113">We then simply check for an activity update to see if a new user has been added to the conversation and then send them a welcome message.</span></span>
 
 ```csharp
 public class WelcomeUserBot : IBot
@@ -92,7 +92,7 @@ public WelcomeUserBot(WelcomeUserStateAccessors statePropertyAccessor)
 public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = new CancellationToken())
 {
     // Use state accessor to extract the didBotWelcomeUser flag
-    var didBotWelcomeUser = await _welcomeUserStateAccessors.DidBotWelcomedUser.GetAsync(turnContext, () => false);
+    var didBotWelcomeUser = await _welcomeUserStateAccessors.DidBotWelcomeUser.GetAsync(turnContext, () => false);
 
     if (turnContext.Activity.Type == ActivityTypes.Message)
     {
@@ -101,7 +101,7 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
         if (didBotWelcomeUser == false)
         {
             // Update user state flag to reflect bot handled first user interaction.
-            await _welcomeUserStateAccessors.DidBotWelcomedUser.SetAsync(turnContext, true);
+            await _welcomeUserStateAccessors.DidBotWelcomeUser.SetAsync(turnContext, true);
             await _welcomeUserStateAccessors.UserState.SaveChangesAsync(turnContext);
 
             // the channel should sends the user name in the 'From' object
@@ -136,9 +136,9 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
 }
 ```
 
-## <a name="javascripttabjs"></a>[<span data-ttu-id="52757-114">JavaScript</span><span class="sxs-lookup"><span data-stu-id="52757-114">JavaScript</span></span>](#tab/js)
+## <a name="javascripttabjs"></a>[<span data-ttu-id="1fd57-114">JavaScript</span><span class="sxs-lookup"><span data-stu-id="1fd57-114">JavaScript</span></span>](#tab/js)
 
-<span data-ttu-id="52757-115">Este código de JavaScript envía un mensaje de bienvenida cuando se agrega un usuario.</span><span class="sxs-lookup"><span data-stu-id="52757-115">This JavaScript code sends a welcome message when a user is added.</span></span> <span data-ttu-id="52757-116">Esto se realiza mediante la comprobación de la actividad de la conversación y la verificación de que se ha agregado un nuevo miembro a la conversación.</span><span class="sxs-lookup"><span data-stu-id="52757-116">This is done by checking the conversation activity and verify that a new member was added to the conversation.</span></span>
+<span data-ttu-id="1fd57-115">Este código de JavaScript envía un mensaje de bienvenida cuando se agrega un usuario.</span><span class="sxs-lookup"><span data-stu-id="1fd57-115">This JavaScript code sends a welcome message when a user is added.</span></span> <span data-ttu-id="1fd57-116">Esto se realiza mediante la comprobación de la actividad de la conversación y la verificación de que se ha agregado un nuevo miembro a la conversación.</span><span class="sxs-lookup"><span data-stu-id="1fd57-116">This is done by checking the conversation activity and verify that a new member was added to the conversation.</span></span>
 
 ``` javascript
 // Import required Bot Framework classes.
@@ -146,7 +146,7 @@ const { ActivityTypes } = require('botbuilder');
 const { CardFactory } = require('botbuilder');
 
 // Welcomed User property name
-const WELCOMED_USER = 'DidBotWelcomedUser';
+const WELCOMED_USER = 'DidBotWelcomeUser';
 
 class MainDialog {
     constructor (userState) {
@@ -160,13 +160,13 @@ class MainDialog {
         // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
         if (turnContext.activity.type === ActivityTypes.Message) 
         {
-            // Read UserState. If the 'DidBotWelcomedUser' does not exist (first time ever for a user)
+            // Read UserState. If the 'DidBotWelcomeUser' does not exist (first time ever for a user)
             // set the default to false.
-            let didBotWelcomedUser = await this.welcomedUserPropery.get(turnContext, false);
+            let didBotWelcomeUser = await this.welcomedUserPropery.get(turnContext, false);
 
             // Your bot should proactively send a welcome message to a personal chat the first time
             // (and only the first time) a user initiates a personal chat with your bot.
-            if (didBotWelcomedUser === false) 
+            if (didBotWelcomeUser === false) 
             {
                 // The channel should send the user name in the 'From' object
                 let userName = turnContext.activity.from.name;
@@ -217,17 +217,17 @@ module.exports = MainDialog;
 
 ---
 
-## <a name="discard-initial-user-input"></a><span data-ttu-id="52757-117">Descarte de las entradas iniciales del usuario</span><span class="sxs-lookup"><span data-stu-id="52757-117">Discard initial user input</span></span>
+## <a name="discard-initial-user-input"></a><span data-ttu-id="1fd57-117">Descarte de las entradas iniciales del usuario</span><span class="sxs-lookup"><span data-stu-id="1fd57-117">Discard initial user input</span></span>
 
-<span data-ttu-id="52757-118">Para garantizar una buena experiencia para el usuario en todos los canales posibles, evitamos procesar datos de respuesta no válidos mediante una solicitud inicial y la configuración de palabras clave que buscar en las respuestas del usuario.</span><span class="sxs-lookup"><span data-stu-id="52757-118">To ensure your user has a good experience on all possible channels, we avoid processing invalid response data by giving the initial prompt and setting up keywords to look for in the user's replies.</span></span>
+<span data-ttu-id="1fd57-118">Para garantizar una buena experiencia para el usuario en todos los canales posibles, evitamos procesar datos de respuesta no válidos mediante una solicitud inicial y la configuración de palabras clave que buscar en las respuestas del usuario.</span><span class="sxs-lookup"><span data-stu-id="1fd57-118">To ensure your user has a good experience on all possible channels, we avoid processing invalid response data by giving the initial prompt and setting up keywords to look for in the user's replies.</span></span>
 
-## <a name="ctabcsharpmulti"></a>[<span data-ttu-id="52757-119">C#</span><span class="sxs-lookup"><span data-stu-id="52757-119">C#</span></span>](#tab/csharpmulti)
+## <a name="ctabcsharpmulti"></a>[<span data-ttu-id="1fd57-119">C#</span><span class="sxs-lookup"><span data-stu-id="1fd57-119">C#</span></span>](#tab/csharpmulti)
 
 ```csharp
 public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = new CancellationToken())
 {
     // Use state accessor to extract the didBotWelcomeUser flag
-    var didBotWelcomeUser = await _welcomeUserStateAccessors.DidBotWelcomedUser.GetAsync(turnContext, () => false);
+    var didBotWelcomeUser = await _welcomeUserStateAccessors.DidBotWelcomeUser.GetAsync(turnContext, () => false);
 
     if (turnContext.Activity.Type == ActivityTypes.Message)
     {
@@ -278,7 +278,7 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
 
 ```
 
-## <a name="javascripttabjsmulti"></a>[<span data-ttu-id="52757-120">JavaScript</span><span class="sxs-lookup"><span data-stu-id="52757-120">JavaScript</span></span>](#tab/jsmulti)
+## <a name="javascripttabjsmulti"></a>[<span data-ttu-id="1fd57-120">JavaScript</span><span class="sxs-lookup"><span data-stu-id="1fd57-120">JavaScript</span></span>](#tab/jsmulti)
 
 ``` javascript
 class MainDialog 
@@ -292,7 +292,7 @@ class MainDialog
             
             // Previous Code Sample
             
-            if (didBotWelcomedUser === false) 
+            if (didBotWelcomeUser === false) 
             {
                 // Previous Code Sample
             }
@@ -323,11 +323,11 @@ class MainDialog
 
 ---
 
-## <a name="using-adaptive-card-greeting"></a><span data-ttu-id="52757-121">Uso de tarjetas adaptables de saludo</span><span class="sxs-lookup"><span data-stu-id="52757-121">Using Adaptive Card Greeting</span></span>
+## <a name="using-adaptive-card-greeting"></a><span data-ttu-id="1fd57-121">Uso de tarjetas adaptables de saludo</span><span class="sxs-lookup"><span data-stu-id="1fd57-121">Using Adaptive Card Greeting</span></span>
 
-<span data-ttu-id="52757-122">Otra forma de saludar a los usuarios es usar tarjetas adaptables de saludo.</span><span class="sxs-lookup"><span data-stu-id="52757-122">Another way to greeting users is using adaptive Card Greeting.</span></span> <span data-ttu-id="52757-123">Puede aprender más sobre las tarjetas adaptables de saludo aquí: [Envío de una tarjeta adaptable](./bot-builder-howto-add-media-attachments.md).</span><span class="sxs-lookup"><span data-stu-id="52757-123">You can learn more about Adaptive Card Greetings here [Send an Adaptive Card](./bot-builder-howto-add-media-attachments.md).</span></span>
+<span data-ttu-id="1fd57-122">Otra forma de saludar a los usuarios es usar tarjetas adaptables de saludo.</span><span class="sxs-lookup"><span data-stu-id="1fd57-122">Another way to greeting users is using adaptive Card Greeting.</span></span> <span data-ttu-id="1fd57-123">Puede aprender más sobre las tarjetas adaptables de saludo aquí: [Envío de una tarjeta adaptable](./bot-builder-howto-add-media-attachments.md).</span><span class="sxs-lookup"><span data-stu-id="1fd57-123">You can learn more about Adaptive Card Greetings here [Send an Adaptive Card](./bot-builder-howto-add-media-attachments.md).</span></span>
 
-## <a name="ctabcsharpwelcomeback"></a>[<span data-ttu-id="52757-124">C#</span><span class="sxs-lookup"><span data-stu-id="52757-124">C#</span></span>](#tab/csharpwelcomeback)
+## <a name="ctabcsharpwelcomeback"></a>[<span data-ttu-id="1fd57-124">C#</span><span class="sxs-lookup"><span data-stu-id="1fd57-124">C#</span></span>](#tab/csharpwelcomeback)
 
 ```csharp
 // Sends an adaptive card greeting.
@@ -350,7 +350,7 @@ private static async Task SendIntroCardAsync(ITurnContext turnContext, Cancellat
 }
 ```
 
-<span data-ttu-id="52757-125">A continuación, podemos enviarle la tarjeta mediante el siguiente comando await.</span><span class="sxs-lookup"><span data-stu-id="52757-125">Next, we can send the card by using the following await command.</span></span> <span data-ttu-id="52757-126">Pongamos esto en los bots: _switch (texto)_ _case "hel</span><span class="sxs-lookup"><span data-stu-id="52757-126">Let's put this into the bots _switch (text)_ _case "hel</span></span>
+<span data-ttu-id="1fd57-125">A continuación, podemos enviarle la tarjeta mediante el siguiente comando await.</span><span class="sxs-lookup"><span data-stu-id="1fd57-125">Next, we can send the card by using the following await command.</span></span> <span data-ttu-id="1fd57-126">Pongamos esto en los bots: _switch (texto)_ _case "hel</span><span class="sxs-lookup"><span data-stu-id="1fd57-126">Let's put this into the bots _switch (text)_ _case "hel</span></span>
 
 ```csharp
 switch (text)
@@ -370,16 +370,16 @@ switch (text)
 ```
 
 
-## <a name="javascripttabjswelcomeback"></a>[<span data-ttu-id="52757-127">JavaScript</span><span class="sxs-lookup"><span data-stu-id="52757-127">JavaScript</span></span>](#tab/jswelcomeback)
+## <a name="javascripttabjswelcomeback"></a>[<span data-ttu-id="1fd57-127">JavaScript</span><span class="sxs-lookup"><span data-stu-id="1fd57-127">JavaScript</span></span>](#tab/jswelcomeback)
 
-<span data-ttu-id="52757-128">Primero se agrega la tarjeta adaptable al bot en la parte superior de _index.js_, justo debajo de las importaciones.</span><span class="sxs-lookup"><span data-stu-id="52757-128">First we want to add our Adaptive Card to the bot at the top of our _index.js_ right below our Imports.</span></span>
+<span data-ttu-id="1fd57-128">Primero se agrega la tarjeta adaptable al bot en la parte superior de _index.js_, justo debajo de las importaciones.</span><span class="sxs-lookup"><span data-stu-id="1fd57-128">First we want to add our Adaptive Card to the bot at the top of our _index.js_ right below our Imports.</span></span>
 
 ``` javascript
 // Adaptive Card content
 const IntroCard = require('./Resources/IntroCard.json');
 ```
 
-<span data-ttu-id="52757-129">A continuación, podemos utilizar el siguiente código en la sección _switch (texto)_ _case "help"_ del bot para responder a la solicitud de los usuarios con la tarjeta adaptable.</span><span class="sxs-lookup"><span data-stu-id="52757-129">Next we can simply use the below code in our _switch (text)_ _case "help"_ section of our bot to respond to the users prompt with the adaptive card.</span></span>
+<span data-ttu-id="1fd57-129">A continuación, podemos utilizar el siguiente código en la sección _switch (texto)_ _case "help"_ del bot para responder a la solicitud de los usuarios con la tarjeta adaptable.</span><span class="sxs-lookup"><span data-stu-id="1fd57-129">Next we can simply use the below code in our _switch (text)_ _case "help"_ section of our bot to respond to the users prompt with the adaptive card.</span></span>
 
 ``` javascript
 switch (text) 
@@ -403,6 +403,6 @@ switch (text)
 ```
 ---
 
-## <a name="next-steps"></a><span data-ttu-id="52757-130">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="52757-130">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="1fd57-130">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="1fd57-130">Next steps</span></span>
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="52757-131">Petición de datos de entrada a los usuarios con la biblioteca Dialogs</span><span class="sxs-lookup"><span data-stu-id="52757-131">Prompt users for input using the dialogs library</span></span>](bot-builder-prompts.md)
+> [<span data-ttu-id="1fd57-131">Petición de datos de entrada a los usuarios con la biblioteca Dialogs</span><span class="sxs-lookup"><span data-stu-id="1fd57-131">Prompt users for input using the dialogs library</span></span>](bot-builder-prompts.md)
