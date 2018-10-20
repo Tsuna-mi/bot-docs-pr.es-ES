@@ -13,9 +13,9 @@
 # [Claves de App Insights](../bot-service-resources-app-insights-keys.md)
 # [Solicitudes usuario-agente](../bot-service-resources-user-agent.md)
 # [Directrices de revisión de bots](../bot-service-review-guidelines.md)
-# [Esquema Activity de Bot Framework](https://github.com/Microsoft/BotBuilder/blob/hub/specs/botframework-activity/botframework-activity.md)
-# [Esquema Card de Bot Framework](https://github.com/Microsoft/BotBuilder/blob/hub/specs/botframework-activity/botframework-cards.md)
-# [Esquema Transcript de Bot Framework](https://github.com/Microsoft/BotBuilder/blob/hub/specs/transcript/transcript.md)
+# [Esquema Activity de Bot Framework](https://aka.ms/botSpecs-activitySchema)
+# [Esquema Card de Bot Framework](https://aka.ms/botSpecs-cardSchema)
+# [Esquema Transcript de Bot Framework](https://aka.ms/botSpecs-transcripts)
 # [Cumplimiento de Bot Service](../v4sdk/bot-service-compliance.md)
 # Solución de problemas
 ## [Solución de problemas generales](../bot-service-troubleshoot-general-problems.md)
