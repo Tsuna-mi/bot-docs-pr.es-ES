@@ -28,7 +28,7 @@
 ### [Bot de Internet de las cosas](bot-service-scenario-internet-things.md)
 # Procedimiento
 ## [Diseño](design/TOC.md)
-## [Manage](manage/TOC.md)
+## [Administración](manage/TOC.md)
 ## Desarrollo
 ### [Envío de mensajes de bienvenida a los usuarios](v4sdk/bot-builder-send-welcome-message.md)
 ### [Envío de mensajes de texto y de voz](v4sdk/bot-builder-howto-send-messages.md)
@@ -44,6 +44,7 @@
 ### [Uso de diálogos para administrar flujos de conversación complejos](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
 ### [Control de las interrupciones del usuario](v4sdk/bot-builder-howto-handle-user-interrupt.md)
 ### [Conservación de los datos de los cuadros de diálogo](v4sdk/bot-builder-tutorial-persist-user-inputs.md)
+### [Creación de un conjunto integrado de diálogos](v4sdk/bot-builder-compositcontrol.md)
 ### [Uso de LUIS para el reconocimiento de lenguaje](v4sdk/bot-builder-howto-v4-luis.md)
 ### [Uso de QnA Maker para responder a preguntas](v4sdk/bot-builder-howto-qna.md)
 ### [Adición de autenticación al bot](v4sdk/bot-builder-authentication.md)
