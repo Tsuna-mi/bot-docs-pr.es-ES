@@ -6,7 +6,7 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 # Bot Framework Technical Documentation Contributor Guide
 You've found the GitHub repository that houses the source for the Bot Framework technical documentation that is published on [https://docs.microsoft.com/bot-framework](https://docs.microsoft.com/bot-framework).
 
-This repository also contains guidance to help you contribute to our technical documentation. For a list of the articles in the contributors' guide, see [the index](contributor-guide/contributor-guide-index.md).
+This repository also contains guidance to help you contribute to our technical documentation. For a list of the articles in the contributors' guide, see [the index](https://github.com/MicrosoftDocs/bot-docs/blob/80a677acbf3cea651d26e465211ef1aa8d58952a/contributor-guide/contributor-guide-index.md).
 
 ## Contribute to Bot Framework documentation
 Thank you for your interest in Bot Framework documentation!
@@ -18,7 +18,7 @@ Thank you for your interest in Bot Framework documentation!
 * [Use GitHub, Git, and this repository](#use-github-git-and-this-repository)
 * [How to use markdown to format your topic](#how-to-use-markdown-to-format-your-topic)
 * [More resources](#more-resources)
-* [Index of all contributors' guide articles](contributor-guide/contributor-guide-index.md) (opens new page)
+* [Index of all contributors' guide articles](https://github.com/MicrosoftDocs/bot-docs/blob/80a677acbf3cea651d26e465211ef1aa8d58952a/contributor-guide/contributor-guide-index.md) (opens new page)
 
 ## Ways to contribute
 You can submit updates to the [Bot Framework documentation](https://docs.microsoft.com/bot-framework) as follows:
@@ -39,12 +39,12 @@ The content in the Bot Framework-docs repository follows the organization of doc
 ### \articles
 The *\articles* folder contains the documentation articles formatted as markdown files with an *.md* extension. Articles are typically grouped by Bot Framework service.
 
-Articles need to follow strict file naming guidelines - for details, see [our file naming guidance](contributor-guide/file-names-and-locations.md).
+Articles need to follow strict file naming guidelines - for details, see [our file naming guidance](https://github.com/MicrosoftDocs/bot-docs/blob/80a677acbf3cea651d26e465211ef1aa8d58952a/contributor-guide/file-names-and-locations.md).
 
 The *\articles* folder contains the *\media* folder for root directory article media files, inside which are subfolders with the images for each article.  The service folders contain a separate media folder for the articles within each service folder. The article image folders are named identically to the article file, minus the *.md* file extension.
 
 ### \includes
-You can create reusable content sections to be included in one or more articles. See [Custom extensions used in our technical content](contributor-guide/custom-markdown-extensions.md).
+You can create reusable content sections to be included in one or more articles. See [Custom extensions used in our technical content](https://github.com/MicrosoftDocs/bot-docs/blob/80a677acbf3cea651d26e465211ef1aa8d58952a/contributor-guide/custom-markdown-extensions.md).
 
 ### \markdown templates
 This folder contains our standard markdown template with the basic markdown formatting you need for an article.
@@ -53,9 +53,9 @@ This folder contains our standard markdown template with the basic markdown form
 This folder contains articles that are part of our contributors' guide.
 
 ## Use GitHub, Git, and this repository
-For information about how to contribute, how to use the GitHub UI to contribute small changes, and how to fork and clone the repository for more significant contributions, see [Install and set up tools for authoring in GitHub](contributor-guide/tools-and-setup.md).
+For information about how to contribute, how to use the GitHub UI to contribute small changes, and how to fork and clone the repository for more significant contributions, see [Install and set up tools for authoring in GitHub](https://github.com/MicrosoftDocs/bot-docs/blob/80a677acbf3cea651d26e465211ef1aa8d58952a/contributor-guide/tools-and-setup.md).
 
-If you install GitBash and choose to work locally, the steps for creating a new local working branch, making changes, and submitting the changes back to the main branch are listed in [Git commands for creating a new article or updating an existing article](contributor-guide/git-commands-for-master.md)
+If you install GitBash and choose to work locally, the steps for creating a new local working branch, making changes, and submitting the changes back to the main branch are listed in [Git commands for creating a new article or updating an existing article](https://github.com/MicrosoftDocs/bot-docs/blob/80a677acbf3cea651d26e465211ef1aa8d58952a/contributor-guide/git-commands-for-master.md)
 
 ### Branches
 We recommend that you create local working branches that target a specific scope of change. Each branch should be limited to a single concept/article both to streamline work flow and reduce the possibility of merge conflicts.  The following efforts are of the appropriate scope for a new branch:
@@ -68,10 +68,10 @@ We recommend that you create local working branches that target a specific scope
 All the articles in this repository use GitHub flavored markdown.  Here's a list of resources.
 
 * [Markdown basics](https://help.github.com/articles/markdown-basics/)
-* [Printable markdown cheatsheet](./contributor-guide/media/documents/markdown-cheatsheet.pdf?raw=true)
+* [Printable markdown cheatsheet](https://github.com/MicrosoftDocs/bot-docs/blob/80a677acbf3cea651d26e465211ef1aa8d58952a/contributor-guide/media/documents/markdown-cheatsheet.pdf)
 
 ## Article metadata
-Article metadata enables certain functionalities, such as author attribution, contributor attribution, breadcrumbs, article descriptions, and SEO optimizations as well as reporting Microsoft uses to evaluate the performance of the content. So, the metadata is important! [Here's the guidance for making sure your metadata is done right](contributor-guide/article-metadata.md).
+Article metadata enables certain functionalities, such as author attribution, contributor attribution, breadcrumbs, article descriptions, and SEO optimizations as well as reporting Microsoft uses to evaluate the performance of the content. So, the metadata is important! [Here's the guidance for making sure your metadata is done right](https://github.com/MicrosoftDocs/bot-docs/blob/80a677acbf3cea651d26e465211ef1aa8d58952a/contributor-guide/article-metadata.md).
 
 ### Labels
 Automated labels are assigned to pull requests to help us manage the pull request workflow and to help let you know what's going on with your pull request:
@@ -84,4 +84,4 @@ Automated labels are assigned to pull requests to help us manage the pull reques
 * Change sent to author: The author has been notified of the pending pull request.
 
 ## More resources
-See the [index of our contributor's guide](contributor-guide/contributor-guide-index.md) for all our guidance topics.
+See the [index of our contributor's guide](https://github.com/MicrosoftDocs/bot-docs/blob/80a677acbf3cea651d26e465211ef1aa8d58952a/contributor-guide/contributor-guide-index.md) for all our guidance topics.
